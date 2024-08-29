@@ -136,7 +136,7 @@ $currentRoute = request()->route()->getName();
         </button>
       </div>
       <div class="modal-body ">
-        <p>The website is currently undergoing maintenance as there have been some technical issues and bugs that need to be fixed. There will not be any new jobs posted on the find jobs section until the bugs have been resolved.</p>
+        <p>The websiteee is currently undergoing maintenance as there have been some technical issues and bugs that need to be fixed. There will not be any new jobs posted on the find jobs section until the bugs have been resolved.</p>
         <p>Whilst we are fixing the technical issues, we are also taking the opportunity to make improvements to the site that you may notice when pushed live. We will notify you by email and SMS as soon as the site is back up and running.</p>
         <h5>New features:</h5>
         <ul>
