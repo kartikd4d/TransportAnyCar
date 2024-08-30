@@ -77,7 +77,7 @@ class Quote_email_send extends Command
 
         $apiKey='md-Tt0ssydK1LD5mXyi44jmSw';
         $fromName='Transport Any Car';
-        $fromEmail='info@transportanycar.com';
+        $fromEmail='noreply@email.transportanycar.com';
         //$htmlContent='';
         $data = [
             'key' =>$apiKey,
