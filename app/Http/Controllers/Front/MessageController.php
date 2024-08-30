@@ -118,6 +118,18 @@ class MessageController extends WebController
             $maildata['quotes'] = $userQuote;
             $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
             $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
+
+            // Call create_notification to notify the user
+            create_notification(
+                $transporter_user->id ?? 0, 
+                $auth_user->id,
+                $from_quote_id,       
+                'New message',
+                'You have received a message from '.$auth_user->username.' for '.$userQuote->vehicle_make.' '.$userQuote->vehicle_model.' delivery. ',  // Message of the notification
+                'message',
+                $thread_id
+            );
+
             return response()->json(['status' => "success", "data" => $message]);
         } else {
             return response()->json(['status' => "error", "data" => []]);
@@ -231,6 +243,17 @@ class MessageController extends WebController
             catch (\Exception $ex) {
                     Log::error('Error sending email: ' . $ex->getMessage());
             }
+
+            // Call create_notification to notify the user
+            create_notification(
+                $request->transporter_id, 
+                $user->id,
+                $request->user_quote_id,       
+                'New message',
+                'You have received a message from '.$user->username.' for '.$quotes->vehicle_make.' '.$quotes->vehicle_model.' delivery. ',  // Message of the notification
+                'message',
+                $thread_id
+            );
             return response()->json(['status' => "success", "data" => $message, "thread" => $thread]);
         } else {
             return response()->json(['status' => "error", "data" => []]);

@@ -101,6 +101,25 @@ $auth_user = Auth::user();
             objDiv.scrollTop = 569874;
         }
         $(document).ready(function () {
+            //open particular chat
+            const urlParams = new URLSearchParams(window.location.search);
+            const threadId = urlParams.get('thread_id');
+            if (threadId) {
+                const clickAnchorTag = () => {
+                    const targetElement = document.querySelector(`li[data-id="${threadId}"] a.get-chat-history`);
+                    if (targetElement) {
+                        targetElement.click();
+                    } else {
+                        setTimeout(clickAnchorTag, 500);
+                    }
+                };
+                clickAnchorTag();
+            }
+            if (history.pushState) {
+                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+            }
+            //end chat code
             {{--function updateChat() {--}}
             {{--    getChatListing();--}}
             {{--    selected_chat_id = $("#trans_current_chat_id").val();--}}

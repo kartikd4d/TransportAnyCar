@@ -91,5 +91,27 @@
     myFunction(x)
     x.addListener(myFunction)
 </script>
+<script>
+  function notificationStatus(url, type, id, element) {
+      event.preventDefault();
+      const redirectUrl = $(element).data('href');
+      $.ajax({
+          url: url,
+          type: 'POST',
+          data: {
+              type: type,
+              quote_id: id,
+              _token: '{{ csrf_token() }}'
+          },
+          success: function() {
+              window.location.href = redirectUrl;
+          },
+          error: function(xhr) {
+              console.error('Status update failed:', xhr);
+          }
+      });
+  }
+
+</script>
 @yield('script')
 </html>

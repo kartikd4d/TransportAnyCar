@@ -22,9 +22,15 @@ $currentRoute = request()->route()->getName();
             <div class="side_dropdown">
                 <a class="list-group-item btn btn-link @if($currentRoute=='transporter.current_jobs' || $currentRoute=='transporter.new_jobs_new') active @endif" href="javascript:;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   <span>
+                  <div class="noti_info_icon">
                     <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.9 3H15C15 1.3 13.7 0 12 0H8C6.3 0 5 1.3 5 3H3.1C1.4 3 0 4.4 0 6.1V7.1C0 8 0.4 8.8 1 9.4V14C1 16.2 2.8 18 5 18H15C17.2 18 19 16.2 19 14V9.5C19.6 8.9 20 8.1 20 7.2V6.2C20 4.4 18.6 3 16.9 3ZM8 2H12C12.6 2 13 2.4 13 3H7C7 2.4 7.4 2 8 2ZM2 6.1C2 5.5 2.5 5 3.1 5H16.9C17.5 5 18 5.5 18 6.1V7.1C18 7.5 17.8 7.9 17.4 8.2C17.3 8.3 17.1 8.4 17 8.4L11 9.7C10.9 9.3 10.5 8.9 10 8.9C9.5 8.9 9.2 9.2 9 9.7L3 8.4C2.8 8.4 2.7 8.3 2.6 8.2H2.5C2.2 8 2 7.6 2 7.1V6.1ZM17 14C17 15.1 16.1 16 15 16H5C3.9 16 3 15.1 3 14V10.5L9 11.8V12C9 12.6 9.4 13 10 13C10.6 13 11 12.6 11 12V11.8L17 10.5V14Z" fill="black" />
-                    </svg> Jobs
+                    </svg>
+                    @if($newQuotesCount>=1)
+                        <small>{{$newQuotesCount}}</small>
+                    @endif
+                </div>
+                     Jobs
                   </span>
                     <span class="down-list">
                     <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,25 +41,37 @@ $currentRoute = request()->route()->getName();
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <ul>
-                            <li><a href="{{route('transporter.new_jobs_new')}}">Find jobs</a></li>
+                            <li><a href="{{route('transporter.new_jobs_new')}}">Find jobs @if($totalQuotes > 0)({{ $totalQuotes }})@endif</a></li>
 {{--                            <li><a href="{{route('transporter.new_jobs')}}">Find jobs</a></li>--}}
-                            <li><a href="{{route('transporter.current_jobs')}}">Current jobs</a></li>
+                            <li><a href="{{route('transporter.current_jobs')}}">My jobs</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <a class="list-group-item @if($currentRoute=='transporter.messages') active @endif" href="{{route('transporter.messages')}}">
             <span>
+            <div class="noti_info_icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 9H5C4.73478 9 4.48043 9.10536 4.29289 9.29289C4.10536 9.48043 4 9.73478 4 10C4 10.2652 4.10536 10.5196 4.29289 10.7071C4.48043 10.8946 4.73478 11 5 11H11C11.2652 11 11.5196 10.8946 11.7071 10.7071C11.8946 10.5196 12 10.2652 12 10C12 9.73478 11.8946 9.48043 11.7071 9.29289C11.5196 9.10536 11.2652 9 11 9ZM15 5H5C4.73478 5 4.48043 5.10536 4.29289 5.29289C4.10536 5.48043 4 5.73478 4 6C4 6.26522 4.10536 6.51957 4.29289 6.70711C4.48043 6.89464 4.73478 7 5 7H15C15.2652 7 15.5196 6.89464 15.7071 6.70711C15.8946 6.51957 16 6.26522 16 6C16 5.73478 15.8946 5.48043 15.7071 5.29289C15.5196 5.10536 15.2652 5 15 5ZM17 0H3C2.20435 0 1.44129 0.316071 0.87868 0.87868C0.316071 1.44129 0 2.20435 0 3V13C0 13.7956 0.316071 14.5587 0.87868 15.1213C1.44129 15.6839 2.20435 16 3 16H14.59L18.29 19.71C18.3834 19.8027 18.4943 19.876 18.6161 19.9258C18.7379 19.9755 18.8684 20.0008 19 20C19.1312 20.0034 19.2613 19.976 19.38 19.92C19.5626 19.845 19.7189 19.7176 19.8293 19.5539C19.9396 19.3901 19.999 19.1974 20 19V3C20 2.20435 19.6839 1.44129 19.1213 0.87868C18.5587 0.316071 17.7956 0 17 0ZM18 16.59L15.71 14.29C15.6166 14.1973 15.5057 14.124 15.3839 14.0742C15.2621 14.0245 15.1316 13.9992 15 14H3C2.73478 14 2.48043 13.8946 2.29289 13.7071C2.10536 13.5196 2 13.2652 2 13V3C2 2.73478 2.10536 2.48043 2.29289 2.29289C2.48043 2.10536 2.73478 2 3 2H17C17.2652 2 17.5196 2.10536 17.7071 2.29289C17.8946 2.48043 18 2.73478 18 3V16.59Z" fill="black" />
-              </svg> Messages
+              </svg>
+              @if($unseenMessageCount>=1)
+                        <small>{{$unseenMessageCount}}</small>
+                    @endif
+                </div>
+               Messages
             </span>
             </a>
             <a class="list-group-item logout_btn @if($currentRoute=='transporter.feedback') active @endif" href="{{route('transporter.feedback')}}">
             <span>
+            <div class="noti_info_icon">
               <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 20H17C17.83 20 18.54 19.5 18.84 18.78L21.86 11.73C21.95 11.5 22 11.26 22 11V9C22 7.9 21.1 7 20 7H13.69L14.64 2.43L14.67 2.11C14.67 1.7 14.5 1.32 14.23 1.05L13.17 0L6.58 6.59C6.22 6.95 6 7.45 6 8V18C6 19.1 6.9 20 8 20ZM8 8L12.34 3.66L11 9H20V11L17 18H8V8ZM0 8H4V20H0V8Z" fill="black" />
-              </svg> Feedback
+              </svg>
+               @if($unseenFeedback>=1)
+                    <small>{{$unseenFeedback}}</small>
+                @endif
+            </div>
+               Feedback
             </span>
             </a>
         </div>
@@ -312,7 +330,7 @@ $currentRoute = request()->route()->getName();
 
          // Check if the current URL contains 'dashboard' or 'profile'
         //if (window.location.href.indexOf('dashboard') > -1 || window.location.href.indexOf('profile') > -1) {
-            $('#importantNoticeModal').modal('show');
+            //$('#importantNoticeModal').modal('show');
         //}
     });
     // $('.maintaince_mode').on('click',function(e) {
@@ -333,4 +351,26 @@ $currentRoute = request()->route()->getName();
     //         allowOutsideClick: false
     //       });
     //   });
+</script>
+<script>
+  function notificationStatus(url, type, id, element) {
+      event.preventDefault();
+      const redirectUrl = $(element).data('href');
+      $.ajax({
+          url: url,
+          type: 'POST',
+          data: {
+              type: type,
+              quote_id: id,
+              _token: '{{ csrf_token() }}'
+          },
+          success: function() {
+              window.location.href = redirectUrl;
+          },
+          error: function(xhr) {
+              console.error('Status update failed:', xhr);
+          }
+      });
+  }
+
 </script>

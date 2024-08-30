@@ -111,6 +111,17 @@ class MessageController extends WebController
                     $maildata['type'] = 'user';
                     $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
                     $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
+
+                    // Call create_notification to notify the user
+                    create_notification(
+                        $customer_user->id, 
+                        $auth_user->id,
+                        $from_quote_id,       
+                        'New message',
+                        'You have received a message from '.$auth_user->username,  // Message of the notification
+                        'message',
+                        $thread_id
+                    );
                 } else {
                     Log::info('User with email ' . $customer_user->email . ' has opted out of receiving emails. Message email not sent.');
                 }
@@ -245,6 +256,17 @@ class MessageController extends WebController
                     $maildata['type'] = 'user';
                     $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
                     $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
+
+                    // Call create_notification to notify the user
+                    create_notification(
+                        $customer_user->id, 
+                        $user->id,
+                        $request->user_quote_id,       
+                        'New message',
+                        'You have received a message from '.$user->username.' for '.$quotes->vehicle_make.' '.$quotes->vehicle_model.' delivery. ',  // Message of the notification
+                        'message',
+                        $thread_id
+                    );
                 } else {
                     Log::info('User with email ' . $customer_user->email . ' has opted out of receiving emails. Message email not sent.');
                 }

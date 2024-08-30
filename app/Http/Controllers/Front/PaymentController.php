@@ -103,7 +103,18 @@ class PaymentController extends WebController
             } catch (\Exception $ex) {
                 \Log::error('Error sending email to transporter: ' . $ex->getMessage());
             }
-    
+
+            // Call create_notification to notify the user
+            create_notification(
+                $quote->user_id, 
+                Auth::id(),
+                $quoteId,       
+                'You’ve won a job!',
+                (isset(Auth::user()->username) ? Auth::user()->username : '') . ' has accepted your quote.',  // Message of the notification
+                'won_job',
+                $quote_by_transporter_id
+            );
+            
             \Log::info('Payment confirmation successful', ['payment_intent' => $paymentIntentId]);
     
             return view('front.payment_confirm',$data);

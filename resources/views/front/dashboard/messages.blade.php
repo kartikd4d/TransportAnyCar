@@ -213,6 +213,27 @@
             objDiv.scrollTop = 569874;
         }
         $(document).ready(function () {
+
+            //open particular chat
+            const urlParams = new URLSearchParams(window.location.search);
+            const threadId = urlParams.get('thread_id');
+            if (threadId) {
+                const clickAnchorTag = () => {
+                    const targetElement = document.querySelector(`li[data-id="${threadId}"] a.get-chat-history`);
+                    if (targetElement) {
+                        targetElement.click();
+                    } else {
+                        setTimeout(clickAnchorTag, 500);
+                    }
+                };
+                clickAnchorTag();
+            }
+            if (history.pushState) {
+                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+            }
+            //end chat code
+            
             setInterval(function(){
                 getChatListing();
             }, 5000);

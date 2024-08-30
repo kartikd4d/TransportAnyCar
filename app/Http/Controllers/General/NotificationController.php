@@ -16,7 +16,7 @@ class NotificationController extends Controller
         if ($user->type == 'car_transporter')
         {
            $notif = Notification::where(function ($query) use ($user) {
-            $query->where('user_id_to', $user->id)
+            $query->where('user_id', $user->id)
             ->orWhere('type', 'quote');
         })
            ->orderBy('created_at', 'desc')
@@ -24,12 +24,12 @@ class NotificationController extends Controller
            return view('transporter.dashboard.notifications.index', compact('notif'));
        }elseif ($user->type == 'user') 
        {
-        $notif = Notification::where('user_id_to', Auth::id())->get(); 
+        $notif = Notification::where('user_id', Auth::id())->get(); 
         return view('front.dashboard.notifications.index', compact('notif'));
     }
     elseif ($user->type == 'admin') 
     {
-        $notif = Notification::where('user_id_to', Auth::id())->get(); 
+        $notif = Notification::where('user_id', Auth::id())->get(); 
         return view('admin.notifications.index', compact('notif'));
     }
 
@@ -38,11 +38,10 @@ class NotificationController extends Controller
 public function store(Request $request)
 {
     $request->validate([
-        'user_id_from' => 'required|exists:users,id',
-        'user_id_to' => 'required|exists:users,id',
-        'subject' => 'required|string|max:255',
-        'full_message_html' => 'required|string',
-        'page_url' => 'required|string|max:255',
+        'from_user_id' => 'required|exists:users,id',
+        'user_id' => 'required|exists:users,id',
+        'title' => 'required|string|max:255',
+        'message' => 'required|string',
         'type' => 'nullable|string|max:255',
     ]);
 
@@ -55,9 +54,8 @@ public function show(Notification $notification)
 {
     $user = Auth::user();
 
-    if ($notification->user_id_to == Auth::id() && !$notification->status &&$notification->type!='quote') {
+    if ($notification->user_id == Auth::id() && $notification->type!='quote') {
         $notification->update([
-            'status' => true,
             'seen_at' => now(),
         ]);
     }

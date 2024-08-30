@@ -10,6 +10,7 @@ use App\QuotationDetail;
 use App\Thread;
 use App\User;
 use App\UserQuote;
+use App\Notification;
 use App\TransactionHistory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -413,6 +414,7 @@ class DashboardController extends WebController
 
     public function saveFeedbackQuote(Request $request)
     {
+        $user_data = Auth::guard('web')->user();
         // Determine the type of feedback and get the ratings array
         $feedbackType = null;
         $ratings = null;
@@ -443,6 +445,18 @@ class DashboardController extends WebController
                     'professionalism' => $mappedRatings['professionalism'],
                     'comment' => $feedbackComment
                 ]
+            );
+
+            $details = QuoteByTransporter::where('id',$quoteByTransporterId)->first();
+
+            // Call create_notification to notify the user
+            create_notification(
+                $details->user_id, 
+                $user_data->id,
+                $details->user_quote_id,       
+                'New Feedback',
+                'got feedback',  // Message of the notification
+                'feedback',
             );
 
             return response()->json(['status'=>true, 'message' => 'Feedback saved successfully.']);
@@ -513,5 +527,22 @@ class DashboardController extends WebController
         $name = getDashboardRouteName();
         Auth::guard('web')->logout();
         return redirect()->route($name);
+    }
+
+    public function notificationStatus(Request $request)
+    {
+        $user_data = Auth::guard('web')->user();
+        if ($request->type == 'message') {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'reference_id' => $request->quote_id
+            ])->update(['seen' => 0]);
+        } else {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'user_quote_id' => $request->quote_id
+            ])->update(['seen' => 0]);
+        }
+        return response()->json(['success' => true,]);
     }
 }

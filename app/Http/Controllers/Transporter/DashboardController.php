@@ -9,6 +9,7 @@ use App\QuoteByTransporter;
 use App\Thread;
 use App\User;
 use App\UserQuote;
+use App\Notification;
 use Carbon\Carbon;
 use App\Services\EmailService;
 use Illuminate\Database\Eloquent\Model;
@@ -248,6 +249,14 @@ class DashboardController extends WebController
         $params['overall_percentage'] = $overall_percentage;
         $params['positive_feedback_percentage'] = $positive_feedback_percentage;
 
+        // Custom data for the request
+        $customRequest = new Request([
+            'type' => 'feedback'
+        ]);
+
+        // Call notificationStatus with the custom request
+        $this->notificationStatus($customRequest);
+
         return view('transporter.dashboard.feedback', $params);
     }
 
@@ -284,9 +293,13 @@ class DashboardController extends WebController
                 $quotation_detail = $user_job->quotationDetail ?? null;
                 $lastVisitedAt = $user->last_visited_at->timezone('Europe/London');
                 $last_visited_at = $this->formatLastVisitedAt($lastVisitedAt);
-                $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $quotation_detail->created_at)
-                ->setTimezone('Europe/London')
-                ->format('F d, H:i');
+                if ($quotation_detail && $quotation_detail->created_at) {
+                    $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $quotation_detail->created_at)
+                    ->setTimezone('Europe/London')
+                    ->format('F d, H:i');
+                } else {
+                    $formattedDilveryDate = null;
+                }
                 return view('transporter.dashboard.current_jobs_detail', compact('quote', 'user_job', 'transporter', 'user', 'quotation_detail','last_visited_at','formattedDilveryDate','friend_id'));
             } catch (\Exception $e) {
                 \Log::error('Error fetching quote details: ' . $e->getMessage());
@@ -323,8 +336,8 @@ class DashboardController extends WebController
     public function newJobsNew()
     {
         $user_data = \Auth::guard('transporter')->user();
-        $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
-        $user_data = \Auth::guard('transporter')->user();
+        $user_data->last_visited_on_find_job_page = Carbon::now('Europe/London');
+        $user_data->save();
         $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
         $quotes = UserQuote::with('user')
         ->whereNotIn('id', $user_quote)
@@ -423,6 +436,16 @@ class DashboardController extends WebController
                 }
                 $htmlContent = view('mail.General.user-new-offer-received', ['data' => $quote])->render();
                 $this->emailService->sendEmail($maildata['email'], $htmlContent, $mailSubject);
+
+                // Call create_notification to notify the user
+                create_notification(
+                    $quote->quote->user->id, 
+                    $user_data->id,
+                    $quote->quote->id,       
+                    'You have a new quote!',
+                    $user_data->username.' has sent you a quote for £'.$quoteDetails['customer_quote'],  // Message of the notification
+                    'quote',
+                );
             } else {
                 Log::info('User with email ' . $quote->quote->user->email . ' has opted out of receiving emails. Quotation email not sent.');
             }
@@ -431,8 +454,8 @@ class DashboardController extends WebController
             Log::error('Error sending email: ' . $ex->getMessage());
         }
         // Run the outbid notification command
-        //$command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
-        $command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+        $command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+        //$command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
         exec($command, $output, $returnVar);
 
         if ($returnVar !== 0) {
@@ -776,6 +799,15 @@ class DashboardController extends WebController
                     $maildata['price_reduced'] = $price_reduced;
                     $htmlContent = view('mail.General.reduced-quote-recieced', ['data' => $maildata])->render();
                     $this->emailService->sendEmail($maildata['email'], $htmlContent, $mailSubject);
+
+                    create_notification(
+                        $quote->user->id, 
+                        $user_data->id,
+                        $request->quote_id,       
+                        'You have a new quote!',
+                        $user_data->username.' has sent you a quote for £'.$quoteDetails['customer_quote'],  // Message of the notification
+                        'quote',
+                    );
                 } else {
                     Log::info('User with email ' . $quote->user->email . ' has opted out of receiving emails. Edit quotation email not sent.');
                 }
@@ -784,8 +816,8 @@ class DashboardController extends WebController
                 Log::error('Error sending email: ' . $ex->getMessage());
             }
 
-            //$command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
-            $command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+            $command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+            //$command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
             exec($command, $output, $returnVar);
 
             if ($returnVar !== 0) {
@@ -809,6 +841,28 @@ class DashboardController extends WebController
         } else {
             return response()->json(['success' => false, 'message' => 'something went wrong!.. Please try again']);
         }
+    }
+
+    public function notificationStatus(Request $request)
+    {
+        $user_data = Auth::guard('transporter')->user();
+        if ($request->type == 'message') {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'reference_id' => $request->quote_id
+            ])->update(['seen' => 0]);
+        } elseif ($request->type == 'feedback') {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'type' => 'feedback'
+            ])->update(['seen' => 0]);
+        } else {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'user_quote_id' => $request->quote_id
+            ])->update(['seen' => 0]);
+        }
+        return response()->json(['success' => true,]);
     }
 
     public function logout()

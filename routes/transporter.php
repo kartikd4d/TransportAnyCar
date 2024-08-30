@@ -59,6 +59,8 @@ Route::group(['as' => 'transporter.'], function () {
 
         Route::post('edit-quote-amount', 'DashboardController@editQuoteAmount')->name('edit_quote_amount');
         Route::post('quote-change-status', 'DashboardController@quoteChangeStatus')->name('quote_change_status');
+        Route::post('notification-status', 'DashboardController@notificationStatus')->name('notification_status');
+
 
     });
 

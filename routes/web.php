@@ -69,6 +69,8 @@ Route::group(['as' => 'front.'], function () {
         Route::post('/process-payment','PaymentController@processPayment')->name('process_payment');
         Route::get('payment-confirm', 'PaymentController@paymentConfirm')->name('payment_confirm');
         Route::post('quote-change-status', 'QuotesController@quoteChangeStatus')->name('quote_change_status');
+        Route::post('notification-status', 'DashboardController@notificationStatus')->name('notification_status');
+
 
         Route::get('/message/history/{id}', 'MessageController@getChatHistory')->name('message.history');
         Route::post('/message/store/{id}', 'MessageController@store')->name('message.store');

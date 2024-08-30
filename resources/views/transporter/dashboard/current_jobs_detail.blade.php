@@ -272,26 +272,26 @@
                     <h2>Collection details</h2>
                     <div class="collection_list">
                         <span>Contact name:</span>
-                        <b>{{$quotation_detail->collection_contact_name}}</b>
+                        <b>{{ optional($quotation_detail)->collection_contact_name ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
-                        <span>Mobile  number:</span>
-                        <b>{{$quotation_detail->collection_mobile_number}}</b>
+                        <span>Mobile number:</span>
+                        <b>{{ optional($quotation_detail)->collection_mobile_number ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
                         <span>Email address:</span>
-                        <b>{{$quotation_detail->collection_email}}</b>
+                        <b>{{ optional($quotation_detail)->collection_email ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
                         <span>Pickup address:</span>
-                        @if($quotation_detail->collection_address)
+                        @if(optional($quotation_detail)->collection_address)
                             <b>{{ $quotation_detail->collection_address }}</b>
                         @else
                             <b>
-                                {{ $quotation_detail->collection_address_1 }}<br>
-                                {{ $quotation_detail->collection_address_2 }}<br>
-                                {{ $quotation_detail->collection_town }}<br>
-                                {{ $quotation_detail->collection_country }}
+                                {{ optional($quotation_detail)->collection_address_1 ?? 'Waiting for details' }}<br>
+                                {{ optional($quotation_detail)->collection_address_2 ?? '' }}<br>
+                                {{ optional($quotation_detail)->collection_town ?? '' }}<br>
+                                {{ optional($quotation_detail)->collection_country ?? '' }}
                             </b>
                         @endif
                     </div>
@@ -302,32 +302,31 @@
                     <h2>Delivery details</h2>
                     <div class="collection_list">
                         <span>Contact name:</span>
-                        <b>{{$quotation_detail->delivery_contact_name}}</b>
+                        <b>{{ optional($quotation_detail)->delivery_contact_name ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
-                        <span>Mobile  number:</span>
-                        <b>{{$quotation_detail->delivery_mobile_number}}</b>
+                        <span>Mobile number:</span>
+                        <b>{{ optional($quotation_detail)->delivery_mobile_number ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
                         <span>Email address:</span>
-                        <b>{{$quotation_detail->delivery_email}}</b>
+                        <b>{{ optional($quotation_detail)->delivery_email ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
-                        <span>Pickup address:</span>
-                        @if($quotation_detail->delivery_address)
+                        <span>drop address:</span>
+                        @if(optional($quotation_detail)->delivery_address)
                             <b>{{ $quotation_detail->delivery_address }}</b>
                         @else
                             <b>
-                                {{ $quotation_detail->delivery_address_1 }}<br>
-                                {{ $quotation_detail->delivery_address_2 }}<br>
-                                {{ $quotation_detail->delivery_town }}<br>
-                                {{ $quotation_detail->delivery_country }}
+                                {{ optional($quotation_detail)->delivery_address_1 ?? 'Waiting for details' }}<br>
+                                {{ optional($quotation_detail)->delivery_address_2 ?? '' }}<br>
+                                {{ optional($quotation_detail)->delivery_town ?? '' }}<br>
+                                {{ optional($quotation_detail)->delivery_country ?? '' }}
                             </b>
                         @endif
                     </div>
                 </div>
             </div>
-            
             <div class="col-lg-12">
 
                 <!-- <div class="series_flx series-listing">

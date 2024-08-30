@@ -11,24 +11,22 @@ class Notification extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id_from',
-        'user_id_to',
-        'subject',
-        'full_message_html',
-        'status',
-        'seen_at',
-        'type',
-        'page_url',
+        'user_id',
+        'from_user_id',
+        'title',
+        'message',
+        'seen',
+        'type'
     ];
 
     public function userFrom()
     {
-        return $this->belongsTo(User::class, 'user_id_from');
+        return $this->belongsTo(User::class, 'from_user_id');
     }
 
     public function userTo()
     {
-        return $this->belongsTo(User::class, 'user_id_to');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Accessor to get the first 50 characters of full_message_html

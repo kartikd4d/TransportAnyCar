@@ -5343,3 +5343,113 @@ button.swal2-confirm.swal2-styled:focus {
 .maintaince_text .modal-body p a{
   text-decoration: underline;
 }
+
+/* notifaction */
+
+.notifaction_sec .dropdown-menu {
+  bottom: auto;
+  left: auto;
+  right: 0;
+  top: 72px;
+  width: 95%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 10px;
+  min-width: auto;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 6px 2px #ccc;
+  margin-right: 0;
+  padding-bottom: 0;
+}
+.notifaction_sec  .dropdown-item {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 15px;
+  margin-bottom: 0;
+}
+.notifaction_sec .dropdown-item:nth-last-child(1) {
+    border-bottom: 0;
+}
+.notifaction_sec  .dropdown-item:hover{
+  background-color: #F1F1F1;
+}
+.notifaction_sec_list {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  align-items: center;
+}
+
+.notifaction_sec_list span.notifi_icon {
+  width: 10%;
+}
+.notifaction_sec_list .item-content {
+  width: 72%;
+}
+.notifaction_sec_list .notifi_time {
+  width: 18%;
+  text-align: center;
+}
+.notifaction_sec_list .notifi_time span {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.notifaction_sec_list .item-content h6 {
+  font-size: 12px;
+  color: #717171;
+  white-space: break-spaces;
+}
+.notifaction_sec_list .item-content h4 {
+  font-weight: 500;
+  color: #000;
+  font-size: 15px;
+}
+.notifi_time a {
+  background: #52D017;
+  border-color: #52D017;
+  font-size: 13px;
+}
+.noti_info_icon {
+  position: relative;
+}
+.noti_info_icon small {
+  position: absolute;
+  background: red;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  top: -4px;
+  right: -7px;
+}
+
+.menu .noti_info_icon small {
+  width: 15px;
+  height: 15px;
+  top: -1px;
+  right: 0px;
+}
+.top_menu .noti_info_icon small {
+  width: 15px;
+  height: 15px;
+  top: -2px;
+  right: -9px;
+}
+
+
+@media(max-width: 580px){
+  .notifaction_sec .dropdown-menu {
+    max-width: 95%;
+    transform: translateX(-50%);
+    right: auto;
+    left: 50%;
+}
+
+
+}
+
+
+

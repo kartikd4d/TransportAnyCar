@@ -627,7 +627,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const source = urlParams.get('source');
             const quoteId = urlParams.get('quote-id');
-            if (source === 'email' && quoteId) {
+            if ((source === 'email' || source === 'notification') && quoteId) {
                 localStorage.setItem('activateBiddingTab', 'true');
                 setTimeout(function() {
                     const elementId = `#edit_quote_${quoteId}`;
