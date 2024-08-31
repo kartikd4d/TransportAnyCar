@@ -22,12 +22,12 @@ $currentRoute = request()->route()->getName();
             <div class="side_dropdown">
                 <a class="list-group-item btn btn-link @if($currentRoute=='transporter.current_jobs' || $currentRoute=='transporter.new_jobs_new') active @endif" href="javascript:;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   <span>
-                  <div class="noti_info_icon">
+                  <div class="noti_info_icon @if($newQuotesCount > 99) ? job_icon : '' @endif">
                     <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.9 3H15C15 1.3 13.7 0 12 0H8C6.3 0 5 1.3 5 3H3.1C1.4 3 0 4.4 0 6.1V7.1C0 8 0.4 8.8 1 9.4V14C1 16.2 2.8 18 5 18H15C17.2 18 19 16.2 19 14V9.5C19.6 8.9 20 8.1 20 7.2V6.2C20 4.4 18.6 3 16.9 3ZM8 2H12C12.6 2 13 2.4 13 3H7C7 2.4 7.4 2 8 2ZM2 6.1C2 5.5 2.5 5 3.1 5H16.9C17.5 5 18 5.5 18 6.1V7.1C18 7.5 17.8 7.9 17.4 8.2C17.3 8.3 17.1 8.4 17 8.4L11 9.7C10.9 9.3 10.5 8.9 10 8.9C9.5 8.9 9.2 9.2 9 9.7L3 8.4C2.8 8.4 2.7 8.3 2.6 8.2H2.5C2.2 8 2 7.6 2 7.1V6.1ZM17 14C17 15.1 16.1 16 15 16H5C3.9 16 3 15.1 3 14V10.5L9 11.8V12C9 12.6 9.4 13 10 13C10.6 13 11 12.6 11 12V11.8L17 10.5V14Z" fill="black" />
                     </svg>
                     @if($newQuotesCount>=1)
-                        <small>{{$newQuotesCount}}</small>
+                        <small>{{ $newQuotesCount > 99 ? '99+' : $newQuotesCount }}</small>
                     @endif
                 </div>
                      Jobs

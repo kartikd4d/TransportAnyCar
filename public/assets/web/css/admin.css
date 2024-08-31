@@ -5426,6 +5426,20 @@ button.swal2-confirm.swal2-styled:focus {
   right: -7px;
 }
 
+.two_digit small {
+  position: absolute;
+  background: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  top: -7px;
+  right: -9px;
+}
+
 .menu .noti_info_icon small {
   width: 15px;
   height: 15px;
@@ -5433,10 +5447,18 @@ button.swal2-confirm.swal2-styled:focus {
   right: 0px;
 }
 .top_menu .noti_info_icon small {
-  width: 15px;
-  height: 15px;
-  top: -2px;
-  right: -9px;
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  right: -13px;
+}
+
+.top_menu .job_icon small {
+  width: 20px;
+  height: 20px;
+  top: -9px;
+  right: -10px;
+  font-size: 10px;
 }
 
 
