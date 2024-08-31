@@ -99,7 +99,8 @@
 																	<!-- <div style="max-width: 600px;">
 																		<img src="{{asset('assets/images/new-transporter-signup.png')}}" style="display: block; height: auto; border: 0; width: 100%;" width="600" alt="Thank you for your application" title="Thank you for your application">
 																	</div> -->
-																	<img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="Thank you for your application" title="Thank you for your application"> 
+																	<a href="https://transportanycar.com/">
+																	<img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="Thank you for your application" title="Thank you for your application"></a> 
 																	<h3 style="font-size: 22px;line-height: normal;"><span style="color: #018dd4;">Welcome to</span><br> Transport Any Car </h3>
 																</div>
 															</td>
@@ -153,7 +154,7 @@
 												<tr>
 													<td class="pad" style="padding-bottom:15px;padding-left:10px;padding-right:10px;padding-top:30px;width:100%;">
 														<div class="alignment" align="center" style="line-height:10px">
-															<div style="max-width: 180px;"><img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="transport any car" title="transport any car"></div>
+															<div style="max-width: 180px;"><a href="https://transportanycar.com/"><img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="transport any car" title="transport any car"></a></div>
 														</div>
 													</td>
 												</tr>

@@ -94,7 +94,8 @@
 																	@if(isset($data['type']) && $data['type'] == 'user')
 																		<p style="margin: 0;font-size:14px;"><a href="{{ route('front.unsubscribe', ['unsub' => true]) }}" target="_blank" style="text-decoration: underline; color: #717171;" rel="noopener">Unsubscribe from all emails</a></p>
 																	@endif
-																	<img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="You have a new message" title="You have a new message">
+																	<a href="https://transportanycar.com/">
+																	<img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="You have a new message" title="You have a new message"></a>
 																	<h3 style="font-size: 22px;line-height: normal;">You have a <br><span style="color: #018dd4;">new message</span> </h3>    
 																</div>
 															</td>

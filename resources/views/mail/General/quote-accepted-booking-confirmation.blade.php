@@ -91,7 +91,8 @@
                                             <td class="pad" style="width:100%; padding: 0 50px; text-align: center;">
                                                 <div class="alignment" align="center" style="line-height:10px">
                                                 <p style="margin: 0; font-size: 14px;"><a href="{{route('front.unsubscribe', ['unsub' => true]) }}" target="_blank" style="text-decoration: underline; color: #5f5f5f;" rel="noopener">Unsubscribe from all emails</a></p>
-                                                <img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="Booking confirmation" title="Booking confirmation">                                           
+                                                <a href="https://transportanycar.com/">
+                                                <img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="Booking confirmation" title="Booking confirmation"></a>                                           
                                                 <h3 style="font-size: 22px;line-height: normal;"><span style="color: #018dd4;">Booking</span><br> Confirmation </h3>
                                                     <!-- <div style="max-width: 600px;"><img src="https://image.optimite.email/wp-content/uploads/2024/02/Email-3.png" style="display: block; height: auto; border: 0; width: 100%;" width="600" alt="Booking confirmation" title="Booking confirmation"></div> -->
                                                 </div>
@@ -212,7 +213,7 @@
                                         <tr>
                                             <td class="pad" style="padding-bottom:15px;padding-left:10px;padding-right:10px;padding-top:30px;width:100%;">
                                                 <div class="alignment" align="center" style="line-height:10px">
-                                                    <div style="max-width: 180px;"><img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="transport any car" title="transport any car"></div>
+                                                    <div style="max-width: 180px;"><a href="https://transportanycar.com/"><img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="transport any car" title="transport any car"></a></div>
                                                 </div>
                                             </td>
                                         </tr>
