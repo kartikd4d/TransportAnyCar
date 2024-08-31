@@ -7,6 +7,7 @@ use Illuminate\Pagination\Paginator;
 use App\Notification; // Ensure this matches your Notification model's namespace
 use Illuminate\Support\Facades\Auth;
 use App\UserQuote;
+use Carbon\Carbon;
 use App\QuoteByTransporter;
 
 class AppServiceProvider extends ServiceProvider
@@ -55,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
 
                     //unseen job count
                     $lastVisitTimestamp = $user->last_visited_on_find_job_page;
+                    $lastVisitTimestamp = Carbon::parse($lastVisitTimestamp);
                     $newQuotesCount = UserQuote::where('created_at', '>', $lastVisitTimestamp)
                     ->count();
 
