@@ -753,7 +753,7 @@ class DashboardController extends WebController
                 $query->where('pickup_postcode', 'like', '%' . $search . '%')->orWhere('drop_postcode', 'like', '%' . $search . '%');
             });
         }
-        $quotes = $quotes->paginate(10);
+        $quotes = $quotes->paginate(50);
         $params['html'] = view('transporter.dashboard.partial.current_my_job', compact('quotes', 'type', 'is_dashboard'))->render();
         $params['type'] = $type;
         if ($request->ajax()) {

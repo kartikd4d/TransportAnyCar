@@ -5464,10 +5464,14 @@ button.swal2-confirm.swal2-styled:focus {
 
 @media(max-width: 580px){
   .notifaction_sec .dropdown-menu {
-    max-width: 95%;
+    max-width: 100%;
     transform: translateX(-50%);
     right: auto;
     left: 50%;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    top: 64px;
 }
 
 

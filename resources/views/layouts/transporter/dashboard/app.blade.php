@@ -30,7 +30,7 @@
       if (x.matches) {
         $(document).ready(function() {
           $('#dropdownMenuButton').click(function() {
-            $('.dropdown-menu').show();
+            //$('.dropdown-menu').show();
             $('html').addClass("drop_active");
           });
         });
@@ -47,13 +47,13 @@
           });
         });
         
-      } else {
-       $(document).ready(function() {
-          $('#dropdownMenuButton').click(function() {
-            $('.dropdown-menu').slideToggle("slow");            
-          });
-        });
       }
+
+      $(document).ready(function() {
+        $('#dropdownMenuButton').click(function() {
+          $('.dropdown-menu').slideToggle("slow");            
+        });
+      });
     }
 
     var x = window.matchMedia("(max-width: 575px)")
