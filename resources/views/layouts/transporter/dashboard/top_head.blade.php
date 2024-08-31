@@ -30,7 +30,16 @@
                     @if(isset($notifications) && $notifications->isNotEmpty())
                         @foreach($notifications as $notification)
                         @if($notification->type != 'feedback')
-                        <div class="dropdown-item" href="javascript:;">
+                        <div class="dropdown-item {{ $notification->seen == 1 ? 'gray_notify' : 'white_notify' }}" data-type="{{ $notification->type }}" data-id="{{ $notification->type == 'message' ? $notification->reference_id : $notification->user_quote_id }}" 
+                        data-href="
+                        @if($notification->type == 'won_job')
+                            {{ route('transporter.current_jobs', ['id' => $notification->reference_id]) }}
+                        @elseif($notification->type == 'message')
+                            {{ route('transporter.messages', ['thread_id' => $notification->reference_id]) }}
+                        @elseif($notification->type == 'outbid')
+                            {{ route('transporter.current_jobs', ['source' => 'notification', 'quote-id' => $notification->user_quote_id]) }}
+                        @endif
+                        " onclick="handleNotificationClick(event, this);">
                             <div class="drop-item-lft notifaction_sec_list">
                                 <span class="notifi_icon">
                                     @if($notification->type == 'won_job')
@@ -58,13 +67,14 @@
                                 </div>
                                 <div class="notifi_time">
                                     <span>{{ getTimeAgo($notification->created_at->toDateTimeString()) }}</span> 
-                                    @if($notification->type == 'won_job')
+                                    <a href="javascript:void(0)" class="view_debtn">View</a>
+                                    <!-- @if($notification->type == 'won_job')
                                         <a href="javascript:void(0)" data-href="{{ route('transporter.current_jobs', ['id' => $notification->reference_id]) }}" onclick="notificationStatus('{{ route('transporter.notification_status') }}', 'won_job', {{ $notification->user_quote_id }}, this);" class="view_debtn">View</a>
                                     @elseif($notification->type == 'message')
                                         <a href="javascript:void(0)" data-href="{{ route('transporter.messages', ['thread_id' => $notification->reference_id]) }}" onclick="notificationStatus('{{ route('transporter.notification_status') }}', 'message', {{ $notification->reference_id }}, this);" class="view_debtn">View</a>
                                     @elseif($notification->type == 'outbid')
                                         <a href="javascript:void(0)" data-href="{{ route('transporter.current_jobs', ['source' => 'notification', 'quote-id' => $notification->user_quote_id]) }}" onclick="notificationStatus('{{ route('transporter.notification_status') }}', 'outbid', {{ $notification->user_quote_id }}, this);" class="view_debtn">View</a>
-                                    @endif
+                                    @endif -->
                                 </div>
                             </div>
                             
@@ -72,8 +82,10 @@
                         @endif
                         @endforeach
                     @else
-                    <div class="dropdown-item" href="javascript:;">
-                        <p>No notifications found.</p>
+                    <div class="dropdown-item empty_notifiction" href="javascript:;">
+                        <div class="no_notification">
+                            <img src="{{asset('assets/images/no_notification.png')}}">
+                        </div>
                     </div>
                     @endif
                 </div>

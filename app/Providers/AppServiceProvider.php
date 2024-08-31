@@ -38,12 +38,11 @@ class AppServiceProvider extends ServiceProvider
                 if ($user->type == 'car_transporter') {
                     // Get notifications and count in one go
                     $query = Notification::where('user_id', $user->id)
-                    ->where('seen', 1)
+                    //->where('seen', 1)
                     ->where('type', '!=', 'feedback')
                     ->orderBy('created_at', 'desc');
                     $notifications = $query->get();
-                    $notificationCount = $notifications->count();
-
+                    $notificationCount = $notifications->where('seen', 1)->count();
                     $totalQuotes=0;
                     $user_quote = QuoteByTransporter::where('user_id', $user->id)->pluck('user_quote_id');
                     $totalQuotes = UserQuote::with('user')
@@ -80,10 +79,10 @@ class AppServiceProvider extends ServiceProvider
                          ->with('unseenFeedback',$unseenFeedback);
                 } else {
                     // Get notifications and count in one go
-                    $query = Notification::where(['user_id' => $user->id, 'seen' => 1])
+                    $query = Notification::where(['user_id' => $user->id])
                         ->orderBy('created_at', 'desc');
                     $notifications = $query->get();
-                    $notificationCount = $query->count(); // This will be correct for the limited result set
+                    $notificationCount = $notifications->where('seen', 1)->count();
 
                     $unseenMessageCount = Notification::where([
                         'user_id' => $user->id,

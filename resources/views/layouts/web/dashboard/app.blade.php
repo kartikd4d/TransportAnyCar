@@ -87,14 +87,33 @@
       }
     }
 
+    $(document).ready(function() {
+      $('#dropdownMenuButton').click(function() {
+        $('.dropdown-menu').slideToggle("slow");
+      });
+
+      $('.nav-toggle').click(function() {
+        $('.dropdown-menu').hide();            
+      });
+    });
+
     var x = window.matchMedia("(max-width: 575px)")
     myFunction(x)
     x.addListener(myFunction)
 </script>
 <script>
-  function notificationStatus(url, type, id, element) {
+
+  function handleNotificationClick(event, element) {
       event.preventDefault();
+      const url = '{{ route('front.notification_status') }}';
+      const type = $(element).data('type');
+      const id = $(element).data('id');
       const redirectUrl = $(element).data('href');
+      notificationStatus(url, type, id, redirectUrl);
+  }
+
+  function notificationStatus(url, type, id, redirectUrl) {
+      event.preventDefault();
       $.ajax({
           url: url,
           type: 'POST',

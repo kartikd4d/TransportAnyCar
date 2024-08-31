@@ -53,6 +53,10 @@
         $('#dropdownMenuButton').click(function() {
           $('.dropdown-menu').slideToggle("slow");            
         });
+
+        $('#sidebarToggle').click(function() {
+          $('.dropdown-menu').hide();            
+        });
       });
     }
 

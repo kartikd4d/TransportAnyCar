@@ -41,7 +41,13 @@
                         <span>Just Now</span> -->
                         @if(isset($notifications) && $notifications->isNotEmpty())
                             @foreach($notifications as $notification)
-                            <div class="dropdown-item" href="javascript:;">
+                            <div class="dropdown-item {{ $notification->seen == 1 ? 'gray_notify' : 'white_notify' }}" data-type="{{ $notification->type }}" data-id="{{ $notification->type == 'message' ? $notification->reference_id : $notification->user_quote_id }}" 
+                            data-href="
+                            @if($notification->type == 'quote')
+                                {{route('front.quotes', $notification->user_quote_id)}}
+                            @elseif($notification->type == 'message')
+                                {{ route('front.messages', ['thread_id' => $notification->reference_id]) }}
+                            @endif " onclick="handleNotificationClick(event, this);">
                                 <div class="drop-item-lft notifaction_sec_list">
                                     <span class="notifi_icon">
                                         @if($notification->type == 'quote')
@@ -63,19 +69,22 @@
                                     </div>
                                     <div class="notifi_time">
                                         <span>{{ getTimeAgo($notification->created_at->toDateTimeString()) }}</span> 
-                                        @if($notification->type == 'quote')
+                                        <a href="javascript:void(0)" class="view_debtn">View</a>
+                                        <!-- @if($notification->type == 'quote')
                                             <a href="javascript:void(0)" data-href="{{route('front.quotes', $notification->user_quote_id)}}" onclick="notificationStatus('{{ route('front.notification_status') }}', 'quote', {{ $notification->user_quote_id }}, this);" class="view_debtn">View</a>
                                         @elseif($notification->type == 'message')
                                             <a href="javascript:void(0)" data-href="{{ route('front.messages', ['thread_id' => $notification->reference_id]) }}" onclick="notificationStatus('{{ route('front.notification_status') }}', 'message', {{ $notification->reference_id }}, this);" class="view_debtn">View</a>
-                                        @endif
+                                        @endif -->
                                     </div>
                                 </div>
                                 
                             </div>
                             @endforeach
                         @else
-                        <div class="dropdown-item" href="javascript:;">
-                            <p>No notifications found.</p>
+                        <div class="dropdown-item empty_notifiction" href="javascript:;">
+                            <div class="no_notification">
+                                <img src="{{asset('assets/images/no_notification.png')}}">
+                            </div>
                         </div>
                         @endif
                     </div>
@@ -145,7 +154,7 @@
                 </a>
                 <div class="dropdown-menu" style="display:none;">
                     <h5>
-                        <a href="/notifications" id="dropdownClose">
+                        <a href="javascript:void(0)" id="dropdownClose">
                             <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="0.5">
                                     <path d="M6 11.8635L1 6.43176L6 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -157,7 +166,13 @@
                     </h5>
                     @if(isset($notifications) && $notifications->isNotEmpty())
                         @foreach($notifications as $notification)
-                        <div class="dropdown-item" href="javascript:;">
+                        <div class="dropdown-item {{ $notification->seen == 1 ? 'gray_notify' : 'white_notify' }}" data-type="{{ $notification->type }}" data-id="{{ $notification->type == 'message' ? $notification->reference_id : $notification->user_quote_id }}" 
+                        data-href="
+                        @if($notification->type == 'quote')
+                            {{route('front.quotes', $notification->user_quote_id)}}
+                        @elseif($notification->type == 'message')
+                            {{ route('front.messages', ['thread_id' => $notification->reference_id]) }}
+                        @endif " onclick="handleNotificationClick(event, this);">
                             <div class="drop-item-lft notifaction_sec_list">
                                 <span class="notifi_icon">
                                     @if($notification->type == 'quote')
@@ -179,19 +194,22 @@
                                 </div>
                                 <div class="notifi_time">
                                     <span>{{ getTimeAgo($notification->created_at->toDateTimeString()) }}</span> 
-                                    @if($notification->type == 'quote')
+                                    <a href="javascript:void(0)" class="view_debtn">View</a>
+                                    <!-- @if($notification->type == 'quote')
                                         <a href="javascript:void(0)" data-href="{{route('front.quotes', $notification->user_quote_id)}}" onclick="notificationStatus('{{ route('front.notification_status') }}', 'quote', {{ $notification->user_quote_id }}, this);" class="view_debtn">View</a>
                                     @elseif($notification->type == 'message')
                                         <a href="javascript:void(0)" data-href="{{ route('front.messages', ['thread_id' => $notification->reference_id]) }}" onclick="notificationStatus('{{ route('front.notification_status') }}', 'message', {{ $notification->reference_id }}, this);" class="view_debtn">View</a>
-                                    @endif
+                                    @endif -->
                                 </div>
                             </div>
                             
                         </div>
                         @endforeach
                     @else
-                    <div class="dropdown-item" href="javascript:;">
-                        <p>No notifications found.</p>
+                    <div class="dropdown-item empty_notifiction" href="javascript:;">
+                        <div class="no_notification">
+                            <img src="{{asset('assets/images/no_notification.png')}}">
+                        </div>
                     </div>
                     @endif
                 </div>

@@ -353,9 +353,16 @@ $currentRoute = request()->route()->getName();
     //   });
 </script>
 <script>
-  function notificationStatus(url, type, id, element) {
+
+  function handleNotificationClick(event, element) {
       event.preventDefault();
+      const url = '{{ route('transporter.notification_status') }}';
+      const type = $(element).data('type');
+      const id = $(element).data('id');
       const redirectUrl = $(element).data('href');
+      notificationStatus(url, type, id, redirectUrl);
+  }
+  function notificationStatus(url, type, id, redirectUrl) {
       $.ajax({
           url: url,
           type: 'POST',
@@ -372,5 +379,4 @@ $currentRoute = request()->route()->getName();
           }
       });
   }
-
 </script>

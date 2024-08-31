@@ -5369,8 +5369,8 @@ button.swal2-confirm.swal2-styled:focus {
 .notifaction_sec .dropdown-item:nth-last-child(1) {
     border-bottom: 0;
 }
-.notifaction_sec  .dropdown-item:hover{
-  background-color: #F1F1F1;
+.notifaction_sec .dropdown-item:hover{
+  background-color: #fff !important;
 }
 .notifaction_sec_list {
   display: flex;
@@ -5408,9 +5408,10 @@ button.swal2-confirm.swal2-styled:focus {
   background: #52D017;
   border-color: #52D017;
   font-size: 13px;
+  padding: 5px 15px;
 }
 .noti_info_icon {
-  position: relative;
+  position: relative; margin-right: 10px;
 }
 .noti_info_icon small {
   position: absolute;
@@ -5460,6 +5461,19 @@ button.swal2-confirm.swal2-styled:focus {
   right: -10px;
   font-size: 10px;
 }
+.gray_notify {
+  background: #f6f6f6;
+}
+.white_notify{
+  background: #fff;
+}
+.notifaction_sec .dropdown-item.empty_notifiction {
+  height: calc(100% - 60px);
+}
+.no_notification {
+  margin: auto;
+}
+
 
 
 @media(max-width: 580px){
@@ -5472,6 +5486,7 @@ button.swal2-confirm.swal2-styled:focus {
     border-radius: 0;
     box-shadow: none;
     top: 64px;
+    height: 100%;
 }
 
 
