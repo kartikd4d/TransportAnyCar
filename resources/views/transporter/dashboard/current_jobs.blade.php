@@ -120,6 +120,21 @@
                 top: 100%;
             }
 
+    .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
+        width: 100%;
+    }     
+
+@media screen and (min-device-width: 1400px) and (max-device-width: 1600px) { 
+    .admin_job_bx .tab-content .deshbord-job-listing .list_img p {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
+        width: 100%;
+        height: 66px;
+    }
+}
+
         @media(max-width: 1400px){
             .deshbord-job-listing.job_list_desh_mobile {
                 padding: 0;
