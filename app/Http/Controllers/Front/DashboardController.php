@@ -266,30 +266,35 @@ class DashboardController extends WebController
         if($id) {
             $user_data = Auth::guard('web')->user();
             $quote_by_transporter_data = QuoteByTransporter::where('id', $id)->first();
-            $delivery_info = QuotationDetail::where('user_quote_id', $quote_by_transporter_data->user_quote_id)->first();
-            if ($delivery_info) {
-                //$quote = QuoteByTransporter::where('user_quote_id', $id)->first();
-                $transporter_detail = User::where('id', $quote_by_transporter_data->user_id)->first();
-                $user_info = UserQuote::where('id', $quote_by_transporter_data->user_quote_id)->first();
-                $transporter_feedback = $this->get_transporter_feedback($transporter_detail->id);
-                $lastVisitedAt = $transporter_detail->last_visited_at->timezone('Europe/London');
-                $formattedLastVisitedAt = $this->formatLastVisitedAt($lastVisitedAt);
-                $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $transporter_detail->created_at)
-                ->setTimezone('Europe/London')
-                ->format('F d, H:i');
-                $result = [
-                    'transporter_detail' => $transporter_detail,
-                    'user_info' => $user_info,
-                    'quote_by_transporter' => $quote_by_transporter_data,
-                    'trans_feedback'=>$transporter_feedback,
-                    'last_visited_at' => $formattedLastVisitedAt,
-                    'formattedDilveryDate'=> $formattedDilveryDate,
-                    'delivery_info' => $delivery_info
-    
-                ];
-                return view('front.dashboard.user_deposit',$result);
-            } else {
-                return redirect()->route('front.dashboard');
+            if ($quote_by_transporter_data) {
+                $delivery_info = QuotationDetail::where('user_quote_id', $quote_by_transporter_data->user_quote_id)->first();
+                if ($delivery_info) {
+                    //$quote = QuoteByTransporter::where('user_quote_id', $id)->first();
+                    $transporter_detail = User::where('id', $quote_by_transporter_data->user_id)->first();
+                    $user_info = UserQuote::where('id', $quote_by_transporter_data->user_quote_id)->first();
+                    $transporter_feedback = $this->get_transporter_feedback($transporter_detail->id);
+                    $lastVisitedAt = $transporter_detail->last_visited_at->timezone('Europe/London');
+                    $formattedLastVisitedAt = $this->formatLastVisitedAt($lastVisitedAt);
+                    $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $transporter_detail->created_at)
+                    ->setTimezone('Europe/London')
+                    ->format('F d, H:i');
+                    $result = [
+                        'transporter_detail' => $transporter_detail,
+                        'user_info' => $user_info,
+                        'quote_by_transporter' => $quote_by_transporter_data,
+                        'trans_feedback'=>$transporter_feedback,
+                        'last_visited_at' => $formattedLastVisitedAt,
+                        'formattedDilveryDate'=> $formattedDilveryDate,
+                        'delivery_info' => $delivery_info
+        
+                    ];
+                    return view('front.dashboard.user_deposit',$result);
+                } else {
+                    return redirect()->route('front.dashboard');
+                }
+            }
+            else {
+                return redirect()->route('front.dashboard');   
             }
         } else {
             return redirect()->route('front.dashboard');

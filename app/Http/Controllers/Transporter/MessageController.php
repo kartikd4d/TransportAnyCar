@@ -109,7 +109,7 @@ class MessageController extends WebController
                     $maildata['quotes'] = $userQuote;
                     $maildata['quote_id'] = $from_quote_id;
                     $maildata['type'] = 'user';
-                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
+                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata, 'thread_id' => $thread_id])->render();
                     $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
 
                     // Call create_notification to notify the user
@@ -243,8 +243,8 @@ class MessageController extends WebController
         ]);
         if ($message) {
             try {
+                $customer_user = User::where('id', $friend_id)->first();
                 if($customer_user->job_email_preference) {
-                    $customer_user = User::where('id', $friend_id)->first();
                     $email_to = $customer_user->email;
                     $maildata['user'] = $user;
                     $maildata['thread'] = $thread;
@@ -254,7 +254,7 @@ class MessageController extends WebController
                     $quotes = UserQuote::where('id', $request->user_quote_id)->first();
                     $maildata['quotes'] = $quotes;
                     $maildata['type'] = 'user';
-                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
+                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata, 'thread_id' => $thread_id])->render();
                     $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
 
                     // Call create_notification to notify the user

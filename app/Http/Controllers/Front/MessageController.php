@@ -116,7 +116,7 @@ class MessageController extends WebController
                 $maildata['from_page'] = '';
             }
             $maildata['quotes'] = $userQuote;
-            $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
+            $htmlContent = view('mail.General.new-message-received', ['data' => $maildata, 'thread_id' => $thread_id])->render();
             $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
 
             // Call create_notification to notify the user
@@ -237,7 +237,7 @@ class MessageController extends WebController
                 $quotes = UserQuote::where('id', $request->user_quote_id)->first();
                 $maildata['quotes'] = $quotes;
                 $maildata['quote_by_transporter_id'] = $my_quote->id;
-                $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
+                $htmlContent = view('mail.General.new-message-received', ['data' => $maildata, 'thread_id' => $thread_id])->render();
                 $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
             } 
             catch (\Exception $ex) {

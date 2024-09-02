@@ -428,13 +428,14 @@ class DashboardController extends WebController
         }
         try {
             if($quote->quote->user->job_email_preference) {
-                 $maildata['email'] = $quote->quote->user->email;
+                $maildata['email'] = $quote->quote->user->email;
+                $thread_id = isset($thread->id) ? $thread->id : 0;
                 //$maildata['email'] = 'info@transportanycar.com';
                 $mailSubject = 'New Transport Quote for £'.$quoteDetails['customer_quote'].' to Deliver Your '.$quote->quote->vehicle_make.' '.$quote->quote->vehicle_model;
                 if (!empty($quote->quote->vehicle_make_1) && !empty($quote->quote->vehicle_model_1)) {
                     $mailSubject .= ' / '.$quote->quote->vehicle_make_1.' '.$quote->quote->vehicle_model_1;
                 }
-                $htmlContent = view('mail.General.user-new-offer-received', ['data' => $quote])->render();
+                $htmlContent = view('mail.General.user-new-offer-received', ['data' => $quote, 'thread_id' => $thread_id])->render();
                 $this->emailService->sendEmail($maildata['email'], $htmlContent, $mailSubject);
 
                 // Call create_notification to notify the user
