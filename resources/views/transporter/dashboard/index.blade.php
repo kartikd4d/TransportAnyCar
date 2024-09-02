@@ -263,7 +263,7 @@
                 <div class="chart_bx">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="earning_bx">
+                            <div class="earning_bx" style="display:none" >
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="earning_lft">
@@ -295,7 +295,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="analytics_bx">
-                                <h3>Analytics</h3>
+                                <h3>Statistics</h3>
                                 <figure class="highcharts-figure">
                                     <div id="parent-container">
                                         <div id="play-controls">
@@ -641,9 +641,9 @@
                         colorByPoint: true,
                         type: 'pie',
                         size: '100%',
-                        innerSize: '80%',
+                        innerSize: '75%',
                         dataLabels: {
-                            enabled: true,
+                            enabled: false,
                             crop: false,
                             distance: '-10%',
                             formatter: function() {
@@ -655,7 +655,7 @@
                                 fontSize: '16px'
                             },
                             connectorWidth: 0
-                        }
+                        },
                     }
                 },
                 colors: ['#0356D6', '#FFA800', '#52D017'],

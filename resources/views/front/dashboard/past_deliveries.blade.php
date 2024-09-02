@@ -6,6 +6,7 @@
     .wd-active-job .container-job {
        padding-right: 20px !important;
     }
+    
 }
     </style>
 @endsection
@@ -15,7 +16,7 @@
     <section class="admin_del wd-active-job">
         <div class="container-job" style="padding-right: 20px;">
             <div class="wd-deliver-box">
-                <div class="row h-100">
+                <div class="row h-100 new_dev_delivery">
                     <div class="col-lg-4">
                         <div class="wd-deliver-lft">
                             <div class="wd-profl-delivr">

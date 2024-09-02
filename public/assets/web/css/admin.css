@@ -5513,9 +5513,28 @@ button.swal2-confirm.swal2-styled:focus {
 .top_menu .list-group a span svg {
   width: 25px;
 }
+.admin_del .wd-deliver-box .new_dev_delivery .col-lg-8 {
+  padding-right: 15px !important;
+}
+.new_dev_delivery .wd-quote-box {
+  padding: 30px 20px;
+}
+.new_dev_delivery .new_sec_delivr {
+  margin-right: 0 !important;
+}
 
 
+.chat_conversation {
+  height: auto !important;
 }
 
 
 
+}
+
+@media (max-width: 400px) {
+  .chat_box .scrollbar {
+      height: auto;
+  }
+
+}
