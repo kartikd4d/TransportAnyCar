@@ -262,8 +262,8 @@
                 </div>
                 <div class="chart_bx">
                     <div class="row">
-                        <div class="col-lg-8">
-                            <div class="earning_bx" style="display:none" >
+                        <div class="col-lg-8"  style="display:none">
+                            <div class="earning_bx">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="earning_lft">
