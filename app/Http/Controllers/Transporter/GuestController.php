@@ -39,9 +39,8 @@ class GuestController extends WebController
         $creds = [$find_field => $request->email, 'password' => $request->password, 'type' => 'car_transporter'];
         if (Auth::guard("transporter")->attempt($creds, $remember)) {
             if (Auth::guard("transporter")->user()->status == 'active') {
-
                 // Check for unsub query parameter and redirect accordingly
-                if ($request->has('unsub')) {
+                if ($request->has('unsub') && $request->unsub != null) {
                     return redirect()->route('transporter.profile');
                 }
                 Auth::loginUsingId(Auth::guard("transporter")->user()->id);
@@ -52,7 +51,7 @@ class GuestController extends WebController
                     return redirect()->route('transporter.new_jobs_new', ['share_quotation' => $shareQuotation]);
                 } else {
                     // If no share_quotation session, redirect to the dashboard without it
-                    return redirect()->route('transporter.dashboard');
+                    return redirect()->route('transporter.new_jobs_new');
                 }
             } else {
                 Auth::logout();
