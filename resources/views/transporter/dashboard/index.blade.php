@@ -632,11 +632,12 @@
 
                 tooltip: {
                     valueDecimals: 2,
+                    enabled: false
                     // valueSuffix: ' Total'
                 },
 
                 plotOptions: {
-                    series: {
+                    pie: {
                         borderWidth: 0,
                         colorByPoint: true,
                         type: 'pie',
@@ -655,6 +656,14 @@
                                 fontSize: '16px'
                             },
                             connectorWidth: 0
+                        },
+                        states: {
+                            hover: {
+                                enabled: false, // Enable hover effect
+                            },
+                            inactive: {
+                                enabled: false // Disable inactive effect
+                            }
                         },
                     }
                 },
