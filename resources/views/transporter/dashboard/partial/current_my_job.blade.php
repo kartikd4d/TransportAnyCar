@@ -56,6 +56,9 @@
                     @endif
                 </p>
             </div>
+            @php
+                $transporterQuotesCount = 0;
+            @endphp
             @if($is_dashboard != 1)
                 @if($type == 'won')
                     @if($quote->status == 'completed')

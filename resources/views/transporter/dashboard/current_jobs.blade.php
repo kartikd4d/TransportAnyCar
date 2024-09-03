@@ -70,23 +70,6 @@
             color: #0356D6;
         }
 
-        .bidding_new_design {
-            display: flex;
-            padding: 0 28px 20px;
-            justify-content: space-between;
-        }
-        .bidding_new_design_grid span {
-            font-size: 14px;
-            font-weight: 300;
-            color: #000000b8;
-        }
-        .bidding_new_design_grid span.sub_color {
-            color: #0356D6;
-        }
-        .bidding_new_design_grid.job_new_grid_lowest span.sub_color {
-            color: #52d017;
-        }
-
         /* 28-08-2024 */
 
             .edit_budding_sec {
@@ -144,9 +127,6 @@
             }
             .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile  li {
                 padding: 15px 13px;
-            }
-            .bidding_new_design {
-                padding: 0 15px 20px;
             }
         }
 
@@ -228,38 +208,6 @@
                 color: #000000ba;
                 margin-bottom: 0; 
             }
-            .bidding_new_design {
-                display: flex;
-                flex-wrap: wrap;
-                row-gap: 0;
-                justify-content: space-between;
-                padding: 0 10px 5px;
-                margin-top: 30px;
-            }
-
-            .bidding_new_design_grid {
-                width: 47%;
-            }
-
-            .bidding_new_design_grid span {
-                font-size: 12px; color: #000000ba;
-            }
-            .bidding_new_design_grid span.sub_color {
-                color: #0356D6;
-            }
-            .bidding_new_design_grid.job_new_grid_lowest span.sub_color {
-                color: #52D017;
-            }
-            .bidding_new_design_date.job_new_grid_date span {
-                font-size: 12px;
-                color: #000000ba;
-            }
-
-            .bidding_new_design_date.job_new_grid_date {
-                padding-left: 10px;
-            }
-
-
         }
 
     </style>
