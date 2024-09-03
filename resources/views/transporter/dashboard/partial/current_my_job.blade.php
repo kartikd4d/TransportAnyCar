@@ -91,7 +91,7 @@
             @endif
         </li>
         <div class="bidding_new_design">
-            @if($type == 'bidding')
+            @if($type == 'bidding' && $is_dashboard != 1)
                 <div class="bidding_new_design_grid job_new_grid_type">
                     <span>Delivery type:</span>
                     <span class="sub_color">

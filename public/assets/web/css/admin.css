@@ -5500,6 +5500,15 @@ button.swal2-confirm.swal2-styled:focus {
 }
 
 
+
+
+.menu .noti_info_icon.message_icon small {
+  top: -1px;
+  right: 0px;
+}
+
+
+
 @media(max-width: 1400px){
   .bidding_new_design {
       padding: 0 15px 20px;
