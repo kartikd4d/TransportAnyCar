@@ -1086,7 +1086,7 @@ small.expring_tag {
         function share_give_quote(id) {
             $('#quote_id').val(id);
             var quotes = @json($quotes);
-            var selectedQuote = quotes.find(quote => quote.id == id);
+            var selectedQuote = quotes.data.find(quote => quote.id == id);
             if (selectedQuote) {
                 var lowestBid = selectedQuote.lowest_bid ? selectedQuote.lowest_bid : 0;
                 var bidCount = selectedQuote.transporter_quotes_count ? selectedQuote.transporter_quotes_count : 0;
@@ -1183,7 +1183,7 @@ small.expring_tag {
             });
             $(document).on('click', '.car-row', function() {
                 var carId = $(this).data('car-id');
-                var carData = carDetails.find(function(car) {
+                var carData = carDetails.data.find(function(car) {
                     return car.id == carId;
                 });
                 if (carData) {
