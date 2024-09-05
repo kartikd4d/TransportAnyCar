@@ -176,6 +176,13 @@ color: #0356D6;
     font-size: 19px;
 }
 
+.page-item:last-child .page-link,
+.page-item:first-child .page-link {
+    padding-bottom: 6px;
+    padding-left: 3px;
+    font-size: 20px;
+}
+
 
 @media(max-width: 580px){
     .jobsrch_info_list li small {
@@ -498,6 +505,17 @@ small.expring_tag {
 }
 
 
+.job-data span {
+    color: #9C9C9C;
+    font-size: 15px;
+}
+.job-data {
+    margin-left: -10px;
+    margin-bottom: 15px;
+}
+.content_container {
+    padding-bottom: 0;
+}
 
 }
 @media(max-width: 400px){
@@ -590,6 +608,22 @@ small.expring_tag {
                                     </a>
                                 </div>
                             </form>
+
+                            <div class="job-data">
+                            @if ($quotes->total() == 0)
+                                <span>Results: 0</span>
+                            @else
+                                @if ($quotes->total() > 20)
+                                    <span>Results: {{ $quotes->firstItem() }}-{{ $quotes->lastItem() }} of {{ $quotes->total() }}</span>
+                                @else
+                                    @if ($quotes->firstItem() == $quotes->lastItem())
+                                        <span>Results: {{ $quotes->firstItem() }} of {{ $quotes->total() }}</span>
+                                    @else
+                                        <span>Results: {{ $quotes->firstItem() }}-{{ $quotes->lastItem() }} of {{ $quotes->total() }}</span>
+                                    @endif
+                                @endif
+                            @endif
+                            </div>
 
                             @if(!isMobile())
                             <div class="jobsrch_blogs">
@@ -865,6 +899,9 @@ small.expring_tag {
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pagination before_search">
+        {{ $quotes->links() }}
     </div>
 
     <div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -1528,6 +1565,7 @@ small.expring_tag {
                             $('html, body').scrollTop(0);
                         }
                         //toastr.success(res.message);
+                        checkAndHideSections();
                     } else{
                         $('#popup').removeClass('show');
                         toastr.error(res.message);
@@ -1543,11 +1581,30 @@ small.expring_tag {
             }
         });
 
-        $(document).on('click', '.pagination a', function (event) {
+        $(document).on('click', '.after_search a', function (event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             $('#page').val(page);
             fetch_data(page,'pagination');
         });
+
+        $(document).on('click', '.before_search a', function (event) {
+            event.preventDefault();
+            var baseUrl = window.location.origin; // e.g., http://127.0.0.1:8000
+            var path = '/transporter/new-jobs-new';
+            var page = $(this).attr('href').split('page=')[1];
+            var newUrl = baseUrl + path + '?page=' + page;
+            window.location.href = newUrl;
+        });
+
+        function checkAndHideSections() {
+            if ($('#idLoadData').children().length > 0) {
+                $('.pagination.before_search').hide();
+                $('.job-data').hide();
+            } else {
+                $('.pagination.before_search').show();
+                $('.job-data').show();
+            }
+        }
     </script>
 @endsection

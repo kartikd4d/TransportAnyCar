@@ -352,7 +352,7 @@ class DashboardController extends WebController
                 ->whereColumn('user_quote_id', 'user_quotes.id')
         ])
         ->latest()
-        ->get();
+        ->paginate(50);
         $document_status = $user_data->is_status;
         return view('transporter.dashboard.new_jobs_new', ['quotes' => $quotes,'documentStatus'=>$document_status]);
     }

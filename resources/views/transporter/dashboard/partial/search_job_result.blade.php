@@ -352,7 +352,7 @@ small.expring_tag {
         </div>
     </div>
 @endif
-<div class="pagination">
+<div class="pagination after_search">
     {{ $quotes->links() }}
 </div>
 @if ($quotes->currentPage() == $quotes->lastPage())

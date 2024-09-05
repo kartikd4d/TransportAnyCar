@@ -40,7 +40,21 @@ class DashboardController extends WebController
          // save last visit time of transporter
         $user_data->last_visited_at = now();
         $user_data->save();
-        $quotes = UserQuote::where(['user_id' => $user_data->id])->whereNotIn('status', ['completed','cancelled'])->latest()->get();
+
+        // Subquery to get quotes count and lowest bid
+        $subQuery = \DB::table('quote_by_transpoters')
+        ->select('user_quote_id', \DB::raw('COUNT(*) as quotes_count'), \DB::raw('MIN(price) as lowest_bid'))
+        ->groupBy('user_quote_id');
+
+        $quotes = UserQuote::where(['user_id' => $user_data->id])
+        ->whereNotIn('status', ['completed','cancelled'])
+        ->leftJoinSub($subQuery, 'sub', function($join) {
+            $join->on('user_quotes.id', '=', 'sub.user_quote_id');
+        })
+        ->select('user_quotes.*', 'sub.quotes_count', 'sub.lowest_bid')
+        ->latest()
+        ->get();
+
         $quotes_booked = UserQuote::where('user_id', $user_data->id)
         ->where('status', 'completed')
         ->where('is_mark_as_complete', 'no')
@@ -50,6 +64,10 @@ class DashboardController extends WebController
         ->with(['quoteByTransporter' => function ($query) {
             $query->where('status', 'accept');
         }])
+        ->joinSub($subQuery, 'sub', function($join) {
+            $join->on('user_quotes.id', '=', 'sub.user_quote_id');
+        })
+        ->select('user_quotes.*', 'sub.quotes_count', 'sub.lowest_bid')
         ->get();
         return view('front.dashboard.index', [
             'title' => $title,
