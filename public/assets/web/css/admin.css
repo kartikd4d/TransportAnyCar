@@ -5617,6 +5617,14 @@ ul.menu .noti_info_icon {
   padding-bottom: 0;
   max-height: 40px;
 }
+
+.list_detail p b {
+  white-space: normal;
+}
+
+
+
+
 }
 
 @media (max-width: 400px) {
