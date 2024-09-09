@@ -53,7 +53,7 @@
         .deshbord-job-listing {
             padding: 0px 10px 0;
             box-shadow: 0px 0px 4px 0px #00000040;
-            margin: 3px 0px 0 3px;
+            margin: 3px 0px 18px 3px;
             border-radius: 10px 0 0 10px;
         }
 

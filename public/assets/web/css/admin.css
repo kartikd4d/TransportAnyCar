@@ -5607,7 +5607,9 @@ section.wd-active-job.new_message_section {
   overflow: auto;
 }
 
-
+ul.menu .noti_info_icon {
+  margin-right: 0;
+}
 
 
 }

@@ -511,7 +511,7 @@ small.expring_tag {
 }
 .job-data {
     margin-left: -10px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 .content_container {
     padding-bottom: 0;
