@@ -96,9 +96,13 @@ $auth_user = Auth::user();
                 //$(".get-chat-history")[0].click();
             });
         }
-        function scrollToBottom(){
-            var objDiv = document.getElementsByClassName("chat_div");
-            objDiv.scrollTop = 569874;
+        function scrollToBottom() {
+            var objDiv = document.getElementsByClassName("chat_div")[0]; // Target the first element
+            if (objDiv) {
+                if (objDiv.scrollHeight > objDiv.clientHeight) {
+                    objDiv.scrollTop = objDiv.scrollHeight;
+                } 
+            }
         }
         $(document).ready(function () {
             //open particular chat

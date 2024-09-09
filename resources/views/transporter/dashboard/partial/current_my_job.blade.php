@@ -78,7 +78,7 @@
                         <a href="javascript:;" id="edit_quote_{{$quote->id}}" onclick="edit_quote_amount(this, '{{$quote->id}}');" data-amount="{{roundBasedOnDecimal($quote->transporter_payment)}}" data-lowbid="{{$lowestBid}}" data-bidcount="{{$transporterQuotesCount}}" class="view_btn edit_quote_btn won_details">Edit Quote</a>
                     </div>
                     <div class="won_message">
-                        <a href="{{route('transporter.messages')}}"  class="view_btn edit_quote_btn">Message</a>
+                        <a href="{{ route('transporter.messages', ['thread_id' => $quote->thread_id]) }}"  class="view_btn edit_quote_btn">Message</a>
                     </div>
                     <a href="javascript:;" data-toggle="modal" data-target="#delete_quote_{{$quote->id}}" class="d-lg-block delete_btn_mobile">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

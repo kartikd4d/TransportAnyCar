@@ -191,7 +191,9 @@
                 $("#chat_history_main").html(response);
                 // $(thisobj).find(".kt-widget__item").find('.kt-widget__action').html('');
                 // KTAppChat.init();
-                scrollToBottom();
+                setTimeout(function() {
+                    scrollToBottom();
+                }, 500);
                 //getTotalUnreadMessage();
             });
         }
@@ -208,10 +210,24 @@
                 //$(".get-chat-history")[0].click();
             });
         }
-        function scrollToBottom(){
-            var objDiv = document.getElementsByClassName("chat_div");
-            objDiv.scrollTop = 569874;
+        // function scrollToBottom(){
+        //     var objDiv = document.getElementsByClassName("chat_div")[0];
+        //     console.log(objDiv);
+        //     if (objDiv) {
+        //         objDiv.scrollTop = objDiv.scrollHeight;
+        //     }
+        //     //objDiv.scrollTop = 569874;
+        // }
+
+        function scrollToBottom() {
+            var objDiv = document.getElementsByClassName("chat_div")[0]; // Target the first element
+            if (objDiv) {
+                if (objDiv.scrollHeight > objDiv.clientHeight) {
+                    objDiv.scrollTop = objDiv.scrollHeight;
+                }
+            }
         }
+
         $(document).ready(function () {
 
             //open particular chat

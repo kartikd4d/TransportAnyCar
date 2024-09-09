@@ -93,6 +93,10 @@
         figure.highcharts-figure path.highcharts-label-box {
             stroke: #0356D6;
         }
+        #empty_parent {
+            text-align: center;
+            margin: 50px 0;
+        }
 
         @media (max-width:767px) {
             #alert-container {
@@ -303,6 +307,9 @@
                                             <input id="play-range" type="range" value="1965" min="1965" max="2021" />
                                         </div>
                                         <div id="pie-container"></div>
+                                        <div id="empty_parent" style="display:none" >
+                                            <img src="{{asset('assets/images/no_data.png')}}">
+                                        </div>
                                     </div>
                                     <ul>
                                         <li>
@@ -616,70 +623,82 @@
             const jobsWon = parseFloat(dataset.jobs_won);
             const bidsPlaced = parseFloat(dataset.bids_placed);
 
-            chart = Highcharts.chart('pie-container', {
-
-                subtitle: {
-                    useHTML: true,
-                    // text: getSubtitle(),
-                    floating: true,
-                    verticalAlign: 'middle',
-                    y: 30
-                },
-
-                legend: {
-                    enabled: false
-                },
-
-                tooltip: {
-                    valueDecimals: 2,
-                    enabled: false
-                    // valueSuffix: ' Total'
-                },
-
-                plotOptions: {
-                    pie: {
-                        borderWidth: 0,
-                        colorByPoint: true,
-                        type: 'pie',
-                        size: '100%',
-                        innerSize: '75%',
-                        dataLabels: {
-                            enabled: false,
-                            crop: false,
-                            distance: '-10%',
-                            formatter: function() {
-                                if(this.y != 0)
-                                return this.y; // Display the value directly
+            if (cancelled === 0 && jobsWon === 0 && bidsPlaced === 0) {
+                document.getElementById('empty_parent').innerHTML = `
+                    <img src="{{asset('assets/images/no_data.png')}}" alt="No Data Available">
+                `;
+                $('#empty_parent').css('display', 'block');
+                $('.pie-container').css('display', 'none'); 
+            } else {
+                $('.pie-container').css('display','block');
+                chart = Highcharts.chart('pie-container', {
+    
+                    subtitle: {
+                        useHTML: true,
+                        // text: getSubtitle(),
+                        floating: true,
+                        verticalAlign: 'middle',
+                        y: 30
+                    },
+    
+                    legend: {
+                        enabled: false
+                    },
+    
+                    tooltip: {
+                        valueDecimals: 2,
+                        enabled: false
+                        // valueSuffix: ' Total'
+                    },
+    
+                    plotOptions: {
+                        pie: {
+                            borderWidth: 0,
+                            colorByPoint: true,
+                            type: 'pie',
+                            size: '100%',
+                            innerSize: '75%',
+                            dataLabels: {
+                                enabled: false,
+                                crop: false,
+                                distance: '-10%',
+                                formatter: function() {
+                                    if(this.y != 0)
+                                    return this.y; // Display the value directly
+                                },
+                                style: {
+                                    fontWeight: 'bold',
+                                    fontSize: '16px'
+                                },
+                                connectorWidth: 0
                             },
-                            style: {
-                                fontWeight: 'bold',
-                                fontSize: '16px'
+                            states: {
+                                hover: {
+                                    enabled: false, // Enable hover effect
+                                },
+                                inactive: {
+                                    enabled: false // Disable inactive effect
+                                }
                             },
-                            connectorWidth: 0
-                        },
-                        states: {
-                            hover: {
-                                enabled: false, // Enable hover effect
-                            },
-                            inactive: {
-                                enabled: false // Disable inactive effect
-                            }
-                        },
-                    }
-                },
-                colors: ['#0356D6', '#FFA800', '#52D017'],
-                series: [
-                    {
-                        type: 'pie',
-                        // name: startYear,
-                        data:  [
-                            { name: 'Cancelled', y: cancelled },
-                            { name: 'Bids Placed', y: bidsPlaced },
-                            { name: 'Jobs Won', y: jobsWon },
-                        ]
-                    }
-                ]
-            });
+                        }
+                    },
+                    colors: ['#0356D6', '#FFA800', '#52D017'],
+                    series: [
+                        {
+                            type: 'pie',
+                            // name: startYear,
+                            data:  [
+                                { name: 'Cancelled', y: cancelled },
+                                { name: 'Bids Placed', y: bidsPlaced },
+                                { name: 'Jobs Won', y: jobsWon },
+                            ]
+                        }
+                    ]
+                });
+                $('#empty_parent').css('display','none');
+
+            }
+
         })();
 
 

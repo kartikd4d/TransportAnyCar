@@ -563,7 +563,8 @@ class DashboardController extends WebController
         } else {
             Notification::where([
                 'user_id' => $user_data->id,
-                'user_quote_id' => $request->quote_id
+                'user_quote_id' => $request->quote_id,
+                'type' => 'quote'
             ])->update(['seen' => 0]);
         }
         return response()->json(['success' => true,]);

@@ -740,14 +740,19 @@ class DashboardController extends WebController
                 ->joinSub($subQuery, 'sub', function($join) {
                     $join->on('user_quotes.id', '=', 'sub.user_quote_id');
                 })
+                ->join('threads', function ($join) use ($user_data) {
+                    $join->on('user_quotes.id', '=', 'threads.user_quote_id')
+                         ->where('threads.friend_id', '=', $user_data->id);
+                })
                 ->whereIn('user_quotes.id', $my_quotes->pluck('user_quote_id'))
                 ->where('quote_by_transpoters.user_id', $user_data->id)
                 ->groupBy('user_quotes.id') // Use groupBy to avoid duplicates
-                ->select('user_quotes.*', 'quote_by_transpoters.id as quote_by_transporter_id', 'quote_by_transpoters.transporter_payment as transporter_payment','sub.quotes_count','sub.lowest_bid');
+                ->select('user_quotes.*', 'quote_by_transpoters.id as quote_by_transporter_id', 'quote_by_transpoters.transporter_payment as transporter_payment','sub.quotes_count','sub.lowest_bid', 'threads.id as thread_id');
                 
         // Order by created_at descending for bidding to show newest first
         if ($type == 'bidding') {
-            $quotes = $quotes->orderBy('quote_by_transpoters.created_at', 'desc');
+            $quotes = $quotes->where('user_quotes.status', '!=', 'cancelled')
+                     ->orderBy('quote_by_transpoters.created_at', 'desc');
         }
         if ($search) {
             $quotes = $quotes->where(function ($query) use ($search) {
@@ -755,6 +760,7 @@ class DashboardController extends WebController
             });
         }
         $quotes = $quotes->paginate(50);
+        //dd($quotes);
         $params['html'] = view('transporter.dashboard.partial.current_my_job', compact('quotes', 'type', 'is_dashboard'))->render();
         $params['type'] = $type;
         if ($request->ajax()) {
@@ -850,17 +856,25 @@ class DashboardController extends WebController
         if ($request->type == 'message') {
             Notification::where([
                 'user_id' => $user_data->id,
-                'reference_id' => $request->quote_id
+                'reference_id' => $request->quote_id,
+                'type' => 'message',
             ])->update(['seen' => 0]);
         } elseif ($request->type == 'feedback') {
             Notification::where([
                 'user_id' => $user_data->id,
                 'type' => 'feedback'
             ])->update(['seen' => 0]);
-        } else {
+        } elseif ($request->type == 'won_job') {
             Notification::where([
                 'user_id' => $user_data->id,
-                'user_quote_id' => $request->quote_id
+                'user_quote_id' => $request->quote_id,
+                'type' => 'won_job'
+            ])->update(['seen' => 0]);
+        } elseif ($request->type == 'outbid') {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'user_quote_id' => $request->quote_id,
+                'type' => 'outbid'
             ])->update(['seen' => 0]);
         }
         return response()->json(['success' => true,]);

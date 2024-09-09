@@ -5588,6 +5588,25 @@ button.swal2-confirm.swal2-styled:focus {
 .bidding_new_design_date.job_new_grid_date {
   padding-left: 10px;
 }
+.new_message_section .chat_box .scrollbar,
+.msg_active_container .chat_box .scrollbar {
+  height: auto;
+  max-height: 765px;
+  box-shadow: 0px 13px 35px rgba(0, 0, 0, 0.11);
+  /* padding-bottom: 55px; */
+}
+.chat_head_lft {
+  align-items: center;
+}
+.active_chat_title + .chat_box {
+  box-shadow: none;
+}
+
+section.wd-active-job.new_message_section {
+  height: calc(100vh - 65px);
+  overflow: auto;
+}
+
 
 
 
