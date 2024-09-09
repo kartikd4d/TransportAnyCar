@@ -5621,7 +5621,9 @@ ul.menu .noti_info_icon {
 .list_detail p b {
   white-space: normal;
 }
-
+.quote_grp_btns {
+  padding: 15px 0;
+}
 
 
 
