@@ -7,15 +7,37 @@
         </div>
     </div>
 @else
+<div class="job-data">
+@if ($quotes->total() == 0)
+    <span>Results: 0</span>
+@else
+    @if ($quotes->total() > 50)
+        <span>Results: {{ $quotes->firstItem() }}-{{ $quotes->lastItem() }} of {{ $quotes->total() }}</span>
+    @else
+        @if ($quotes->firstItem() == $quotes->lastItem())
+            <span>Results: {{ $quotes->firstItem() }} of {{ $quotes->total() }}</span>
+        @else
+            <span>Results: {{ $quotes->firstItem() }}-{{ $quotes->lastItem() }} of {{ $quotes->total() }}</span>
+        @endif
+    @endif
+@endif
+</div>
     @foreach($quotes as $quote)
     <div class="deshbord-job-listing job_list_desh_mobile" id="edit_bid_{{$quote->id}}">
-        @if($type == 'bidding')
-            <div class="bidding_new_design_date job_new_grid_date">
-                <span>Expiry date:</span>
-                <span>
-                {{ formatCustomDate($quote->created_at->addDays(10)) }}
-                </span>
-            </div>
+        @if($type != 'cancel')
+        <div class="bidding_new_design_date job_new_grid_date">
+            <span>Expiry date:</span>
+            <span>
+            {{ formatCustomDate($quote->created_at->addDays(10)) }}
+            </span>
+        </div>
+        @else 
+        <div class="bidding_new_design_date job_new_grid_date">
+            <span>Cancel date:</span>
+            <span>
+            {{ formatCustomDate($quote->qbt_updated_at) }}
+            </span>
+        </div>
         @endif
         <li>
             <div class="list_img">
@@ -60,6 +82,10 @@
                 $transporterQuotesCount = 0;
             @endphp
             @if($is_dashboard != 1)
+            @php
+                $lowestBid = $quote->lowest_bid ?? 0;
+                $transporterQuotesCount = $quote->quotes_count ?? 0;
+            @endphp
                 @if($type == 'won')
                     @if($quote->status == 'completed')
                     <div class="won_details">
@@ -70,12 +96,8 @@
                     </div>
                     @endif
                 @elseif($type == 'bidding')
-                    @php
-                        $lowestBid = $quote->lowest_bid ?? 0;
-                        $transporterQuotesCount = $quote->quotes_count ?? 0;
-                    @endphp
                     <div class="won_details">
-                        <a href="javascript:;" id="edit_quote_{{$quote->id}}" onclick="edit_quote_amount(this, '{{$quote->id}}');" data-amount="{{roundBasedOnDecimal($quote->transporter_payment)}}" data-lowbid="{{$lowestBid}}" data-bidcount="{{$transporterQuotesCount}}" class="view_btn edit_quote_btn won_details">Edit Quote</a>
+                        <a href="javascript:;" id="edit_quote_{{$quote->id}}" onclick="edit_quote_amount(this, '{{$quote->id}}');" data-amount="{{roundBasedOnDecimal($quote->transporter_payment)}}" data-lowbid="{{$lowestBid}}" data-bidcount="{{$transporterQuotesCount}}" class="view_btn edit_quote_btn won_details">Edit bid</a>
                     </div>
                     <div class="won_message">
                         <a href="{{ route('transporter.messages', ['thread_id' => $quote->thread_id]) }}"  class="view_btn edit_quote_btn">Message</a>
@@ -91,7 +113,7 @@
             @endif
         </li>
         <div class="bidding_new_design">
-            @if($type == 'bidding' && $is_dashboard != 1)
+            @if($is_dashboard != 1)
                 <div class="bidding_new_design_grid job_new_grid_type">
                     <span>Delivery type:</span>
                     <span class="sub_color">
@@ -143,7 +165,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="d-block text-center">Are you sure you want to <br /> reject this quote ?</h3>
+                    <h3 class="d-block text-center">Are you sure you want to <br /> cancel your bid ?</h3>
                 </div>
                 <div class="modal-footer p-0">
                     <a href="javascript:;" class="no_btn" data-dismiss="modal">No</a>

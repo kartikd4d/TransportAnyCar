@@ -613,7 +613,7 @@ small.expring_tag {
                             @if ($quotes->total() == 0)
                                 <span>Results: 0</span>
                             @else
-                                @if ($quotes->total() > 20)
+                                @if ($quotes->total() > 50)
                                     <span>Results: {{ $quotes->firstItem() }}-{{ $quotes->lastItem() }} of {{ $quotes->total() }}</span>
                                 @else
                                     @if ($quotes->firstItem() == $quotes->lastItem())

@@ -107,6 +107,30 @@
         width: 100%;
     }     
 
+    .my_job_pagination .pagination a.page-link {
+        top: 0px;
+        color: #484848;
+    }
+    .my_job_space {
+        padding-bottom:0px;
+    }
+
+    .job-data span {
+    color: #9C9C9C;
+    font-size: 15px;
+}
+.job-data {
+    margin-left: 0px;
+    margin-bottom: 8px;
+}
+
+.admin_job_bx .view_btn {
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 7px;
+    white-space: nowrap;
+}
+
 @media screen and (min-device-width: 1400px) and (max-device-width: 1600px) { 
     .admin_job_bx .tab-content .deshbord-job-listing .list_img p {
         top: 50%;
@@ -220,14 +244,14 @@
         <div id="page-content-wrapper">
         @include('layouts.transporter.dashboard.top_head')
         <!-- content part -->
-            <div class="content_container">
+            <div class="content_container my_job_space">
             <div class="banner" id="spam-banner" style="display:none">
                 <h2 class="spam-title">Check your spam.</h2>
                 <p>Please check your spam or junk folder and mark email as ‘not spam’ so that you don’t miss out on any important email notifications. You can unsubscribe from job alert emails at any time within your profile.</p>
                 <button onclick="hideBanner()" class="btn btn-success">Ok, got it</button>
             </div>
                 <div class="job_container">
-                    <div class="admin_job_bx" id="style-1">
+                    <div class="admin_job_bx my_job_pagination" id="style-1">
                         <div class="admin_job_top">
                             <h3>My jobs</h3>
                             <form  id="searchForm">

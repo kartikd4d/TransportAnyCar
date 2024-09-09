@@ -76,7 +76,7 @@ $auth_user = Auth::user();
                             <circle cx="2" cy="20" r="2" fill="#9A9A9A"/>
                         </svg>
                     </a>
-                    <input type="text" class="form-control textarea" id="message" placeholder="Write your message...">
+                    <textarea type="text" class="form-control textarea" id="message" placeholder="Write your message..."></textarea>
                     <a href="javascript:;" class="wd-send-btn" onclick="sendMessage();" id="send_message">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.8821 24.3168H12.8128C12.4662 24.2822 12.189 24.0742 12.085 23.7624L9.48604 15.9307L1.27317 13.3317C0.961288 13.2277 0.718714 12.9505 0.68406 12.604C0.649407 12.2574 0.822674 11.9455 1.13456 11.8069L23.1049 0.821773C23.4167 0.648506 23.7979 0.717814 24.0751 0.960388C24.3177 1.20296 24.387 1.58415 24.2484 1.93068L13.6098 23.8317C13.4712 24.1436 13.194 24.3168 12.8821 24.3168ZM3.73357 12.3267L10.387 14.4406C10.6296 14.5099 10.8375 14.7178 10.9068 14.9604L13.0207 21.2673L21.6841 3.35148L3.73357 12.3267Z" fill="#52D017"/>

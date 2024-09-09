@@ -747,7 +747,7 @@ class DashboardController extends WebController
                 ->whereIn('user_quotes.id', $my_quotes->pluck('user_quote_id'))
                 ->where('quote_by_transpoters.user_id', $user_data->id)
                 ->groupBy('user_quotes.id') // Use groupBy to avoid duplicates
-                ->select('user_quotes.*', 'quote_by_transpoters.id as quote_by_transporter_id', 'quote_by_transpoters.transporter_payment as transporter_payment','sub.quotes_count','sub.lowest_bid', 'threads.id as thread_id');
+                ->select('user_quotes.*', 'quote_by_transpoters.id as quote_by_transporter_id', 'quote_by_transpoters.transporter_payment as transporter_payment','sub.quotes_count','sub.lowest_bid', 'threads.id as thread_id','quote_by_transpoters.updated_at as qbt_updated_at');
                 
         // Order by created_at descending for bidding to show newest first
         if ($type == 'bidding') {
