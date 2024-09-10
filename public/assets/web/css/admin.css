@@ -5611,7 +5611,7 @@ button.swal2-confirm.swal2-styled:focus {
 }
 
 section.wd-active-job.new_message_section {
-  height: calc(100vh - 65px);
+  height: calc(100vh - 70px);
   overflow: auto;
 }
 
@@ -5647,7 +5647,7 @@ body.message-color .new_message_section .active-job-box {
   background: transparent;
 }
 body.message-color section.wd-active-job.new_message_section {
-  background: #f3f3f3;
+  background: #f3f3f3;        overflow: unset;
 }
 body.message-color  .chat_title_bx {
   background: #fff;
