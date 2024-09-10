@@ -167,7 +167,7 @@
             height: auto;
         }
         ul .deshbord-job-listing .list_img p {
-            top: 50%;
+            top: 39px;
             transform: translateY(-50%);
         }
         ul .deshbord-job-listing .list_detail {
@@ -227,30 +227,34 @@
         }
 
         .edit_budding_sec {
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: .25rem;
-    position: relative;
-}
-.modal_current {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: -5px;
-}
-.modal_current p {
-    margin: 0;
-    font-weight: normal;
-    font-size: 13px;
-    color: #000000d6;
-}
-.modal_current p span {
-    color: #52D017;
-}
-.modal_current p span.red {
-    color: #0356D6;
-}
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: .25rem;
+            position: relative;
+        }
+        .modal_current {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: -5px;
+        }
+        .modal_current p {
+            margin: 0;
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000d6;
+        }
+        .modal_current p span {
+            color: #52D017;
+        }
+        .modal_current p span.red {
+            color: #0356D6;
+        }
 
+        .job_list_desh_mobile .list_img span {
+            color: #9C9C9C;
+            font-size: 10px;
+        }
 
 
     }

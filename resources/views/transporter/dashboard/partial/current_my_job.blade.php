@@ -42,6 +42,7 @@
         <li>
             <div class="list_img">
                 <img src="{{$quote->image}}">
+                <span>Posted {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
                 <p>£{{ new_roundBasedOnDecimal($quote->transporter_payment) ?? 'N/A' }}</p>
             </div>
             <div class="list_detail">

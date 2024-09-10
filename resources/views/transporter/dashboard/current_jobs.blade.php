@@ -224,6 +224,10 @@
                 padding: 10px 10px 0;
                 margin-bottom: 0;overflow: unset;
             }
+            .job_list_desh_mobile .list_img span {
+                color: #9C9C9C;
+                font-size: 10px;
+            }
 
             /* 17-08-2024 */
 
@@ -231,7 +235,9 @@
                 font-weight: 300;
                 color: #000000ba;
                 margin-bottom: 0; 
+                top: 39px;
             }
+            
         }
 
     </style>

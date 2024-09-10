@@ -59,7 +59,8 @@ $auth_user = Auth::user();
                                 <div class="chat_out_txt_bx">
                                     <h4>You</h4>
                                     <div class="chat_outgoing_txt">
-                                        <p>{{$message->message}}</p>
+                                        <!-- <p>{{$message->message}}</p> -->
+                                        <p>{!! nl2br(e($message->message)) !!}</p>
                                         <!-- <span class="chat_time">{{carbon\carbon::parse($message->created_at)->diffForHumans()}}</span> -->
                                         <span class="chat_time">
                                             @if (carbon\carbon::parse($message->created_at)->diffInHours() < 24)
@@ -246,7 +247,9 @@ $auth_user = Auth::user();
                             var createdAt = data.created_at;
                             var parsedCreatedAt = new Date(createdAt);
                             var formattedCreatedAt = moment(parsedCreatedAt).fromNow();
-                            message_clone.find('.message').html('<p>'+data.message+'</p><span class="chat_time">'+formattedCreatedAt+'</span>')
+                            // Convert newline characters to <br> tags for the message
+                            var formattedMessage = data.message.replace(/\r\n|\n/g, '<br>');
+                            message_clone.find('.message').html('<p>'+formattedMessage+'</p><span class="chat_time">'+formattedCreatedAt+'</span>')
                         }
                         $('.chat_div').append(message_clone);
                     }
