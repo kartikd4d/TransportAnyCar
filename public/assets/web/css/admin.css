@@ -5611,7 +5611,7 @@ button.swal2-confirm.swal2-styled:focus {
 }
 
 section.wd-active-job.new_message_section {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 110px);
   overflow: auto;
 }
 
