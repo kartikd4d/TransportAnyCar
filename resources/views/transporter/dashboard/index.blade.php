@@ -2,9 +2,9 @@
 
 @section('head_css')
     <style>
-        .tabs_bx .tab-content ul{
+        /* .tabs_bx .tab-content ul{
             overflow-y: auto !important;
-        }
+        } */
         .tabs_bx .tab-content ul li {
             border-bottom : none !important;
         }
@@ -30,6 +30,41 @@
             display:none;
         }
 
+        #main_form .modal-body .form-group {
+            margin-bottom: 1.5rem;
+        }
+        #main_form .modal-body  .icon_includes {
+            height: 49px;
+        }
+        #main_form .modal-body  .icon_includes ~ .form-control {
+            height: 49px;
+        }
+        #main_form .modal-body  span#quote_amount-error {
+            position: absolute;
+            left: 0;
+            padding-left: 0;
+        }
+
+        #main_form .modal-body .edit_budding_sec .icon_includes {
+                position: inherit;
+            }
+            #main_form .modal-body .edit_budding_sec .icon_includes ~ .form-control {
+                width: calc(100% - 45px);
+                padding: 15px 10px 15px 15px !important;
+                font-size: 1rem;
+                border-radius: 0;
+                border-top-right-radius: .25rem;
+                border-bottom-right-radius: .25rem;
+            }
+            #main_form .modal-body .edit_budding_sec .icon_includes ~ .form-control:focus {
+                outline: none;
+                box-shadow: none;
+                border-color: #ced4da;
+            }
+            #main_form .modal-body .edit_budding_sec span#quote_amount-error{
+                top: 100%;
+            }
+
         @keyframes slideInRight {
             from {
                 transform: translateX(100%);
@@ -51,7 +86,7 @@
         }
 
         .deshbord-job-listing {
-            padding: 0px 10px 0;
+            padding: 5px 10px 10px;
             box-shadow: 0px 0px 4px 0px #00000040;
             margin: 3px 0px 18px 3px;
             border-radius: 10px 0 0 10px;
@@ -113,6 +148,115 @@
                     }
 
         }
+
+        @media (max-width:767px) {
+
+        .tabs_bx .tab-content ul .deshbord-job-listing  li {
+            padding: 10px 10px 0;
+            margin-bottom: 0;
+            overflow: unset;
+            flex-wrap: wrap;
+            position: relative;   row-gap: 32px; align-items: self-start;
+        }
+        ul .deshbord-job-listing .list_img {
+            width: 36%;
+            order: 1;
+        }
+        ul .deshbord-job-listing .list_img img {
+            width: 100%;
+            height: auto;
+        }
+        ul .deshbord-job-listing .list_img p {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        ul .deshbord-job-listing .list_detail {
+            width: 46%;
+            order: 3;
+        }
+        ul .deshbord-job-listing .won_details {
+            order: 2;
+            width: 55%;
+            display: flex;
+        }
+        ul .deshbord-job-listing .won_message {
+            position: absolute;
+            right: auto;
+            top: 60px;
+            width: 35% !important;
+            left: 45%;
+        }
+        ul .deshbord-job-listing .won_details a.view_btn {
+            width: 130px;
+            text-align: center;
+            justify-content: center;
+        }
+        ul .deshbord-job-listing .won_message a {
+            justify-content: center;color: #fff;   
+            width: 130px;
+        }
+        ul .deshbord-job-listing .view_btn {
+            padding: 6px 15px;
+            font-size: 12px;
+            border-radius: 7px; color: #fff !important;  
+            white-space: nowrap;
+        }
+        .job-data {
+            margin-left: 3px;
+            margin-bottom: 8px;
+        }
+        .job-data span {
+            color: #9C9C9C;
+            font-size: 15px;
+        }
+        ul .deshbord-job-listing  a.d-lg-block.delete_btn_mobile {
+            position: absolute;
+            display: flex;
+            grid-gap: 30px;
+            color: #fff;
+            top: -20px;
+            right: 0;
+        }
+        .content_container .tabs_bx {
+            margin: 0 15px;
+        }
+
+        a.view_btn.cancel_btn_mobile {
+            order: 2;
+            opacity: 0;
+        }
+
+        .edit_budding_sec {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: .25rem;
+    position: relative;
+}
+.modal_current {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -5px;
+}
+.modal_current p {
+    margin: 0;
+    font-weight: normal;
+    font-size: 13px;
+    color: #000000d6;
+}
+.modal_current p span {
+    color: #52D017;
+}
+.modal_current p span.red {
+    color: #0356D6;
+}
+
+
+
+    }
+
+
+
 
     </style>
     <!-- owl slider -->
@@ -509,6 +653,42 @@
 </div>
 <!-- MODALS -->
 <input type="hidden" id="idType" value=""/>
+
+<div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit quote</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z" fill="#000"/>
+                        </svg>
+                    </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{route('transporter.edit_quote_amount')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="edit_budding_sec">
+                                <span class="icon_includes">£</span>
+                                <input type="number" class="form-control" id="quote_amount" aria-describedby="emailHelp" placeholder="Enter quote amount" name="amount">
+                            </div>
+                        </div>
+                        <div class="modal_current">
+                            <p>Current lowest bid: <span class="lowAmount">£0</span></p>
+                            <p>Transporters bidding: <span class="red bidCount">0</span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <button type="submit" class="submit_btn">Submit bid</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
@@ -792,6 +972,144 @@
             $('#page').val(page);
             fetch_data(page);
         });
+    </script>
+
+    <script>
+         $.validator.addMethod("noPhoneOrEmail", function(value, element) {
+            var contains_email = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i.test(value);
+            var contains_six_or_more_digits = value.replace(/\s+/g, '').match(/\d{7,}/);
+            return !(contains_email || contains_six_or_more_digits);
+        });
+        $.validator.addMethod("greaterThanZero", function(value, element) {
+            return this.optional(element) || parseFloat(value) > 0;
+        }, "You must enter an amount greater than zero");
+        $("#main_form").validate({
+            rules: {
+                amount: { 
+                    required: true,  
+                    greaterThanZero: true,
+                    noPhoneOrEmail: true,
+                },
+            },
+            messages: {
+                amount: { 
+                    required: 'Please enter amount',
+                    noPhoneOrEmail:  `Do not share contact information or you will be banned.`,
+                 },
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.insertAfter($(element));
+            },
+            submitHandler: function(form) {
+                var formData = $(form).serialize();
+                $('.submit_btn').prop('disabled', true).text('Submitting...');
+                $.ajax({
+                    url: $(form).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response);
+                        if (response.status) {
+                            Swal.fire({
+                                title: '<span class="swal-title">Bid updated</span>',
+                                html: '<span class="swal-text">Your bid has been updated successfully.</span>',
+                                confirmButtonColor: '#52D017',
+                                confirmButtonText: 'Dismiss',
+                                customClass: {
+                                    title: 'swal-title',
+                                    htmlContainer: 'swal-text-container',
+                                    popup: 'swal-popup', // Add custom class for the popup
+                                    cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                                },
+                                showCloseButton: true, // Add this line to show the close button
+                                showConfirmButton: true, // Add this line to hide the confirm button
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed || result.isDismissed) {
+                                    window.location.reload();
+                                    localStorage.setItem('activateBiddingTab', 'true');
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                html: '<span class="swal-text">' + response.message + '</span>',
+                                confirmButtonColor: '#52D017',
+                                confirmButtonText: 'Dismiss',
+                                customClass: {
+                                    title: 'swal-title',
+                                    htmlContainer: 'swal-text-container',
+                                    popup: 'swal-popup',
+                                    cancelButton: 'swal-button--cancel'
+                                },
+                                showCloseButton: true,
+                                showConfirmButton: true,
+                                allowOutsideClick: false
+                            });
+                            $('.submit_btn').prop('disabled', false).text('Submit');
+                        }
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Something went wrong. Please try again.',
+                            confirmButtonColor: '#52D017',
+                            confirmButtonText: 'Dismiss',
+                            customClass: {
+                                title: 'swal-title',
+                                htmlContainer: 'swal-text-container',
+                                popup: 'swal-popup',
+                                cancelButton: 'swal-button--cancel'
+                            },
+                            showCloseButton: true,
+                            showConfirmButton: true,
+                            allowOutsideClick: false
+                        });
+                        $('.submit_btn').prop('disabled', false).text('Submit');
+                    }
+                });
+
+                return false; // Prevent form submission
+            }
+        });
+
+        function edit_quote_amount(element, id) {
+            var amount = $(element).data('amount');
+            var lowestBid = $(element).data('lowbid');
+            var bidCount = $(element).data('bidcount');
+            $('.lowAmount').text('£'+lowestBid);
+            $('.bidCount').text(bidCount);
+            $('#quote_amount').val(amount);
+            $('#quote_id').val(id);
+            $('#quote').modal('show');
+        }
+
+        function quoteChangeStatus(quote_id, status) {
+            var formData = new FormData();
+            formData.append("_token", "{{ csrf_token() }}");
+            formData.append("quote_id", quote_id);
+            formData.append("status", status);
+            $.ajax({
+                url: "{{ route('transporter.quote_change_status') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function(res) {
+                    if (res.success == true) {
+                        window.location.reload();
+                        localStorage.setItem('activateBiddingTab', 'true');
+                    }   
+                    else {
+                        
+                    }
+                },
+                error: function(data) {
+                }
+            });
+        }
     </script>
 
     <script>

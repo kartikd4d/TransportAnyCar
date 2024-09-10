@@ -40,7 +40,14 @@ $auth_user = Auth::user();
                                     <h4>{{$user->username}}</h4>
                                     <div class="chat_incoming_txt">
                                         <p>{{$message->message}}</p>
-                                        <span class="chat_time">{{carbon\carbon::parse($message->created_at)->diffForHumans()}}</span>
+                                        <!-- <span class="chat_time">{{carbon\carbon::parse($message->created_at)->diffForHumans()}}</span> -->
+                                        <span class="chat_time">
+                                            @if (carbon\carbon::parse($message->created_at)->diffInHours() < 24)
+                                                {{ carbon\carbon::parse($message->created_at)->format('h:i A') }}
+                                            @else
+                                                {{ carbon\carbon::parse($message->created_at)->diffForHumans() }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +60,14 @@ $auth_user = Auth::user();
                                     <h4>You</h4>
                                     <div class="chat_outgoing_txt">
                                         <p>{{$message->message}}</p>
-                                        <span class="chat_time">{{carbon\carbon::parse($message->created_at)->diffForHumans()}}</span>
+                                        <!-- <span class="chat_time">{{carbon\carbon::parse($message->created_at)->diffForHumans()}}</span> -->
+                                        <span class="chat_time">
+                                            @if (carbon\carbon::parse($message->created_at)->diffInHours() < 24)
+                                                {{ carbon\carbon::parse($message->created_at)->format('h:i A') }}
+                                            @else
+                                                {{ carbon\carbon::parse($message->created_at)->diffForHumans() }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -69,13 +83,13 @@ $auth_user = Auth::user();
             @csrf
             <div class="form-group">
                 <div class="msg-send_flex">
-                    <a href="javascript:;" class="option_btn">
+                    <!-- <a href="javascript:;" class="option_btn">
                         <svg width="4" height="22" viewBox="0 0 4 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="2" fill="#9A9A9A"/>
                             <circle cx="2" cy="11" r="2" fill="#9A9A9A"/>
                             <circle cx="2" cy="20" r="2" fill="#9A9A9A"/>
                         </svg>
-                    </a>
+                    </a> -->
                     <textarea type="text" class="form-control textarea" id="message" placeholder="Write your message..."></textarea>
                     <a href="javascript:;" class="wd-send-btn" onclick="sendMessage();" id="send_message">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">

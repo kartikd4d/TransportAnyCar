@@ -4914,6 +4914,11 @@ div#spam-banner button.btn {
     padding-bottom: 10px;
     background: #f3f3f3;
     border: none;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .chat_conversation_footer #chat__form {
   border-radius: 10px;
@@ -5613,18 +5618,20 @@ ul.menu .noti_info_icon {
 
 .chat_conversation_footer .form-group .form-control {
   line-height: normal;
-  padding-top: 8px;
+  padding-top: 18px;
   padding-bottom: 0;
-  max-height: 40px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
-
 .list_detail p b {
   white-space: normal;
 }
 .quote_grp_btns {
   padding: 15px 0;
 }
-
+.msg-send_flex  a#send_message {
+  padding-right: 8px;
+}
 
 
 }
