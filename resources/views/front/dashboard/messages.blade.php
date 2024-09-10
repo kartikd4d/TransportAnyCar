@@ -1,7 +1,6 @@
 @extends('layouts.web.dashboard.app')
 
 @section('head_css')
-
 @endsection
 
 @section('content')
@@ -229,7 +228,6 @@
         }
 
         $(document).ready(function () {
-
             //open particular chat
             const urlParams = new URLSearchParams(window.location.search);
             const threadId = urlParams.get('thread_id');

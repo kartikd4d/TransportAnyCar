@@ -299,4 +299,7 @@ $auth_user = Auth::user();
             $(this).val(newValue);
         }
     });
+    $(document).ready(function() {
+        $('body').addClass('message-color');
+    })
 </script>
