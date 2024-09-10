@@ -136,7 +136,7 @@ $auth_user = Auth::user();
 
             setInterval(function(){
                 getChatListing();
-            }, 5000);
+            }, 1000);
             getChatListing();
 
             var url = "{{route('transporter.message.history',($latest_chat->id) ?? 0)}}"

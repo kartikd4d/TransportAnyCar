@@ -250,7 +250,7 @@
             
             setInterval(function(){
                 getChatListing();
-            }, 5000);
+            }, 1000);
             getChatListing();
 
             var url = "{{route('front.message.history',($latest_chat->id) ?? 0)}}"
