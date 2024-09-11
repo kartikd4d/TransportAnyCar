@@ -5509,8 +5509,8 @@ button.swal2-confirm.swal2-styled:focus {
 
 
 .menu .noti_info_icon.message_icon small {
-  top: -1px;
-  right: 0px;
+  top: -10px;
+  right: 5px;
 }
 
 
@@ -5600,7 +5600,7 @@ button.swal2-confirm.swal2-styled:focus {
 .new_message_section .chat_box .scrollbar,
 .msg_active_container .chat_box .scrollbar {
   height: auto;
-  max-height: calc(100vh - 230px);
+  max-height: calc(100vh - 250px);
 }
 .chat_head_lft {
   align-items: center;
@@ -5660,6 +5660,7 @@ body.message-color{
 body.message-color .message_container {
   padding: 65px 0 0;
 }
+
 
 
 }
