@@ -130,7 +130,7 @@
                                     </div>
 
                                     <div class="wd-quote-rght">
-                                        <a href="{{route('front.leave_feedback', ['id' => $item->id]) }}"class="wd-leave-btn">Leave feedback</a>
+                                        <a href="{{route('front.leave_feedback', ['id' => $item->quoteByTransporter->id ?? null]) }}"class="wd-leave-btn">Leave feedback</a>
                                         <a href="{{ route('front.user_deposit', ['id' => $item->quoteByTransporter->id ?? null]) }}">Contact transporter</a>
                                         <!-- <a href="javascript:;" class="wd-orange">View VAT receipt </a> -->
                                     </div>

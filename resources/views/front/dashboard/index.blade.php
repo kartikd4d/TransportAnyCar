@@ -346,7 +346,7 @@
                             @endif
                         </li>
                         <li class="job-access completed_jobs">
-                            <a href="{{route('front.leave_feedback', ['id' => $item->id]) }}" class="wd-blue">Leave feedback</a>
+                            <a href="{{route('front.leave_feedback', ['id' => $item->quoteByTransporter->id ?? null]) }}" class="wd-blue">Leave feedback</a>
                             <!-- <a href="javascript:;" class="wd-orange">View VAT receipt </a> -->
                             @if($item->is_mark_as_complete == 'no')
                             <a href="javascript:;" class="wd-red" onclick="markComplete('{{$item->id}}')">Mark complete</a>

@@ -413,7 +413,7 @@ class DashboardController extends WebController
     public function leaveFeedback($id=null)
     {
         if($id != null){
-            $quote = $id ? QuoteByTransporter::with(['getTransporters', 'quote'])->where('user_quote_id', $id)->first() : null;
+            $quote = $id ? QuoteByTransporter::with(['getTransporters', 'quote'])->where(['id' => $id])->first() : null;
             $user_info = null;
             if ($quote) {
                 $transporter_detail = $quote->getTransporters;
