@@ -5533,6 +5533,17 @@ button.swal2-confirm.swal2-styled:focus {
 }
 
 
+.lve_rate .starrating {
+  flex-direction: row-reverse;
+  position: relative;
+  padding-right: 65px;
+}
+
+.lve_rate .starrating span {
+  position: absolute;
+  right: 0;
+}
+
 
 @media(max-width: 580px){
   .notifaction_sec .dropdown-menu {
@@ -5660,7 +5671,9 @@ body.message-color{
 body.message-color .message_container {
   padding: 65px 0 0;
 }
-
+.lve_rate .starrating {
+  padding-right: 45px;
+}
 
 
 }
