@@ -37,6 +37,16 @@
 .active-job-box.active_job_mobile ul {
     gap: 10PX;
 }
+.job-list-img .job-list-img-sec img {
+    width: 100%;
+    height: 100%;
+}
+.job-listing ul li.job-list-img {
+    width: 162px;
+}
+.job-list-img .job-list-img-sec {
+    background: none;
+}
 @media(max-width: 580px){
     .active-job-box.active_job_mobile {
     margin: 0;
@@ -291,8 +301,17 @@
                     </div>
                     <ul>
                         <li class="job-list-img">
+                            @php
+                                $image = $item->image;
+                                $defaultImage = asset('uploads/no_car_image.png');
+                                $noQuoteImage = asset('uploads/svg_image.png');
+
+                                if (is_null($image) || $image == $noQuoteImage) {
+                                    $image = $defaultImage;
+                                }
+                            @endphp
                             <div class="job-list-img-sec">
-                                <img src="{{$item->image}}" class="img-fluid" alt="book delivery">
+                                <img src="{{$image}}" class="img-fluid" alt="book delivery">
                             <div>
                         </li>
 

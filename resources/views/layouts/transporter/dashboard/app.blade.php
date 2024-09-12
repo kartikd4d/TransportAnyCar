@@ -51,12 +51,27 @@
 
       $(document).ready(function() {
         $('#dropdownMenuButton').click(function() {
-          $('.dropdown-menu').slideToggle("slow");            
+          //$('.dropdown-menu').slideToggle("slow"); 
+          var $dropdownMenu = $('.dropdown-menu'); 
+          if ($dropdownMenu.is(':visible')) {
+              $dropdownMenu.slideUp("slow");
+              $('body').removeClass('notification-scroll');
+          } else {
+              $dropdownMenu.slideDown("slow");
+              $('body').addClass('notification-scroll');
+          }
         });
-
         $('#sidebarToggle').click(function() {
           $('.dropdown-menu').hide();            
         });
+
+        $(document).ready(function() {
+          $('#dropdownClose').click(function() {
+            $('.dropdown-menu').hide();
+            $('body').removeClass('notification-scroll');
+          });
+        });
+
       });
     }
 

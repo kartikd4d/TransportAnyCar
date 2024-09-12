@@ -154,7 +154,7 @@
                 </a>
                 <div class="dropdown-menu" style="display:none;">
                     <h5>
-                        <a href="javascript:void(0)" id="dropdownClose">
+                        <a href="javascript:void(0)" id="dropdownClose_desk">
                             <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="0.5">
                                     <path d="M6 11.8635L1 6.43176L6 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

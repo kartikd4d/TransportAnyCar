@@ -5424,8 +5424,8 @@ button.swal2-confirm.swal2-styled:focus {
 .noti_info_icon small {
   position: absolute;
   background: red;
-  width: 17px;
-  height: 17px;
+  width: 19px;
+  height: 19px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -5433,6 +5433,8 @@ button.swal2-confirm.swal2-styled:focus {
   color: #fff;
   top: -4px;
   right: -7px;
+  font-size: 7px;
+  line-height: 9px;
 }
 
 .two_digit small {
@@ -5450,16 +5452,12 @@ button.swal2-confirm.swal2-styled:focus {
 }
 
 .menu .noti_info_icon small {
-  width: 15px;
-  height: 15px;
-  top: -1px;
-  right: 0px;
+  top: -7px;
+  right: 1px;
 }
 .top_menu .noti_info_icon small {
-  width: 20px;
-  height: 20px;
-  top: -10px;
-  right: -13px;
+  top: -7px;
+  right: -9px;
 }
 
 .top_menu .job_icon small {
@@ -5509,8 +5507,8 @@ button.swal2-confirm.swal2-styled:focus {
 
 
 .menu .noti_info_icon.message_icon small {
-  top: -10px;
-  right: 5px;
+  top: -12px;
+  right: 2px;
 }
 
 
@@ -5542,6 +5540,45 @@ button.swal2-confirm.swal2-styled:focus {
 .lve_rate .starrating span {
   position: absolute;
   right: 0;
+}
+.bidding_new_design_date.job_new_grid_date {
+  display: block;
+  padding-top: 10px;
+}
+.bidding_new_design_date.job_new_grid_date span {
+  font-size: 12px;
+  color: #000000ba;
+}
+
+.active_job_mobile .job-listing .bidding_new_design {
+  padding: 0 5px 10px;
+}
+.notifaction_sec .dropdown-menu {
+  transform: none;
+  right: 10px;
+  overflow: auto;
+  max-height: calc(100vh - 75px);
+  padding-top: 0;
+}
+body.notification-scroll,
+body.notification-scroll .admin_job_bx {
+  overflow: hidden;
+}
+.notifaction_sec .dropdown-menu h5 {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  width: 100%;
+}
+
+.job_bx h2 {
+  font-size: 26px;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) { 
+  .job_bx h2 {
+    font-size: 16px;
+}
 }
 
 
@@ -5674,7 +5711,9 @@ body.message-color .message_container {
 .lve_rate .starrating {
   padding-right: 45px;
 }
-
+.bidding_new_design_date.job_new_grid_date {
+  padding-top: 0;
+}
 
 }
 

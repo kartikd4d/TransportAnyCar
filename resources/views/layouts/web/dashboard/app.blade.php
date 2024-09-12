@@ -80,8 +80,23 @@
 
       } else {
        $(document).ready(function() {
+          // $('.wd-profile #dropdownMenuButton').click(function() {
+          //   $('.wd-profile .dropdown-menu').slideToggle("slow");
+          // });
           $('.wd-profile #dropdownMenuButton').click(function() {
-            $('.wd-profile .dropdown-menu').slideToggle("slow");
+              var $dropdownMenu = $('.wd-profile .dropdown-menu');
+              
+              if ($dropdownMenu.is(':visible')) {
+                  $dropdownMenu.slideUp("slow");
+                  $('body').removeClass('notification-scroll');
+              } else {
+                  $dropdownMenu.slideDown("slow");
+                  $('body').addClass('notification-scroll');
+              }
+          });
+          $('#dropdownClose_desk').click(function() {
+            $('.dropdown-menu').hide();
+            $('body').removeClass('notification-scroll');
           });
         });
       }

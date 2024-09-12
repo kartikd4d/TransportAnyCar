@@ -86,12 +86,28 @@
         }
 
         .deshbord-job-listing {
-            padding: 5px 10px 10px;
+            padding: 5px 20px 10px;
             box-shadow: 0px 0px 4px 0px #00000040;
             margin: 3px 0px 18px 3px;
             border-radius: 10px;
-        }
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+            margin-left: 0;
 
+        }
+        .job-data {
+            margin-left: 10px;
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+        .job-data span {
+            color: #9C9C9C;
+            font-size: 15px;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li {
+            padding: 0px 0px 20px;
+        }
         .tabs_bx .tab-content .deshbord-job-listing li{
             box-shadow: none !important;
         }
@@ -132,6 +148,39 @@
             text-align: center;
             margin: 50px 0;
         }
+
+        .deshbord-job-listing .bidding_new_design {
+            padding: 0 10px 10px 0px;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_img{
+            width: 100px;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_img img{
+            width: 100%;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_img span {
+            display: block;
+            color: #9C9C9C;
+            font-size: 11px;
+        }
+        @media(max-width: 1400px){
+            .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
+            .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b{
+                font-size: 14px;
+                margin-bottom: 2px;
+            }
+        }
+
+        @media(max-width: 1199px){
+            .tabs_bx .tab-content ul .deshbord-job-listing li {
+                padding: 0px 0px 20px;
+                flex-wrap: wrap;
+                row-gap: 15px;
+            }
+        }
+
+
+
 
         @media (max-width:767px) {
             #alert-container {
@@ -255,7 +304,19 @@
             color: #9C9C9C;
             font-size: 10px;
         }
-
+        .deshbord-job-listing {
+            padding: 5px 10px 10px;
+            border-radius: 10px;
+            margin-left: 0;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b {
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .chart_bx_first{
+            display: none;
+        }
 
     }
 
@@ -414,7 +475,7 @@
                 </div>
                 <div class="chart_bx">
                     <div class="row">
-                        <div class="col-lg-8"  style="display:none">
+                        <div class="col-lg-6 chart_bx_first">
                             <div class="earning_bx">
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -445,7 +506,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="analytics_bx">
                                 <h3>Statistics</h3>
                                 <figure class="highcharts-figure">
