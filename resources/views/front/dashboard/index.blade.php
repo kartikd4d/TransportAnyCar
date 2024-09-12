@@ -47,6 +47,10 @@
 .job-list-img .job-list-img-sec {
     background: none;
 }
+
+.active_job_mobile .quote_grp_btns {
+    padding: 30px 0 0;
+}
 @media(max-width: 580px){
     .active-job-box.active_job_mobile {
     margin: 0;
@@ -113,7 +117,9 @@
 .active-job-box.active_job_mobile ul li.job-access.completed_jobs{
     top: 100px;
 }
-
+.active_job_mobile .quote_grp_btns {
+    padding: 15px 0 15px;
+}
 
 
 }

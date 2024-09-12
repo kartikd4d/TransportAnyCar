@@ -5391,7 +5391,7 @@ button.swal2-confirm.swal2-styled:focus {
   width: 10%;
 }
 .notifaction_sec_list .item-content {
-  width: 72%;
+  width: 72%;padding-right: 5px;
 }
 .notifaction_sec_list .notifi_time {
   width: 18%;
@@ -5511,7 +5511,7 @@ button.swal2-confirm.swal2-styled:focus {
   right: 2px;
 }
 
-
+body.account-scroll{padding: 0 !important;}
 
 @media(max-width: 1400px){
   .bidding_new_design {
@@ -5562,6 +5562,7 @@ button.swal2-confirm.swal2-styled:focus {
 }
 body.notification-scroll{
   padding-right: 15px;
+  transition: none !important;
 }
 body.notification-scroll,
 body.notification-scroll .admin_job_bx {
@@ -5572,6 +5573,9 @@ body.notification-scroll .admin_job_bx {
   top: 0;
   background: #fff;
   width: 100%;
+}
+body{
+  transition: none !important;
 }
 
 .job_bx h2 {
