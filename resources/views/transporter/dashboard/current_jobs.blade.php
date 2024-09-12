@@ -685,6 +685,7 @@
             }).blur(function() {
                 $(this).closest('.edit_budding_sec').removeClass('edit_border');
             });
+            $('body').addClass('account-scroll');
         });
 
         function quoteChangeStatus(quote_id, status) {
