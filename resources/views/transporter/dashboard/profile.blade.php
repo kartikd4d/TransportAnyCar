@@ -991,6 +991,8 @@ div#spam-banner {
             updateEmailPrefrence.call(this); // Use .call to set the correct context
         });
 
+        $('body').addClass('account-scroll');
+
     });
 
     function updateEmailPrefrence() {

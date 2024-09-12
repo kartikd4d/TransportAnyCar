@@ -1,10 +1,14 @@
 @extends('layouts.web.dashboard.app')
 
 @section('head_css')
-
 @endsection
 
 @section('content')
+<style>
+    .wd-active-job .container-job {
+    padding-right: 25px !important;
+}
+</style>
     @include('layouts.web.dashboard.header')
     <section class="wd-active-job admin_account">
         <div class="container-job">
