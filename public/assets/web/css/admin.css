@@ -5560,6 +5560,9 @@ button.swal2-confirm.swal2-styled:focus {
   max-height: calc(100vh - 75px);
   padding-top: 0;
 }
+body.notification-scroll{
+  padding-right: 15px;
+}
 body.notification-scroll,
 body.notification-scroll .admin_job_bx {
   overflow: hidden;
@@ -5575,11 +5578,37 @@ body.notification-scroll .admin_job_bx {
   font-size: 26px;
 }
 
+.active_job_mobile .job-listing .bidding_new_design {
+  justify-content: flex-start;
+}
+
+.active_job_mobile .job-listing .bidding_new_design .bidding_new_design_grid {
+  padding-right: 40px;
+}
+.job_list_desh_mobile .list_img span {
+  display: block;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+
+
+
+
+
+
 @media screen and (min-width: 1200px) and (max-width: 1400px) { 
   .job_bx h2 {
     font-size: 16px;
 }
 }
+
+
+@media(max-width: 1199px){
+.active_job_mobile .job-listing .bidding_new_design .bidding_new_design_grid {
+  padding-right: 15px;
+}
+}
+
 
 
 @media(max-width: 580px){
@@ -5713,6 +5742,16 @@ body.message-color .message_container {
 }
 .bidding_new_design_date.job_new_grid_date {
   padding-top: 0;
+}
+body.notification-scroll{
+  padding-right: 0;
+}
+.active_job_mobile .job-listing .bidding_new_design {
+  justify-content: space-between;
+}
+
+.active_job_mobile .job-listing .bidding_new_design .bidding_new_design_grid {
+  padding-right: 0;
 }
 
 }

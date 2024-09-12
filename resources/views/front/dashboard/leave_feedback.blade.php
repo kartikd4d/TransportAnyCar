@@ -178,7 +178,7 @@ button.lve_feed_btn {
                         </div>
                         <div class="leave_tabs">
                             <!-- <span>Accepted:  08/01/2024 19:20</span> -->
-                            <p><b> Rate this transaction.</b> This Feedback helps other user and transport  providers.</p>
+                            <p><b> Rate this transaction.</b> This feedback helps other user and transport  providers.</p>
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="pill" href="#positive" role="tab" aria-controls="pills-positive" aria-selected="true">
