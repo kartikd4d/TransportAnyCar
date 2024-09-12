@@ -163,6 +163,9 @@
             color: #9C9C9C;
             font-size: 11px;
         }
+        .content_container {
+            padding-bottom: 0 !important;
+        }
         @media(max-width: 1400px){
             .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
             .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b{
