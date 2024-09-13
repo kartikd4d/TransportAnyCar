@@ -90,7 +90,7 @@
                     @endif
                 </div>
             </div>
-            <a class="menu-link profile_menu" href="javascript:;">
+            <a class="menu-link profile_menu" href="{{route('transporter.profile')}}">
                 <img src="{{checkFileExist(Auth::user()->profile_image)}}" alt="icon" />
                 <h3>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h3>
             </a>

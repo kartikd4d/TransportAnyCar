@@ -748,7 +748,7 @@ button.lve_feed_btn {
                             showCloseButton: true,
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                location.reload();
+                                history.back();
                             }
                         });
                     } else {

@@ -125,7 +125,7 @@
                                                         <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
                                                     </svg>
                                                 </li>
-                                                <li>({{$overall_percentage}}%)</li>
+                                                <li>({{ number_format($overall_percentage, 0) }}%)</li>
                                                 <!-- <li>({{100}}%)</li> -->
                                             </ul>                                       
                                         <div class="wd-transport-area">
