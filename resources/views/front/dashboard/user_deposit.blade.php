@@ -401,7 +401,7 @@ form#chat__form textarea.form-control.textarea {
             </a>
         </form>
 
-        <a href="{{ route('front.leave_feedback', $quote_by_transporter->user_quote_id) }}" class="leave-feedback">
+        <a href="{{ route('front.leave_feedback', $quote_by_transporter->id) }}" class="leave-feedback">
             <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.5 9V9.00042C0.49896 10.248 0.87167 11.4882 1.60286 12.6307C2.33497 13.7746 3.40937 14.7931 4.7574 15.6026L5 15.7483V16.0312C5 17.0737 4.80243 18.1787 4.5086 19.1214C4.36028 19.5973 4.18097 20.0527 3.97858 20.4457C6.49681 20.171 8.89534 18.8976 10.1464 17.6464L10.2929 17.5H10.5H12C15.0893 17.5 18.0326 16.5785 20.1853 14.964C22.3352 13.3515 23.5 11.2003 23.5 9C23.5 6.79969 22.3352 4.6485 20.1853 3.03604C18.0326 1.42152 15.0893 0.5 12 0.5C8.91071 0.5 5.96741 1.42152 3.81472 3.03604C1.66478 4.6485 0.5 6.79969 0.5 9Z" stroke="#0356D6"/>
             </svg>
