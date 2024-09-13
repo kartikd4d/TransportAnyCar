@@ -599,28 +599,28 @@ button.lve_feed_btn {
                                         <li>
                                             <h5>Professionalism</h5>
                                             <div class="starrating">
-                                                <input type="radio" id="star5_prof_negative" name="rating_prof__negative" value="5" /><label for="star5_prof_negative" title="5 star">
+                                                <input type="radio" id="star5_prof_negative" name="rating_prof_negative" value="5" /><label for="star5_prof_negative" title="5 star">
                                                     <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M18 0L22.7822 11.4178L35.119 12.4377L25.7378 20.5142L28.5801 32.5623L18 26.136L7.41987 32.5623L10.2622 20.5142L0.880983 12.4377L13.2178 11.4178L18 0Z" fill="#D9D9D9"/>
                                                     </svg>
 
                                                 </label>
-                                                <input type="radio" id="star4_prof_negative" name="rating_prof__negative" value="4" /><label for="star4_prof_negative" title="4 star">
+                                                <input type="radio" id="star4_prof_negative" name="rating_prof_negative" value="4" /><label for="star4_prof_negative" title="4 star">
                                                     <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M18 0L22.7822 11.4178L35.119 12.4377L25.7378 20.5142L28.5801 32.5623L18 26.136L7.41987 32.5623L10.2622 20.5142L0.880983 12.4377L13.2178 11.4178L18 0Z" fill="#D9D9D9"/>
                                                     </svg>
                                                 </label>
-                                                <input type="radio" id="star3_prof_negative" name="rating_prof__negative" value="3" /><label for="star3_prof_negative" title="3 star">
+                                                <input type="radio" id="star3_prof_negative" name="rating_prof_negative" value="3" /><label for="star3_prof_negative" title="3 star">
                                                     <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M18 0L22.7822 11.4178L35.119 12.4377L25.7378 20.5142L28.5801 32.5623L18 26.136L7.41987 32.5623L10.2622 20.5142L0.880983 12.4377L13.2178 11.4178L18 0Z" fill="#D9D9D9"/>
                                                     </svg>
                                                 </label>
-                                                <input type="radio" id="star2_prof_negative" name="rating_prof__negative" value="2" /><label for="star2_prof_negative" title="2 star">
+                                                <input type="radio" id="star2_prof_negative" name="rating_prof_negative" value="2" /><label for="star2_prof_negative" title="2 star">
                                                     <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M18 0L22.7822 11.4178L35.119 12.4377L25.7378 20.5142L28.5801 32.5623L18 26.136L7.41987 32.5623L10.2622 20.5142L0.880983 12.4377L13.2178 11.4178L18 0Z" fill="#D9D9D9"/>
                                                     </svg>
                                                 </label>
-                                                <input type="radio" id="star1_prof_negative" name="rating_prof__negative" value="1" /><label for="star1_prof_negative" title="1 star">
+                                                <input type="radio" id="star1_prof_negative" name="rating_prof_negative" value="1" /><label for="star1_prof_negative" title="1 star">
                                                     <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M18 0L22.7822 11.4178L35.119 12.4377L25.7378 20.5142L28.5801 32.5623L18 26.136L7.41987 32.5623L10.2622 20.5142L0.880983 12.4377L13.2178 11.4178L18 0Z" fill="#D9D9D9"/>
                                                     </svg>

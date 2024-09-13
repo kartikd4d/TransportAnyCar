@@ -213,7 +213,7 @@ class DashboardController extends WebController
         $rating_average = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
             ->selectRaw('(AVG(communication) + AVG(punctuality) + AVG(care_of_good) + AVG(professionalism)) / 4 as overall_avg')
             ->first();
-        $overall_percentage = 100;
+        $overall_percentage = 0;
         $overall_percentage += ($rating_average->overall_avg / 5) * 100;
 
         $positive_feedback_count = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->where('type', 'positive')->count();
@@ -267,7 +267,6 @@ class DashboardController extends WebController
         $feedbacks = Feedback::query();
         $feedbacks = $feedbacks->whereIn('quote_by_transporter_id', $my_quotes);
         $feedbacks = $feedbacks->paginate(10);
-
         $params['html'] = view('transporter.dashboard.partial.feedback_listing', compact('feedbacks'))->render();
         if ($request->ajax()) {
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $params]);
