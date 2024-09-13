@@ -6,6 +6,9 @@
     .wd-active-job .container-job {
        padding-right: 20px !important;
     }
+
+
+
     
 }
     </style>
@@ -74,11 +77,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 accepted_quotes_row">
                         <div class="wd-delivr-rght new_sec_delivr">
                             <h2>Accepted quotes</h2>
                             @forelse($quotes_booked as $item)
-                                <div class="wd-quote-box">
+                                <div class="wd-quote-box accepted_quotes_new">
                                     <div class="wd-quote-lft">
                                         <div class="list_detail">
                                             <span>
