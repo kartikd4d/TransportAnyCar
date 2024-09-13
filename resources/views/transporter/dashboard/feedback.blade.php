@@ -137,7 +137,7 @@
                                                 <ul>
                                                     <li>
                                                         <p>Positive feedback:</p>
-                                                        <span class="wd-black">{{ number_format($positive_feedback_percentage, 2) }}%</span>
+                                                        <span class="wd-black">{{ number_format($positive_feedback_percentage, 0) }}%</span>
                                                     </li>
                                                     <!-- <li>
                                                         <p>Completed jobs:</p>
