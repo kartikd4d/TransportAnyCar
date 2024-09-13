@@ -21,7 +21,7 @@
     font-size: 22px;
     color: #000;
     margin-bottom: 0;
-    text-decoration: underline;
+    
 }
 .car_service_right img {
     max-width: 149px;
@@ -51,11 +51,10 @@
     height: 50px;
 }
 .car_details_left .wd-dlvr-img {
-    width: 30%
+    width: max-content;
 }
 .car_details_left .wd-dlvr-contact {
     width: 68%;
-    padding-left: 10px;
 }
 .message-error{
     font-size: 14px;
@@ -93,9 +92,25 @@
     margin-top: 30px;
 }
 
+@media(max-width: 1400px){
+.collection_list span {
+    width: 20%;
+}
+.new_header_custom section.wd-deposit-area{
+    padding-right: 0;
+}
+}
 
+@media(max-width: 1199px){
+.collection_list b {
+    width: 73%;
+}
+.collection_list span {
+    width: 25%;
+}
+}
 
-@media(min-width: 768px){
+@media(min-width: 992px){
     .new_header_custom section.wd-deposit-area {
     border: none;
     margin-top: 0;
@@ -108,10 +123,27 @@
     margin-left: 80px;
 }
 }
+@media(max-width: 991px){
+ .new_header_custom section.wd-deposit-area {
+    border: none;
+    margin-top: 0;
+    padding-top: 0;
+    background: transparent;
+    box-shadow: none;
+}
+.new_header_custom section.wd-deposit-area .row.new_header_custom_row {
+    padding: 120px 30px 50px;
+    margin: 0px;
+}
+}
+
+
 
 
 @media(max-width: 580px){
-
+    .car_details_left .wd-dlvr-img {
+    width: 34%;
+}
 .car_service_right h1 {
     font-size: 16px;
     margin-bottom: 10px;
@@ -196,8 +228,9 @@
 .new_header_custom .wd-deposit-area{
     margin-top: 0;
 }
-.row.new_header_custom_row {
-    padding-top: 95px;
+.new_header_custom section.wd-deposit-area .row.new_header_custom_row {
+    padding: 95px 0 0 0;
+    margin: 0 -15px;
 }
 }
 

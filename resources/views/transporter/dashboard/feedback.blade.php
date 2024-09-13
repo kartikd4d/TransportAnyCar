@@ -3,6 +3,83 @@
 @section('head_css')
     <link rel="stylesheet" type="text/css" href="{{asset('assets/web/vendors/owl.carousel/css/owl.carousel.min.css')}}" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        .wd-transport-dtls h1 {
+            text-transform: capitalize;
+        }    
+        .wd-transport-rght ul li {
+            align-items: flex-start;
+            margin: 8px 0;
+        }
+        .wd-transport-area {
+            align-items: self-start;
+        }
+        ul.wd-star-lst {
+            margin-bottom: 0;
+        }
+        .wd-transport-img {
+            padding-top: 11px;
+        }
+        .feedback-time-line .table-responsive {
+            border-radius: 5px;
+            border: 1px solid #C3C3C3;
+        }
+        .feedback-time-line table {
+            border: none;
+        }
+
+
+@media(max-width: 1199px){
+    .wd-transport-area {
+        flex-wrap: wrap;
+    }
+    .wd-transport-rght ul li p {
+        font-size: 14px;
+        min-width: 126px;
+    }
+    .wd-transport-rght ul li span.wd-black {
+        font-size: 18px;
+    }
+    .wd-transport-rght ul li {
+        margin: 5px 0;
+    }
+    .wd-pb {
+    padding-bottom: 60px;
+}
+}
+
+@media(max-width: 767px){
+.wd-transport-img {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.wd-transport-rght ul li p {
+    font-size: 16px;
+    min-width: 144px;
+}
+.wd-transport-rght ul li span.wd-black {
+    font-size: 22px;
+}       
+.wd-feedback-box .col-lg-6:nth-child(1) {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+.wd-transport-rght ul li span {
+    padding: 0px 12px;
+}
+.wd-transport-rght ul li span br {
+    display: none;
+}
+
+
+
+}
+
+
+
+    </style>
 @endsection
 
 @section('content')
@@ -21,38 +98,39 @@
                                     <div class="wd-transport-dtls">
                                         <h1>{{$user->name ?? '-'}} 
                                             <!-- <span>({{count($feedback)}})</span> -->
-                                        </h1>
+                                        </h1> 
                                         <ul class="wd-star-lst">
-                                            <li>
-                                                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
-                                                </svg>
-                                            </li>
-                                            <!-- <li>({{$overall_percentage}}%)</li> -->
-                                            <li>({{100}}%)</li>
-                                        </ul>
+                                                <li>
+                                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
+                                                    </svg>
+                                                </li>
+                                                <li>
+                                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
+                                                    </svg>
+                                                </li>
+                                                <li>
+                                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
+                                                    </svg>
+                                                </li>
+                                                <li>
+                                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
+                                                    </svg>
+                                                </li>
+                                                <li>
+                                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z" fill="#FFA800" />
+                                                    </svg>
+                                                </li>
+                                                <!-- <li>({{$overall_percentage}}%)</li> -->
+                                                <li>({{100}}%)</li>
+                                            </ul>                                       
                                         <div class="wd-transport-area">
                                             <div class="wd-transport-img">
+                                            
                                                 <img src="{{ $user->profile_image }}" style="width:50px" alt="trasporter feedback" class="img-fluid">
                                             </div>
                                             <div class="wd-transport-rght">

@@ -166,6 +166,38 @@
         .content_container {
             padding-bottom: 0 !important;
         }
+
+
+        .edit_budding_sec {
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: .25rem;
+            position: relative;
+        }
+        .modal_current {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: -5px;
+        }
+        .modal_current p {
+            margin: 0;
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000d6;
+        }
+        .modal_current p span {
+            color: #52D017;
+        }
+        .modal_current p span.red {
+            color: #0356D6;
+        }
+        .edit_border {
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+            }
+
         @media(max-width: 1400px){
             .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
             .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b{
@@ -178,12 +210,22 @@
             .tabs_bx .tab-content ul .deshbord-job-listing li {
                 padding: 0px 0px 20px;
                 flex-wrap: wrap;
-                row-gap: 15px;
+                gap: 15px;
             }
+            .earning_rght figure {
+                margin: 0px 0px 0;
+            }
+            
         }
 
-
-
+        @media (max-width:991px) {
+        .deshbord-job-listing .bidding_new_design {
+            flex-wrap: wrap;
+        }
+        .bidding_new_design_grid {
+            width: 50%;
+        }
+        }
 
         @media (max-width:767px) {
             #alert-container {
@@ -319,6 +361,9 @@
         }
         .chart_bx_first{
             display: none;
+        }
+        .tabs_bx .tab-content ul {
+            max-height: max-content;
         }
 
     }
@@ -478,7 +523,7 @@
                 </div>
                 <div class="chart_bx">
                     <div class="row">
-                        <div class="col-lg-6 chart_bx_first">
+                        <div class="col-lg-8 chart_bx_first">
                             <div class="earning_bx">
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -509,7 +554,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="analytics_bx">
                                 <h3>Statistics</h3>
                                 <figure class="highcharts-figure">
@@ -1267,6 +1312,12 @@
         setTimeout(function(){
             $('#alert-message').hide();
         }, 15000);
+
+        $('#quote_amount').focus(function() {
+            $(this).closest('.edit_budding_sec').addClass('edit_border');
+        }).blur(function() {
+            $(this).closest('.edit_budding_sec').removeClass('edit_border');
+        });
     });
 
 

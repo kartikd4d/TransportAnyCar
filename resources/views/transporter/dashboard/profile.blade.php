@@ -97,14 +97,6 @@
   width: 45px;
 }
 
-/* Adjust the position of the badge */
-/* .status-badge.pending {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-} */
-
-
 
 /* new css*/
 
@@ -214,6 +206,31 @@ div#spam-banner {
     width: 85%;
     display:none; 
 }
+
+@media(max-width: 1199px){
+    .document-list {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        justify-content: space-between;    margin-bottom: 0 !important;
+    }
+    .wd-profile-form .form-group a.view-pdf {
+        width: 25%;
+        font-size: 14px;
+        text-align: right;
+    }
+    .wd-profile-form .form-group span {
+        font-size: 14px;
+        width: 68%;
+    }
+
+}
+@media(max-width: 991px){
+    .document-list {margin-bottom: 15px !important;  }
+}
+
+
+
 @media(max-width: 767px){
 .requied_sec_row {
     width: 100%;
