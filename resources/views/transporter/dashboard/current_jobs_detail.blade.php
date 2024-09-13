@@ -597,7 +597,7 @@ $(document).ready(function() {
                     $('.admin_snd_btn').attr('disabled', false); 
                     Swal.fire({
                         title: '<span class="swal-title">Thank You</span>',
-                        html: '<span class="swal-text">Your Request has been sent.</span>',
+                        html: '<span class="swal-text">Your request has been sent.</span>',
                         confirmButtonColor: '#52D017',
                         confirmButtonText: 'Ok',
                         customClass: {
