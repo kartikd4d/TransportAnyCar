@@ -8,7 +8,7 @@
             padding: 0px 20px 0;
             box-shadow: 0px 0px 4px 0px #00000040;
             margin: 0px 0px 20px 0px;
-            border-radius: 10px 0 0 10px;
+            border-radius: 10px;
         }
         .tab-content .deshbord-job-listing li {
                 box-shadow: none !important;
@@ -16,10 +16,6 @@
             .deshbord-job-listing .bidding_new_design {
                 padding: 0 0px 20px;
             }
-
-        .tab-content {
-            width: calc(100% + 15px);
-        }
          ul.pagination li {
             padding: 0 !important;
             border: none !important;
