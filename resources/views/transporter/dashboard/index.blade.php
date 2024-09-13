@@ -399,6 +399,7 @@
                         <div class="wlcm_content">
                             <span>Welcome</span>
                             <h3>{{$user->first_name}}</h3>
+                            @if($user->address)
                             <p>
                                 <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.99899 12.7377C1.30979 7.38946 0.625 6.84056 0.625 4.875C0.625 2.1826 2.8076 0 5.5 0C8.1924 0 10.375 2.1826 10.375 4.875C10.375 6.84056 9.69022 7.38946 6.00101 12.7377C5.75891 13.0874 5.24107 13.0874 4.99899 12.7377ZM5.5 6.90625C6.62183 6.90625 7.53125 5.99683 7.53125 4.875C7.53125 3.75317 6.62183 2.84375 5.5 2.84375C4.37817 2.84375 3.46875 3.75317 3.46875 4.875C3.46875 5.99683 4.37817 6.90625 5.5 6.90625Z" fill="white" />
@@ -409,6 +410,7 @@
                                     {{$user->town}}@if($user->town), {{$user->county}}@endif
                                 @endif
                             </p>
+                            @endif
 
                             <a href="{{route('transporter.profile')}}" class="whitedit_btn">Edit profile</a>
                         </div>
