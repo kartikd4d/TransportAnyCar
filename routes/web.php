@@ -70,8 +70,7 @@ Route::group(['as' => 'front.'], function () {
         Route::get('payment-confirm', 'PaymentController@paymentConfirm')->name('payment_confirm');
         Route::post('quote-change-status', 'QuotesController@quoteChangeStatus')->name('quote_change_status');
         Route::post('notification-status', 'DashboardController@notificationStatus')->name('notification_status');
-
-
+        Route::get('download-vat-receipt', 'DashboardController@downloadVatReceipt')->name('download_vat_receipt');
         Route::get('/message/history/{id}', 'MessageController@getChatHistory')->name('message.history');
         Route::post('/message/store/{id}', 'MessageController@store')->name('message.store');
         Route::get('message/chat_list', 'MessageController@getChatList')->name('message.chat_list');

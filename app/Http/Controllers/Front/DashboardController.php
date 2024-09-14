@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use PDF;
 
 class DashboardController extends WebController
 {
@@ -568,5 +569,34 @@ class DashboardController extends WebController
             ])->update(['seen' => 0]);
         }
         return response()->json(['success' => true,]);
+    }
+
+    public function downloadVatReceipt(Request $request)  {
+        $user_data = Auth::guard('web')->user();
+        $total_amount = $request->input('total');
+        $tax_rate = 0.20; // 20%
+        $tax_amount = $total_amount * $tax_rate; 
+        $subtotal_amount = $total_amount - $tax_amount;
+        $random_number = str_pad(rand(0, 999999999), 9, '0', STR_PAD_LEFT);
+        $van_number = substr($random_number, 0, 3) . ' ' . substr($random_number, 3, 4) . ' ' . substr($random_number, 7, 2);
+
+        $data = [
+            'invoice_number' => 'INV'.$user_data->id,
+            'payment_date' => $request->input('payment_date'),
+            'due' => 'On Receipt',
+            'subtotal' => $subtotal_amount,
+            'tax' => $tax_amount,
+            'total' => $total_amount,
+            'username' => $user_data->username,
+            'user_email' => $user_data->email,
+            'description' => 'Transport delivery for '.$request->input('vehicle_name'),
+            'rate' => $subtotal_amount,
+            'qty' => 1,
+            'amount' => $subtotal_amount,
+            'van_number' => $van_number,
+        ];
+        $pdf = PDF::loadView('pdf.vat_receipt', $data);
+        return $pdf->download('vat_receipt.pdf');
+    
     }
 }
