@@ -5182,6 +5182,13 @@ button.swal2-confirm.swal2-styled:focus {
   overflow: hidden !important;
 }
 
+/* start 16-09-2024 */
+
+.drop_active,
+.drop_active body {
+    overflow: initial !important;
+}
+
 
 
 
