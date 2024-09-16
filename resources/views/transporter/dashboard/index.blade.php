@@ -198,13 +198,6 @@
                 box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
             }
 
-/* start 16-09-2024 */
-
-.drop_active,
-.drop_active body {
-    overflow: initial !important;
-}
-
 .view_btn {
     padding: 6px 15px;
     font-size: 12px;

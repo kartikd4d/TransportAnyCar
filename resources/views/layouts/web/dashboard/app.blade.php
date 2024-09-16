@@ -69,12 +69,14 @@
           $('#dropdownClose').click(function() {
             $('.dropdown-menu').hide();
             $('html').removeClass("drop_active");
+            $('body').removeClass('notification-scroll');
           });
         });
         $(document).ready(function() {
           $('#dropdownCrossClose').click(function() {
             $('.dropdown-menu').hide();
             $('html').removeClass("drop_active");
+            $('body').removeClass('notification-scroll');
           });
         });
 
@@ -122,7 +124,7 @@
       $('.nav-toggle').click(function() {
         $('.dropdown-menu').hide();            
       });
-      
+
       $(document).ready(function() {
           $('#dropdownClose').click(function() {
             $('.dropdown-menu').hide();
