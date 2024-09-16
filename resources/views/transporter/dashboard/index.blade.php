@@ -198,11 +198,38 @@
                 box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
             }
 
+/* start 16-09-2024 */
+
+.drop_active,
+.drop_active body {
+    overflow: initial !important;
+}
+
+.view_btn {
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 7px;
+    white-space: nowrap;
+    background: #52d017 !important;
+    color: #fff !important;
+}
+ @media (max-width: 1600px) { 
+
+.job_bx h2 {
+    font-size: 18px;
+}
+}
+
+/* end 16-09-2024 */
+
         @media(max-width: 1400px){
             .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
             .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b{
                 font-size: 14px;
                 margin-bottom: 2px;
+            }
+            .job_bx h2 {
+                font-size: 16px;
             }
         }
 
@@ -261,7 +288,7 @@
             height: auto;
         }
         ul .deshbord-job-listing .list_img p {
-            top: 39px;
+            top: 33px;
             transform: translateY(-50%);
         }
         ul .deshbord-job-listing .list_detail {

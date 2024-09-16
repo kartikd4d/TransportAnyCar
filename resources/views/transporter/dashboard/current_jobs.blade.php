@@ -140,14 +140,14 @@
 
 
         @media screen and (min-device-width: 1400px) and (max-device-width: 1600px) { 
-            .admin_job_bx .tab-content .deshbord-job-listing .list_img p {
-                top: 50%;
-                transform: translateY(-50%);
-            }
             .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
                 width: 100%;
                 height: 66px;
             }
+            .job_list_desh_mobile .list_img span {
+                font-size: 8px;
+            }
+            
         }
 
         @media(max-width: 1400px){

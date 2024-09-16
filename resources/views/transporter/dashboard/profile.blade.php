@@ -207,6 +207,45 @@ div#spam-banner {
     display:none; 
 }
 
+
+
+/* start 16-09-2024 */
+
+@media screen and (min-width: 768px) and (max-width: 1100px) {
+.admin-profile-box .col-lg-8 {
+    flex: auto;
+    max-width: 100%;
+}
+.wd-profile-form form#form_account {padding-left: 33.33%;}
+.wd-admin-profile {
+    max-width: 33.333333%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 15px;
+}
+.admin-profile-box a.logout_txt.mob_view {
+    display: block;
+}
+.admin-profile-box a.logout_txt.desk_view {
+    display: none;
+}
+
+
+
+}
+
+/* end 16-09-2024 */
+
+
+
+
+
+
+
+
+
+
 @media(max-width: 1199px){
     .document-list {
         display: flex;
@@ -227,6 +266,14 @@ div#spam-banner {
 }
 @media(max-width: 991px){
     .document-list {margin-bottom: 15px !important;  }
+
+
+/* start 16-09-2024 */
+    .wd-profile-form .form-group span {
+      width: 100%;
+    }
+/* end 16-09-2024 */
+
 }
 
 
@@ -269,6 +316,8 @@ div#spam-banner {
 #passwordIcon {
     top: 16px;
 }
+
+
 
 }
 
@@ -686,9 +735,9 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment2" checked>
-                                                        <label for="payment2"></label>
-                                                        <span>Bank Transfer</span>
+                                                        <input type="checkbox" id="payment5" checked>
+                                                        <label for="payment5"></label>
+                                                        <span>Cheque</span>
                                                     </div>
                                                 </li>
 
@@ -710,9 +759,9 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment5" checked>
-                                                        <label for="payment5"></label>
-                                                        <span>Cheque</span>
+                                                        <input type="checkbox" id="payment2" checked>
+                                                        <label for="payment2"></label>
+                                                        <span>Bank Transfer</span>
                                                     </div>
                                                 </li>
                                             </ul>

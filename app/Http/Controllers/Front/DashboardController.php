@@ -577,9 +577,6 @@ class DashboardController extends WebController
         $tax_rate = 0.20; // 20%
         $tax_amount = $total_amount * $tax_rate; 
         $subtotal_amount = $total_amount - $tax_amount;
-        $random_number = str_pad(rand(0, 999999999), 9, '0', STR_PAD_LEFT);
-        $van_number = substr($random_number, 0, 3) . ' ' . substr($random_number, 3, 4) . ' ' . substr($random_number, 7, 2);
-
         $data = [
             'invoice_number' => 'INV'.$user_data->id,
             'payment_date' => $request->input('payment_date'),
@@ -593,7 +590,7 @@ class DashboardController extends WebController
             'rate' => $subtotal_amount,
             'qty' => 1,
             'amount' => $subtotal_amount,
-            'van_number' => $van_number,
+            'van_number' => '458 2533 76',
         ];
         $pdf = PDF::loadView('pdf.vat_receipt', $data);
         return $pdf->download('vat_receipt.pdf');
