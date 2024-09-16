@@ -3053,6 +3053,10 @@ a.wd-leave-btn{
   background: #52D017;
   margin: 0 4px 2px 0;
 }
+.wd-quote-msg .wd-transport-lft span{
+  bottom: auto;
+  top: 34px;
+}
 .wd-transport-txt > div{
   display: flex;
   align-items: center;
