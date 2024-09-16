@@ -5186,7 +5186,7 @@ button.swal2-confirm.swal2-styled:focus {
 
 .drop_active,
 .drop_active body {
-    overflow: initial !important;
+    overflow: initial;
 }
 
 
