@@ -63,7 +63,7 @@
                 <td colspan="1" style="padding: 16px;">
                     <p style="font-weight: 700; font-size: 20px; color: #222; margin-bottom: 10px;">Payment Info</p>
                     <p style="font-weight: 700; color: #222;">OTHER</p>
-                    <p style="color: #5E6470;">VAN NO: {{$van_number}}</p>
+                    <p style="color: #5E6470;">VAT NO: {{$van_number}}</p>
                 </td>
                 <td colspan="2" style="padding: 0 16px;">
                     <table style="width:100%; font-size: 14px; border-spacing: 0;">
