@@ -120,6 +120,9 @@
 .active_job_mobile .quote_grp_btns {
     padding: 15px 0 15px;
 }
+.job-list-img .job-list-img-sec img {
+    object-fit: cover;
+}
 
 
 }
