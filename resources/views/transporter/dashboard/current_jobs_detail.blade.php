@@ -352,7 +352,7 @@
                         <b>{{ optional($quotation_detail)->delivery_email ?? 'Waiting for details' }}</b>
                     </div>
                     <div class="collection_list">
-                        <span>Drop address:</span>
+                        <span>Drop off address:</span>
                         @if(optional($quotation_detail)->delivery_address)
                             <b>{{ $quotation_detail->delivery_address }}</b>
                         @else
