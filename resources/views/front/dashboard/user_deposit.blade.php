@@ -51,6 +51,9 @@
     display: none;
 }
 
+.wd-deposit-area tfoot tr td:first-child{
+        gap: 0 !important;
+}
 
 @media(max-width: 1199px){
 .col-md-8.left_section, .deposit-area-secound-row .col-lg-8 {

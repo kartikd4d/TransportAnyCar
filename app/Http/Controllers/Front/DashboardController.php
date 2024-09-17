@@ -575,8 +575,8 @@ class DashboardController extends WebController
         $user_data = Auth::guard('web')->user();
         $total_amount = $request->input('total');
         $tax_rate = 0.20; // 20%
-        $tax_amount = $total_amount * $tax_rate; 
-        $subtotal_amount = $total_amount - $tax_amount;
+        $tax_amount = number_format($total_amount * $tax_rate, 2); 
+        $subtotal_amount = number_format($total_amount - $tax_amount, 2);
         $data = [
             'invoice_number' => 'INV'.$user_data->id,
             'payment_date' => $request->input('payment_date'),

@@ -710,14 +710,14 @@ div#spam-banner {
                                                 <li style="display:none">
                                                     <div class="form-group">
                                                         <input type="checkbox" id="check2" data-email-type="job_alert" {{ $user->job_email_preference == 1 ? 'checked' : '' }}>
-                                                        <label for="check2"><span>Email job alerts</span></label>
+                                                        <label for="check2"><span>Email Job Alerts</span></label>
                                                     </div>
                                                 </li>
 
                                                 <li>
                                                     <div class="form-group">
                                                         <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
-                                                        <label for="check3"><span>Outbid alerts</span></label>
+                                                        <label for="check3"><span>Outbid Alerts</span></label>
                                                     </div>
                                                 </li>
                                             </ul>

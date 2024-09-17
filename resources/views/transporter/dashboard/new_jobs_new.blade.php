@@ -188,7 +188,9 @@ color: #0356D6;
 
 /* start 16-09-2024 */
 
-
+.jobserch_mob li span.sub_color {
+    margin-left: 4px;
+}
 .job-data {
     margin-left: 0px;
     margin-bottom: 8px;

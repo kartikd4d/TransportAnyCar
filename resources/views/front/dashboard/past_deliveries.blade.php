@@ -1,20 +1,45 @@
 @extends('layouts.web.dashboard.app')
 
 @section('head_css')
-<style>
-    @media(max-width: 580px){
-    .wd-active-job .container-job {
-       padding-right: 20px !important;
-    }
 
-
-
-    
-}
-    </style>
 @endsection
 
 @section('content')
+
+<style>
+
+@media(max-width: 1400px){
+.wd-quote-box2 {
+    width: 100%;
+}
+
+}
+
+@media(max-width: 580px){
+.accepted_quotes_row  .wd-quote-lft {
+    column-gap: 15px;
+}
+
+.accepted_quotes_row .wd-quote-lft {
+    display: flex;
+    flex-wrap: wrap;
+}
+.accepted_quotes_row .wd-quote-lft .list_detail {
+    width: 30%;
+}
+.new_dev_delivery .accepted_quotes_row .wd-quote-box.accepted_quotes_new .wd-quote-lft {
+    display: grid;
+}
+}
+
+@media(max-width: 380px){
+.accepted_quotes_row .wd-quote-lft .list_detail {
+    width: 29%;
+}
+}
+
+</style>
+
     @include('layouts.web.dashboard.header')
     <section class="admin_del wd-active-job">
         <div class="container-job" style="padding-right: 20px;">

@@ -56,11 +56,11 @@ input[type=number]::-webkit-inner-spin-button {
 .proactive_scroll{
   overflow: hidden;
 }
-.drop_active, .drop_active body {
+/*.drop_active, .drop_active body {
     overflow: hidden;
     touch-action: none;
     -ms-touch-action: none;
-}
+}*/
 
 /* Admin flow css */
 #page-content-wrapper {
@@ -5611,6 +5611,9 @@ body{
 }
 
 
+g.highcharts-input-group {
+    display: none !important;
+}
 
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) { 
