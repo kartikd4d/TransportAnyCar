@@ -92,6 +92,12 @@
     margin-top: 30px;
 }
 
+@media screen and (min-device-width: 1401px) and (max-device-width: 1800px) { 
+    .collection_list span {
+        width: 16%;
+    }
+}
+
 @media(max-width: 1400px){
 .collection_list span {
     width: 20%;
