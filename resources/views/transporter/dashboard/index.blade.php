@@ -1248,114 +1248,16 @@
     </script>
 
     <script>
-        // Highcharts.getJSON('{{route("transporter.total_earning")}}', function(rawData) {
-        //     // Create the chart
-        //     //console.log(data)
-        //     var data=[];
-        //     if (rawData.length > 0) {
-        //         data = rawData.map(function(point) {
-        //             return [point[0], parseFloat(point[1])];
-        //         });
-        //     }
-        //     var chart =  Highcharts.stockChart('container', {
-        //         rangeSelector: {
-        //             inputEnabled: true,
-        //             allButtonsEnabled: true,
-        //             buttons: [{
-        //                 type: 'day',
-        //                 count: 1,
-        //                 text: 'Day',
-        //                 dataGrouping: {
-        //                     forced: false,
-        //                     units: [
-        //                         ['hour', [1]]
-        //                     ]
-        //                 }
-        //             }, {
-        //                 type: 'week',
-        //                 count: 1,
-        //                 text: 'Week',
-        //                 dataGrouping: {
-        //                     forced: true,
-        //                     units: [
-        //                         ['day', [1]]
-        //                     ]
-        //                 }
-        //             }, {
-        //                 type: 'year',
-        //                 text: 'Year',
-        //                 count: 1,
-        //                 dataGrouping: {
-        //                     forced: true,
-        //                     units: [
-        //                         ['month', [1]]
-        //                     ]
-        //                 }
-        //             },
-        //                 {
-        //                     type: 'all',
-        //                     count: 1,
-        //                     text: 'All'
-        //                 }],
-        //             buttonTheme: {
-        //                 width: 60,
-        //             },
-        //             selected: 3,
-        //         },
-        //         xAxis: {
-        //             type: 'datetime',
-        //             labels: {
-        //                 format: '{value:%d}'
-        //             }
-        //         },
-        //         yAxis: {
-        //             type: 'logarithmic',
-        //             minorTickInterval: 0.1,
-        //             accessibility: {
-        //                 rangeDescription: 'Range: 0.1 to 1000'
-        //             },
-        //             opposite: false
-        //         },
-        //         navigator: {
-        //             enabled: false,
-        //         },
-        //         tooltip: {
-        //             xDateFormat: '%Y-%m-%d',
-        //             headerFormat: '<b>{series.name}</b><br />',
-        //             pointFormat: 'x = {point.x:%Y-%m-%d}, y = {point.y}'
-        //         },
-        //         series: [{
-        //             data: data,
-        //         }]
-        //     });
-        // });
         Highcharts.getJSON('{{route("transporter.total_earning")}}', function(rawData) {
-            var data = [];
-            var today = new Date();
-            var todayTimestamp = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-
+            // Create the chart
+            //console.log(data)
+            var data=[];
             if (rawData.length > 0) {
                 data = rawData.map(function(point) {
                     return [point[0], parseFloat(point[1])];
                 });
-
-                // Check if there is data for today
-                var todayDataExists = data.some(function(point) {
-                    return point[0] === todayTimestamp;
-                });
-
-                // If no data exists for today, add today's date with value 0
-                if (!todayDataExists) {
-                    data.push([todayTimestamp, 0]);
-                }
-            } else {
-                data.push([todayTimestamp, 0]);
             }
-            data.sort(function(a, b) {
-                return a[0] - b[0];
-            });
-
-            var chart = Highcharts.stockChart('container', {
+            var chart =  Highcharts.stockChart('container', {
                 rangeSelector: {
                     inputEnabled: true,
                     allButtonsEnabled: true,
@@ -1365,7 +1267,9 @@
                         text: 'Day',
                         dataGrouping: {
                             forced: false,
-                            units: [['day', [1]]]
+                            units: [
+                                ['hour', [1]]
+                            ]
                         }
                     }, {
                         type: 'week',
@@ -1373,21 +1277,26 @@
                         text: 'Week',
                         dataGrouping: {
                             forced: true,
-                            units: [['day', [1]]]
+                            units: [
+                                ['day', [1]]
+                            ]
                         }
                     }, {
                         type: 'year',
-                        count: 1,
                         text: 'Year',
+                        count: 1,
                         dataGrouping: {
                             forced: true,
-                            units: [['month', [1]]]
+                            units: [
+                                ['month', [1]]
+                            ]
                         }
-                    }, {
-                        type: 'all',
-                        count: 1,
-                        text: 'All'
-                    }],
+                    },
+                        {
+                            type: 'all',
+                            count: 1,
+                            text: 'All'
+                        }],
                     buttonTheme: {
                         width: 60,
                     },
@@ -1396,42 +1305,16 @@
                 xAxis: {
                     type: 'datetime',
                     labels: {
-                        formatter: function() {
-                            var selectedRange = this.chart.rangeSelector ? this.chart.rangeSelector.selected : 3; // Default to 'All' if undefined
-                            if (selectedRange === 0) {
-                                // Day: Show full date (YYYY-MM-DD)
-                                return Highcharts.dateFormat('%Y-%m-%d', this.value);
-                            } else if (selectedRange === 2 || selectedRange === 3) {
-                                // Year or All: Show month and year (e.g., Jan 2024)
-                                return Highcharts.dateFormat('%b %Y', this.value);
-                            } else {
-                                // Default for Week
-                                return Highcharts.dateFormat('%Y-%m-%d', this.value);
-                            }
-                        },
-                        rotation: -45,
-                        step: 1,
-                        style: {
-                            fontSize: '10px'
-                        }
-                    },
-                    tickInterval: 24 * 3600 * 1000, // Default tick interval to 1 day
+                        format: '{value:%d}'
+                    }
                 },
                 yAxis: {
-                    type: 'linear',
-                    min: 0, // Set minimum to 0
-                    tickInterval: 500, // Set the base tick interval to 500
-                    labels: {
-                        formatter: function () {
-                            var value = this.value;
-                            if (value >= 1000) {
-                                return Highcharts.numberFormat(value / 1000, 1) + 'k';
-                            }
-                            return Highcharts.numberFormat(value, 0); // Show full number for values below 1000
-                        }
+                    type: 'logarithmic',
+                    minorTickInterval: 0.1,
+                    accessibility: {
+                        rangeDescription: 'Range: 0.1 to 1000'
                     },
-                    tickPositions: [0, 500, 1000, 1500, 2000], // Define specific tick positions
-                    opposite: false,
+                    opposite: false
                 },
                 navigator: {
                     enabled: false,
@@ -1439,33 +1322,150 @@
                 tooltip: {
                     xDateFormat: '%Y-%m-%d',
                     headerFormat: '<b>{series.name}</b><br />',
-                    pointFormat: 'Date: {point.x:%Y-%m-%d}, Amount: {point.y:.2f}' // Show full amount in tooltip
+                    pointFormat: 'x = {point.x:%Y-%m-%d}, y = {point.y}'
                 },
                 series: [{
                     data: data,
-                    name: 'Earnings',
-                    tooltip: {
-                        valuePrefix: '$', // Add currency prefix
-                        valueDecimals: 2 // Show 2 decimal places for amounts
-                    }
-                }],
-                chart: {
-                    events: {
-                        load: function() {
-                            var chart = this;
-                            var selectedRange = chart.rangeSelector.selected;
-
-                            // Adjust tick interval dynamically based on selected range
-                            chart.xAxis[0].update({
-                                tickInterval: (selectedRange === 2 || selectedRange === 3) 
-                                    ? 30 * 24 * 3600 * 1000 // One month in milliseconds
-                                    : 24 * 3600 * 1000 // One day in milliseconds
-                            });
-                        }
-                    }
-                }
+                }]
             });
         });
+        // Highcharts.getJSON('{{route("transporter.total_earning")}}', function(rawData) {
+        //     var data = [];
+        //     var today = new Date();
+        //     var todayTimestamp = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+
+        //     if (rawData.length > 0) {
+        //         data = rawData.map(function(point) {
+        //             return [point[0], parseFloat(point[1])];
+        //         });
+
+        //         // Check if there is data for today
+        //         var todayDataExists = data.some(function(point) {
+        //             return point[0] === todayTimestamp;
+        //         });
+
+        //         // If no data exists for today, add today's date with value 0
+        //         if (!todayDataExists) {
+        //             data.push([todayTimestamp, 0]);
+        //         }
+        //     } else {
+        //         data.push([todayTimestamp, 0]);
+        //     }
+        //     data.sort(function(a, b) {
+        //         return a[0] - b[0];
+        //     });
+
+        //     var chart = Highcharts.stockChart('container', {
+        //         rangeSelector: {
+        //             inputEnabled: true,
+        //             allButtonsEnabled: true,
+        //             buttons: [{
+        //                 type: 'day',
+        //                 count: 1,
+        //                 text: 'Day',
+        //                 dataGrouping: {
+        //                     forced: false,
+        //                     units: [['day', [1]]]
+        //                 }
+        //             }, {
+        //                 type: 'week',
+        //                 count: 1,
+        //                 text: 'Week',
+        //                 dataGrouping: {
+        //                     forced: true,
+        //                     units: [['day', [1]]]
+        //                 }
+        //             }, {
+        //                 type: 'year',
+        //                 count: 1,
+        //                 text: 'Year',
+        //                 dataGrouping: {
+        //                     forced: true,
+        //                     units: [['month', [1]]]
+        //                 }
+        //             }, {
+        //                 type: 'all',
+        //                 count: 1,
+        //                 text: 'All'
+        //             }],
+        //             buttonTheme: {
+        //                 width: 60,
+        //             },
+        //             selected: 3,
+        //         },
+        //         xAxis: {
+        //             type: 'datetime',
+        //             labels: {
+        //                 formatter: function() {
+        //                     var selectedRange = this.chart.rangeSelector ? this.chart.rangeSelector.selected : 3; // Default to 'All' if undefined
+        //                     if (selectedRange === 0) {
+        //                         // Day: Show full date (YYYY-MM-DD)
+        //                         return Highcharts.dateFormat('%Y-%m-%d', this.value);
+        //                     } else if (selectedRange === 2 || selectedRange === 3) {
+        //                         // Year or All: Show month and year (e.g., Jan 2024)
+        //                         return Highcharts.dateFormat('%b %Y', this.value);
+        //                     } else {
+        //                         // Default for Week
+        //                         return Highcharts.dateFormat('%Y-%m-%d', this.value);
+        //                     }
+        //                 },
+        //                 rotation: -45,
+        //                 step: 1,
+        //                 style: {
+        //                     fontSize: '10px'
+        //                 }
+        //             },
+        //             tickInterval: 24 * 3600 * 1000, // Default tick interval to 1 day
+        //         },
+        //         yAxis: {
+        //             type: 'linear',
+        //             min: 0, // Set minimum to 0
+        //             tickInterval: 500, // Set the base tick interval to 500
+        //             labels: {
+        //                 formatter: function () {
+        //                     var value = this.value;
+        //                     if (value >= 1000) {
+        //                         return Highcharts.numberFormat(value / 1000, 1) + 'k';
+        //                     }
+        //                     return Highcharts.numberFormat(value, 0); // Show full number for values below 1000
+        //                 }
+        //             },
+        //             tickPositions: [0, 500, 1000, 1500, 2000], // Define specific tick positions
+        //             opposite: false,
+        //         },
+        //         navigator: {
+        //             enabled: false,
+        //         },
+        //         tooltip: {
+        //             xDateFormat: '%Y-%m-%d',
+        //             headerFormat: '<b>{series.name}</b><br />',
+        //             pointFormat: 'Date: {point.x:%Y-%m-%d}, Amount: {point.y:.2f}' // Show full amount in tooltip
+        //         },
+        //         series: [{
+        //             data: data,
+        //             name: 'Earnings',
+        //             tooltip: {
+        //                 valuePrefix: '$', // Add currency prefix
+        //                 valueDecimals: 2 // Show 2 decimal places for amounts
+        //             }
+        //         }],
+        //         chart: {
+        //             events: {
+        //                 load: function() {
+        //                     var chart = this;
+        //                     var selectedRange = chart.rangeSelector.selected;
+
+        //                     // Adjust tick interval dynamically based on selected range
+        //                     chart.xAxis[0].update({
+        //                         tickInterval: (selectedRange === 2 || selectedRange === 3) 
+        //                             ? 30 * 24 * 3600 * 1000 // One month in milliseconds
+        //                             : 24 * 3600 * 1000 // One day in milliseconds
+        //                     });
+        //                 }
+        //             }
+        //         }
+        //     });
+        // });
 
     $(document).ready(function(){
         $('#alert-message').show();
