@@ -243,9 +243,6 @@ div#spam-banner {
 
 
 
-
-
-
 @media(max-width: 1199px){
     .document-list {
         display: flex;
@@ -268,6 +265,14 @@ div#spam-banner {
     .requied_sec_row .document label.addmore_btn {
         flex-wrap: wrap;
         font-size: 14px;
+    }
+
+    .info_sec_details {
+        left: auto;
+        right: -48px;
+    }
+    .info_sec_details:before {
+        left: 77%;
     }
 
 }
@@ -354,7 +359,21 @@ div#spam-banner {
     font-size: 15px;
 }
 
+
 }
+
+@media (max-width: 420px) {
+    .info_sec_details {
+        transform: translateX(-68.5%);
+    }
+    .info_sec_details:before {
+        right: 114px;
+    }
+}
+
+
+
+
 @media (max-width: 400px) {
     .info_sec_details {
     left: 0;
@@ -493,7 +512,7 @@ div#spam-banner {
                                     <div class="requied_sec" style="{{ $user->is_status == 'approved' ? 'display:none' : '' }}"> 
                                         <h2>Required Documents 
                                         <div class="info_sec">
-                                            <span>
+                                            <span class="info-popup">
                                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> 
                                                 <circle cx="11.5" cy="11.5" r="11.5" fill="#D9D9D9"/>
                                                 <path d="M9.89286 18V9.26786H13.0179V18H9.89286ZM11.4464 8.25C10.9821 8.25 10.5952 8.09524 10.2857 7.78571C9.97619 7.46428 9.82143 7.06548 9.82143 6.58928C9.82143 6.125 9.97619 5.73214 10.2857 5.41071C10.5952 5.08928 10.9821 4.92857 11.4464 4.92857C11.9345 4.92857 12.3274 5.08928 12.625 5.41071C12.9345 5.73214 13.0893 6.125 13.0893 6.58928C13.0893 7.06548 12.9345 7.46428 12.625 7.78571C12.3274 8.09524 11.9345 8.25 11.4464 8.25Z" fill="#FDFFFA"/></svg>
@@ -1073,6 +1092,24 @@ div#spam-banner {
         });
 
         $('body').addClass('account-scroll');
+
+        $('.info-popup').on('click', function(e) {
+            e.stopPropagation();
+            var $infoSecDetails = $('.info_sec_details');
+            var $this = $(this);
+            $this.toggleClass('active');
+            if ($this.hasClass('active')) {
+                $infoSecDetails.show();
+            } else {
+                $infoSecDetails.hide();
+            }
+        });
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.info-popup').length) { 
+                $('.info-popup').removeClass('active');
+                $('.info_sec_details').hide();
+            }
+        });
 
     });
 
