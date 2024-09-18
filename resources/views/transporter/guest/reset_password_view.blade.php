@@ -67,7 +67,7 @@
     text-decoration: none;
     text-underline-offset: 5px;
     background: #52D017;
-    font-size: 22px;
+    font-size: 24px;
     color: #fff;
     padding: 8px 47px 10px;
     border-radius: 33px;
@@ -75,9 +75,12 @@
     align-items: center;
     justify-content: center;
     line-height: normal;
+    width: 220px;
     
 }
-
+.reset_psss #kt_login_signin_submit svg {
+    margin-left: 10px;
+}
 @media(max-width: 767px){
 .join_network_main .banner_newtext {
     font-size: 40px !important;
@@ -119,8 +122,11 @@
                         </div>
                         <div class="btngroup">
                         <div class="kt-login__actions reset_psss">
-                            <button id="kt_login_signin_submit"
-                                    class="btn btn-pill kt-login__btn-primary">{{__('Reset Password')}}</button>
+                            <!-- <button id="kt_login_signin_submit" class="btn btn-pill kt-login__btn-primary">{{__('Reset Password')}}</button> -->
+                            <button id="kt_login_signin_submit" class="btn btn-pill kt-login__btn-primary">Save <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.01562 1.80859L7.70527 8.49824L1.01562 15.1879" stroke="white" stroke-width="2.00689" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </div>
                         </div>
                     </div>
