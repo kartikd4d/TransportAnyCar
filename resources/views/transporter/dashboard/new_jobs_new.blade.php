@@ -1297,6 +1297,7 @@ small.expring_tag {
     flex-wrap: wrap;
     position: relative;
     padding-bottom: 11px;
+    width: 100%;
 }
 .pop_new_btn .jobsrch_right_box {
     position: absolute;
