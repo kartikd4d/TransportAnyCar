@@ -1259,11 +1259,11 @@ small.new_tag {
     position: absolute;
     background: #52d017;
     color: #fff;
-    right: -48px;
+    right: -56px;
     padding: 3px 32px;
     font-size: 13px;
     transform: rotate(50deg);
-    top: -11px;
+    top: -10px;
 }
 small.expring_tag {
     position: absolute;
@@ -1452,9 +1452,10 @@ small.expring_tag {
                                                     $nowInLondon = now('Europe/London');
                                                     $createdAtInLondon = $quote->created_at->timezone('Europe/London');
                                                 @endphp
+                                                
                                                 @if($createdAtInLondon->diffInDays($nowInLondon) >= 8 && $createdAtInLondon->diffInDays($nowInLondon) <= 10)
                                                     <small class="expring_tag">Expiring</small>
-                                                @endif                                         
+                                                 @endif 
                                                 <ul class="jobsrch_info_list car-row" data-car-id="{{$quote->id}}">
                                                     <li class="job_new_grid_img">
                                                         <div class="jobsrch_top_box position-relative">

@@ -5615,6 +5615,13 @@ g.highcharts-input-group {
     display: none !important;
 }
 
+.jobserch_mob li span.sub_color span {
+    margin-left: 4px;
+}
+
+ 
+
+
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) { 
   .job_bx h2 {

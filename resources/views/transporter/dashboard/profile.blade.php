@@ -262,6 +262,13 @@ div#spam-banner {
         font-size: 14px;
         width: 68%;
     }
+    .requied_sec_row .document {
+        padding: 10px 8px;
+    }
+    .requied_sec_row .document label.addmore_btn {
+        flex-wrap: wrap;
+        font-size: 14px;
+    }
 
 }
 @media(max-width: 991px){
@@ -273,6 +280,12 @@ div#spam-banner {
       width: 100%;
     }
 /* end 16-09-2024 */
+
+
+.wd-profile-form .form-group label.addmore_btn span {
+    width: auto;
+}
+
 
 }
 
@@ -337,7 +350,9 @@ div#spam-banner {
 .info_sec_details p {
     color: #ababab;
 }
-
+.requied_sec_row .document label.addmore_btn {
+    font-size: 15px;
+}
 
 }
 @media (max-width: 400px) {
