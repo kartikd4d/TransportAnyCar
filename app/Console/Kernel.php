@@ -18,6 +18,8 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\SendCollectionDeliveryReminder::class,
         \App\Console\Commands\SendQuotesSummaryEmail::class,
         \App\Console\Commands\CheckJobStatus::class,
+        \App\Console\Commands\SendFeedbackReminder::class,
+
     ];
 
 
