@@ -301,6 +301,13 @@ small.expring_tag {
     top: -11px;
 }
 
+.content_container {
+    padding: 95px 0 0px;
+}
+#page-content-wrapper {
+    padding-bottom: 20px;
+}
+
 
 @media (min-width: 579px) {
 

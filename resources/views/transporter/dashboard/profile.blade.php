@@ -279,6 +279,10 @@ div#spam-banner {
 @media(max-width: 991px){
     .document-list {margin-bottom: 15px !important;  }
 
+    .wd-admin-profile .wd-profl-botm {
+        flex-wrap: wrap;
+    }
+
 
 /* start 16-09-2024 */
     .wd-profile-form .form-group span {
