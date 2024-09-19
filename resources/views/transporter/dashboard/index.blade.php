@@ -1427,7 +1427,7 @@
                         },
                         shifts: {
                             x: -30,
-                            y: 25
+                            y: -30
                         },
                         defaultTheme: false
                     }
