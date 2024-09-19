@@ -330,7 +330,7 @@ $currentRoute = request()->route()->getName();
 
          // Check if the current URL contains 'dashboard' or 'profile'
         //if (window.location.href.indexOf('dashboard') > -1 || window.location.href.indexOf('profile') > -1) {
-            //$('#importantNoticeModal').modal('show');
+            $('#importantNoticeModal').modal('show');
         //}
     });
     // $('.maintaince_mode').on('click',function(e) {
