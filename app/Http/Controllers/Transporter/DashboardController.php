@@ -118,22 +118,65 @@ class DashboardController extends WebController
         return view('transporter.dashboard.index', $params);
     }
 
+    // public function TotalEarning()
+    // {
+    //     $user = Auth::guard('transporter')->user();
+
+    //     $accept_quote = QuoteByTransporter::where('status', 'accept')->where('user_id', $user->id)->get();
+    //     $user_quote = UserQuote::whereIn('id', $accept_quote->pluck('user_quote_id'))->where('status', 'completed')->get();
+    //     $earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote->pluck('id'))->where('user_id',$user->id)->select(DB::raw('date(created_at) as orderdate'), DB::raw('sum(transporter_payment) as grand_total1'))->groupBy('orderdate')->get();
+    //     $maindata = [];
+    //     if (count($earnings) > 0) {
+    //         foreach ($earnings as $earning) {
+    //             $detail = [];
+    //             $detail[] = strtotime("+1 day", strtotime($earning->orderdate)) * 1000;
+    //             $detail[] = $earning->grand_total1;
+    //             $maindata[] = $detail;
+    //         }
+    //     }
+    //     return $maindata;
+    // }
+
     public function TotalEarning()
     {
         $user = Auth::guard('transporter')->user();
-
-        $accept_quote = QuoteByTransporter::where('status', 'accept')->where('user_id', $user->id)->get();
-        $user_quote = UserQuote::whereIn('id', $accept_quote->pluck('user_quote_id'))->where('status', 'completed')->get();
-        $earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote->pluck('id'))->where('user_id',$user->id)->select(DB::raw('date(created_at) as orderdate'), DB::raw('sum(transporter_payment) as grand_total1'))->groupBy('orderdate')->get();
-        $maindata = [];
-        if (count($earnings) > 0) {
-            foreach ($earnings as $earning) {
-                $detail = [];
-                $detail[] = strtotime("+1 day", strtotime($earning->orderdate)) * 1000;
-                $detail[] = $earning->grand_total1;
-                $maindata[] = $detail;
+    
+        $accept_quote = QuoteByTransporter::where('status', 'accept')
+            ->where('user_id', $user->id)
+            ->get();
+    
+        $user_quote = UserQuote::whereIn('id', $accept_quote->pluck('user_quote_id'))
+            ->where('status', 'completed')
+            ->get();
+    
+        $earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote->pluck('id'))
+            ->where('user_id', $user->id)
+            ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'), DB::raw('SUM(transporter_payment) as total'))
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+    
+        // Initialize an array for months with zero values
+        $months = [
+            'Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 
+            'May' => 0, 'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 
+            'Sep' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0
+        ];
+    
+        // Populate months with actual data
+        foreach ($earnings as $earning) {
+            $monthName = date('M', strtotime($earning->month . '-01'));
+            if (isset($months[$monthName])) {
+                $months[$monthName] = (float) $earning->total;
             }
         }
+    
+        // Convert to the desired format
+        $maindata = [];
+        foreach ($months as $month => $total) {
+            $maindata[] = [$month, $total];
+        }
+    
         return $maindata;
     }
 
