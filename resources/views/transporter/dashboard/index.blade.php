@@ -840,7 +840,7 @@
     <!-- jQuery (required for Flot) -->
     <!-- Flot core library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot-tooltip/0.8.10/jquery.flot.tooltip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot.tooltip/0.9.0/jquery.flot.tooltip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <!-- Flot additional plugins (optional, if you need them) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.min.js"></script>
@@ -1410,7 +1410,7 @@
                         content: function(label, xval, yval, flotItem) {
                             // Extract the month and value from the rawData
                             var month = rawData[flotItem.datapoint[0]][0]; // Get the month name
-                            var amount = flotItem.datapoint[1].toFixed(2); // Get the value
+                            var amount = Math.floor(flotItem.datapoint[1]); 
                             
                             // Return the tooltip formatted as 'Jul-£400'
                             return month + "-£" + amount;
