@@ -191,6 +191,7 @@
             $(".upload-button").on('click', function() {
                 $(".file-upload").click();
             });
+            $('body').addClass('account-scroll');
         });
 
         $('#check1').on('change', function() {

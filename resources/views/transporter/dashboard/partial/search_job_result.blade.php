@@ -221,7 +221,7 @@ small.expring_tag {
                 @if($quote->created_at->diffInDays(now()) >= 8 && $quote->created_at->diffInDays(now()) <= 10)
                     <small class="expring_tag">Expiring</small>
                 @endif               
-                <ul class="jobsrch_info_list car-row" data-car-id="{{$quote->id}}">
+                <ul class="jobsrch_info_list  car-row" data-car-id="{{$quote->id}}">
                     <li class="job_new_grid_img">
                         <div class="jobsrch_top_box position-relative">
                             @if(is_null($quote->vehicle_make_1) && is_null($quote->vehicle_model_1))
@@ -352,7 +352,7 @@ small.expring_tag {
         </div>
     </div>
 @endif
-<div class="pagination">
+<div class="pagination after_search">
     {{ $quotes->links() }}
 </div>
 @if ($quotes->currentPage() == $quotes->lastPage())

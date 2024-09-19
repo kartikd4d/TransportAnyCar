@@ -10,6 +10,7 @@ use App\QuotationDetail;
 use App\Thread;
 use App\User;
 use App\UserQuote;
+use App\Notification;
 use App\TransactionHistory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use PDF;
 
 class DashboardController extends WebController
 {
@@ -39,7 +41,21 @@ class DashboardController extends WebController
          // save last visit time of transporter
         $user_data->last_visited_at = now();
         $user_data->save();
-        $quotes = UserQuote::where(['user_id' => $user_data->id])->whereNotIn('status', ['completed','cancelled'])->latest()->get();
+
+        // Subquery to get quotes count and lowest bid
+        $subQuery = \DB::table('quote_by_transpoters')
+        ->select('user_quote_id', \DB::raw('COUNT(*) as quotes_count'), \DB::raw('MIN(price) as lowest_bid'))
+        ->groupBy('user_quote_id');
+
+        $quotes = UserQuote::where(['user_id' => $user_data->id])
+        ->whereNotIn('status', ['completed','cancelled'])
+        ->leftJoinSub($subQuery, 'sub', function($join) {
+            $join->on('user_quotes.id', '=', 'sub.user_quote_id');
+        })
+        ->select('user_quotes.*', 'sub.quotes_count', 'sub.lowest_bid')
+        ->latest()
+        ->get();
+
         $quotes_booked = UserQuote::where('user_id', $user_data->id)
         ->where('status', 'completed')
         ->where('is_mark_as_complete', 'no')
@@ -49,6 +65,10 @@ class DashboardController extends WebController
         ->with(['quoteByTransporter' => function ($query) {
             $query->where('status', 'accept');
         }])
+        ->joinSub($subQuery, 'sub', function($join) {
+            $join->on('user_quotes.id', '=', 'sub.user_quote_id');
+        })
+        ->select('user_quotes.*', 'sub.quotes_count', 'sub.lowest_bid')
         ->get();
         return view('front.dashboard.index', [
             'title' => $title,
@@ -265,30 +285,35 @@ class DashboardController extends WebController
         if($id) {
             $user_data = Auth::guard('web')->user();
             $quote_by_transporter_data = QuoteByTransporter::where('id', $id)->first();
-            $delivery_info = QuotationDetail::where('user_quote_id', $quote_by_transporter_data->user_quote_id)->first();
-            if ($delivery_info) {
-                //$quote = QuoteByTransporter::where('user_quote_id', $id)->first();
-                $transporter_detail = User::where('id', $quote_by_transporter_data->user_id)->first();
-                $user_info = UserQuote::where('id', $quote_by_transporter_data->user_quote_id)->first();
-                $transporter_feedback = $this->get_transporter_feedback($transporter_detail->id);
-                $lastVisitedAt = $transporter_detail->last_visited_at->timezone('Europe/London');
-                $formattedLastVisitedAt = $this->formatLastVisitedAt($lastVisitedAt);
-                $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $transporter_detail->created_at)
-                ->setTimezone('Europe/London')
-                ->format('F d, H:i');
-                $result = [
-                    'transporter_detail' => $transporter_detail,
-                    'user_info' => $user_info,
-                    'quote_by_transporter' => $quote_by_transporter_data,
-                    'trans_feedback'=>$transporter_feedback,
-                    'last_visited_at' => $formattedLastVisitedAt,
-                    'formattedDilveryDate'=> $formattedDilveryDate,
-                    'delivery_info' => $delivery_info
-    
-                ];
-                return view('front.dashboard.user_deposit',$result);
-            } else {
-                return redirect()->route('front.dashboard');
+            if ($quote_by_transporter_data) {
+                $delivery_info = QuotationDetail::where('user_quote_id', $quote_by_transporter_data->user_quote_id)->first();
+                if ($delivery_info) {
+                    //$quote = QuoteByTransporter::where('user_quote_id', $id)->first();
+                    $transporter_detail = User::where('id', $quote_by_transporter_data->user_id)->first();
+                    $user_info = UserQuote::where('id', $quote_by_transporter_data->user_quote_id)->first();
+                    $transporter_feedback = $this->get_transporter_feedback($transporter_detail->id);
+                    $lastVisitedAt = $transporter_detail->last_visited_at->timezone('Europe/London');
+                    $formattedLastVisitedAt = $this->formatLastVisitedAt($lastVisitedAt);
+                    $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $transporter_detail->created_at)
+                    ->setTimezone('Europe/London')
+                    ->format('F d, H:i');
+                    $result = [
+                        'transporter_detail' => $transporter_detail,
+                        'user_info' => $user_info,
+                        'quote_by_transporter' => $quote_by_transporter_data,
+                        'trans_feedback'=>$transporter_feedback,
+                        'last_visited_at' => $formattedLastVisitedAt,
+                        'formattedDilveryDate'=> $formattedDilveryDate,
+                        'delivery_info' => $delivery_info
+        
+                    ];
+                    return view('front.dashboard.user_deposit',$result);
+                } else {
+                    return redirect()->route('front.dashboard');
+                }
+            }
+            else {
+                return redirect()->route('front.dashboard');   
             }
         } else {
             return redirect()->route('front.dashboard');
@@ -389,7 +414,7 @@ class DashboardController extends WebController
     public function leaveFeedback($id=null)
     {
         if($id != null){
-            $quote = $id ? QuoteByTransporter::with(['getTransporters', 'quote'])->where('user_quote_id', $id)->first() : null;
+            $quote = $id ? QuoteByTransporter::with(['getTransporters', 'quote'])->where(['id' => $id])->first() : null;
             $user_info = null;
             if ($quote) {
                 $transporter_detail = $quote->getTransporters;
@@ -413,6 +438,7 @@ class DashboardController extends WebController
 
     public function saveFeedbackQuote(Request $request)
     {
+        $user_data = Auth::guard('web')->user();
         // Determine the type of feedback and get the ratings array
         $feedbackType = null;
         $ratings = null;
@@ -443,6 +469,18 @@ class DashboardController extends WebController
                     'professionalism' => $mappedRatings['professionalism'],
                     'comment' => $feedbackComment
                 ]
+            );
+
+            $details = QuoteByTransporter::where('id',$quoteByTransporterId)->first();
+
+            // Call create_notification to notify the user
+            create_notification(
+                $details->user_id, 
+                $user_data->id,
+                $details->user_quote_id,       
+                'New Feedback',
+                'got feedback',  // Message of the notification
+                'feedback',
             );
 
             return response()->json(['status'=>true, 'message' => 'Feedback saved successfully.']);
@@ -513,5 +551,49 @@ class DashboardController extends WebController
         $name = getDashboardRouteName();
         Auth::guard('web')->logout();
         return redirect()->route($name);
+    }
+
+    public function notificationStatus(Request $request)
+    {
+        $user_data = Auth::guard('web')->user();
+        if ($request->type == 'message') {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'reference_id' => $request->quote_id
+            ])->update(['seen' => 0]);
+        } else {
+            Notification::where([
+                'user_id' => $user_data->id,
+                'user_quote_id' => $request->quote_id,
+                'type' => 'quote'
+            ])->update(['seen' => 0]);
+        }
+        return response()->json(['success' => true,]);
+    }
+
+    public function downloadVatReceipt(Request $request)  {
+        $user_data = Auth::guard('web')->user();
+        $total_amount = $request->input('total');
+        $tax_rate = 0.20; // 20%
+        $tax_amount = number_format($total_amount * $tax_rate, 2); 
+        $subtotal_amount = number_format($total_amount - $tax_amount, 2);
+        $data = [
+            'invoice_number' => 'INV'.$user_data->id,
+            'payment_date' => $request->input('payment_date'),
+            'due' => 'On Receipt',
+            'subtotal' => $subtotal_amount,
+            'tax' => $tax_amount,
+            'total' => $total_amount,
+            'username' => $user_data->username,
+            'user_email' => $user_data->email,
+            'description' => 'Transport delivery for '.$request->input('vehicle_name'),
+            'rate' => $subtotal_amount,
+            'qty' => 1,
+            'amount' => $subtotal_amount,
+            'van_number' => '458 2533 76',
+        ];
+        $pdf = PDF::loadView('pdf.vat_receipt', $data);
+        return $pdf->download('vat_receipt.pdf');
+    
     }
 }

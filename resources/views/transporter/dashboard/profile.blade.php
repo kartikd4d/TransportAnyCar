@@ -97,14 +97,6 @@
   width: 45px;
 }
 
-/* Adjust the position of the badge */
-/* .status-badge.pending {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-} */
-
-
 
 /* new css*/
 
@@ -214,6 +206,96 @@ div#spam-banner {
     width: 85%;
     display:none; 
 }
+
+
+
+/* start 16-09-2024 */
+
+@media screen and (min-width: 768px) and (max-width: 1100px) {
+.admin-profile-box .col-lg-8 {
+    flex: auto;
+    max-width: 100%;
+}
+.wd-profile-form form#form_account {padding-left: 33.33%;}
+.wd-admin-profile {
+    max-width: 33.333333%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 15px;
+}
+.admin-profile-box a.logout_txt.mob_view {
+    display: block;
+}
+.admin-profile-box a.logout_txt.desk_view {
+    display: none;
+}
+
+
+
+}
+
+/* end 16-09-2024 */
+
+
+
+
+
+
+
+@media(max-width: 1199px){
+    .document-list {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        justify-content: space-between;    margin-bottom: 0 !important;
+    }
+    .wd-profile-form .form-group a.view-pdf {
+        width: 25%;
+        font-size: 14px;
+        text-align: right;
+    }
+    .wd-profile-form .form-group span {
+        font-size: 14px;
+        width: 68%;
+    }
+    .requied_sec_row .document {
+        padding: 10px 8px;
+    }
+    .requied_sec_row .document label.addmore_btn {
+        flex-wrap: wrap;
+        font-size: 14px;
+    }
+
+    .info_sec_details {
+        left: auto;
+        right: -48px;
+    }
+    .info_sec_details:before {
+        left: 77%;
+    }
+
+}
+@media(max-width: 991px){
+    .document-list {margin-bottom: 15px !important;  }
+
+
+/* start 16-09-2024 */
+    .wd-profile-form .form-group span {
+      width: 100%;
+    }
+/* end 16-09-2024 */
+
+
+.wd-profile-form .form-group label.addmore_btn span {
+    width: auto;
+}
+
+
+}
+
+
+
 @media(max-width: 767px){
 .requied_sec_row {
     width: 100%;
@@ -253,6 +335,8 @@ div#spam-banner {
     top: 16px;
 }
 
+
+
 }
 
 @media(max-width: 580px){
@@ -271,9 +355,25 @@ div#spam-banner {
 .info_sec_details p {
     color: #ababab;
 }
+.requied_sec_row .document label.addmore_btn {
+    font-size: 15px;
+}
 
 
 }
+
+@media (max-width: 420px) {
+    .info_sec_details {
+        transform: translateX(-68.5%);
+    }
+    .info_sec_details:before {
+        right: 114px;
+    }
+}
+
+
+
+
 @media (max-width: 400px) {
     .info_sec_details {
     left: 0;
@@ -412,7 +512,7 @@ div#spam-banner {
                                     <div class="requied_sec" style="{{ $user->is_status == 'approved' ? 'display:none' : '' }}"> 
                                         <h2>Required Documents 
                                         <div class="info_sec">
-                                            <span>
+                                            <span class="info-popup">
                                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> 
                                                 <circle cx="11.5" cy="11.5" r="11.5" fill="#D9D9D9"/>
                                                 <path d="M9.89286 18V9.26786H13.0179V18H9.89286ZM11.4464 8.25C10.9821 8.25 10.5952 8.09524 10.2857 7.78571C9.97619 7.46428 9.82143 7.06548 9.82143 6.58928C9.82143 6.125 9.97619 5.73214 10.2857 5.41071C10.5952 5.08928 10.9821 4.92857 11.4464 4.92857C11.9345 4.92857 12.3274 5.08928 12.625 5.41071C12.9345 5.73214 13.0893 6.125 13.0893 6.58928C13.0893 7.06548 12.9345 7.46428 12.625 7.78571C12.3274 8.09524 11.9345 8.25 11.4464 8.25Z" fill="#FDFFFA"/></svg>
@@ -644,14 +744,14 @@ div#spam-banner {
                                                 <li style="display:none">
                                                     <div class="form-group">
                                                         <input type="checkbox" id="check2" data-email-type="job_alert" {{ $user->job_email_preference == 1 ? 'checked' : '' }}>
-                                                        <label for="check2"><span>Email job alerts</span></label>
+                                                        <label for="check2"><span>Email Job Alerts</span></label>
                                                     </div>
                                                 </li>
 
                                                 <li>
                                                     <div class="form-group">
                                                         <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
-                                                        <label for="check3"><span>Outbid alerts</span></label>
+                                                        <label for="check3"><span>Outbid Alerts</span></label>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -669,9 +769,9 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment2" checked>
-                                                        <label for="payment2"></label>
-                                                        <span>Bank Transfer</span>
+                                                        <input type="checkbox" id="payment5" checked>
+                                                        <label for="payment5"></label>
+                                                        <span>Cheque</span>
                                                     </div>
                                                 </li>
 
@@ -693,9 +793,9 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment5" checked>
-                                                        <label for="payment5"></label>
-                                                        <span>Cheque</span>
+                                                        <input type="checkbox" id="payment2" checked>
+                                                        <label for="payment2"></label>
+                                                        <span>Bank Transfer</span>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -1005,6 +1105,26 @@ div#spam-banner {
 
         $('#check2, #check3').change(function() {
             updateEmailPrefrence.call(this); // Use .call to set the correct context
+        });
+
+        $('body').addClass('account-scroll');
+
+        $('.info-popup').on('click', function(e) {
+            e.stopPropagation();
+            var $infoSecDetails = $('.info_sec_details');
+            var $this = $(this);
+            $this.toggleClass('active');
+            if ($this.hasClass('active')) {
+                $infoSecDetails.show();
+            } else {
+                $infoSecDetails.hide();
+            }
+        });
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.info-popup').length) { 
+                $('.info-popup').removeClass('active');
+                $('.info_sec_details').hide();
+            }
         });
 
     });

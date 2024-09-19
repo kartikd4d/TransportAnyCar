@@ -1,21 +1,50 @@
 @extends('layouts.web.dashboard.app')
 
 @section('head_css')
-<style>
-    @media(max-width: 580px){
-    .wd-active-job .container-job {
-       padding-right: 20px !important;
-    }
-}
-    </style>
+
 @endsection
 
 @section('content')
+
+<style>
+
+@media(max-width: 1400px){
+.wd-quote-box2 {
+    width: 100%;
+}
+
+}
+
+@media(max-width: 580px){
+.accepted_quotes_row  .wd-quote-lft {
+    column-gap: 15px;
+}
+
+.accepted_quotes_row .wd-quote-lft {
+    display: flex;
+    flex-wrap: wrap;
+}
+.accepted_quotes_row .wd-quote-lft .list_detail {
+    width: 30%;
+}
+.new_dev_delivery .accepted_quotes_row .wd-quote-box.accepted_quotes_new .wd-quote-lft {
+    display: grid;
+}
+}
+
+@media(max-width: 380px){
+.accepted_quotes_row .wd-quote-lft .list_detail {
+    width: 29%;
+}
+}
+
+</style>
+
     @include('layouts.web.dashboard.header')
     <section class="admin_del wd-active-job">
         <div class="container-job" style="padding-right: 20px;">
             <div class="wd-deliver-box">
-                <div class="row h-100">
+                <div class="row h-100 new_dev_delivery">
                     <div class="col-lg-4">
                         <div class="wd-deliver-lft">
                             <div class="wd-profl-delivr">
@@ -73,11 +102,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 accepted_quotes_row">
                         <div class="wd-delivr-rght new_sec_delivr">
                             <h2>Accepted quotes</h2>
                             @forelse($quotes_booked as $item)
-                                <div class="wd-quote-box">
+                                <div class="wd-quote-box accepted_quotes_new">
                                     <div class="wd-quote-lft">
                                         <div class="list_detail">
                                             <span>
@@ -129,9 +158,16 @@
                                     </div>
 
                                     <div class="wd-quote-rght">
-                                        <a href="{{route('front.leave_feedback', ['id' => $item->id]) }}"class="wd-leave-btn">Leave feedback</a>
+                                        <a href="{{route('front.leave_feedback', ['id' => $item->quoteByTransporter->id ?? null]) }}"class="wd-leave-btn">Leave feedback</a>
                                         <a href="{{ route('front.user_deposit', ['id' => $item->quoteByTransporter->id ?? null]) }}">Contact transporter</a>
-                                        <!-- <a href="javascript:;" class="wd-orange">View VAT receipt </a> -->
+                                        @if($item->quoteByTransporter && $item->quoteByTransporter->id)
+                                        <form id="download-form" action="{{ route('front.download_vat_receipt') }}" method="GET">
+                                            <input type="hidden" name="payment_date" value="{{ $item->quoteByTransporter->updated_at }}">
+                                            <input type="hidden" name="total" value="{{ $item->quoteByTransporter->deposit }}">
+                                            <input type="hidden" name="vehicle_name" value="{{ $item->vehicle_make . ' ' . $item->vehicle_model }}">
+                                        </form>
+                                        <a href="javascript:;" id="download-vat-receipt" class="wd-orange">View VAT receipt </a>
+                                        @endif
                                     </div>
                                 </div>
                             @empty
@@ -219,6 +255,12 @@
             // read the image file as a data URL.
             reader.readAsDataURL(this.files[0]);
         };
+    </script>
+    <script>
+        $('#download-vat-receipt').on('click', function(e) {
+            e.preventDefault();
+            $('#download-form').submit();
+        });
     </script>
 @endsection
 

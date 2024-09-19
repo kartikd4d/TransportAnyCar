@@ -56,11 +56,11 @@ input[type=number]::-webkit-inner-spin-button {
 .proactive_scroll{
   overflow: hidden;
 }
-.drop_active, .drop_active body {
+/*.drop_active, .drop_active body {
     overflow: hidden;
     touch-action: none;
     -ms-touch-action: none;
-}
+}*/
 
 /* Admin flow css */
 #page-content-wrapper {
@@ -122,6 +122,7 @@ input[type=number]::-webkit-inner-spin-button {
   grid-gap: 13px;
   border-radius: 5px;
   background: transparent;
+  transition: none !important;
 }
 #sidebar-wrapper .list-group a span{
   display: flex;
@@ -794,6 +795,7 @@ span.select2.select2-container.select2-container--default{max-width: 152px;width
   grid-gap: 10px;
   display: flex;
   align-items: center;
+  color: #373737;
 }
 .analytics_bx ul li span{
   width: 15px;
@@ -987,14 +989,14 @@ span.select2.select2-container.select2-container--default{max-width: 152px;width
   border: 0 !important;
   background: transparent;
   color: #A0A0A0;
-  padding: 15px 25px;
+  padding: 12px 25px;
   height: auto;
 }
 .search_btn{
   background: linear-gradient(272.62deg, #018ED5 1.21%, #0356D6 98.03%);
   color: #F9FFF1;
   border: 0;
-  padding: 10px 20px;
+  padding: 8px 20px;
   display: inline-flex;
   align-items: center;
   font-size: 16px;
@@ -1800,7 +1802,7 @@ span.chat_count{
 }
 .chat_outgoing_txt{
   background: #0358D6;
-  padding: 7px 15px 11px 13px;
+  padding: 10px;
   border-radius: 10px 0 10px 10px;
   word-break: break-word;
   margin: 0;
@@ -3050,6 +3052,10 @@ a.wd-leave-btn{
   display: block;
   background: #52D017;
   margin: 0 4px 2px 0;
+}
+.wd-quote-msg .wd-transport-lft span{
+  bottom: auto;
+  top: 34px;
 }
 .wd-transport-txt > div{
   display: flex;
@@ -4913,6 +4919,11 @@ div#spam-banner button.btn {
     padding-bottom: 10px;
     background: #f3f3f3;
     border: none;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .chat_conversation_footer #chat__form {
   border-radius: 10px;
@@ -5171,6 +5182,13 @@ button.swal2-confirm.swal2-styled:focus {
   overflow: hidden !important;
 }
 
+/* start 16-09-2024 */
+
+.drop_active,
+.drop_active body {
+    overflow: initial;
+}
+
 
 
 
@@ -5342,4 +5360,480 @@ button.swal2-confirm.swal2-styled:focus {
 }
 .maintaince_text .modal-body p a{
   text-decoration: underline;
+}
+
+/* notifaction */
+
+.notifaction_sec .dropdown-menu {
+  bottom: auto;
+  left: auto;
+  right: 0;
+  top: 72px;
+  width: 95%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 10px;
+  min-width: auto;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 6px 2px #ccc;
+  margin-right: 0;
+  padding-bottom: 0;
+  overflow: auto;
+}
+.notifaction_sec  .dropdown-item {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 15px;
+  margin-bottom: 0;
+}
+.notifaction_sec .dropdown-item:nth-last-child(1) {
+    border-bottom: 0;
+}
+.notifaction_sec .dropdown-item:hover{
+  background-color: #fff !important;
+}
+.notifaction_sec_list {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  align-items: center;
+}
+
+.notifaction_sec_list span.notifi_icon {
+  width: 10%;
+}
+.notifaction_sec_list .item-content {
+  width: 72%;padding-right: 5px;
+}
+.notifaction_sec_list .notifi_time {
+  width: 18%;
+  text-align: center;
+}
+.notifaction_sec_list .notifi_time span {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.notifaction_sec_list .item-content h6 {
+  font-size: 12px;
+  color: #717171;
+  white-space: break-spaces;
+}
+.notifaction_sec_list .item-content h4 {
+  font-weight: 500;
+  color: #000;
+  font-size: 15px;
+}
+.notifi_time a {
+  background: #52D017;
+  border-color: #52D017;
+  font-size: 13px;
+  padding: 5px 15px;
+}
+.noti_info_icon {
+  position: relative; margin-right: 10px;
+}
+.noti_info_icon small {
+  position: absolute;
+  background: red;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  top: -4px;
+  right: -7px;
+  font-size: 7px;
+  line-height: 9px;
+}
+
+.two_digit small {
+  position: absolute;
+  background: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  top: -7px;
+  right: -9px;
+}
+
+.menu .noti_info_icon small {
+  top: -7px;
+  right: 1px;
+}
+.top_menu .noti_info_icon small {
+  top: -7px;
+  right: -9px;
+}
+
+.top_menu .job_icon small {
+  width: 20px;
+  height: 20px;
+  top: -9px;
+  right: -10px;
+  font-size: 10px;
+}
+.gray_notify {
+  background: #f6f6f6;
+}
+.white_notify{
+  background: #fff;
+}
+.notifaction_sec .dropdown-item.empty_notifiction {
+  height: calc(100% - 60px);
+}
+.no_notification {
+  margin: auto;
+}
+.top_menu .list-group a span .noti_info_icon {
+  margin-right: 0;
+}
+
+
+/* bidding section */
+
+.bidding_new_design {
+  display: flex;
+  padding: 0 28px 20px;
+  justify-content: space-between;
+}
+.bidding_new_design_grid span {
+  font-size: 14px;
+  font-weight: 300;
+  color: #000000b8;
+}
+.bidding_new_design_grid span.sub_color {
+  color: #0356D6;
+}
+.bidding_new_design_grid.job_new_grid_lowest span.sub_color {
+  color: #52d017;
+}
+
+
+
+
+.menu .noti_info_icon.message_icon small {
+  top: -12px;
+  right: 2px;
+}
+
+body.account-scroll{padding: 0 !important;}
+
+@media(max-width: 1400px){
+  .bidding_new_design {
+      padding: 0 15px 20px;
+  }
+}
+
+
+
+
+
+
+
+.nav-pills .nav-link {
+  border-radius: 90px;
+  transition: none !important;
+}
+
+
+.lve_rate .starrating {
+  flex-direction: row-reverse;
+  position: relative;
+  padding-right: 65px;
+}
+
+.lve_rate .starrating span {
+  position: absolute;
+  right: 0;
+}
+.bidding_new_design_date.job_new_grid_date {
+  display: block;
+  padding-top: 10px;
+}
+.bidding_new_design_date.job_new_grid_date span {
+  font-size: 12px;
+  color: #000000ba;
+}
+
+.active_job_mobile .job-listing .bidding_new_design {
+  padding: 0 5px 10px;
+}
+.notifaction_sec .dropdown-menu {
+  transform: none;
+  right: 10px;
+  overflow: auto;
+  max-height: calc(100vh - 75px);
+  padding-top: 0;
+}
+body.notification-scroll{
+  padding-right: 15px;
+  transition: none !important;
+}
+body.notification-scroll,
+body.notification-scroll .admin_job_bx {
+  overflow: hidden;
+}
+.notifaction_sec .dropdown-menu h5 {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  width: 100%;
+}
+body{
+  transition: none !important;
+}
+
+.job_bx h2 {
+  font-size: 26px;
+}
+
+.active_job_mobile .job-listing .bidding_new_design {
+  justify-content: flex-start;
+}
+
+.active_job_mobile .job-listing .bidding_new_design .bidding_new_design_grid {
+  padding-right: 40px;
+}
+.job_list_desh_mobile .list_img span {
+  display: block;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+
+.accepted_quotes_row .wd-delivr-rght.new_sec_delivr {
+  margin-right: 20px !important;
+}
+
+
+g.highcharts-input-group {
+    display: none !important;
+}
+
+.jobserch_mob li span.sub_color span {
+    margin-left: 4px;
+}
+
+ 
+
+
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) { 
+  .job_bx h2 {
+    font-size: 16px;
+}
+}
+
+
+@media(max-width: 1199px){
+.active_job_mobile .job-listing .bidding_new_design .bidding_new_design_grid {
+  padding-right: 15px;
+}
+.accepted_quotes_row .wd-delivr-rght.new_sec_delivr {
+  margin-right: 15px !important;
+}
+}
+
+@media(max-width: 991px){
+.accepted_quotes_row .wd-delivr-rght.new_sec_delivr {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+.accepted_quotes_row {
+  padding: 0px 24px;
+  margin: 25px 25px 0 25px;
+}
+.accepted_quotes_row .wd-quote-box {
+  padding: 20px 20px;        gap: 20px;
+}
+
+.accepted_quotes_row  .wd-quote-lft {
+  column-gap: 30px;
+}
+.accepted_quotes_row .wd-quote-box2 {
+  width: 100%;
+}
+
+
+}
+@media(max-width: 580px){
+  .notifaction_sec .dropdown-menu {
+    max-width: 100%;
+    transform: translateX(-50%);
+    right: auto;
+    left: 50%;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    top: 64px;
+    height: 100%;
+    padding-bottom: 65px;
+}
+
+.top_menu .list-group a span svg {
+  width: 25px;
+}
+.admin_del .wd-deliver-box .new_dev_delivery .col-lg-8 {
+  padding-right: 15px !important;
+}
+.new_dev_delivery .wd-quote-box {
+  padding: 30px 20px;
+}
+.new_dev_delivery .new_sec_delivr {
+  margin-right: 0 !important;
+}
+
+
+.chat_conversation {
+  height: auto !important;
+}
+
+
+.bidding_new_design {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0;
+  justify-content: space-between;
+  padding: 0 10px 5px;
+  margin-top: 30px;
+}
+
+.bidding_new_design_grid {
+  width: 47%;
+}
+
+.bidding_new_design_grid span {
+  font-size: 12px; color: #000000ba;
+}
+.bidding_new_design_grid span.sub_color {
+  color: #0356D6;
+}
+.bidding_new_design_grid.job_new_grid_lowest span.sub_color {
+  color: #52D017;
+}
+.bidding_new_design_date.job_new_grid_date span {
+  font-size: 12px;
+  color: #000000ba;
+}
+
+.bidding_new_design_date.job_new_grid_date {
+  padding-left: 10px;
+}
+.new_message_section .chat_box .scrollbar,
+.msg_active_container .chat_box .scrollbar {
+  height: auto;
+  max-height: calc(100vh - 250px);
+}
+.chat_head_lft {
+  align-items: center;
+}
+.active_chat_title + .chat_box {
+  box-shadow: none;
+  transition: none !important;
+}
+
+section.wd-active-job.new_message_section {
+  height: calc(100vh - 140px);
+  overflow: auto;
+}
+
+ul.menu .noti_info_icon {
+  margin-right: 0;
+}
+
+.chat_conversation_footer .form-group .form-control {
+  line-height: normal;
+  padding-top: 18px;
+  padding-bottom: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.list_detail p b {
+  white-space: normal;
+}
+.quote_grp_btns {
+  padding: 15px 0;
+}
+.msg-send_flex  a#send_message {
+  padding-right: 8px;
+}
+
+.list-group-item.active,
+.list-group-item:hover,
+#sidebar-wrapper .list-group a span{
+  transition: none !important;
+}
+
+
+body.message-color .new_message_section .active-job-box {
+  background: transparent;
+}
+body.message-color section.wd-active-job.new_message_section {
+  background: #f3f3f3;        overflow: unset;
+}
+body.message-color  .chat_title_bx {
+  background: #fff;
+  margin: 0 !important;
+  padding: 47px 0 35px;
+}
+body.message-color{
+  background: #f3f3f3;
+}
+body.message-color .message_container {
+  padding: 65px 0 0;
+}
+.lve_rate .starrating {
+  padding-right: 45px;
+}
+.bidding_new_design_date.job_new_grid_date {
+  padding-top: 0;
+}
+body.notification-scroll{
+  padding-right: 0;
+}
+.active_job_mobile .job-listing .bidding_new_design {
+  justify-content: space-between;
+}
+
+.active_job_mobile .job-listing .bidding_new_design .bidding_new_design_grid {
+  padding-right: 0;
+}
+
+
+
+
+.admin_del .wd-deliver-box .new_dev_delivery .col-lg-8.accepted_quotes_row {
+  padding-right: 0 !important;
+  margin: 0 !important;
+  padding-left: 20px !important;
+}
+.admin_del .wd-deliver-box .new_dev_delivery .col-lg-8.accepted_quotes_row .new_sec_delivr {
+  margin-right: -4px !important;
+}
+.new_dev_delivery .accepted_quotes_row .wd-quote-box {
+  width: 95%;
+}
+.new_dev_delivery .accepted_quotes_row .wd-quote-box.accepted_quotes_new {
+  width: 100%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+
+
+
+
+
+}
+
+@media (max-width: 400px) {
+  .chat_box .scrollbar {
+      height: auto;
+  }
+
 }

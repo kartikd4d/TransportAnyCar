@@ -69,27 +69,104 @@
           $('#dropdownClose').click(function() {
             $('.dropdown-menu').hide();
             $('html').removeClass("drop_active");
+            $('body').removeClass('notification-scroll');
           });
         });
         $(document).ready(function() {
           $('#dropdownCrossClose').click(function() {
             $('.dropdown-menu').hide();
             $('html').removeClass("drop_active");
+            $('body').removeClass('notification-scroll');
           });
         });
 
       } else {
        $(document).ready(function() {
+          // $('.wd-profile #dropdownMenuButton').click(function() {
+          //   $('.wd-profile .dropdown-menu').slideToggle("slow");
+          // });
           $('.wd-profile #dropdownMenuButton').click(function() {
-            $('.wd-profile .dropdown-menu').slideToggle("slow");
+              var $dropdownMenu = $('.wd-profile .dropdown-menu');
+              
+              if ($dropdownMenu.is(':visible')) {
+                  $dropdownMenu.slideUp("slow");
+                  $('body').removeClass('notification-scroll');
+              } else {
+                  $dropdownMenu.slideDown("slow");
+                  $('body').addClass('notification-scroll');
+              }
+          });
+          $('#dropdownClose_desk').click(function() {
+            $('.dropdown-menu').hide();
+            $('body').removeClass('notification-scroll');
           });
         });
       }
     }
 
+    $(document).ready(function() {
+      // $('#dropdownMenuButton').click(function() {
+      //   $('.dropdown-menu').slideToggle("slow");
+      // });
+
+      $('#dropdownMenuButton').click(function() {
+        //$('.dropdown-menu').slideToggle("slow"); 
+        var $dropdownMenu = $('.dropdown-menu'); 
+        if ($dropdownMenu.is(':visible')) {
+            $dropdownMenu.slideUp("slow");
+            $('body').removeClass('notification-scroll');
+        } else {
+            $dropdownMenu.slideDown("slow");
+            $('body').addClass('notification-scroll');
+        }
+      });
+
+      $('.nav-toggle').click(function() {
+        $('.dropdown-menu').hide();            
+      });
+
+      $(document).ready(function() {
+          $('#dropdownClose').click(function() {
+            $('.dropdown-menu').hide();
+            $('body').removeClass('notification-scroll');
+          });
+        });
+    });
+
     var x = window.matchMedia("(max-width: 575px)")
     myFunction(x)
     x.addListener(myFunction)
+</script>
+<script>
+
+  function handleNotificationClick(event, element) {
+      event.preventDefault();
+      const url = '{{ route('front.notification_status') }}';
+      const type = $(element).data('type');
+      const id = $(element).data('id');
+      const redirectUrl = $(element).data('href');
+      notificationStatus(url, type, id, redirectUrl);
+  }
+
+  function notificationStatus(url, type, id, redirectUrl) {
+      event.preventDefault();
+      $.ajax({
+          url: url,
+          type: 'POST',
+          data: {
+              type: type,
+              quote_id: id,
+              _token: '{{ csrf_token() }}'
+          },
+          success: function() {
+              window.location.href = redirectUrl;
+          },
+          error: function(xhr) {
+              console.error('Status update failed:', xhr);
+          }
+      });
+  }
+
 </script>
 @yield('script')
 </html>

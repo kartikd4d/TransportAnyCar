@@ -1,7 +1,6 @@
 @extends('layouts.web.dashboard.app')
 
 @section('head_css')
-
 @endsection
 
 @section('content')
@@ -191,7 +190,9 @@
                 $("#chat_history_main").html(response);
                 // $(thisobj).find(".kt-widget__item").find('.kt-widget__action').html('');
                 // KTAppChat.init();
-                scrollToBottom();
+                setTimeout(function() {
+                    scrollToBottom();
+                }, 500);
                 //getTotalUnreadMessage();
             });
         }
@@ -208,14 +209,48 @@
                 //$(".get-chat-history")[0].click();
             });
         }
-        function scrollToBottom(){
-            var objDiv = document.getElementsByClassName("chat_div");
-            objDiv.scrollTop = 569874;
+        // function scrollToBottom(){
+        //     var objDiv = document.getElementsByClassName("chat_div")[0];
+        //     console.log(objDiv);
+        //     if (objDiv) {
+        //         objDiv.scrollTop = objDiv.scrollHeight;
+        //     }
+        //     //objDiv.scrollTop = 569874;
+        // }
+
+        function scrollToBottom() {
+            var objDiv = document.getElementsByClassName("chat_div")[0]; // Target the first element
+            if (objDiv) {
+                if (objDiv.scrollHeight > objDiv.clientHeight) {
+                    objDiv.scrollTop = objDiv.scrollHeight;
+                }
+            }
         }
+
         $(document).ready(function () {
+            //open particular chat
+            const urlParams = new URLSearchParams(window.location.search);
+            const threadId = urlParams.get('thread_id');
+            if (threadId) {
+                const clickAnchorTag = () => {
+                    const targetElement = document.querySelector(`li[data-id="${threadId}"] a.get-chat-history`);
+                    if (targetElement) {
+                        targetElement.click();
+                    } else {
+                        setTimeout(clickAnchorTag, 500);
+                    }
+                };
+                clickAnchorTag();
+            }
+            if (history.pushState) {
+                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+            }
+            //end chat code
+            
             setInterval(function(){
                 getChatListing();
-            }, 5000);
+            }, 1000);
             getChatListing();
 
             var url = "{{route('front.message.history',($latest_chat->id) ?? 0)}}"

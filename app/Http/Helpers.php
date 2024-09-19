@@ -929,4 +929,30 @@ function new_roundBasedOnDecimal($number)
     }
 }
 
+if (!function_exists('create_notification')) {
+    function create_notification($user_id, $from_user_id, $quote_id, $title=null, $message=null, $type=null, $reference_id=null)
+    {
+        // Validate input
+        if (empty($user_id) || empty($type) || empty($message)) {
+            throw new InvalidArgumentException('User ID, type, and message are required.');
+        }
+        // Create a new notification entry
+        $notification = new \App\Notification();
+        $notification->user_id = $user_id;
+        $notification->from_user_id = $from_user_id;
+        $notification->user_quote_id = $quote_id;
+        $notification->title = $title;
+        $notification->message = $message;
+        $notification->type = $type;
+        $notification->reference_id = $reference_id;
+        $notification->seen = true;
+        $notification->created_at = Carbon::now('Europe/London');
+        $notification->updated_at = Carbon::now('Europe/London');
+        // Save the notification
+        $notification->save();
+        return $notification;
+    }
+}
+
+
 

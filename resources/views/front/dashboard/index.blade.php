@@ -37,6 +37,20 @@
 .active-job-box.active_job_mobile ul {
     gap: 10PX;
 }
+.job-list-img .job-list-img-sec img {
+    width: 100%;
+    height: 100%;
+}
+.job-listing ul li.job-list-img {
+    width: 162px;
+}
+.job-list-img .job-list-img-sec {
+    background: none;
+}
+
+.active_job_mobile .quote_grp_btns {
+    padding: 30px 0 0;
+}
 @media(max-width: 580px){
     .active-job-box.active_job_mobile {
     margin: 0;
@@ -91,6 +105,25 @@
 .active_job_mobile  .job-access::before{
     display: none;
 }
+.bidding_new_design_date.job_new_grid_date {
+    padding-left: 0 !important;
+}
+.active-job-box.active_job_mobile ul li.job-access {
+    top: 125px;
+}
+.bidding_new_design {
+    padding: 0 0px 5px !important;
+}
+.active-job-box.active_job_mobile ul li.job-access.completed_jobs{
+    top: 100px;
+}
+.active_job_mobile .quote_grp_btns {
+    padding: 15px 0 15px;
+}
+.job-list-img .job-list-img-sec img {
+    object-fit: cover;
+}
+
 
 }
 
@@ -111,7 +144,17 @@
         <div class="active-job-box active_job_mobile">
             <h1 class="wd-active-title">Active quote requests</h1>
             @forelse($data as $key => $item)
+            @php
+                $lowestBid = $item->lowest_bid ?? 0;
+                $transporterQuotesCount = $item->quotes_count ?? 0;
+            @endphp
             <div class="job-listing">
+                <div class="bidding_new_design_date job_new_grid_date">
+                    <span>Expiry date:</span>
+                    <span>
+                    {{ formatCustomDate($item->created_at->addDays(10)) }}
+                    </span>
+                </div>
                 <ul>
                 @php
                     $imageUrl = checkCarFileExist($item->image);
@@ -186,6 +229,42 @@
                             Delete</a>
                     </li>
                 </ul>
+                <div class="bidding_new_design">
+                    <div class="bidding_new_design_grid job_new_grid_type">
+                        <span>Delivery type:</span>
+                        <span class="sub_color">
+                        {{ $item->how_moved }}
+                        </span>
+                    </div>
+                    @if($transporterQuotesCount > 0)
+                        <div class="bidding_new_design_grid job_new_grid_lowest">
+                            <span>Current lowest bid:</span>
+                            <span class="sub_color">£{{roundBasedOnDecimal($lowestBid)}}</span>
+                        </div>
+                    @else
+                    <div class="bidding_new_design_grid job_new_grid_lowest">
+                        <span>Current lowest bid:</span>
+                        <span class="sub_color">£0</span>
+                    </div>
+                    @endif
+
+                    <div class="bidding_new_design_grid job_new_grid_miles">
+                        <span>Journey miles:</span>  
+                        <span class="sub_color">{{ str_replace(' mi', '', $item->distance) }} <span>({{$item->duration}})</span></span>    
+                    </div>
+
+                    @if($transporterQuotesCount > 0)
+                    <div class="bidding_new_design_grid job_new_grid_bidding">
+                        <span>Transporters bidding:</span>
+                        <span class="sub_color">{{ $transporterQuotesCount }}</span>
+                    </div>
+                    @else
+                    <div class="bidding_new_design_grid job_new_grid_bidding">
+                        <span>Transporters bidding:</span>
+                        <span class="sub_color">0</span>
+                    </div>
+                    @endif
+                </div>
                 <!-- delete quote Modal -->
                 <div class="modal fade mark_bx" id="delete_quote_{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -218,11 +297,30 @@
             @if(count($quotes_booked) != 0)
                 <h1 class="wd-active-title wd-mt-90">Recently booked deliveries</h1>
                 @foreach($quotes_booked as $item)
+                @php
+                    $lowestBid = $item->lowest_bid ?? 0;
+                    $transporterQuotesCount = $item->quotes_count ?? 0;
+                @endphp
                 <div class="job-listing">
+                    <div class="bidding_new_design_date job_new_grid_date">
+                        <span>Expiry date:</span>
+                        <span>
+                        {{ formatCustomDate($item->created_at->addDays(10)) }}
+                        </span>
+                    </div>
                     <ul>
                         <li class="job-list-img">
+                            @php
+                                $image = $item->image;
+                                $defaultImage = asset('uploads/no_car_image.png');
+                                $noQuoteImage = asset('uploads/svg_image.png');
+
+                                if (is_null($image) || $image == $noQuoteImage) {
+                                    $image = $defaultImage;
+                                }
+                            @endphp
                             <div class="job-list-img-sec">
-                                <img src="{{$item->image}}" class="img-fluid" alt="book delivery">
+                                <img src="{{$image}}" class="img-fluid" alt="book delivery">
                             <div>
                         </li>
 
@@ -275,8 +373,8 @@
                             </a>
                             @endif
                         </li>
-                        <li class="job-access">
-                            <a href="{{route('front.leave_feedback', ['id' => $item->id]) }}" class="wd-blue">Leave feedback</a>
+                        <li class="job-access completed_jobs">
+                            <a href="{{route('front.leave_feedback', ['id' => $item->quoteByTransporter->id ?? null]) }}" class="wd-blue">Leave feedback</a>
                             <!-- <a href="javascript:;" class="wd-orange">View VAT receipt </a> -->
                             @if($item->is_mark_as_complete == 'no')
                             <a href="javascript:;" class="wd-red" onclick="markComplete('{{$item->id}}')">Mark complete</a>
@@ -285,6 +383,42 @@
                             @endif
                         </li>
                     </ul>
+                    <div class="bidding_new_design">
+                    <div class="bidding_new_design_grid job_new_grid_type">
+                        <span>Delivery type:</span>
+                        <span class="sub_color">
+                        {{ $item->how_moved }}
+                        </span>
+                    </div>
+                    @if($transporterQuotesCount > 0)
+                        <div class="bidding_new_design_grid job_new_grid_lowest">
+                            <span>Current lowest bid:</span>
+                            <span class="sub_color">£{{roundBasedOnDecimal($lowestBid)}}</span>
+                        </div>
+                    @else
+                    <div class="bidding_new_design_grid job_new_grid_lowest">
+                        <span>Current lowest bid:</span>
+                        <span class="sub_color">£0</span>
+                    </div>
+                    @endif
+
+                    <div class="bidding_new_design_grid job_new_grid_miles">
+                        <span>Journey miles:</span>  
+                        <span class="sub_color">{{ str_replace(' mi', '', $item->distance) }} <span>({{$item->duration}})</span></span>    
+                    </div>
+
+                    @if($transporterQuotesCount > 0)
+                    <div class="bidding_new_design_grid job_new_grid_bidding">
+                        <span>Transporters bidding:</span>
+                        <span class="sub_color">{{ $transporterQuotesCount }}</span>
+                    </div>
+                    @else
+                    <div class="bidding_new_design_grid job_new_grid_bidding">
+                        <span>Transporters bidding:</span>
+                        <span class="sub_color">0</span>
+                    </div>
+                    @endif
+                </div>
                 </div>
                 @endforeach
             @endif

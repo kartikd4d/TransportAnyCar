@@ -96,8 +96,9 @@
                                         <tr>
                                             <td class="pad" style="width:100%;">
                                                 <div class="alignment" align="center" style="line-height:10px">
-                                                    <div style="max-width: 600px;"><img src="https://image.optimite.email/wp-content/uploads/2024/02/Transport-any-car-2-19-2024-Email-1.png" style="display: block; height: auto; border: 0; width: 100%;" width="600" alt="Leave Feedback" title="Leave Feedback"></div>
-                                                </div>
+                                                <p style="margin: 0; font-size: 14px;"><a href="{{route('front.unsubscribe', ['unsub' => true]) }}" target="_blank" style="text-decoration: underline; color: #5f5f5f;" rel="noopener">Unsubscribe from all emails</a></p>
+                                                <a href="https://transportanycar.com/"><img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100px; margin: 15px auto;" alt="Leave Feedback" title="Leave Feedback"></a>       
+                                                </div>                                    
                                             </td>
                                         </tr>
                                     </table>
@@ -105,7 +106,7 @@
                                         <tr>
                                             <td class="pad" style="padding-bottom:20px;padding-left:50px;padding-right:50px;padding-top:25px;">
                                                 <div style="color:#000f26;direction:ltr;font-family:'Montserrat', sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:center;mso-line-height-alt:19.2px;">
-                                                    <p style="margin: 0;">How was your experience with transport101 delivering your Ford Focus?</p>
+                                                    <p style="margin: 0;">How was your experience with {{$data['transporter_name']}} delivering your {{$data['user_quotes']->vehicle_make}} {{$data['user_quotes']->vehicle_model}}?</p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -118,7 +119,7 @@
                                                         <w:anchorlock/>
                                                         <v:textbox inset="0px,0px,0px,0px">
                                                             <center style="color:#ffffff; font-family:sans-serif; font-size:16px">
-                                                    <![endif]--><a href="https://transportanycar.com/" target="_blank" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#52d017;border-radius:30px;width:auto;border-top:0px solid #8a3b8f;font-weight:400;border-right:0px solid #8a3b8f;border-bottom:0px solid #8a3b8f;border-left:0px solid #8a3b8f;padding-top:5px;padding-bottom:5px;font-family:'Montserrat', sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:50px;padding-right:50px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 32px;">Positive</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+                                                    <![endif]--><a href="{{route('front.leave_feedback', ['id' => $data['quote_by_transporter_id'] ?? null]) }}" target="_blank" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#52d017;border-radius:30px;width:auto;border-top:0px solid #8a3b8f;font-weight:400;border-right:0px solid #8a3b8f;border-bottom:0px solid #8a3b8f;border-left:0px solid #8a3b8f;padding-top:5px;padding-bottom:5px;font-family:'Montserrat', sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:50px;padding-right:50px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 32px;">Positive</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
                                             </td>
                                         </tr>
                                     </table>
@@ -130,7 +131,7 @@
                                                         <w:anchorlock/>
                                                         <v:textbox inset="0px,0px,0px,0px">
                                                             <center style="color:#ffffff; font-family:sans-serif; font-size:16px">
-                                                    <![endif]--><a href="https://transportanycar.com/" target="_blank" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#ff0000;border-radius:30px;width:auto;border-top:0px solid #8a3b8f;font-weight:400;border-right:0px solid #8a3b8f;border-bottom:0px solid #8a3b8f;border-left:0px solid #8a3b8f;padding-top:5px;padding-bottom:5px;font-family:'Montserrat', sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:50px;padding-right:50px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 32px;">Negative</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+                                                    <![endif]--><a href="{{route('front.leave_feedback', ['id' => $data['quote_by_transporter_id'] ?? null]) }}" target="_blank" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#ff0000;border-radius:30px;width:auto;border-top:0px solid #8a3b8f;font-weight:400;border-right:0px solid #8a3b8f;border-bottom:0px solid #8a3b8f;border-left:0px solid #8a3b8f;padding-top:5px;padding-bottom:5px;font-family:'Montserrat', sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:50px;padding-right:50px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 32px;">Negative</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
                                             </td>
                                         </tr>
                                     </table>
@@ -165,7 +166,7 @@
                 <tbody>
                 <tr>
                     <td>
-                        <table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #000f26; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
+                        <table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fff; border-radius: 0; color: #000000; width: 600px; margin: 0 auto;" width="600">
                             <tbody>
                             <tr>
                                 <td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
@@ -173,7 +174,7 @@
                                         <tr>
                                             <td class="pad" style="padding-bottom:15px;padding-left:10px;padding-right:10px;padding-top:30px;width:100%;">
                                                 <div class="alignment" align="center" style="line-height:10px">
-                                                    <div style="max-width: 180px;"><img src="https://image.optimite.email/wp-content/uploads/2024/01/Untitled-1-8.png" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="transport any car" title="transport any car"></div>
+                                                    <div style="max-width: 180px;"><a href="https://transportanycar.com/"><img src="https://mcusercontent.com/8992880337eb54b5df095f667/images/91d6d431-803b-d338-b1ae-4ab578715e2c.jpg" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="transport any car" title="transport any car"></a></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -182,8 +183,8 @@
                                         <tr>
                                             <td class="pad" style="padding-bottom:40px;padding-left:10px;padding-right:10px;padding-top:10px;">
                                                 <div style="color:#ffffff;direction:ltr;font-family:Arial, Helvetica, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:center;mso-line-height-alt:16.8px;">
-                                                    <p style="margin: 0; margin-bottom: 16px;">© 2024 Transport Any Car. 128 City Road, London, EC1V 2NX.</p>
-                                                    <p style="margin: 0;"><a href="*|UNSUB|*" target="_blank" style="text-decoration: underline;" rel="noopener">Unsubscribe</a></p>
+                                                    <p style="margin: 0; margin-bottom: 16px; color: #000;">© 2024 Transport Any Car. 128 City Road, London, EC1V 2NX.</p>
+                                                    <p style="margin: 0;"><a href="{{route('front.unsubscribe', ['unsub' => true]) }}" target="_blank" style="text-decoration: underline; color: #717171;" rel="noopener">Unsubscribe from all emails</a></p>
                                                 </div>
                                             </td>
                                         </tr>

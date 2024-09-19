@@ -44,6 +44,49 @@
     text-align: left;
 }
 
+.trans_forgotpass .kt-login__btn-secondary {
+    width: max-content;
+    margin-left: auto;
+    padding: 0;
+    color: #0077FF;
+    text-decoration: underline;
+    line-height: normal;
+    margin-top: -19px;
+    margin-right: 15px;
+}
+.trans_forgotpass .btngroup {
+    margin-top: 34px;
+}
+.trans_forgotpass p{
+    margin-top: 5px !important;
+}
+.join_network_main .banner_newtext {
+    font-size: 45px !important;
+}
+.reset_psss #kt_login_signin_submit {
+    text-decoration: none;
+    text-underline-offset: 5px;
+    background: #52D017;
+    font-size: 24px;
+    color: #fff;
+    padding: 8px 47px 10px;
+    border-radius: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: normal;
+    width: 220px;
+    
+}
+.reset_psss #kt_login_signin_submit svg {
+    margin-left: 10px;
+}
+@media(max-width: 767px){
+.join_network_main .banner_newtext {
+    font-size: 40px !important;
+}
+
+}
 
 
 </style>
@@ -55,6 +98,7 @@
             <div class="container">
             <div class="position-relative text-center reset_heading">
                 <h1 class="banner_newtext d-block text-center">Password reset</h1>
+                <p>Enter your new password</p>
             </div>
                 <form class="trans_login_blog" name="form_login" id="guest_form" method="post" autocomplete="off">
                     <input type="hidden" name="reset_token" value="{{$token}}">
@@ -69,17 +113,20 @@
                                 <input type="password" class="form-control password" placeholder="confirm password" name="cnf_password" id="cnf_password" />
                                <i class="fas fa-eye password-toggle"></i>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 response_api" style="display: none;">
                                <span id="response-message" class="error-message" ></span>
                             </div>
+                            <a href="{{route('transporter.login')}}" id="kt_login_forgot_cancel"
+                            class="btn btn-pill kt-login__btn-secondary">Account login
+                            </a>
                         </div>
                         <div class="btngroup">
                         <div class="kt-login__actions reset_psss">
-                            <button id="kt_login_signin_submit"
-                                    class="btn btn-pill kt-login__btn-primary">{{__('Reset Password')}}</button>
-                            <a href="{{route('front.login')}}" id="kt_login_forgot_cancel"
-                            class="btn btn-pill kt-login__btn-secondary">Login
-                            </a>
+                            <!-- <button id="kt_login_signin_submit" class="btn btn-pill kt-login__btn-primary">{{__('Reset Password')}}</button> -->
+                            <button id="kt_login_signin_submit" class="btn btn-pill kt-login__btn-primary">Save <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.01562 1.80859L7.70527 8.49824L1.01562 15.1879" stroke="white" stroke-width="2.00689" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </div>
                         </div>
                     </div>
@@ -148,6 +195,7 @@
                                }
                            });
                        } else {
+                            $('.response_api').css('display', 'block');
                             $('#response-message').text('Invalid password token');
                        }
                     },
@@ -171,6 +219,13 @@
 
             // Toggle eye icon class
             $(this).toggleClass("fa-eye fa-eye-slash");
+        });
+
+        $('#password, #cnf_password').on('keyup', function() {
+            // Hide the response_api div if it is currently displayed
+            if ($('.response_api').css('display') === 'block') {
+                $('.response_api').hide();
+            }
         });
     </script>
 @endsection

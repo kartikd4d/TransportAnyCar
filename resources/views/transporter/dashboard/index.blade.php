@@ -2,9 +2,9 @@
 
 @section('head_css')
     <style>
-        .tabs_bx .tab-content ul{
+        /* .tabs_bx .tab-content ul{
             overflow-y: auto !important;
-        }
+        } */
         .tabs_bx .tab-content ul li {
             border-bottom : none !important;
         }
@@ -30,6 +30,41 @@
             display:none;
         }
 
+        #main_form .modal-body .form-group {
+            margin-bottom: 1.5rem;
+        }
+        #main_form .modal-body  .icon_includes {
+            height: 49px;
+        }
+        #main_form .modal-body  .icon_includes ~ .form-control {
+            height: 49px;
+        }
+        #main_form .modal-body  span#quote_amount-error {
+            position: absolute;
+            left: 0;
+            padding-left: 0;
+        }
+
+        #main_form .modal-body .edit_budding_sec .icon_includes {
+                position: inherit;
+            }
+            #main_form .modal-body .edit_budding_sec .icon_includes ~ .form-control {
+                width: calc(100% - 45px);
+                padding: 15px 10px 15px 15px !important;
+                font-size: 1rem;
+                border-radius: 0;
+                border-top-right-radius: .25rem;
+                border-bottom-right-radius: .25rem;
+            }
+            #main_form .modal-body .edit_budding_sec .icon_includes ~ .form-control:focus {
+                outline: none;
+                box-shadow: none;
+                border-color: #ced4da;
+            }
+            #main_form .modal-body .edit_budding_sec span#quote_amount-error{
+                top: 100%;
+            }
+
         @keyframes slideInRight {
             from {
                 transform: translateX(100%);
@@ -51,12 +86,28 @@
         }
 
         .deshbord-job-listing {
-            padding: 0px 10px 0;
+            padding: 5px 20px 10px;
             box-shadow: 0px 0px 4px 0px #00000040;
-            margin: 3px 0px 0 3px;
-            border-radius: 10px 0 0 10px;
-        }
+            margin: 3px 0px 18px 3px;
+            border-radius: 10px;
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+            margin-left: 0;
 
+        }
+        .job-data {
+            margin-left: 10px;
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+        .job-data span {
+            color: #9C9C9C;
+            font-size: 15px;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li {
+            padding: 0px 0px 20px;
+        }
         .tabs_bx .tab-content .deshbord-job-listing li{
             box-shadow: none !important;
         }
@@ -93,6 +144,118 @@
         figure.highcharts-figure path.highcharts-label-box {
             stroke: #0356D6;
         }
+        #empty_parent {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .deshbord-job-listing .bidding_new_design {
+            padding: 0 10px 10px 0px;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_img{
+            width: 100px;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_img img{
+            width: 100%;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_img span {
+            display: block;
+            color: #9C9C9C;
+            font-size: 11px;
+        }
+        .content_container {
+            padding-bottom: 0 !important;
+        }
+
+
+        .edit_budding_sec {
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: .25rem;
+            position: relative;
+        }
+        .modal_current {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: -5px;
+        }
+        .modal_current p {
+            margin: 0;
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000d6;
+        }
+        .modal_current p span {
+            color: #52D017;
+        }
+        .modal_current p span.red {
+            color: #0356D6;
+        }
+        .edit_border {
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+            }
+
+.view_btn {
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 7px;
+    white-space: nowrap;
+    background: #52d017 !important;
+    color: #fff !important;
+}
+ @media (max-width: 1600px) { 
+
+.job_bx h2 {
+    font-size: 18px;
+}
+}
+
+/* end 16-09-2024 */
+
+        @media(max-width: 1400px){
+            .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
+            .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b{
+                font-size: 14px;
+                margin-bottom: 2px;
+            }
+            .job_bx h2 {
+                font-size: 16px;
+            }
+        }
+
+        @media(max-width: 1199px){
+            .tabs_bx .tab-content ul .deshbord-job-listing li {
+                padding: 0px 0px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .earning_rght figure {
+                margin: 0px 0px 0;
+            }
+            .chart_bx .col-lg-8 {
+                flex: auto;
+                max-width: 100%;
+            }
+
+            .chart_bx .col-lg-4 {
+                flex: auto;
+                max-width: 100%;
+                margin-top: 20px;
+            }
+            
+        }
+
+        @media (max-width:991px) {
+        .deshbord-job-listing .bidding_new_design {
+            flex-wrap: wrap;
+        }
+        .bidding_new_design_grid {
+            width: 50%;
+        }
+        }
 
         @media (max-width:767px) {
             #alert-container {
@@ -109,6 +272,134 @@
                     }
 
         }
+
+        @media (max-width:767px) {
+
+        .tabs_bx .tab-content ul .deshbord-job-listing  li {
+            padding: 10px 10px 0;
+            margin-bottom: 0;
+            overflow: unset;
+            flex-wrap: wrap;
+            position: relative;   row-gap: 32px; align-items: self-start;
+        }
+        ul .deshbord-job-listing .list_img {
+            width: 36%;
+            order: 1;
+        }
+        ul .deshbord-job-listing .list_img img {
+            width: 100%;
+            height: auto;
+        }
+        ul .deshbord-job-listing .list_img p {
+            top: 33px;
+            transform: translateY(-50%);
+        }
+        ul .deshbord-job-listing .list_detail {
+            width: 46%;
+            order: 3;
+        }
+        ul .deshbord-job-listing .won_details {
+            order: 2;
+            width: 55%;
+            display: flex;
+        }
+        ul .deshbord-job-listing .won_message {
+            position: absolute;
+            right: auto;
+            top: 60px;
+            width: 35% !important;
+            left: 45%;
+        }
+        ul .deshbord-job-listing .won_details a.view_btn {
+            width: 130px;
+            text-align: center;
+            justify-content: center;
+        }
+        ul .deshbord-job-listing .won_message a {
+            justify-content: center;color: #fff;   
+            width: 130px;
+        }
+        ul .deshbord-job-listing .view_btn {
+            padding: 6px 15px;
+            font-size: 12px;
+            border-radius: 7px; color: #fff !important;  
+            white-space: nowrap;
+        }
+        .job-data {
+            margin-left: 3px;
+            margin-bottom: 8px;
+        }
+        .job-data span {
+            color: #9C9C9C;
+            font-size: 15px;
+        }
+        ul .deshbord-job-listing  a.d-lg-block.delete_btn_mobile {
+            position: absolute;
+            display: flex;
+            grid-gap: 30px;
+            color: #fff;
+            top: -20px;
+            right: 0;
+        }
+        .content_container .tabs_bx {
+            margin: 0 15px;
+        }
+
+        a.view_btn.cancel_btn_mobile {
+            order: 2;
+            opacity: 0;
+        }
+
+        .edit_budding_sec {
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: .25rem;
+            position: relative;
+        }
+        .modal_current {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: -5px;
+        }
+        .modal_current p {
+            margin: 0;
+            font-weight: normal;
+            font-size: 13px;
+            color: #000000d6;
+        }
+        .modal_current p span {
+            color: #52D017;
+        }
+        .modal_current p span.red {
+            color: #0356D6;
+        }
+
+        .job_list_desh_mobile .list_img span {
+            color: #9C9C9C;
+            font-size: 10px;
+        }
+        .deshbord-job-listing {
+            padding: 5px 10px 10px;
+            border-radius: 10px;
+            margin-left: 0;
+        }
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p,
+        .tabs_bx .tab-content ul .deshbord-job-listing li .list_detail p b {
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .chart_bx_first{
+            display: none;
+        }
+        .tabs_bx .tab-content ul {
+            max-height: max-content;
+        }
+
+    }
+
+
+
 
     </style>
     <!-- owl slider -->
@@ -138,6 +429,7 @@
                         <div class="wlcm_content">
                             <span>Welcome</span>
                             <h3>{{$user->first_name}}</h3>
+                            @if($user->address)
                             <p>
                                 <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.99899 12.7377C1.30979 7.38946 0.625 6.84056 0.625 4.875C0.625 2.1826 2.8076 0 5.5 0C8.1924 0 10.375 2.1826 10.375 4.875C10.375 6.84056 9.69022 7.38946 6.00101 12.7377C5.75891 13.0874 5.24107 13.0874 4.99899 12.7377ZM5.5 6.90625C6.62183 6.90625 7.53125 5.99683 7.53125 4.875C7.53125 3.75317 6.62183 2.84375 5.5 2.84375C4.37817 2.84375 3.46875 3.75317 3.46875 4.875C3.46875 5.99683 4.37817 6.90625 5.5 6.90625Z" fill="white" />
@@ -148,6 +440,7 @@
                                     {{$user->town}}@if($user->town), {{$user->county}}@endif
                                 @endif
                             </p>
+                            @endif
 
                             <a href="{{route('transporter.profile')}}" class="whitedit_btn">Edit profile</a>
                         </div>
@@ -262,7 +555,7 @@
                 </div>
                 <div class="chart_bx">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 chart_bx_first">
                             <div class="earning_bx">
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -285,8 +578,14 @@
                                                <option>Weekly</option>
                                                <option>Annually</option>                                           
                                             </select> -->
-                                            <figure class="highcharts-figure">
+                                            <!-- <figure class="highcharts-figure">
                                                 <div id="container"></div>
+                                            </figure> -->
+                                            <figure class="highcharts-figure">
+                                                <div id="salesSelectorItems" class="chart-data-selector-items mt-3">
+                                                    <!-- Flot: Sales Porto Admin -->
+                                                    <div class="chart chart-sm chart-active" data-sales-rel="Porto Admin" id="flotDashSales1" style="height: 400px; width: 100%;"></div>
+                                                </div>
                                             </figure>
                                         </div>
                                     </div>
@@ -295,7 +594,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="analytics_bx">
-                                <h3>Analytics</h3>
+                                <h3>Statistics</h3>
                                 <figure class="highcharts-figure">
                                     <div id="parent-container">
                                         <div id="play-controls">
@@ -303,6 +602,9 @@
                                             <input id="play-range" type="range" value="1965" min="1965" max="2021" />
                                         </div>
                                         <div id="pie-container"></div>
+                                        <div id="empty_parent" style="display:none" >
+                                            <img src="{{asset('assets/images/no_data.png')}}">
+                                        </div>
                                     </div>
                                     <ul>
                                         <li>
@@ -502,9 +804,61 @@
 </div>
 <!-- MODALS -->
 <input type="hidden" id="idType" value=""/>
+
+<div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit quote</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z" fill="#000"/>
+                        </svg>
+                    </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{route('transporter.edit_quote_amount')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="edit_budding_sec">
+                                <span class="icon_includes">£</span>
+                                <input type="number" class="form-control" id="quote_amount" aria-describedby="emailHelp" placeholder="Enter quote amount" name="amount">
+                            </div>
+                        </div>
+                        <div class="modal_current">
+                            <p>Current lowest bid: <span class="lowAmount">£0</span></p>
+                            <p>Transporters bidding: <span class="red bidCount">0</span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <button type="submit" class="submit_btn">Submit bid</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
+
+@if (Request::is('transporter/dashboard'))
+    <!-- js files for graph -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <!-- jQuery (required for Flot) -->
+    <!-- Flot core library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot.tooltip/0.9.0/jquery.flot.tooltip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!-- Flot additional plugins (optional, if you need them) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js"></script>
+    <script src="{{ asset('assets/web/js/theme.js') }}"></script>
+    <!--- end -->
+@endif
     <script src="{{asset('assets/web/js/admin.js')}}"></script>
     <script src="{{asset('assets/web/vendors/owl.carousel/js/owl.carousel.min.js')}}"></script>
     <!-- Select2 -->
@@ -616,61 +970,82 @@
             const jobsWon = parseFloat(dataset.jobs_won);
             const bidsPlaced = parseFloat(dataset.bids_placed);
 
-            chart = Highcharts.chart('pie-container', {
-
-                subtitle: {
-                    useHTML: true,
-                    // text: getSubtitle(),
-                    floating: true,
-                    verticalAlign: 'middle',
-                    y: 30
-                },
-
-                legend: {
-                    enabled: false
-                },
-
-                tooltip: {
-                    valueDecimals: 2,
-                    // valueSuffix: ' Total'
-                },
-
-                plotOptions: {
-                    series: {
-                        borderWidth: 0,
-                        colorByPoint: true,
-                        type: 'pie',
-                        size: '100%',
-                        innerSize: '80%',
-                        dataLabels: {
-                            enabled: true,
-                            crop: false,
-                            distance: '-10%',
-                            formatter: function() {
-                                if(this.y != 0)
-                                return this.y; // Display the value directly
+            if (cancelled === 0 && jobsWon === 0 && bidsPlaced === 0) {
+                document.getElementById('empty_parent').innerHTML = `
+                    <img src="{{asset('assets/images/no_data.png')}}" alt="No Data Available">
+                `;
+                $('#empty_parent').css('display', 'block');
+                $('.pie-container').css('display', 'none'); 
+            } else {
+                $('.pie-container').css('display','block');
+                chart = Highcharts.chart('pie-container', {
+    
+                    subtitle: {
+                        useHTML: true,
+                        // text: getSubtitle(),
+                        floating: true,
+                        verticalAlign: 'middle',
+                        y: 30
+                    },
+    
+                    legend: {
+                        enabled: false
+                    },
+    
+                    tooltip: {
+                        valueDecimals: 2,
+                        enabled: false
+                        // valueSuffix: ' Total'
+                    },
+    
+                    plotOptions: {
+                        pie: {
+                            borderWidth: 0,
+                            colorByPoint: true,
+                            type: 'pie',
+                            size: '100%',
+                            innerSize: '75%',
+                            dataLabels: {
+                                enabled: false,
+                                crop: false,
+                                distance: '-10%',
+                                formatter: function() {
+                                    if(this.y != 0)
+                                    return this.y; // Display the value directly
+                                },
+                                style: {
+                                    fontWeight: 'bold',
+                                    fontSize: '16px'
+                                },
+                                connectorWidth: 0
                             },
-                            style: {
-                                fontWeight: 'bold',
-                                fontSize: '16px'
+                            states: {
+                                hover: {
+                                    enabled: false, // Enable hover effect
+                                },
+                                inactive: {
+                                    enabled: false // Disable inactive effect
+                                }
                             },
-                            connectorWidth: 0
                         }
-                    }
-                },
-                colors: ['#0356D6', '#FFA800', '#52D017'],
-                series: [
-                    {
-                        type: 'pie',
-                        // name: startYear,
-                        data:  [
-                            { name: 'Cancelled', y: cancelled },
-                            { name: 'Bids Placed', y: bidsPlaced },
-                            { name: 'Jobs Won', y: jobsWon },
-                        ]
-                    }
-                ]
-            });
+                    },
+                    colors: ['#0356D6', '#FFA800', '#52D017'],
+                    series: [
+                        {
+                            type: 'pie',
+                            // name: startYear,
+                            data:  [
+                                { name: 'Cancelled', y: cancelled },
+                                { name: 'Bids Placed', y: bidsPlaced },
+                                { name: 'Jobs Won', y: jobsWon },
+                            ]
+                        }
+                    ]
+                });
+                $('#empty_parent').css('display','none');
+
+            }
+
         })();
 
 
@@ -767,92 +1142,310 @@
     </script>
 
     <script>
-        Highcharts.getJSON('{{route("transporter.total_earning")}}', function(rawData) {
-            // Create the chart
-            //console.log(data)
-            var data=[];
-            if (rawData.length > 0) {
-                data = rawData.map(function(point) {
-                    return [point[0], parseFloat(point[1])];
-                });
-            }
-            var chart =  Highcharts.stockChart('container', {
-                rangeSelector: {
-                    inputEnabled: true,
-                    allButtonsEnabled: true,
-                    buttons: [{
-                        type: 'day',
-                        count: 1,
-                        text: 'Day',
-                        dataGrouping: {
-                            forced: false,
-                            units: [
-                                ['hour', [1]]
-                            ]
-                        }
-                    }, {
-                        type: 'week',
-                        count: 1,
-                        text: 'Week',
-                        dataGrouping: {
-                            forced: true,
-                            units: [
-                                ['day', [1]]
-                            ]
-                        }
-                    }, {
-                        type: 'year',
-                        text: 'Year',
-                        count: 1,
-                        dataGrouping: {
-                            forced: true,
-                            units: [
-                                ['month', [1]]
-                            ]
-                        }
-                    },
-                        {
-                            type: 'all',
-                            count: 1,
-                            text: 'All'
-                        }],
-                    buttonTheme: {
-                        width: 60,
-                    },
-                    selected: 3,
+         $.validator.addMethod("noPhoneOrEmail", function(value, element) {
+            var contains_email = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i.test(value);
+            var contains_six_or_more_digits = value.replace(/\s+/g, '').match(/\d{7,}/);
+            return !(contains_email || contains_six_or_more_digits);
+        });
+        $.validator.addMethod("greaterThanZero", function(value, element) {
+            return this.optional(element) || parseFloat(value) > 0;
+        }, "You must enter an amount greater than zero");
+        $("#main_form").validate({
+            rules: {
+                amount: { 
+                    required: true,  
+                    greaterThanZero: true,
+                    noPhoneOrEmail: true,
                 },
-                xAxis: {
-                    type: 'datetime',
-                    labels: {
-                        format: '{value:%d}'
+            },
+            messages: {
+                amount: { 
+                    required: 'Please enter amount',
+                    noPhoneOrEmail:  `Do not share contact information or you will be banned.`,
+                 },
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.insertAfter($(element));
+            },
+            submitHandler: function(form) {
+                var formData = $(form).serialize();
+                $('.submit_btn').prop('disabled', true).text('Submitting...');
+                $.ajax({
+                    url: $(form).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response);
+                        if (response.status) {
+                            Swal.fire({
+                                title: '<span class="swal-title">Bid updated</span>',
+                                html: '<span class="swal-text">Your bid has been updated successfully.</span>',
+                                confirmButtonColor: '#52D017',
+                                confirmButtonText: 'Dismiss',
+                                customClass: {
+                                    title: 'swal-title',
+                                    htmlContainer: 'swal-text-container',
+                                    popup: 'swal-popup', // Add custom class for the popup
+                                    cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                                },
+                                showCloseButton: true, // Add this line to show the close button
+                                showConfirmButton: true, // Add this line to hide the confirm button
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed || result.isDismissed) {
+                                    window.location.reload();
+                                    localStorage.setItem('activateBiddingTab', 'true');
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                html: '<span class="swal-text">' + response.message + '</span>',
+                                confirmButtonColor: '#52D017',
+                                confirmButtonText: 'Dismiss',
+                                customClass: {
+                                    title: 'swal-title',
+                                    htmlContainer: 'swal-text-container',
+                                    popup: 'swal-popup',
+                                    cancelButton: 'swal-button--cancel'
+                                },
+                                showCloseButton: true,
+                                showConfirmButton: true,
+                                allowOutsideClick: false
+                            });
+                            $('.submit_btn').prop('disabled', false).text('Submit');
+                        }
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Something went wrong. Please try again.',
+                            confirmButtonColor: '#52D017',
+                            confirmButtonText: 'Dismiss',
+                            customClass: {
+                                title: 'swal-title',
+                                htmlContainer: 'swal-text-container',
+                                popup: 'swal-popup',
+                                cancelButton: 'swal-button--cancel'
+                            },
+                            showCloseButton: true,
+                            showConfirmButton: true,
+                            allowOutsideClick: false
+                        });
+                        $('.submit_btn').prop('disabled', false).text('Submit');
+                    }
+                });
+
+                return false; // Prevent form submission
+            }
+        });
+
+        function edit_quote_amount(element, id) {
+            var amount = $(element).data('amount');
+            var lowestBid = $(element).data('lowbid');
+            var bidCount = $(element).data('bidcount');
+            $('.lowAmount').text('£'+lowestBid);
+            $('.bidCount').text(bidCount);
+            $('#quote_amount').val(amount);
+            $('#quote_id').val(id);
+            $('#quote').modal('show');
+        }
+
+        function quoteChangeStatus(quote_id, status) {
+            var formData = new FormData();
+            formData.append("_token", "{{ csrf_token() }}");
+            formData.append("quote_id", quote_id);
+            formData.append("status", status);
+            $.ajax({
+                url: "{{ route('transporter.quote_change_status') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function(res) {
+                    if (res.success == true) {
+                        window.location.reload();
+                        localStorage.setItem('activateBiddingTab', 'true');
+                    }   
+                    else {
+                        
                     }
                 },
-                yAxis: {
-                    type: 'logarithmic',
-                    minorTickInterval: 0.1,
-                    accessibility: {
-                        rangeDescription: 'Range: 0.1 to 1000'
-                    },
-                    opposite: false
-                },
-                navigator: {
-                    enabled: false,
-                },
-                tooltip: {
-                    xDateFormat: '%Y-%m-%d',
-                    headerFormat: '<b>{series.name}</b><br />',
-                    pointFormat: 'x = {point.x:%Y-%m-%d}, y = {point.y}'
-                },
-                series: [{
-                    data: data,
-                }]
+                error: function(data) {
+                }
             });
+        }
+    </script>
+
+    <script>
+        // Highcharts.getJSON('{{route("transporter.total_earning")}}', function(rawData) {
+        //     // Create the chart
+        //     //console.log(data)
+        //     var data=[];
+        //     if (rawData.length > 0) {
+        //         data = rawData.map(function(point) {
+        //             return [point[0], parseFloat(point[1])];
+        //         });
+        //     }
+        //     var chart =  Highcharts.stockChart('container', {
+        //         rangeSelector: {
+        //             inputEnabled: true,
+        //             allButtonsEnabled: true,
+        //             buttons: [{
+        //                 type: 'day',
+        //                 count: 1,
+        //                 text: 'Day',
+        //                 dataGrouping: {
+        //                     forced: false,
+        //                     units: [
+        //                         ['hour', [1]]
+        //                     ]
+        //                 }
+        //             }, {
+        //                 type: 'week',
+        //                 count: 1,
+        //                 text: 'Week',
+        //                 dataGrouping: {
+        //                     forced: true,
+        //                     units: [
+        //                         ['day', [1]]
+        //                     ]
+        //                 }
+        //             }, {
+        //                 type: 'year',
+        //                 text: 'Year',
+        //                 count: 1,
+        //                 dataGrouping: {
+        //                     forced: true,
+        //                     units: [
+        //                         ['month', [1]]
+        //                     ]
+        //                 }
+        //             },
+        //                 {
+        //                     type: 'all',
+        //                     count: 1,
+        //                     text: 'All'
+        //                 }],
+        //             buttonTheme: {
+        //                 width: 60,
+        //             },
+        //             selected: 3,
+        //         },
+        //         xAxis: {
+        //             type: 'datetime',
+        //             labels: {
+        //                 format: '{value:%d}'
+        //             }
+        //         },
+        //         yAxis: {
+        //             type: 'logarithmic',
+        //             minorTickInterval: 0.1,
+        //             accessibility: {
+        //                 rangeDescription: 'Range: 0.1 to 1000'
+        //             },
+        //             opposite: false
+        //         },
+        //         navigator: {
+        //             enabled: false,
+        //         },
+        //         tooltip: {
+        //             xDateFormat: '%Y-%m-%d',
+        //             headerFormat: '<b>{series.name}</b><br />',
+        //             pointFormat: 'x = {point.x:%Y-%m-%d}, y = {point.y}'
+        //         },
+        //         series: [{
+        //             data: data,
+        //         }]
+        //     });
+        // });
+        // new graph design 19-09-24
+        Highcharts.getJSON('{{ route("transporter.total_earning") }}', function(rawData) {
+            // Convert rawData into Flot-compatible format
+            var flotData = rawData.map(function(point, index) {
+                return [index, parseFloat(point[1])]; // Map months to indices and convert values to float
+            });
+            var maxYValue = Math.max(3000, Math.max.apply(null, flotData.map(function(data) {
+                return data[1];
+            })));
+
+            // Initialize Flot chart
+            if ($('#flotDashSales1').get(0)) {
+                $.plot('#flotDashSales1', [{
+                    data: flotData,
+                    color: "#0088cc"
+                }], {
+                    series: {
+                        lines: {
+                            show: true,
+                            lineWidth: 2
+                        },
+                        points: {
+                            show: true
+                        },
+                        shadowSize: 0
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        borderColor: 'rgba(0,0,0,0.1)',
+                        borderWidth: 1,
+                        labelMargin: 15,
+                        backgroundColor: 'transparent'
+                    },
+                    yaxis: {
+                        min: 0, // Ensure no negative values are shown
+                        max: maxYValue,
+                        tickSize: 500,
+                        color: 'rgba(0,0,0,0.1)'
+                    },
+                    xaxis: {
+                        mode: 'categories', // Set mode to categories
+                        tickLength: 0, // Hide ticks
+                        color: 'rgba(0,0,0,0)',
+                        ticks: rawData.map(function(point, index) { // Generate ticks from rawData
+                            return [index, point[0]];
+                        }),
+                        axisLabel: 'Month', // Add axis label if needed
+                        axisLabelUseCanvas: true, // Improve text rendering
+                        axisLabelFontSizePixels: 12 // Adjust font size if needed
+                    },
+                    legend: {
+                        show: false
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: function(label, xval, yval, flotItem) {
+                            // Extract the month and value from the rawData
+                            var month = rawData[flotItem.datapoint[0]][0]; // Get the month name
+                            var amount = Math.floor(flotItem.datapoint[1]); 
+                            
+                            // Return the tooltip formatted as 'Jul-£400'
+                            return month + "-£" + amount;
+                        },
+                        shifts: {
+                            x: -30,
+                            y: -30
+                        },
+                        defaultTheme: false
+                    }
+                });
+            }
         });
+
     $(document).ready(function(){
         $('#alert-message').show();
         setTimeout(function(){
             $('#alert-message').hide();
         }, 15000);
+
+        $('#quote_amount').focus(function() {
+            $(this).closest('.edit_budding_sec').addClass('edit_border');
+        }).blur(function() {
+            $(this).closest('.edit_budding_sec').removeClass('edit_border');
+        });
     });
 
 

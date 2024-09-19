@@ -5,17 +5,17 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .deshbord-job-listing {
-            padding: 0px 10px 0;
+            padding: 0px 20px 0;
             box-shadow: 0px 0px 4px 0px #00000040;
-            margin: 3px 0px 0 3px;
-            border-radius: 10px 0 0 10px;
+            margin: 0px 0px 20px 0px;
+            border-radius: 10px;
         }
         .tab-content .deshbord-job-listing li {
                 box-shadow: none !important;
             }
-        .tab-content {
-            width: calc(100% + 15px);
-        }
+            .deshbord-job-listing .bidding_new_design {
+                padding: 0 0px 20px;
+            }
          ul.pagination li {
             padding: 0 !important;
             border: none !important;
@@ -70,23 +70,6 @@
             color: #0356D6;
         }
 
-        .bidding_new_design {
-            display: flex;
-            padding: 0 28px 20px;
-            justify-content: space-between;
-        }
-        .bidding_new_design_grid span {
-            font-size: 14px;
-            font-weight: 300;
-            color: #000000b8;
-        }
-        .bidding_new_design_grid span.sub_color {
-            color: #0356D6;
-        }
-        .bidding_new_design_grid.job_new_grid_lowest span.sub_color {
-            color: #52d017;
-        }
-
         /* 28-08-2024 */
 
             .edit_budding_sec {
@@ -120,20 +103,85 @@
                 top: 100%;
             }
 
-        @media(max-width: 1400px){
-            .deshbord-job-listing.job_list_desh_mobile {
-                padding: 0;
+    .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
+        width: 100%;
+    }     
+
+    .my_job_pagination .pagination a.page-link {
+        top: 0px;
+        color: #484848;
+    }
+    .my_job_space {
+        padding-bottom:0px;
+    }
+
+    .job-data span {
+    color: #9C9C9C;
+    font-size: 15px;
+}
+.job-data {
+    margin-left: 0px;
+    margin-bottom: 8px;
+}
+
+.admin_job_bx .view_btn {
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 7px;
+    white-space: nowrap;
+}
+
+
+.admin_job_bx .tab-content ul .job_list_desh_mobile li {
+    padding: 10px 0px 0 !important;
+}
+
+
+
+
+        @media screen and (min-device-width: 1400px) and (max-device-width: 1600px) { 
+            .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
+                width: 100%;
+                height: 66px;
             }
+            .job_list_desh_mobile .list_img span {
+                font-size: 8px;
+            }
+            
+        }
+
+        @media(max-width: 1400px){
             .job_list_desh_mobile .list_img {
                 width: 12.5%;
             }
             .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile  li {
-                padding: 15px 13px;
+               margin-bottom: 10px;
             }
-            .bidding_new_design {
-                padding: 0 15px 20px;
+            .admin_job_bx .tab-content ul li .list_detail p,
+            .admin_job_bx .tab-content ul li .list_detail p b{
+                font-size: 14px;
             }
         }
+
+        @media (max-width: 1280px) {
+            .admin_job_bx .tab-content ul li {
+    overflow: unset !important;
+    flex-wrap: wrap;
+}
+.job_list_desh_mobile .list_img {
+    width: 15%;
+}
+.job_list_desh_mobile .list_detail {
+    width: 17%;
+}
+.deshbord-job-listing .bidding_new_design {
+    flex-wrap: wrap;
+}
+.deshbord-job-listing .bidding_new_design .bidding_new_design_grid {
+    width: 50%;
+}
+}
+
 
         @media(max-width: 580px){
             .new_job_list_mobile {
@@ -205,6 +253,10 @@
                 padding: 10px 10px 0;
                 margin-bottom: 0;overflow: unset;
             }
+            .job_list_desh_mobile .list_img span {
+                color: #9C9C9C;
+                font-size: 12px;
+            }
 
             /* 17-08-2024 */
 
@@ -212,39 +264,9 @@
                 font-weight: 300;
                 color: #000000ba;
                 margin-bottom: 0; 
+                top: 39px;
             }
-            .bidding_new_design {
-                display: flex;
-                flex-wrap: wrap;
-                row-gap: 0;
-                justify-content: space-between;
-                padding: 0 10px 5px;
-                margin-top: 30px;
-            }
-
-            .bidding_new_design_grid {
-                width: 47%;
-            }
-
-            .bidding_new_design_grid span {
-                font-size: 12px; color: #000000ba;
-            }
-            .bidding_new_design_grid span.sub_color {
-                color: #0356D6;
-            }
-            .bidding_new_design_grid.job_new_grid_lowest span.sub_color {
-                color: #52D017;
-            }
-            .bidding_new_design_date.job_new_grid_date span {
-                font-size: 12px;
-                color: #000000ba;
-            }
-
-            .bidding_new_design_date.job_new_grid_date {
-                padding-left: 10px;
-            }
-
-
+            
         }
 
     </style>
@@ -257,14 +279,14 @@
         <div id="page-content-wrapper">
         @include('layouts.transporter.dashboard.top_head')
         <!-- content part -->
-            <div class="content_container">
+            <div class="content_container my_job_space">
             <div class="banner" id="spam-banner" style="display:none">
                 <h2 class="spam-title">Check your spam.</h2>
                 <p>Please check your spam or junk folder and mark email as ‘not spam’ so that you don’t miss out on any important email notifications. You can unsubscribe from job alert emails at any time within your profile.</p>
                 <button onclick="hideBanner()" class="btn btn-success">Ok, got it</button>
             </div>
                 <div class="job_container">
-                    <div class="admin_job_bx" id="style-1">
+                    <div class="admin_job_bx my_job_pagination" id="style-1">
                         <div class="admin_job_top">
                             <h3>My jobs</h3>
                             <form  id="searchForm">
@@ -417,7 +439,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit quote</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit bid</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -627,7 +649,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const source = urlParams.get('source');
             const quoteId = urlParams.get('quote-id');
-            if (source === 'email' && quoteId) {
+            if ((source === 'email' || source === 'notification') && quoteId) {
                 localStorage.setItem('activateBiddingTab', 'true');
                 setTimeout(function() {
                     const elementId = `#edit_quote_${quoteId}`;
@@ -659,6 +681,7 @@
             }).blur(function() {
                 $(this).closest('.edit_budding_sec').removeClass('edit_border');
             });
+            $('body').addClass('account-scroll');
         });
 
         function quoteChangeStatus(quote_id, status) {

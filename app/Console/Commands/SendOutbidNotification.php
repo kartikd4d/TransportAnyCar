@@ -58,6 +58,16 @@ class SendOutbidNotification extends Command
                     $existingQuote->outbid_notified = 1;
                     $existingQuote->save();
                 }
+
+                // Call create_notification to notify the user
+                create_notification(
+                    $existingQuote->getTransporters->id, 
+                    $this->argument('transporter_id'),
+                    $quoteDetails->id,       
+                    'Outbid alert!',
+                    'You’ve been outbid on '.$quoteDetails->vehicle_make.' '.$quoteDetails->vehicle_model.' delivery.',  // Message of the notification
+                    'outbid',
+                );
             }
 
             $this->info('Outbid notifications sent successfully.');

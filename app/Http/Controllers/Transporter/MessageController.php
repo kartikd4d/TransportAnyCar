@@ -109,8 +109,19 @@ class MessageController extends WebController
                     $maildata['quotes'] = $userQuote;
                     $maildata['quote_id'] = $from_quote_id;
                     $maildata['type'] = 'user';
-                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
+                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata, 'thread_id' => $thread_id])->render();
                     $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
+
+                    // Call create_notification to notify the user
+                    create_notification(
+                        $customer_user->id, 
+                        $auth_user->id,
+                        $from_quote_id,       
+                        'New message',
+                        'You have received a message from '.$auth_user->username,  // Message of the notification
+                        'message',
+                        $thread_id
+                    );
                 } else {
                     Log::info('User with email ' . $customer_user->email . ' has opted out of receiving emails. Message email not sent.');
                 }
@@ -232,8 +243,8 @@ class MessageController extends WebController
         ]);
         if ($message) {
             try {
+                $customer_user = User::where('id', $friend_id)->first();
                 if($customer_user->job_email_preference) {
-                    $customer_user = User::where('id', $friend_id)->first();
                     $email_to = $customer_user->email;
                     $maildata['user'] = $user;
                     $maildata['thread'] = $thread;
@@ -243,8 +254,19 @@ class MessageController extends WebController
                     $quotes = UserQuote::where('id', $request->user_quote_id)->first();
                     $maildata['quotes'] = $quotes;
                     $maildata['type'] = 'user';
-                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata])->render();
+                    $htmlContent = view('mail.General.new-message-received', ['data' => $maildata, 'thread_id' => $thread_id])->render();
                     $this->emailService->sendEmail($email_to, $htmlContent, 'You have a new message');
+
+                    // Call create_notification to notify the user
+                    create_notification(
+                        $customer_user->id, 
+                        $user->id,
+                        $request->user_quote_id,       
+                        'New message',
+                        'You have received a message from '.$user->username.' for '.$quotes->vehicle_make.' '.$quotes->vehicle_model.' delivery. ',  // Message of the notification
+                        'message',
+                        $thread_id
+                    );
                 } else {
                     Log::info('User with email ' . $customer_user->email . ' has opted out of receiving emails. Message email not sent.');
                 }
