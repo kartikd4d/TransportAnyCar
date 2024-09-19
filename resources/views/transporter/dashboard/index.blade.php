@@ -235,6 +235,16 @@
             .earning_rght figure {
                 margin: 0px 0px 0;
             }
+            .chart_bx .col-lg-8 {
+                flex: auto;
+                max-width: 100%;
+            }
+
+            .chart_bx .col-lg-4 {
+                flex: auto;
+                max-width: 100%;
+                margin-top: 20px;
+            }
             
         }
 
