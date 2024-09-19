@@ -5837,3 +5837,7 @@ body.notification-scroll{
   }
 
 }
+
+.message_container .chat_box {
+  height: calc(100vh - 263px);
+}
