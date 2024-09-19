@@ -454,7 +454,7 @@
                         <div class="form-group">
                             <div class="edit_budding_sec">
                                 <span class="icon_includes">£</span>
-                                <input type="number" class="form-control" id="quote_amount" aria-describedby="emailHelp" placeholder="Enter quote amount" name="amount">
+                                <input type="number" class="form-control" id="quote_amount" placeholder="Enter your bid" aria-describedby="emailHelp" placeholder="Enter quote amount" name="amount" pattern="\d*">
                             </div>
                         </div>
                         <div class="modal_current">
@@ -639,7 +639,7 @@
             var bidCount = $(element).data('bidcount');
             $('.lowAmount').text('£'+lowestBid);
             $('.bidCount').text(bidCount);
-            $('#quote_amount').val(amount);
+            //$('#quote_amount').val(amount);
             $('#quote_id').val(id);
             $('#quote').modal('show');
         }
