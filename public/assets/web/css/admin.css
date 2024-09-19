@@ -5838,7 +5838,9 @@ body.notification-scroll{
 
 }
 
+@media(min-width: 1300px){
 .message_container .chat_box {
   height: calc(100vh - 263px);
   overflow: hidden;
+}
 }

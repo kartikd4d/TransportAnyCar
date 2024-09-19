@@ -87,7 +87,7 @@
                 $transporterQuotesCount = $quote->quotes_count ?? 0;
             @endphp
                 @if($type == 'all')
-                    @if($quote->status == 'completed')
+                    @if($quote->status == 'completed' && $quote->qbt_status != 'pending')
                         <div class="won_details">
                             <a href="{{ route('transporter.current_jobs', ['id' => $quote->quote_by_transporter_id]) }}" class="view_btn"> View details </a>
                         </div>
