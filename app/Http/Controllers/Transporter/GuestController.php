@@ -145,12 +145,13 @@ class GuestController extends WebController
         if ($request->hasFile('motor_trade_insurance')) {
             $motor_trade_insurance = upload_file('motor_trade_insurance', 'user_profile_image');
         }
+        $emailToUse = !empty($request->main_email) ? $request->main_email : $request->email;
         $user = User::create([
             'first_name' => $request->full_name,
             // 'last_name' => $request->last_name,
             'username' => $request->username ?? '',
             'name' => $request->company_name ?? '',
-            'email' => $request->main_email,
+            'email' => $emailToUse,
             'password' => $request->password,
             'address_line_1' => $request->address_line1 ?? null,
             //'address_line_2' => $request->address_line2 ?? null,
@@ -173,7 +174,7 @@ class GuestController extends WebController
                 try {
                     // send to transporter welcome mail
                     $htmlContent = view('mail.General.new-message', ['user' => $user])->render();
-                    $this->emailService->sendEmail($request->main_email, $htmlContent, 'Welcome to Transport Any Car');
+                    $this->emailService->sendEmail($emailToUse, $htmlContent, 'Welcome to Transport Any Car');
 
                     // send to admin for transporter information
                     $admin_email = config('constants.default.admin_email');

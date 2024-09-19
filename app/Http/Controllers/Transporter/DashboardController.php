@@ -723,7 +723,8 @@ class DashboardController extends WebController
                 
         // Order by created_at descending for bidding to show newest first
         if ($type == 'bidding') {
-            $quotes = $quotes->orderBy('quote_by_transpoters.created_at', 'desc');
+             $quotes = $quotes->where('user_quotes.status', '!=', 'cancelled')
+                     ->orderBy('quote_by_transpoters.created_at', 'desc');
         }
         if ($search) {
             $quotes = $quotes->where(function ($query) use ($search) {
