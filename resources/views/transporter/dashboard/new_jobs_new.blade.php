@@ -294,11 +294,11 @@ small.expring_tag {
     position: absolute;
     background: #ED1C24;
     color: #fff;
-    right: -56px;
+    right: -54px;
     padding: 3px 32px;
     font-size: 12px;
     transform: rotate(50deg);
-    top: -11px;
+    top: -8px;
 }
 
 .content_container {

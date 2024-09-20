@@ -760,7 +760,7 @@ div#spam-banner {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-lg-6 order-lg-2 order-1">
+                                        <div class="col-lg-6 order-lg-2 order-1" style="display:none" >
                                             <h5>Payment methods:</h5>
                                             <ul class="wd-cstm-check">
                                                 <li>
