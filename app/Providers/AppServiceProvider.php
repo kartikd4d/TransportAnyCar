@@ -90,7 +90,9 @@ class AppServiceProvider extends ServiceProvider
                         'type' => 'message'
                     ])->count(); 
                     
-                    $quoteIds = UserQuote::where('user_id', $user->id)->pluck('id');
+                    $quoteIds = UserQuote::where('user_id', $user->id)
+                    ->whereIn('status', ['pending', 'approved'])
+                    ->pluck('id');
                     $quotationCounts = QuoteByTransporter::whereIn('user_quote_id', $quoteIds)
                     ->where('status', 'pending')
                     ->count();

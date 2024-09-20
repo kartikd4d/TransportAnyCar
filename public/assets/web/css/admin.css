@@ -5620,6 +5620,9 @@ g.highcharts-input-group {
 }
 
  
+.menu a#active_deliveries .noti_info_icon small {
+  top: -3px;
+}
 
 
 
@@ -5823,7 +5826,6 @@ body.notification-scroll{
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-
 
 
 
