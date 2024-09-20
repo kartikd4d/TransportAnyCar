@@ -1266,11 +1266,11 @@ small.new_tag {
     position: absolute;
     background: #52d017;
     color: #fff;
-    right: -56px;
+    right: -50px;
     padding: 3px 32px;
     font-size: 13px;
     transform: rotate(50deg);
-    top: -10px;
+    top: -12px;
 }
 small.expring_tag {
     position: absolute;
