@@ -214,6 +214,7 @@ small.expring_tag {
 <div class="jobsrch_blogs jobserch_mob">
     <div class="jobsrch_box">
         <div class="row">
+        <div class="row">
             <div class="jobserch_mob_grid new_job_design">
                 @if($quote->created_at->diffInHours(now()) < 1)
                     <small class="new_tag">New</small>
@@ -334,9 +335,13 @@ small.expring_tag {
                 </ul>
                 <div class="job_new_grid_bid_btn pop_new_btn">
                     <div class="jobsrch_right_box">
+                </ul>
+                <div class="job_new_grid_bid_btn pop_new_btn">
+                    <div class="jobsrch_right_box">
                         <!-- <img src="{{$quote->map_image}}" alt="image" class="mapimg_jobsrch" /> -->
                         <a href="javascript:;" onclick="share_give_quote('{{$quote->id}}');" class="make_offer_btn checkStatus">Place bid</a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

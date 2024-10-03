@@ -1561,7 +1561,6 @@ small.expring_tag {
                                                         <a href="javascript:;" onclick="share_give_quote('{{$quote->id}}');" class="make_offer_btn checkStatus">Place bid</a>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                     </div>
