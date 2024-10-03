@@ -363,7 +363,9 @@ div#spam-banner {
     font-size: 15px;
 }
 
-
+.content_container {
+    padding-bottom: 50px !important;
+}
 }
 
 @media (max-width: 420px) {
@@ -586,77 +588,77 @@ div#spam-banner {
                                     @endif
                                     @if(isMobile())
                                     <div class="wd-admin-profile">
-                                <div class="admin-profile-top">
-                                    <div class="admin-profile-area">
-                                        <div class="edit-profile-photo">
-                                            <img src="@if($user->profile_image) {{checkFileExist($user->profile_image)}} @endif" alt="edit profile image" class="img-fluid profile-pic">
-                                            <div class="p-image">
-                                                <svg class="upload-button" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z" fill="#52D017"/>
-                                                </svg>
-                                                <input class="file-upload" type="file" accept="image/*">
+                                        <div class="admin-profile-top">
+                                            <div class="admin-profile-area">
+                                                <div class="edit-profile-photo">
+                                                    <img src="@if($user->profile_image) {{checkFileExist($user->profile_image)}} @endif" alt="edit profile image" class="img-fluid profile-pic">
+                                                    <div class="p-image">
+                                                        <svg class="upload-button" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z" fill="#52D017"/>
+                                                        </svg>
+                                                        <input class="file-upload" type="file" accept="image/*">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h2>{{$user->name}}</h2>
+                                                    <a href="{{route('transporter.logout')}}" class="logout_txt mob_view">
+                                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_650_1110)">
+                                                        <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
+                                                        <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
+                                                        </g>
+                                                        <defs>
+                                                        <clipPath id="clip0_650_1110">
+                                                        <rect width="18" height="18" fill="white"></rect>
+                                                        </clipPath>
+                                                        </defs>
+                                                        </svg>
+                                                        Logout
+                                                    </a>
+                                                    <!-- <a href="javascript:;" class="wd-edit-prfl">Edit profile</a> -->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <h2>{{$user->name}}</h2>
-                                            <a href="{{route('transporter.logout')}}" class="logout_txt mob_view">
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(#clip0_650_1110)">
-                                                <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
-                                                <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
-                                                </g>
-                                                <defs>
-                                                <clipPath id="clip0_650_1110">
-                                                <rect width="18" height="18" fill="white"></rect>
-                                                </clipPath>
-                                                </defs>
-                                                </svg>
-                                                Logout
-                                            </a>
-                                            <!-- <a href="javascript:;" class="wd-edit-prfl">Edit profile</a> -->
+                                        <div class="wd-profl-botm">
+                                            <div class="wd-profl-lst">
+                                                <p>Jobs completed</p>
+                                                <span>{{$jobs_completed_count}}</span>
+                                            </div>
+                                            <div class="wd-profl-lst">
+                                                <p>Total earnings</p>
+                                                <span>£{{$total_earning_count}}</span>
+                                            </div>
                                         </div>
+                                        <!-- <div class="wd-profl-lst">
+                                            <p>Documents</p>
+                                            <div class="document-status">
+                                                @if($user->is_status == 'approved')
+                                                    <span class="status-badge approve">Approved</span>
+                                                @elseif($user->is_status == 'pending')
+                                                    <span class="status-badge pending">Pending</span>
+                                                @elseif($user->is_status == 'rejected')
+                                                    <span class="status-badge reject">Reject</span>
+                                                @else 
+                                                    <span>Not Availabe</span>
+                                                @endif
+                                            </div>
+                                        </div> -->
+                                        <a href="{{route('transporter.logout')}}" class="logout_txt desk_view">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_650_1110)">
+                                            <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
+                                            <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_650_1110">
+                                            <rect width="18" height="18" fill="white"></rect>
+                                            </clipPath>
+                                            </defs>
+                                            </svg>
+                                            Logout
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="wd-profl-botm">
-                                    <div class="wd-profl-lst">
-                                        <p>Jobs completed</p>
-                                        <span>{{$jobs_completed_count}}</span>
-                                    </div>
-                                    <div class="wd-profl-lst">
-                                        <p>Total earnings</p>
-                                        <span>£{{$total_earning_count}}</span>
-                                    </div>
-                                </div>
-                                <!-- <div class="wd-profl-lst">
-                                    <p>Documents</p>
-                                    <div class="document-status">
-                                        @if($user->is_status == 'approved')
-                                            <span class="status-badge approve">Approved</span>
-                                        @elseif($user->is_status == 'pending')
-                                            <span class="status-badge pending">Pending</span>
-                                        @elseif($user->is_status == 'rejected')
-                                            <span class="status-badge reject">Reject</span>
-                                        @else 
-                                            <span>Not Availabe</span>
-                                        @endif
-                                    </div>
-                                </div> -->
-                                <a href="{{route('transporter.logout')}}" class="logout_txt desk_view">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_650_1110)">
-                                    <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
-                                    <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_650_1110">
-                                    <rect width="18" height="18" fill="white"></rect>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    Logout
-                                </a>
-                            </div>
-                            @endif
+                                    @endif
                                     @if($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
                                     <h3>Uploaded documents</h3>
                                     <div class="row">
@@ -760,12 +762,15 @@ div#spam-banner {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-lg-6 order-lg-2 order-1" style="display:none" >
+                                        <div class="col-lg-6 order-lg-2 order-1" >
                                             <h5>Payment methods:</h5>
+                                            @php
+                                            $payment_methods = $user->payment_methods ? explode(',', $user->payment_methods) : [];
+                                            @endphp
                                             <ul class="wd-cstm-check">
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment1" checked>
+                                                        <input type="checkbox" id="payment1" name="payment_methods[]" value="cash" {{ in_array('cash', $payment_methods) ? 'checked' : '' }}>
                                                         <label for="payment1"></label>
                                                         <span>Cash</span>
                                                     </div>
@@ -773,7 +778,7 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment5" checked>
+                                                        <input type="checkbox" id="payment5" name="payment_methods[]" value="cheque" {{ in_array('cheque', $payment_methods) ? 'checked' : '' }}>
                                                         <label for="payment5"></label>
                                                         <span>Cheque</span>
                                                     </div>
@@ -781,7 +786,7 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment3" checked>
+                                                        <input type="checkbox" id="payment3" name="payment_methods[]" value="visa_card" {{ in_array('visa_card', $payment_methods) ? 'checked' : '' }}>
                                                         <label for="payment3"></label>
                                                         <span>Visa Card</span>
                                                     </div>
@@ -789,7 +794,7 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment4" checked>
+                                                        <input type="checkbox" id="payment4" name="payment_methods[]" value="paypal" {{ in_array('paypal', $payment_methods) ? 'checked' : '' }}>
                                                         <label for="payment4"></label>
                                                         <span>Paypal</span>
                                                     </div>
@@ -797,7 +802,7 @@ div#spam-banner {
 
                                                 <li>
                                                     <div class="form-group">
-                                                        <input type="checkbox" id="payment2" checked>
+                                                        <input type="checkbox" id="payment2" name="payment_methods[]" value="bank_tansfer" {{ in_array('bank_tansfer', $payment_methods) ? 'checked' : '' }}>
                                                         <label for="payment2"></label>
                                                         <span>Bank Transfer</span>
                                                     </div>

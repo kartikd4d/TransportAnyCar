@@ -247,8 +247,11 @@
                                 </svg>
                             </a>
                             @elseif($quote->status == 'accept') 
-                            <a href="{{ route('front.booking_confirm_page', $user_quote_id) }}"class="wd-accepted-btn">Go to booking
-                            </a>
+                                @if($job_status != 'completed')
+                                    <a href="{{ route('front.booking_confirm_page', $user_quote_id) }}"class="wd-accepted-btn">Go to booking</a>
+                                @else
+                                    <a href="{{ route('front.user_deposit', ['id' => $quote->id]) }}"class="wd-accepted-btn">Go to booking</a>
+                                @endif
                             @endif
                         </div>
                     </div>

@@ -96,6 +96,7 @@
                         </div>
                     @endif
                     @if($quote->qbt_status == 'pending')
+                    
                         <div class="won_details">
                             <a href="javascript:;" id="edit_quote_{{$quote->id}}" onclick="edit_quote_amount(this, '{{$quote->id}}');" data-amount="{{roundBasedOnDecimal($quote->transporter_payment)}}" data-lowbid="{{$lowestBid}}" data-bidcount="{{$transporterQuotesCount}}" class="view_btn edit_quote_btn won_details">Edit bid</a>
                         </div>

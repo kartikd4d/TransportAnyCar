@@ -1,5 +1,5 @@
 @foreach($quotes as $quote)
-    <div class="jobsrch_box">
+    {{-- <div class="jobsrch_box">
         <div class="row">
             <div class="col-lg-6">
                 <div class="jobsrch_top_box position-relative">
@@ -31,7 +31,7 @@
                         <img src="/{{$quote->profile_image}}" class="userimg" alt="user" />
                         @endif
                         <div class="jobsrch_userinfo">
-                            <h6>{{$quote->name}}</h6>
+                            <h6>{{$quote->name}}aaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
                             <span>
                                 @if($quote->address)
                                     {{formatAddress($quote->address)}}
@@ -136,12 +136,16 @@
                     <h4 class="distance_text">Journey Distance: <b>{{$quote->distance}}les</b>
                         <strong>({{$quote->duration}})</strong>
                     </h4>
+                    @if ($quote->tranporterId)
+                    <a href="javascript:;" onclick="share_edit_quote('{{$quote->id}}');" class="make_offer_btn checkStatus">Edit Bid</a>
+                    @else
                     <!-- <img src="/{{$quote->map_image}}" alt="image" class="mapimg_jobsrch" /> -->
                     <a href="javascript:;" onclick="share_give_quote('{{$quote->id}}');" class="make_offer_btn">Place Bid</a>
+                    @endif
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endforeach
 @if(count($quotes)==0)
     <div class="col-12">

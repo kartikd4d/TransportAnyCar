@@ -44,6 +44,7 @@ $currentRoute = request()->route()->getName();
                             <li><a href="{{route('transporter.new_jobs_new')}}">Find jobs @if($totalQuotes > 0)({{ $totalQuotes }})@endif</a></li>
 {{--                            <li><a href="{{route('transporter.new_jobs')}}">Find jobs</a></li>--}}
                             <li><a href="{{route('transporter.current_jobs')}}">My jobs</a></li>
+                            <li><a href="{{ route('transporter.watchlist.index') }}">Watchlist</a></li>
                         </ul>
                     </div>
                 </div>
@@ -281,7 +282,7 @@ $currentRoute = request()->route()->getName();
           if(isStatus == 'pending' || isStatus == 'rejected') {
             e.preventDefault();
             Swal.fire({
-                title: '<span class="swal-title">Awaiting approval</span>',
+                title: '<span class="swal-title" style="color:#ED1C24">Awaiting approval</span>',
                 html: '<span class="swal-text">Sorry you cannot bid on any jobs until your account has been approved.</span>',
                 confirmButtonColor: '#52D017',
                 confirmButtonText: 'Dismiss',
@@ -291,9 +292,14 @@ $currentRoute = request()->route()->getName();
                       popup: 'swal-popup', // Add custom class for the popup
                       cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
                 },
-                showCloseButton: false, // Add this line to show the close button
-                showConfirmButton: false, // Add this line to hide the confirm button
+                showCloseButton: true, // Add this line to show the close button
+                showConfirmButton: true, // Add this line to hide the confirm button
                 allowOutsideClick: false
+              }).then((result) => {
+                  // Redirect to the dashboard if the confirm button or close button is clicked
+                  if (result.isConfirmed || result.dismiss) {
+                      window.location.href = "{{route('transporter.dashboard')}}"; // Change this to your actual dashboard URL
+                  }
               });
           } else {
             if(isStatus != 'approved') {
@@ -330,7 +336,7 @@ $currentRoute = request()->route()->getName();
 
          // Check if the current URL contains 'dashboard' or 'profile'
         //if (window.location.href.indexOf('dashboard') > -1 || window.location.href.indexOf('profile') > -1) {
-            $('#importantNoticeModal').modal('show');
+          $('#importantNoticeModal').modal('show');
         //}
     });
     // $('.maintaince_mode').on('click',function(e) {
