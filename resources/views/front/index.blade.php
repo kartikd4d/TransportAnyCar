@@ -248,7 +248,7 @@
             <div class="container">
                 <div class="wd_title">
                     <h3>Our <b>happy</b> customers</h3>
-                    <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br /> incididunt ut labore et dolore magna aliqua. consectetur adipiscing elit.</p>
+                    <p>Check out what our customers say about their experience with us</p>
                 </div>
                 @if(isMobile())
                     <div class="mob_review_section">

@@ -762,7 +762,8 @@ fa-eye:before {
                         //$('.email').removeClass('error').next('.error').remove();
                     } else {
                         // Email is invalid, show error message
-                        $('.email').after('<div class="error" id="api-error">Please enter a valid email address</div>');
+                         isEmailAvailable(email);
+                        //$('.email').after('<div class="error" id="api-error">Please enter a valid email address</div>');
                     }
                 },
                 error: function() {

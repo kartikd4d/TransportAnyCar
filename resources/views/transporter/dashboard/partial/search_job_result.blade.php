@@ -213,7 +213,7 @@ small.expring_tag {
 @foreach($quotes as $quote)
 <div class="jobsrch_blogs jobserch_mob">
     <div class="jobsrch_box">
-        <div class="row" data-car-id="{{$quote->id}}">
+        <div class="row">
             <div class="jobserch_mob_grid new_job_design">
                 @if($quote->created_at->diffInHours(now()) < 1)
                     <small class="new_tag">New</small>
@@ -221,7 +221,7 @@ small.expring_tag {
                 @if($quote->created_at->diffInDays(now()) >= 8 && $quote->created_at->diffInDays(now()) <= 10)
                     <small class="expring_tag">Expiring</small>
                 @endif               
-                <ul class="jobsrch_info_list">
+                <ul class="jobsrch_info_list car-row" data-car-id="{{$quote->id}}">
                     <li class="job_new_grid_img">
                         <div class="jobsrch_top_box position-relative">
                             @if(is_null($quote->vehicle_make_1) && is_null($quote->vehicle_model_1))
@@ -331,13 +331,13 @@ small.expring_tag {
                         <span>Journey miles:</span>  
                         <span class="sub_color">{{ str_replace(' mi', '', $quote->distance) }} <span>({{$quote->duration}})</span></span>    
                     </li>
-                    <li class="job_new_grid_bid_btn">
-                        <div class="jobsrch_right_box">
+                </ul>
+                <div class="job_new_grid_bid_btn pop_new_btn">
+                    <div class="jobsrch_right_box">
                         <!-- <img src="{{$quote->map_image}}" alt="image" class="mapimg_jobsrch" /> -->
                         <a href="javascript:;" onclick="share_give_quote('{{$quote->id}}');" class="make_offer_btn checkStatus">Place bid</a>
                     </div>
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
     </div>

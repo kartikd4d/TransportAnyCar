@@ -497,8 +497,6 @@ small.expring_tag {
     width: 24px;
 }
 
-
-
 }
 @media(max-width: 400px){
 .jobsrch_box {
@@ -730,7 +728,7 @@ small.expring_tag {
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="jobsrch_right_box">
-                                                    <h4 class="distance_text">Journey Distance: <b>{{$quote->distance}}les</b>
+                                                    <h4 class="distance_text">Journey Distance: <b>{{$quote->distance}}miles</b>
                                                         <strong>({{$quote->duration}})</strong>
                                                     </h4>
                                                     <!-- <img src="{{$quote->map_image}}" alt="image" class="mapimg_jobsrch" /> -->
@@ -851,7 +849,6 @@ small.expring_tag {
                                                         <a href="javascript:;" onclick="share_give_quote('{{$quote->id}}');" class="make_offer_btn checkStatus">Place bid</a>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                     </div>

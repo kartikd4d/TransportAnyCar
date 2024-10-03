@@ -714,7 +714,11 @@ div#spam-banner {
         </div>
     </div>
 </div>
-
+<style>
+    img.pdf_image {
+    width: 100%;
+}
+</style>
 <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -726,6 +730,7 @@ div#spam-banner {
             </div>
             <div class="modal-body">
                 <iframe id="pdfIframe" style="width: 100%; height: 500px; border: none;"></iframe>
+                <img class="pdf_image" style="disply:none;">
             </div>
         </div>
     </div>
@@ -752,11 +757,22 @@ div#spam-banner {
 </script>
 <script>
 
-    $('.view-pdf').on('click', function(e) {
+     $('.view-pdf').on('click', function(e) {
         e.preventDefault();
         var pdfUrl = $(this).data('url');
-        $('#pdfIframe').attr('src', pdfUrl);
+         var isImage = /\.(jpg|jpeg|png|gif|bmp|svg)$/.test(pdfUrl.toLowerCase());
+         if (isImage) {
+        // If it's an image, set the src of the image element and show the image
+        $('.pdf_image').attr('src', pdfUrl).show();
+        $('#pdfIframe').hide();  // Hide the iframe if it was shown
+    } else {
+        // If it's not an image, load the URL in the iframe
+        $('#pdfIframe').attr('src', pdfUrl).show();
+        $('.pdf_image').hide();  // Hide the image element if it was shown
+    }
+    
     });
+    
     document.addEventListener("DOMContentLoaded", function() {
         const passwordInput = document.getElementById("npassword");
         const passwordIcon = document.getElementById("passwordIcon");
