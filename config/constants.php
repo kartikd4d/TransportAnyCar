@@ -3,7 +3,8 @@
 return [
     'empty_object' => new stdClass(),
     //'google_map_key' => 'AIzaSyBXiRBNeXSlj2AjrGBL8yIqMGSekCtCBuk',
-    'google_map_key' => 'AIzaSyDEA8R2WGiYLsDQ2DkiAcwxl9rDf5-qa00',
+    // 'google_map_key' => 'AIzaSyDEA8R2WGiYLsDQ2DkiAcwxl9rDf5-qa00',
+    'google_map_key' => 'AIzaSyD8zrV8lql-LpfxEJnBn2BKiofujwQmbuo',
     'european_countries' => ['GB','IE', 'FR', 'ES'],
     'asset_url' => env('APP_URL'),
     'upload_type' => 'local',

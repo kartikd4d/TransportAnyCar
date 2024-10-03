@@ -1653,7 +1653,7 @@
                     <div class="admin_job_bx find_trans_newjob" id="style-1">
                         <div class="admin_job_top">
                             <h3>Watchlist</h3>
-                            <p>Here are the jobs you are currently watching.</p>
+                            <p class="pera_srch">Here are the jobs you are currently watching.</p>
                         </div>
 
                         <div class="container">

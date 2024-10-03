@@ -1760,9 +1760,9 @@
                                         @endif
                                     @endif
                                 </div>
+                                <div id="orderlisting">
                                 @foreach ($quotes as $quote)
                                     <div class="boxContent">
-
                                         <div class="boxContentList">
                                             <h2 class="imgHeading">
                                                 <span>Posted
@@ -1771,7 +1771,7 @@
 
                                             <div class="boxImg-text car-row" data-car-id="{{ $quote->id }}">
                                                 <div class="imgCol">
-                                                    <img src="{{ $quote->image }}" class="vehicle_image"
+                                                    <img src="{{ $quote->image }}" class=""
                                                         alt="image" />
                                                 </div>
 
@@ -1931,6 +1931,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                </div>
                             </div>
                             <div id="idLoadData">
                             </div>
@@ -1998,7 +1999,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle"> Edit your bid</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="adjustbackdrop()">
                         <span aria-hidden="true">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -2009,7 +2010,7 @@
                         </span>
                     </button>
                 </div>
-                <form id="editQuoteForm" action="{{ route('transporter.submit_offer') }}" method="POST">
+                <form id="editQuoteForm" action="{{ route('transporter.submit_offer') }}" method="POST" class="bid_form">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -2301,6 +2302,9 @@
                 $('#quote').modal('show');
             }
         }
+        function adjustbackdrop(){
+            $('.modal-backdrop').css('z-index', '1040');
+        }
 
         function share_edit_quote(id) {
             // console.log('aaaaaaaaaaaaaaa');
@@ -2466,102 +2470,93 @@
                     if (carData?.quote_by_transporter) {
                         // switch_custom =
                         switch_custom = `<a href="javascript:;"
-                                                            onclick="share_edit_quote('${carData.id}');"
-                                                            class="make_offer_btn checkStatus">Edit bid</a>`
+                                            onclick="share_edit_quote('${carData.id}');"
+                                            class="make_offer_btn checkStatus">Edit bid</a>`
                     } else {
                         switch_custom = ` <a href="javascript:;"
-                                                            onclick="share_give_quote(${carData.id});"
-                                                            class="make_offer_btn checkStatus">Place bid</a>`
+                                            onclick="share_give_quote(${carData.id});"
+                                            class="make_offer_btn checkStatus">Place bid</a>`
                     }
 
                     // Dynamically update modal body content
                     var modalBodyContent = `
                     <div class="jobsrch_box">
-                        <div class="row">
-                           
+                        <div class="row">                           
                             <div class="col-lg-6">
                                 <div class="jobsrch_top_box position-relative">
                                     ${carData.vehicle_make_1 == null && carData.vehicle_model_1 == null ? `
-                                                                    <div>
-                                                                        <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
-                                                                    </div>
-                                                                    ` : `
-                                                                    <div class="job_se_sec slider">
-                                                                        <div>
-                                                                            <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
-                                                                        </div>
-                                                                        ${carData.image_1 ? `
-                                            <div>
-                                                <img src="/${carData.image_1}" class="vehicle_image" alt="Vehicle Image" />
-                                            </div>
+                                        <div>
+                                            <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
+                                        </div>
                                         ` : `
+                                        <div class="job_se_sec slider">
                                             <div>
-                                                <img src="/uploads/no_car_image.png" class="vehicle_image" alt="No Image Available" />
+                                                <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
                                             </div>
-                                        `}
-                                                                    </div>
-                                                                    <div class="custom-navigation">
-                                                                        <span class="current-slide">1</span> of <span class="total-slides">2</span>
-                                                                    </div>
-                                                                    `}
-                                   
+                                            ${carData.image_1 ? `
+                                                <div>
+                                                    <img src="/${carData.image_1}" class="vehicle_image" alt="Vehicle Image" />
+                                                </div>
+                                            ` : `
+                                                <div>
+                                                    <img src="/uploads/no_car_image.png" class="vehicle_image" alt="No Image Available" />
+                                                </div>
+                                            `}
+                                        </div>
+                                        <div class="custom-navigation">
+                                            <span class="current-slide">1</span> of <span class="total-slides">2</span>
+                                        </div>
+                                    `}                                   
                                 </div>
                                 
-                                <div class="btnCustom">
-                                    ${switch_custom}    
-                                </div>
+                                <div class="btnCustom">${switch_custom}</div>
                                 <div class="wishList-bidInfo">
                                     <div class="wishListBtn">
                                          <a href="javascript:;" class="btn"
-                                                        onclick="addToWatchlist('${carData.id}');"
-                                                        style="margin-left: auto;">
-                                        Add to watchlist</a>
+                                            onclick="addToWatchlist('${carData.id}');"
+                                            style="margin-left: auto;">
+                                                Add to watchlist
+                                        </a>
                                     </div>
                                     <div class="bidTnfo">
                                         <p class="info">Current lowest bid: <span class="green">£ ${carData.lowest_bid}</span></p>
                                         <p class="info">Transporters bidding: <span class="blue">${carData.transporter_quotes_count}</span></p>
-                                        </div>
                                     </div>
+                                </div>
                            
                                 <ul class="jobsrch_info_list">
                                     <li>
                                         <div class="jpbsrch_inner">
-                                            
                                             <small>Make & model:</small>
                                         </div>
                                         <span>${makeAndModel}</span>
                                     </li>
                                     <li>
-                                        <div class="jpbsrch_inner">
-                                           
+                                        <div class="jpbsrch_inner">                                           
                                             <small>Pick-up area:</small>
                                         </div>
                                         <span>${carData.pickup_postcode ? formatAddress(carData.pickup_postcode) : '-'}</span>
                                     </li>
                                     <li>
-                                        <div class="jpbsrch_inner">
-                                            
+                                        <div class="jpbsrch_inner">                                            
                                             <small>Drop-off area:</small>
                                         </div>
                                         <span>${carData.drop_postcode ? formatAddress(carData.drop_postcode) : '-'}</span>
                                     </li>
                                     <li>
-                                        <div class="jpbsrch_inner">
-                                           
+                                        <div class="jpbsrch_inner">                                           
                                             <small>Delivery date:</small>
                                         </div>
                                         <span>${carData.delivery_timeframe_from ? formatCustomDate(carData.delivery_timeframe_from) : carData.delivery_timeframe}</span>
                                     </li>
                                     <li>
-                                        <div class="jpbsrch_inner">
-                                            
+                                        <div class="jpbsrch_inner">                                            
                                             <small>Starts & drives:</small>
                                         </div>
                                         <span>${startsDrives}</span>
                                     </li>
                                     <li>
-                                        <div class="jpbsrch_inner">
-                                            
+                                        <div class="jpbsrch_inner">                                            
                                             <small>Delivery type:</small>
                                         </div>
                                         <span>${carData.how_moved}</span>
@@ -2886,6 +2881,7 @@
             if ($('#idLoadData').children().length > 0) {
                 $('.pagination.before_search').hide();
                 $('.job-data').hide();
+
             } else {
                 $('.pagination.before_search').show();
                 $('.job-data').show();
