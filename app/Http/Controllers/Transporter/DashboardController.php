@@ -9,6 +9,7 @@ use App\QuoteByTransporter;
 use App\Thread;
 use App\User;
 use App\UserQuote;
+use App\TransactionHistory;
 use App\Notification;
 use Carbon\Carbon;
 use App\Services\EmailService;
@@ -56,10 +57,10 @@ class DashboardController extends WebController
         $accept_quote = QuoteByTransporter::where('status', 'accept')->where('user_id', $user_data->id)->get();
         $total_ids = $accept_quote->pluck('user_quote_id')->toArray();
         $total_distance = UserQuote::whereIn('id', $total_ids)
-        ->sum('distance');
+            ->sum('distance');
         $total_distance = $total_distance >= 1000 ? round($total_distance / 1000, 1) . 'K' : round($total_distance, 1);
         $total_duration = UserQuote::whereIn('id', $total_ids)
-        ->sum('duration');
+            ->sum('duration');
         $hours = intdiv($total_duration, 60);
         $minutes = $total_duration % 60;
         $total_duration = $hours . ' hrs ' . $minutes . ' mins';
@@ -72,7 +73,7 @@ class DashboardController extends WebController
                 ->get();
             if ($this_month_user_quote->isNotEmpty()) {
                 $user_quote_ids = $this_month_user_quote->pluck('id')->toArray();
-                $this_month_earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote_ids)->where('user_id',$user_data->id)
+                $this_month_earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote_ids)->where('user_id', $user_data->id)
                     ->sum('transporter_payment');
             } else {
                 $this_month_earnings = 0;
@@ -89,13 +90,13 @@ class DashboardController extends WebController
                 ->get();
             if ($last_month_user_quote->isNotEmpty()) {
                 $user_quote_ids_last_month = $last_month_user_quote->pluck('id')->toArray();
-                $last_month_earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote_ids_last_month)->where('user_id',$user_data->id)
+                $last_month_earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote_ids_last_month)->where('user_id', $user_data->id)
                     ->sum('transporter_payment');
             } else {
-                $last_month_earnings = 0; 
+                $last_month_earnings = 0;
             }
         } else {
-            $last_month_earnings = 0; 
+            $last_month_earnings = 0;
         }
         $start_of_last_week = Carbon::now()->subWeek()->startOfWeek();
         $end_of_last_week = Carbon::now()->subWeek()->endOfWeek();
@@ -105,7 +106,7 @@ class DashboardController extends WebController
             ->get();
         if ($previous_week_user_quote->isNotEmpty()) {
             $user_quote_ids_last_week = $previous_week_user_quote->pluck('id')->toArray();
-            $previous_week_earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote_ids_last_week)->where('user_id',$user_data->id)
+            $previous_week_earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote_ids_last_week)->where('user_id', $user_data->id)
                 ->sum('transporter_payment');
         } else {
             $previous_week_earnings = 0;
@@ -141,29 +142,38 @@ class DashboardController extends WebController
     public function TotalEarning()
     {
         $user = Auth::guard('transporter')->user();
-    
+
         $accept_quote = QuoteByTransporter::where('status', 'accept')
             ->where('user_id', $user->id)
             ->get();
-    
+
         $user_quote = UserQuote::whereIn('id', $accept_quote->pluck('user_quote_id'))
             ->where('status', 'completed')
             ->get();
-    
+
         $earnings = QuoteByTransporter::whereIn('user_quote_id', $user_quote->pluck('id'))
             ->where('user_id', $user->id)
             ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'), DB::raw('SUM(transporter_payment) as total'))
             ->groupBy('month')
             ->orderBy('month')
             ->get();
-    
+
         // Initialize an array for months with zero values
         $months = [
-            'Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 
-            'May' => 0, 'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 
-            'Sep' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0
+            'Jan' => 0,
+            'Feb' => 0,
+            'Mar' => 0,
+            'Apr' => 0,
+            'May' => 0,
+            'Jun' => 0,
+            'Jul' => 0,
+            'Aug' => 0,
+            'Sep' => 0,
+            'Oct' => 0,
+            'Nov' => 0,
+            'Dec' => 0
         ];
-    
+
         // Populate months with actual data
         foreach ($earnings as $earning) {
             $monthName = date('M', strtotime($earning->month . '-01'));
@@ -171,13 +181,13 @@ class DashboardController extends WebController
                 $months[$monthName] = (float) $earning->total;
             }
         }
-    
+
         // Convert to the desired format
         $maindata = [];
         foreach ($months as $month => $total) {
             $maindata[] = [$month, $total];
         }
-    
+
         return $maindata;
     }
 
@@ -223,7 +233,7 @@ class DashboardController extends WebController
             ->where("is_active", "y")
             ->where(function ($query) use ($user_id) {
                 $query->where('threads.user_id', $user_id)
-                      ->orWhere('threads.friend_id', $user_id);
+                    ->orWhere('threads.friend_id', $user_id);
             })
             ->orderBy('last_msg_update_time', 'DESC');
         $chats = $c_insatnce->get();
@@ -246,54 +256,41 @@ class DashboardController extends WebController
     {
         $user_data = Auth::guard('transporter')->user();
         $my_quotes = QuoteByTransporter::where('user_id', $user_data->id)->pluck('id');
-        $month = Carbon::now()->month;
-        $six_month_start = Carbon::now()->subMonths(6)->startOfMonth();
-        $six_month_end = Carbon::now()->endOfMonth();
-        $currentYear = Carbon::now()->year;
-        $params = [
-            'user' => $user_data,
-            'feedback' => [],
-        ];
+        $quotes = TransactionHistory::whereIn('quote_by_transporter_id', $my_quotes)->get();
+       
+        $totalDistance = $quotes->sum(function($transaction) {
+            if ($transaction->quote) {
+                $distanceString = $transaction->quote->distance;
+                $cleanedDistance = str_replace(['mi', ',', ' '], '', $distanceString);
+                return is_numeric($cleanedDistance) ? (float)$cleanedDistance : 0;
+            }
+            return 0;
+        });
+        
+        $totalDistanceFormatted = number_format($totalDistance, 2) . ' mi';                     
+        $completedCount = $quotes->filter(function($transaction) {
+            return $transaction->quote && $transaction->quote->status == 'completed';
+        })->count();
+       
+    //     $totalAmount = TransactionHistory::whereIn('quote_by_transporter_id', $my_quotes)
+    // ->sum('amount');
+     $total_earning= $quotes->sum('amount');
+        // return$quotes;
         $rating_average = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
             ->selectRaw('(AVG(communication) + AVG(punctuality) + AVG(care_of_good) + AVG(professionalism)) / 4 as overall_avg')
             ->first();
-        $overall_percentage = 0;
-        $overall_percentage += ($rating_average->overall_avg / 5) * 100;
 
-        $positive_feedback_count = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->where('type', 'positive')->count();
-        $total_feedback_count = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->count();
-        $positive_feedback_percentage = ($total_feedback_count > 0) ? ($positive_feedback_count / $total_feedback_count) * 100 : 100;
-
-        $feedbackTypes = ['positive', 'neutral', 'negative'];
-        foreach ($feedbackTypes as $type) {
-            // Monthly count
-            $params["monthly_{$type}_feedback"] = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
-                ->where('type', $type)
-                ->whereYear('created_at', $currentYear)
-                ->whereMonth('created_at', $month)
-                ->count();
-
-
-            // Six-monthly count
-            $params["six_monthly_{$type}_feedback"] = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
-                ->where('type', $type)
-                ->whereBetween('created_at', [$six_month_start, $six_month_end])
-                ->count();
-
-            // Yearly count
-            $params["yearly_{$type}_feedback"] = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
-                ->where('type', $type)
-                ->whereYear('created_at', $currentYear)
-                ->count();
-        }
+        $quote_ids = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
+        ->with('quote_by_transporter.quote')
+        ->get()
+        ->pluck('quote_by_transporter.quote.id');
 
         $params['user'] = $user_data;
         $params['feedback'] = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->with('quote_by_transporter.quote')->get();
-        $params['completed_job'] = UserQuote::whereIn('id', $my_quotes)->where('status', 'completed')->count();
-        $params['overall_percentage'] = $overall_percentage;
-        $params['positive_feedback_percentage'] = $positive_feedback_percentage;
-
-        // Custom data for the request
+        $params['completed_job'] =  $completedCount;
+        $params['distance'] = $totalDistanceFormatted;
+        $params['total_earning'] = $total_earning;
+        
         $customRequest = new Request([
             'type' => 'feedback'
         ]);
@@ -317,13 +314,13 @@ class DashboardController extends WebController
         }
     }
 
-    public function currentJobs($id=null)
+    public function currentJobs($id = null)
     {
         if ($id) {
             try {
                 $quote = QuoteByTransporter::with([
-                    'getTransporters', 
-                    'quote.user', 
+                    'getTransporters',
+                    'quote.user',
                     'quote.quotationDetail'
                 ])->where('id', $id)->first();
                 $friend_id = $quote->quote->user_id ?? 0;
@@ -338,19 +335,17 @@ class DashboardController extends WebController
                 $last_visited_at = $this->formatLastVisitedAt($lastVisitedAt);
                 if ($quotation_detail && $quotation_detail->created_at) {
                     $formattedDilveryDate = Carbon::createFromFormat('Y-m-d H:i:s', $quotation_detail->created_at)
-                    ->setTimezone('Europe/London')
-                    ->format('F d, H:i');
+                        ->setTimezone('Europe/London')
+                        ->format('F d, H:i');
                 } else {
                     $formattedDilveryDate = null;
                 }
-                return view('transporter.dashboard.current_jobs_detail', compact('quote', 'user_job', 'transporter', 'user', 'quotation_detail','last_visited_at','formattedDilveryDate','friend_id'));
+                return view('transporter.dashboard.current_jobs_detail', compact('quote', 'user_job', 'transporter', 'user', 'quotation_detail', 'last_visited_at', 'formattedDilveryDate', 'friend_id'));
             } catch (\Exception $e) {
                 \Log::error('Error fetching quote details: ' . $e->getMessage());
                 return view('transporter.dashboard.current_jobs');
             }
-            
-        } 
-        else {
+        } else {
             return view('transporter.dashboard.current_jobs');
         }
     }
@@ -358,7 +353,7 @@ class DashboardController extends WebController
     private function formatLastVisitedAt(Carbon $lastVisitedAt)
     {
         $now = Carbon::now('Europe/London');
-        
+
         if ($lastVisitedAt->isToday()) {
             return 'Last seen Today ' . $lastVisitedAt->format('H:i');
         } elseif ($lastVisitedAt->isYesterday()) {
@@ -381,23 +376,27 @@ class DashboardController extends WebController
         $user_data = \Auth::guard('transporter')->user();
         $user_data->last_visited_on_find_job_page = Carbon::now('Europe/London');
         $user_data->save();
-        $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
-        $quotes = UserQuote::with('user')
-        ->whereNotIn('id', $user_quote)
-        ->where(function($query) {
-            $query->where('status', 'pending')
-                  ->orWhere('status', 'approved');
-        })
-        ->addSelect([
-            'transporter_quotes_count' => QuoteByTransporter::selectRaw('COUNT(*)')
-                ->whereColumn('user_quote_id', 'user_quotes.id'),
-            'lowest_bid' => QuoteByTransporter::selectRaw('MIN(CAST(transporter_payment AS UNSIGNED))')
-                ->whereColumn('user_quote_id', 'user_quotes.id')
-        ])
-        ->latest()
-        ->paginate(50);
+        // $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
+        $quotes = UserQuote::with(['user', 'quoteByTransporter' => function ($query) use ($user_data) {
+            $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
+        }])
+
+            // ->whereNotIn('id', $user_quote)
+            // ->where(function($query) {
+            //     $query->where('status', 'pending')
+            //           ->orWhere('status', 'approved');
+            // })
+            ->addSelect([
+                'transporter_quotes_count' => QuoteByTransporter::selectRaw('COUNT(*)')
+                    ->whereColumn('user_quote_id', 'user_quotes.id'),
+                'lowest_bid' => QuoteByTransporter::selectRaw('MIN(CAST(transporter_payment AS UNSIGNED))')
+                    ->whereColumn('user_quote_id', 'user_quotes.id')
+            ])
+            ->latest()
+            ->paginate(50);
+        // return $quotes;
         $document_status = $user_data->is_status;
-        return view('transporter.dashboard.new_jobs_new', ['quotes' => $quotes,'documentStatus'=>$document_status]);
+        return view('transporter.dashboard.new_jobs_new', ['quotes' => $quotes, 'documentStatus' => $document_status]);
     }
 
     public function submitOffer(Request $request)
@@ -411,7 +410,7 @@ class DashboardController extends WebController
             ],
             'message' => [
                 'required',
-                function($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) {
                     if (preg_match('/\d/', $value)) {
                         $fail('The message should not contain any digits.');
                     }
@@ -432,24 +431,52 @@ class DashboardController extends WebController
         }
 
         $quoteDetails = calculateCustomerQuote((float) $offer);
-        $quote = QuoteByTransporter::create([
-            'user_id' => $user_data->id,
-            'user_quote_id' => $request->quote_id,
-            'price' => $quoteDetails['customer_quote'],
-            'deposit' => $quoteDetails['deposit'],
-            'transporter_payment' => $quoteDetails['transporter_payment'],
-            'message' => $request->message,
-        ]);
+        // $quote = QuoteByTransporter::create([
+        //     'user_id' => $user_data->id,
+        //     'user_quote_id' => $request->quote_id,
+        //     'price' => $quoteDetails['customer_quote'],
+        //     'deposit' => $quoteDetails['deposit'],
+        //     'transporter_payment' => $quoteDetails['transporter_payment'],
+        //     'message' => $request->message,
+        // ]);
+
+        $quote = QuoteByTransporter::where('user_quote_id', $request->quote_id)
+            ->where('user_id', $user_data->id)
+            ->first();
+
+        if ($quote) {
+            // Update the existing offer
+            $quote->update([
+                'price' => $quoteDetails['customer_quote'],
+                'deposit' => $quoteDetails['deposit'],
+                'transporter_payment' => $quoteDetails['transporter_payment'],
+                'message' => $request->message,
+            ]);
+        } else {
+            // Create a new offer if it doesn't exist
+            $quote = QuoteByTransporter::create([
+                'user_id' => $user_data->id,
+                'user_quote_id' => $request->quote_id,
+                'price' => $quoteDetails['customer_quote'],
+                'deposit' => $quoteDetails['deposit'],
+                'transporter_payment' => $quoteDetails['transporter_payment'],
+                'message' => $request->message,
+            ]);
+        }
+
+
+
+
         $friend_id = $quote->quote->user_id ?? 0;
         $quoteId = $request['quote_id'];
         $isChatExist = Thread::where(function ($q) use ($friend_id) {
             $q->where('user_id', '=', $friend_id)
-            ->orWhere('friend_id', '=', $friend_id);
+                ->orWhere('friend_id', '=', $friend_id);
         })->where(function ($q) use ($user_data) {
             $q->where('user_id', '=', $user_data->id)
-            ->orWhere('friend_id', '=', $user_data->id);
+                ->orWhere('friend_id', '=', $user_data->id);
         })->where('user_quote_id', '=', $quoteId)
-        ->first();
+            ->first();
         if (empty($isChatExist)) {
             $thread = Thread::create([
                 'user_id' => $friend_id,
@@ -470,40 +497,39 @@ class DashboardController extends WebController
             }
         }
         try {
-            if($quote->quote->user->job_email_preference) {
+            if ($quote->quote->user->job_email_preference) {
                 $maildata['email'] = $quote->quote->user->email;
                 $thread_id = isset($thread->id) ? $thread->id : 0;
                 //$maildata['email'] = 'info@transportanycar.com';
-                $mailSubject = 'New Transport Quote for £'.$quoteDetails['customer_quote'].' to Deliver Your '.$quote->quote->vehicle_make.' '.$quote->quote->vehicle_model;
+                $mailSubject = 'New Transport Quote for £' . $quoteDetails['customer_quote'] . ' to Deliver Your ' . $quote->quote->vehicle_make . ' ' . $quote->quote->vehicle_model;
                 if (!empty($quote->quote->vehicle_make_1) && !empty($quote->quote->vehicle_model_1)) {
-                    $mailSubject .= ' / '.$quote->quote->vehicle_make_1.' '.$quote->quote->vehicle_model_1;
+                    $mailSubject .= ' / ' . $quote->quote->vehicle_make_1 . ' ' . $quote->quote->vehicle_model_1;
                 }
                 $htmlContent = view('mail.General.user-new-offer-received', ['data' => $quote, 'thread_id' => $thread_id])->render();
                 $this->emailService->sendEmail($maildata['email'], $htmlContent, $mailSubject);
 
                 // Call create_notification to notify the user
                 create_notification(
-                    $quote->quote->user->id, 
+                    $quote->quote->user->id,
                     $user_data->id,
-                    $quote->quote->id,       
+                    $quote->quote->id,
                     'You have a new quote!',
-                    $user_data->username.' has sent you a quote for £'.$quoteDetails['customer_quote'],  // Message of the notification
+                    $user_data->username . ' has sent you a quote for £' . $quoteDetails['customer_quote'],  // Message of the notification
                     'quote',
                 );
             } else {
                 Log::info('User with email ' . $quote->quote->user->email . ' has opted out of receiving emails. Quotation email not sent.');
             }
-
         } catch (\Exception $ex) {
             Log::error('Error sending email: ' . $ex->getMessage());
         }
         // Run the outbid notification command
         if (App::environment('production')) {
-            $command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
-        } elseif((App::environment('staging'))) {
-            $command = '/usr/local/bin/php /home/pfltvaho/staging.transportanycar.com/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+            $command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications ' . $request->quote_id . ' ' . $quoteDetails['transporter_payment'] . ' ' . $user_data->id;
+        } elseif ((App::environment('staging'))) {
+            $command = '/usr/local/bin/php /home/pfltvaho/staging.transportanycar.com/artisan send:outbid-notifications ' . $request->quote_id . ' ' . $quoteDetails['transporter_payment'] . ' ' . $user_data->id;
         } else {
-            $command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+            $command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications ' . $request->quote_id . ' ' . $quoteDetails['transporter_payment'] . ' ' . $user_data->id;
         }
         exec($command, $output, $returnVar);
 
@@ -541,7 +567,7 @@ class DashboardController extends WebController
             $goods_in_transit_insurance = upload_file('goods_in_transit_insurance', 'user_profile_image');
             $user_data->goods_in_transit_insurance = $goods_in_transit_insurance ?? null;
         }
-        if($request->hasFile('driver_license') || $request->hasFile('goods_in_transit_insurance')) {
+        if ($request->hasFile('driver_license') || $request->hasFile('goods_in_transit_insurance')) {
             $user_data->is_status = 'pending';
         }
         $user_data->save();
@@ -552,21 +578,21 @@ class DashboardController extends WebController
     public function updateEmailPreference(Request $request)
     {
         $user = Auth::guard('transporter')->user();
-        
+
         if ($user) {
             if ($request->email_type == 'job_alert') {
                 $status = $user->update(['job_email_preference' => $request->value]);
-    
+
                 if ($status) {
-                    return response()->json(['status'=> true,  'message' => 'Preference updated successfully.']);
+                    return response()->json(['status' => true,  'message' => 'Preference updated successfully.']);
                 } else {
-                    return response()->json(['status'=> false, 'message' => 'Failed to update preference.']);
+                    return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
                 }
             } else {
-                return response()->json(['status'=> false, 'message' => 'Invalid email type.']);
+                return response()->json(['status' => false, 'message' => 'Invalid email type.']);
             }
         } else {
-            return response()->json(['status'=> false, 'message' => 'User not authenticated.']);
+            return response()->json(['status' => false, 'message' => 'User not authenticated.']);
         }
     }
 
@@ -592,8 +618,13 @@ class DashboardController extends WebController
             $goods_in_transit_insurance = upload_file('goods_in_transit_insurance', 'user_profile_image');
             $user_data->goods_in_transit_insurance = $goods_in_transit_insurance ?? null;
         }
-        if($request->hasFile('motor_trade_insurance') || $request->hasFile('driver_license') || $request->hasFile('goods_in_transit_insurance')) {
+        if ($request->hasFile('motor_trade_insurance') || $request->hasFile('driver_license') || $request->hasFile('goods_in_transit_insurance')) {
             $user_data->is_status = 'pending';
+        }
+        if ($request->has('payment_methods')) {
+            $user_data->payment_methods = implode(',', $request->payment_methods);
+        } else {
+            $user_data->payment_methods = null;
         }
         if (!empty($request->npassword) && isset($request->npassword)) {
             $user_data->password = $request->npassword;
@@ -621,10 +652,11 @@ class DashboardController extends WebController
 
     public function find_job(Request $request)
     {
+        // return "ysssssssssssssssssssssssssssss";
         if (empty($request->search_pick_up_area)) {
             return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
         }
-    
+
         $pickUpResponse = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
             'address' => $request->input('search_pick_up_area'),
             'key' => config('constants.google_map_key'),
@@ -638,7 +670,7 @@ class DashboardController extends WebController
         }
         $drop_off_latitude = null;
         $drop_off_longitude = null;
-        if($request->search_drop_off_area && $request->search_drop_off_area != 'Anywhere') {
+        if ($request->search_drop_off_area && $request->search_drop_off_area != 'Anywhere') {
             $dropOffResponse = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
                 'address' => $request->input('search_drop_off_area'),
                 'key' => config('constants.google_map_key'),
@@ -651,62 +683,34 @@ class DashboardController extends WebController
                 return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
             }
         }
-    
+
         $maxDistance = config('constants.max_range_km');
         $user_data = Auth::guard('transporter')->user();
         $my_quotes = QuoteByTransporter::where('user_id', $user_data->id)->get();
-    
+
         // Get IDs of user quotes that have been quoted by the transporter
         $my_quote_ids = $my_quotes->pluck('user_quote_id');
 
-        // Subquery to calculate distance and filter by max distance
         // $subQuery = UserQuote::query()
         //     ->join('users', 'users.id', '=', 'user_quotes.user_id')
-        //     ->whereNotIn('user_quotes.id', $my_quote_ids)
-        //     ->select(
-        //         'user_quotes.*',
-        //         'users.profile_image',
-        //         'users.username as name',
-        //         'users.address',
-        //         'users.town',
-        //         'users.county',
-        //         \DB::raw("( 6371 * acos( cos( radians($pick_up_latitude) ) * cos( radians( pickup_lat ) ) * cos( radians( pickup_lng ) - radians($pick_up_longitude) ) + sin( radians($pick_up_latitude) ) * sin( radians( pickup_lat ) ) ) ) AS distance_pickup"),
-        //         // \DB::raw("( 6371 * acos( cos( radians($drop_off_latitude) ) * cos( radians( drop_lat ) ) * cos( radians( drop_lng ) - radians($drop_off_longitude) ) + sin( radians($drop_off_latitude) ) * sin( radians( drop_lat ) ) ) ) AS distance_drop_off")
-        //     )
-        //     ->having('distance_pickup', '<=', $maxDistance)
-        //     // ->having('distance_drop_off', '<=', $maxDistance)
-        //     ->latest();
-
-        // // Wrap the subquery with the main query for pagination
-        // $quotes = \DB::table(\DB::raw("({$subQuery->toSql()}) as sub"))
-        //     ->mergeBindings($subQuery->getQuery())
-        //     ->paginate(20);
+        //     ->leftJoin('quote_by_transpoters', 'quote_by_transpoters.user_quote_id', '=', 'user_quotes.id')->get();
+        // return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $subQuery]);
 
         $subQuery = UserQuote::query()
-        ->join('users', 'users.id', '=', 'user_quotes.user_id')
-        ->leftJoin('quote_by_transpoters', 'quote_by_transpoters.user_quote_id', '=', 'user_quotes.id')
-        ->whereNotIn('user_quotes.id', $my_quote_ids)
-        ->where(function($query) {
-            $query->where('user_quotes.status', 'pending')
-                  ->orWhere('user_quotes.status', 'approved');
-        });
-        // ->select(
-        //     'user_quotes.*',
-        //     'users.profile_image',
-        //     'users.username as name',
-        //     'users.address',
-        //     'users.town',
-        //     'users.county',
-        //     \DB::raw("( 6371 * acos( cos( radians($pick_up_latitude) ) * cos( radians( pickup_lat ) ) * cos( radians( pickup_lng ) - radians($pick_up_longitude) ) + sin( radians($pick_up_latitude) ) * sin( radians( pickup_lat ) ) ) ) AS distance_pickup"),
-        //     \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
-        //     \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid") // Get the lowest bid
-        // )
-        // ->having('distance_pickup', '<=', $maxDistance)
-        // ->groupBy('user_quotes.id') // Group by user_quote_id to get the count and minimum bid for each
-        // ->latest();
-        // Add distance calculations and filters
+            ->join('users', 'users.id', '=', 'user_quotes.user_id')
+            ->leftJoin('quote_by_transpoters', function ($join) {
+                $join->on('quote_by_transpoters.user_quote_id', '=', 'user_quotes.id')
+                    ->whereRaw('quote_by_transpoters.user_id = ?', [auth()->id()]); // Use DB::raw with a where condition
+            })
+            // ->whereNotIn('user_quotes.id', $my_quote_ids)
+            ->where(function ($query) {
+                $query->where('user_quotes.status', 'pending')
+                    ->orWhere('user_quotes.status', 'approved');
+            });
         if ($drop_off_latitude) {
+            // return "yessssssssss";
             $subQuery->select(
+                'quote_by_transpoters.user_id as tranporterId',
                 'user_quotes.*',
                 'users.profile_image',
                 'users.username as name',
@@ -718,10 +722,11 @@ class DashboardController extends WebController
                 \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
                 \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid") // Get the lowest bid
             )
-            ->having('distance_pickup', '<=', $maxDistance)
-            ->having('distance_drop_off', '<=', $maxDistance);
+                ->having('distance_pickup', '<=', $maxDistance)
+                ->having('distance_drop_off', '<=', $maxDistance);
         } else {
             $subQuery->select(
+                'quote_by_transpoters.user_id as tranporterId',
                 'user_quotes.*',
                 'users.profile_image',
                 'users.username as name',
@@ -732,35 +737,31 @@ class DashboardController extends WebController
                 \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
                 \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid") // Get the lowest bid
             )
-            ->having('distance_pickup', '<=', $maxDistance);
+                ->having('distance_pickup', '<=', $maxDistance);
         }
 
         // Group by user_quote_id to get the count and minimum bid for each
         $subQuery->groupBy('user_quotes.id')
-                ->latest();
-
-
+            ->latest();
         // Wrap the subquery with the main query for pagination
         $quotes = \DB::table(\DB::raw("({$subQuery->toSql()}) as sub"))
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
+        // return ["user"=>$quotes,"userIdLogin"=>auth()->user()->id];
+        // return $quotes;
         if ($request->ajax()) {
             // Convert dates to DateTime objects if necessary
             foreach ($quotes as $quote) {
                 $quote->created_at = \Carbon\Carbon::parse($quote->created_at);
                 $quote->updated_at = \Carbon\Carbon::parse($quote->updated_at);
             }
-            if(isMobile()) {
+           
                 $pickup = $request->input('search_pick_up_area');
-                $dropoff = $request->input('search_drop_off_area')?? 'Anywhere';
-                $html = view('transporter.dashboard.partial.search_job_result', compact('quotes','pickup', 'dropoff'))->render();            ;
-            }
-            else {
-                $html = view('transporter.dashboard.partial.search_job_result_desk', compact('quotes'))->render();
-            }
+                $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
+                $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
+            
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $html]);
         }
-
     }
 
     public function my_job(Request $request)
@@ -780,27 +781,27 @@ class DashboardController extends WebController
         }
         $my_quotes = $my_quotes->get();
         $subQuery = \DB::table('quote_by_transpoters')
-        ->select('user_quote_id', \DB::raw('COUNT(*) as quotes_count'), \DB::raw('MIN(transporter_payment) as lowest_bid'))
-        ->groupBy('user_quote_id');
+            ->select('user_quote_id', \DB::raw('COUNT(*) as quotes_count'), \DB::raw('MIN(transporter_payment) as lowest_bid'))
+            ->groupBy('user_quote_id');
         $quotes = UserQuote::query();
         $quotes = UserQuote::query()
-                ->join('quote_by_transpoters', 'user_quotes.id', '=', 'quote_by_transpoters.user_quote_id')
-                ->joinSub($subQuery, 'sub', function($join) {
-                    $join->on('user_quotes.id', '=', 'sub.user_quote_id');
-                })
-                ->join('threads', function ($join) use ($user_data) {
-                    $join->on('user_quotes.id', '=', 'threads.user_quote_id')
-                         ->where('threads.friend_id', '=', $user_data->id);
-                })
-                ->whereIn('user_quotes.id', $my_quotes->pluck('user_quote_id'))
-                ->where('quote_by_transpoters.user_id', $user_data->id)
-                ->groupBy('user_quotes.id') // Use groupBy to avoid duplicates
-                ->select('user_quotes.*', 'quote_by_transpoters.id as quote_by_transporter_id', 'quote_by_transpoters.transporter_payment as transporter_payment','sub.quotes_count','sub.lowest_bid', 'threads.id as thread_id','quote_by_transpoters.updated_at as qbt_updated_at','quote_by_transpoters.status as qbt_status');
-                
+            ->join('quote_by_transpoters', 'user_quotes.id', '=', 'quote_by_transpoters.user_quote_id')
+            ->joinSub($subQuery, 'sub', function ($join) {
+                $join->on('user_quotes.id', '=', 'sub.user_quote_id');
+            })
+            ->join('threads', function ($join) use ($user_data) {
+                $join->on('user_quotes.id', '=', 'threads.user_quote_id')
+                    ->where('threads.friend_id', '=', $user_data->id);
+            })
+            ->whereIn('user_quotes.id', $my_quotes->pluck('user_quote_id'))
+            ->where('quote_by_transpoters.user_id', $user_data->id)
+            ->groupBy('user_quotes.id') // Use groupBy to avoid duplicates
+            ->select('user_quotes.*', 'quote_by_transpoters.id as quote_by_transporter_id', 'quote_by_transpoters.transporter_payment as transporter_payment', 'sub.quotes_count', 'sub.lowest_bid', 'threads.id as thread_id', 'quote_by_transpoters.updated_at as qbt_updated_at', 'quote_by_transpoters.status as qbt_status');
+
         // Order by created_at descending for bidding to show newest first
         if ($type == 'bidding' || $type == 'all') {
             $quotes = $quotes->where('user_quotes.status', '!=', 'cancelled')
-                     ->orderBy('quote_by_transpoters.created_at', 'desc');
+                ->orderBy('quote_by_transpoters.created_at', 'desc');
         }
         if ($search) {
             $quotes = $quotes->where(function ($query) use ($search) {
@@ -820,13 +821,13 @@ class DashboardController extends WebController
     {
         $offer = $request->input('amount');
         if (!$offer || !is_numeric($offer)) {
-            return response()->json(['status' => false,'message'=>'Invalid amount']);
+            return response()->json(['status' => false, 'message' => 'Invalid amount']);
         }
         $user_data = Auth::guard('transporter')->user();
         $quote = UserQuote::find($request->quote_id);
         if ($quote) {
             $quoteDetails = calculateCustomerQuote((float) $offer);
-            $quoteByTransporter = QuoteByTransporter::firstOrNew(['user_quote_id' => $quote->id,'user_id'=>$user_data->id]);
+            $quoteByTransporter = QuoteByTransporter::firstOrNew(['user_quote_id' => $quote->id, 'user_id' => $user_data->id]);
             // Store the old price before updating
             $oldPrice = $quoteByTransporter->price;
             $subjectoldPrice = number_format($oldPrice, 0, '.', ',');
@@ -838,11 +839,11 @@ class DashboardController extends WebController
             $quoteByTransporter->save();
 
             try {
-                if($quote->user->job_email_preference) {
+                if ($quote->user->job_email_preference) {
                     $price_reduced = $quoteDetails['customer_quote'] < $oldPrice; // Flag to indicate if the price 
                     $mailSubject = ($price_reduced ? 'Transport Quote Reduced' : 'Transport Quote Increased') . ' from £' . $subjectoldPrice . ' to £' . $quoteDetails['customer_quote'] . ' to Deliver Your ' . $quoteByTransporter->quote->vehicle_make . ' ' . $quoteByTransporter->quote->vehicle_model;
                     if (!empty($quoteByTransporter->quote->vehicle_make_1) && !empty($quoteByTransporter->quote->vehicle_model_1)) {
-                        $mailSubject .= ' / '.$quoteByTransporter->quote->vehicle_make_1.' '.$quoteByTransporter->quote->vehicle_model_1;
+                        $mailSubject .= ' / ' . $quoteByTransporter->quote->vehicle_make_1 . ' ' . $quoteByTransporter->quote->vehicle_model_1;
                     }
                     $maildata['email'] = $quote->user->email;
                     //$maildata['email'] ='subham.k@ptiwebtech.com';
@@ -856,26 +857,25 @@ class DashboardController extends WebController
                     $this->emailService->sendEmail($maildata['email'], $htmlContent, $mailSubject);
 
                     create_notification(
-                        $quote->user->id, 
+                        $quote->user->id,
                         $user_data->id,
-                        $request->quote_id,       
+                        $request->quote_id,
                         'You have a new quote!',
-                        $user_data->username.' has sent you a quote for £'.$quoteDetails['customer_quote'],  // Message of the notification
+                        $user_data->username . ' has sent you a quote for £' . $quoteDetails['customer_quote'],  // Message of the notification
                         'quote',
                     );
                 } else {
                     Log::info('User with email ' . $quote->user->email . ' has opted out of receiving emails. Edit quotation email not sent.');
                 }
-    
             } catch (\Exception $ex) {
                 Log::error('Error sending email: ' . $ex->getMessage());
             }
             if (App::environment('production')) {
-                $command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
-            } elseif((App::environment('staging'))) {
-                $command = '/usr/local/bin/php /home/pfltvaho/staging.transportanycar.com/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+                $command = '/usr/local/bin/php /home/pfltvaho/public_html/artisan send:outbid-notifications ' . $request->quote_id . ' ' . $quoteDetails['transporter_payment'] . ' ' . $user_data->id;
+            } elseif ((App::environment('staging'))) {
+                $command = '/usr/local/bin/php /home/pfltvaho/staging.transportanycar.com/artisan send:outbid-notifications ' . $request->quote_id . ' ' . $quoteDetails['transporter_payment'] . ' ' . $user_data->id;
             } else {
-                $command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications '.$request->quote_id.' '.$quoteDetails['transporter_payment'].' '.$user_data->id;
+                $command = '/usr/bin/php /var/www/laravel/car-app/artisan send:outbid-notifications ' . $request->quote_id . ' ' . $quoteDetails['transporter_payment'] . ' ' . $user_data->id;
             }
             exec($command, $output, $returnVar);
 
@@ -887,16 +887,15 @@ class DashboardController extends WebController
         } else {
             return response()->json(['status' => false, 'message' => 'Quote not found']);
         }
-
     }
 
     public function quoteChangeStatus(Request $request)
     {
         $user_data = Auth::guard('transporter')->user();
-        $quote = QuoteByTransporter::where(['user_quote_id' => $request->quote_id, 'user_id'=>$user_data->id])->first();
+        $quote = QuoteByTransporter::where(['user_quote_id' => $request->quote_id, 'user_id' => $user_data->id])->first();
         if ($request->ajax()) {
             $quote->update(['status' => $request->status]);
-            return response()->json(['success' => true, 'message' => 'Quote '.$request->status.' successfully']);
+            return response()->json(['success' => true, 'message' => 'Quote ' . $request->status . ' successfully']);
         } else {
             return response()->json(['success' => false, 'message' => 'something went wrong!.. Please try again']);
         }
@@ -938,4 +937,6 @@ class DashboardController extends WebController
         Auth::guard('transporter')->logout();
         return redirect()->route($name);
     }
+
+   
 }

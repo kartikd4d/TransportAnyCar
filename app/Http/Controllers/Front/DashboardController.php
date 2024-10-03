@@ -373,7 +373,9 @@ class DashboardController extends WebController
     public function quotes($id)
     {
         $user_data = Auth::guard('web')->user();
-        //$quote = UserQuote::where(['user_id' => $user_data->id, 'id' => $id])->first();
+        $job_status = UserQuote::where(['user_id' => $user_data->id, 'id' => $id])
+        ->value('status');
+        // return  $job_status;
 
         $quotes = QuoteByTransporter::where('user_quote_id', $id)
         ->orderByRaw('CAST(price AS UNSIGNED) ASC')
@@ -404,6 +406,7 @@ class DashboardController extends WebController
         $params['overall_percentage'] = $overall_percentage;
         $params['quotes'] = $quotes;
         $params['user_quote_id'] = $id;
+        $params['job_status'] = $job_status;
         return view('front.dashboard.quotes', $params);
     }
 
@@ -418,7 +421,7 @@ class DashboardController extends WebController
         }
     }
 
-    public function leaveFeedback($id=null)
+    public function leaveFeedback($id=305)
     {
         if($id != null){
             $quote = $id ? QuoteByTransporter::with(['getTransporters', 'quote'])->where(['id' => $id])->first() : null;

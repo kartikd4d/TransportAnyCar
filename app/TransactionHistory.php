@@ -13,4 +13,8 @@ class TransactionHistory extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
+    public function quote()
+    {
+        return $this->belongsTo(UserQuote::class, 'user_quote_id', 'id');
+    }
 }

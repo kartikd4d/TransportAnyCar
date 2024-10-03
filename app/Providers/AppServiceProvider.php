@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\UserQuote;
 use Carbon\Carbon;
 use App\QuoteByTransporter;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -93,7 +94,15 @@ class AppServiceProvider extends ServiceProvider
                     $quoteIds = UserQuote::where('user_id', $user->id)
                     ->whereIn('status', ['pending', 'approved'])
                     ->pluck('id');
-                    $quotationCounts = QuoteByTransporter::whereIn('user_quote_id', $quoteIds)
+
+                    $filteredQuoteIds = DB::table('notifications')
+                    ->whereIn('user_quote_id', $quoteIds)
+                    ->where('seen', 1)
+                    ->where('type','quote')
+                    ->distinct()
+                    ->pluck('user_quote_id');
+
+                    $quotationCounts = QuoteByTransporter::whereIn('user_quote_id', $filteredQuoteIds)
                     ->where('status', 'pending')
                     ->count();
 

@@ -61,6 +61,9 @@ Route::group(['as' => 'transporter.'], function () {
         Route::post('quote-change-status', 'DashboardController@quoteChangeStatus')->name('quote_change_status');
         Route::post('notification-status', 'DashboardController@notificationStatus')->name('notification_status');
 
+        Route::get('/watchlist/index','WatchlistController@watchlistIndex')->name('watchlist.index');
+        Route::post('/watchlist/store','WatchlistController@watchlistStore')->name('watchlist.store');
+        Route::post('/watchlist/remove','WatchlistController@watchlistRemove')->name('watchlist.remove');
 
     });
 

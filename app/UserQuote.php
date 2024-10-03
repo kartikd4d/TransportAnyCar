@@ -19,6 +19,15 @@ class UserQuote extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function watchlists()
+{
+    return $this->hasMany(Watchlist::class, 'user_quote_id'); // Adjust the foreign key if necessary
+}
+public function getDistanceAttribute($value)
+{
+    return (float) filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+}
+
     public function quoteByTransporter()
     {
         return $this->hasOne(QuoteByTransporter::class);
