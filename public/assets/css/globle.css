@@ -287,7 +287,7 @@ span.grey {
 #carDetailsModal .modal-header {
     display: flex;
     align-items: center;
-    padding-bottom: 4px;
+    padding: 16px 23px 4px;
 }
 
 .jobsrch_info_list {
@@ -330,11 +330,11 @@ span.grey {
 /* .modal-header {
     padding: 23px 23px 0 23px !important;
 } */
-#carDetailsModal .modal-header button.btn-close {
+/* #carDetailsModal .modal-header button.btn-close {
     position: absolute;
     top: 15px;
     right: 23px;
-}
+} */
 
 .modalMainBody .btnCustom a.make_offer_btn {
     margin-top: 22px;
@@ -769,7 +769,7 @@ span.grey {
 
     #carDetailsModal h4.distance_text {
         margin-bottom: 8px;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
     }
 

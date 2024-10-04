@@ -408,14 +408,7 @@ class DashboardController extends WebController
             'amount' => [
                 'required',
             ],
-            'message' => [
-                'required',
-                function ($attribute, $value, $fail) {
-                    if (preg_match('/\d/', $value)) {
-                        $fail('The message should not contain any digits.');
-                    }
-                },
-            ],
+            
             'quote_id' => ['required'],
         ]);
 
