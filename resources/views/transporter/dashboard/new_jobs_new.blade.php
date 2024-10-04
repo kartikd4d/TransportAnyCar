@@ -1765,8 +1765,6 @@
                                     @foreach ($quotes as $quote)
                                         <div class="boxContent">
                                             <div class="boxContentList">
-
-
                                                 <div class="boxImg-text car-row" data-car-id="{{ $quote->id }}">
                                                     <div class="imgCol">
                                                         <img src="{{ $quote->image }}" class="" alt="image" />

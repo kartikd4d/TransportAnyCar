@@ -1869,8 +1869,6 @@
                                     @foreach ($quotes as $quote)
                                         <div class="boxContent">
                                             <div class="boxContentList">
-                                               
-
                                                 <div class="boxImg-text car-row" data-car-id="{{ $quote->id }}">
                                                     <div class="imgCol">
                                                         <img src="{{ $quote->image }}" class="" alt="image" />
@@ -2609,7 +2607,7 @@
         function adjustbackdrop() {
             $('.modal-backdrop').css('z-index', '1040');
         }
-        
+
         function share_edit_quote(id) {
             console.log('aaaaaaaaaaaaaaa');
             $('#quote_edit_id').val(id);
