@@ -84,8 +84,8 @@
     justify-content: center;
     gap: 9px;
 }
-
-
+#watchlisting .boxContent:first-child,
+#orderlisting .boxContent:first-child {padding-top: 0;}
 .boxContentList {
     display: flex;
     justify-content: space-between;
@@ -98,10 +98,10 @@
 }
 
 .boxContentList .boxImg-text .imgCol img {
-    width: 240px;
-    max-width: 240px;
-    min-height: 150px;
-    max-height: 150px;
+    width: 200px;
+    max-width: 200px;
+    min-height: 130px;
+    max-height: 130px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -110,12 +110,13 @@
     background: #eee;
     /* width: 50%; */
     display: flex;
-    max-width: 300px;
-    max-height: 150px;
+    max-width: 200px;
+    max-height: 130px;
 }
 
 .boxContentList .boxImg-text .textCol {
-    width: 50%;
+    width: calc(100% - 200px);
+    max-width: calc(100% - 200px);
     padding: 0 15px;
     display: flex;
     flex-direction: column;
@@ -125,7 +126,8 @@
 .boxContentList .boxImg-text {
     display: flex;
     justify-content: space-between;
-    width: 45%;
+    align-items: flex-start;
+    width: 40%;
 }
 
 .boxContentList .boxImg-text .textCol ul {
@@ -148,13 +150,15 @@
 }
 
 .boxContentList .contentBlockBtn {
-    width: 55%;
+    width: 60%;
     display: flex;
     flex-wrap: wrap;
 }
 
+.boxContentList .contentBlockBtn .leftList ul li b {font-weight:300;}
+.boxContentList .contentBlockBtn .leftList ul li span {font-weight:500;}
 .boxContentList .contentBlockBtn .leftList {
-    width: 70%;
+    width: 100%;
     display: flex;
     gap: 12px;
 }
@@ -169,15 +173,16 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: 6px;
 }
 
-.boxContentList .contentBlockBtn .btnCol {
+/* .boxContentList .contentBlockBtn .btnCol {
     width: 18%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-}
+} */
 
 .boxContent {
     display: flex;
@@ -199,7 +204,7 @@
 }
 
 .boxContentList .contentBlockBtn .iconDiv {
-    width: 12%;
+    /* width: 12%; */
     display: flex;
     align-items: flex-end;
     justify-content: end;
@@ -261,6 +266,7 @@
 
 .boxContentList .boxImg-text .textCol span.hideMob {
     color: #9C9C9C;
+    line-height: 15px;
 }
 
 .headingDiv h3 br {
@@ -271,9 +277,9 @@ span.grey {
     color: #9c9c9c;
 }
 
-.boxContentList .contentBlockBtn .btnCol a {
+/* .boxContentList .contentBlockBtn .btnCol a {
     color: #F3F8FF;
-}
+} */
 
 /***************** 3-10-2024 start *******************/
 
@@ -355,10 +361,10 @@ span.grey {
 }
 
 
-.job_container_watchList .boxContentList .boxImg-text .textCol ul li {
+/* .job_container_watchList .boxContentList .boxImg-text .textCol ul li {
     width: 49%;
     margin: 0 0 16px;
-}
+} */
 
 .job_container_watchList .boxContentList .boxImg-text .textCol ul {
     display: flex;
@@ -370,7 +376,7 @@ span.grey {
 .job_container_watchList .boxImg-text .imgCol {
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .job_container_watchList .boxImg-text .imgCol p {
@@ -406,8 +412,8 @@ span.grey {
 }
 
 .job_container_watchList .boxContentList .boxImg-text .textCol ul li {
-    width: 49%;
-    margin: 0 0 16px;
+    width: 100%;
+    margin: 0 0 8px;
 }
 
 .job_container_watchList .boxContentList .boxImg-text .textCol ul {
@@ -420,7 +426,7 @@ span.grey {
 .job_container_watchList .boxImg-text .imgCol {
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .job_container_watchList .boxImg-text .imgCol p {
@@ -433,21 +439,25 @@ span.grey {
 .actionDiv svg {
     margin-right: -7px;
     margin-top: -7px;
-    width: 75px;
-    height: 65px;
+    width: 95px;
+    height: 85px;
     /* margin-right: -3px;
     margin-top: -3px; */
 }
 
 @media (max-width:1440px) {
-    .boxContentList .boxImg-text .textCol {max-width:calc(100% - 200px); width:calc(100% - 200px);}
-    .boxContentList .boxImg-text .imgCol {max-width: 200px;}
-    .boxContentList .boxImg-text .imgCol img {
+    .boxContentList .boxImg-text,
+    .boxContentList .contentBlockBtn {
+        width: 50%;
+    }
+    /* .boxContentList .boxImg-text .textCol {max-width:calc(100% - 200px); width:calc(100% - 200px);} */
+    /* .boxContentList .boxImg-text .imgCol {max-width: 200px;} */
+    /* .boxContentList .boxImg-text .imgCol img {
         width: 200px;
         max-width: 200px;
         min-height: 150px;
         max-height: 150px;
-    }
+    } */
 
     .boxContentList .contentBlockBtn .btnCol a {
         font-size: 16px;
@@ -464,9 +474,16 @@ span.grey {
 }
 
 @media (max-width:1280px) {
+    .boxContentList .contentBlockBtn .leftList ul:first-child {
+        padding-left: 0;
+    }
+    /* .boxContentList .contentBlockBtn .leftList ul:last-child {
+        padding-right: 0;
+    } */
     .boxContentList .boxImg-text .textCol h2 {
         font-size: 24px;
     }
+    .boxContentList .boxImg-text .textCol {justify-content: center;}
 
     .boxContentList .contentBlockBtn .btnCol a {
         font-size: 15px;
@@ -505,11 +522,11 @@ span.grey {
         max-width: 200px;
         max-height: 150px;
     }
-    .boxContentList .boxImg-text .imgCol img {
+    /* .boxContentList .boxImg-text .imgCol img {
         max-width: 200px;
         min-height: 150px;
         max-height: 150px;
-    }
+    } */
 }
 @media (max-width:1199px) {
 
@@ -562,11 +579,6 @@ span.grey {
         font-size: 12px !important;
     }
 
-    .boxContentList h2.imgHeading {
-        display: block;
-        margin-bottom: 0;
-    }
-
     .boxContentList .boxImg-text .textCol h2 span {
         display: none;
     }
@@ -576,7 +588,21 @@ span.grey {
     }
 }
 
+@media (max-width:991px) {
+    #page-content-wrapper .navbar {
+        box-shadow: none;
+        background: linear-gradient(180deg, rgba(0, 141, 212, 0.31) 0%, rgba(245, 251, 254, 0) 100%);
+    }   
+}
 @media (max-width:767px) {
+    .boxContentList h2.imgHeading {
+        display: block;
+        margin-bottom: 0;
+    }
+    .header-banner {padding-left: 15px; padding-right: 15px;}
+    /* .boxContentList .contentBlockBtn .leftList ul:nth-child(2) {padding-bottom: 40px;} */
+    .boxContentList .boxImg-text .textCol ul li,
+    .job_container_watchList .boxContentList .boxImg-text .textCol ul li {margin-bottom: 5px;}
     body .job_container {
         padding: 15px 0;
     }
@@ -590,7 +616,8 @@ span.grey {
     }
 
     .job_container .job-data {
-        margin-left: 10px !important;
+        /* margin-left: 10px !important; */
+        margin-left: 0 !important;
         margin-bottom: 8px !important;
     }
 
@@ -648,10 +675,10 @@ span.grey {
         margin-top: -21px;
     }
 
-    .boxContentList .contentBlockBtn .btnCol {
+    /* .boxContentList .contentBlockBtn .btnCol {
         margin-right: 35px;
         margin-top: -35px;
-    }
+    } */
 
     .boxContentList .contentBlockBtn {
         padding-bottom: 0;
@@ -670,7 +697,7 @@ span.grey {
     }
 
     .job-data span {
-        padding-left: 10px;
+        padding-left: 15px;
     }
 
     .boxContentList .contentBlockBtn .leftList ul {
@@ -685,10 +712,12 @@ span.grey {
         font-size: 15px;
         font-weight: 400;
         line-height: 15px;
+        margin-bottom: 5px;
     }
 
     .boxContentList .boxImg-text .textCol ul li {
         font-size: 14px;
+        line-height: 14px;
     }
 
     .boxContentList .boxImg-text .textCol ul li:last-child {
@@ -700,8 +729,8 @@ span.grey {
     }
 
     .boxContentList .boxImg-text .textCol ul li i svg {
-        width: 9px;
-        height: 12px;
+        width: 15px;
+        height: 15px;
     }
 
     .boxContentList .contentBlockBtn {
@@ -808,10 +837,10 @@ span.grey {
     .srch-data {
         margin-bottom: 0;
     }
-    .actionDiv svg {
+    /* .actionDiv svg {
         width: 65px;
         height: 55px;
-    }
+    } */
 
 }
 
@@ -827,5 +856,7 @@ span.grey {
     .boxContentList .contentBlockBtn .leftList ul li {
         font-size: 13px;
     }    */
+    .boxContentList .boxImg-text .textCol {padding-right: 0;}
+    .boxContentList .boxImg-text .textCol ul li {gap:5px;}
     .contentBlockBtn .leftList ul li span {display: block;}
 }
