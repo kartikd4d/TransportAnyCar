@@ -57,8 +57,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                    color: #000000;
-                } */
+                        color: #000000;
+                    } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -133,9 +133,9 @@
         }
 
         /* .get_quote .modal-header .close {
-            position: absolute;
-            right: 15px;
-        } */
+                position: absolute;
+                right: 15px;
+            } */
 
         /* Add your CSS styling here */
         #popup {
@@ -230,10 +230,10 @@
         }
 
         /* #carDetailsModal .modal-header button.btn-close {
-            position: absolute;
-            top: 11px;
-            right: 15px;
-        } */
+                position: absolute;
+                top: 11px;
+                right: 15px;
+            } */
 
         #carDetailsModal .modal-header span {
             display: flex;
@@ -1374,7 +1374,7 @@
 
             .jobsrch_form_blog .form-control {
                 font-size: 18px;
-                color: #000000;
+                /* color: #000000; */
             }
 
             .jobsrch_form_blog .error-message {
@@ -1399,10 +1399,10 @@
             }
 
             /* .modal-header button.btn-close {
-                position: absolute;
-                top: 11px;
-                right: 15px;
-            } */
+                    position: absolute;
+                    top: 11px;
+                    right: 15px;
+                } */
 
             .jobserch_mob .jobsrch_box {
                 padding: 20px 20px 10px;
@@ -1766,12 +1766,16 @@
                                         <div class="boxContent">
                                             <div class="boxContentList">
 
-
+                                                <h2 class="imgHeading mt-2">
+                                                    <span>Posted
+                                                        {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
+                                                </h2>
                                                 <div class="boxImg-text car-row" data-car-id="{{ $quote->id }}">
-                                                    <div class="imgCol">
-                                                        <img src="{{ $quote->image }}" class="" alt="image" />
-                                                    </div>
-
+                                                    
+                                                        <div class="imgCol">
+                                                            <img src="{{ $quote->image }}" class=""
+                                                                alt="image" />
+                                                        </div>
                                                     <div class="textCol">
                                                         <span class="hideMob">Posted
                                                             {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
@@ -2160,9 +2164,9 @@
                     <!-- Modal content will be dynamically updated here -->
                 </div>
                 <!-- Modal Footer
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-success">Place bid</button>
-                                                        </div> -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-success">Place bid</button>
+                                                            </div> -->
             </div>
         </div>
     </div>
@@ -2571,15 +2575,15 @@
                             <div class="col-lg-6">
                                 <div class="jobsrch_top_box position-relative">
                                     ${carData.vehicle_make_1 == null && carData.vehicle_model_1 == null ? `
-                                                <div>
-                                                    <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
-                                                </div>
-                                                ` : `
-                                                <div class="job_se_sec slider">
                                                     <div>
                                                         <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
                                                     </div>
-                                                    ${carData.image_1 ? `
+                                                    ` : `
+                                                    <div class="job_se_sec slider">
+                                                        <div>
+                                                            <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
+                                                        </div>
+                                                        ${carData.image_1 ? `
                                                 <div>
                                                     <img src="/${carData.image_1}" class="vehicle_image" alt="Vehicle Image" />
                                                 </div>
@@ -2588,11 +2592,11 @@
                                                     <img src="/uploads/no_car_image.png" class="vehicle_image" alt="No Image Available" />
                                                 </div>
                                             `}
-                                                </div>
-                                                <div class="custom-navigation">
-                                                    <span class="current-slide">1</span> of <span class="total-slides">2</span>
-                                                </div>
-                                            `}                                   
+                                                    </div>
+                                                    <div class="custom-navigation">
+                                                        <span class="current-slide">1</span> of <span class="total-slides">2</span>
+                                                    </div>
+                                                `}                                   
                                 </div>
                                 
                                 <div class="btnCustom">${switch_custom}</div>

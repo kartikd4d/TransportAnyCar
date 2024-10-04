@@ -1373,7 +1373,7 @@
 
             .jobsrch_form_blog .form-control {
                 font-size: 18px;
-                color: #000000;
+                /* color: #000000; */
             }
 
             .jobsrch_form_blog .error-message {
@@ -1869,7 +1869,10 @@
                                     @foreach ($quotes as $quote)
                                         <div class="boxContent">
                                             <div class="boxContentList">
-                                               
+                                                <h2 class="imgHeading">
+                                                    <span>Posted
+                                                        {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
+                                                </h2>
 
                                                 <div class="boxImg-text car-row" data-car-id="{{ $quote->id }}">
                                                     <div class="imgCol">
@@ -1950,10 +1953,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <h2 class="imgHeading">
-                                                    <span>Posted
-                                                        {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
-                                                </h2>
+                                               
                                                 <div class="contentBlockBtn">
                                                     <div class="leftList">
                                                         <ul class="col-6">

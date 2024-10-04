@@ -165,7 +165,7 @@
 
 .boxContentList .contentBlockBtn .leftList ul li {
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     line-height: 15px;
 }
 
@@ -439,8 +439,8 @@ span.grey {
 .actionDiv svg {
     margin-right: -7px;
     margin-top: -7px;
-    width: 95px;
-    height: 85px;
+    width: 75px;
+    height: 65px;
     /* margin-right: -3px;
     margin-top: -3px; */
 }
@@ -719,6 +719,7 @@ span.grey {
     .boxContentList .boxImg-text .textCol ul li {
         font-size: 14px;
         line-height: 14px;
+        font-weight: 300;
     }
 
     .boxContentList .boxImg-text .textCol ul li:last-child {
