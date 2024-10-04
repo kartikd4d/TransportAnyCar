@@ -371,16 +371,16 @@ class DashboardController extends WebController
         return view('transporter.dashboard.new_jobs', ['quotes' => $quotes]);
     }
 
+    //  d4d developer - k
     public function newJobsNew()
     {
         $user_data = \Auth::guard('transporter')->user();
         $user_data->last_visited_on_find_job_page = Carbon::now('Europe/London');
         $user_data->save();
         // $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
-        $quotes = UserQuote::with(['user', 'quoteByTransporter' => function ($query) use ($user_data) {
+        $quotes = UserQuote::with(['user','watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
             $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
         }])
-
             // ->whereNotIn('id', $user_quote)
             // ->where(function($query) {
             //     $query->where('status', 'pending')
@@ -398,7 +398,9 @@ class DashboardController extends WebController
         $document_status = $user_data->is_status;
         return view('transporter.dashboard.new_jobs_new', ['quotes' => $quotes, 'documentStatus' => $document_status]);
     }
+ // end d4d developer - k
 
+  // d4d developer - k
     public function submitOffer(Request $request)
     {
         $user_data = \Auth::guard('transporter')->user();
@@ -408,14 +410,7 @@ class DashboardController extends WebController
             'amount' => [
                 'required',
             ],
-            'message' => [
-                'required',
-                function ($attribute, $value, $fail) {
-                    if (preg_match('/\d/', $value)) {
-                        $fail('The message should not contain any digits.');
-                    }
-                },
-            ],
+            
             'quote_id' => ['required'],
         ]);
 
@@ -463,9 +458,6 @@ class DashboardController extends WebController
                 'message' => $request->message,
             ]);
         }
-
-
-
 
         $friend_id = $quote->quote->user_id ?? 0;
         $quoteId = $request['quote_id'];
@@ -540,6 +532,7 @@ class DashboardController extends WebController
 
         return response()->json(['success' => true]);
     }
+ // end d4d developer - k
 
     public function updateProfileImage(Request $request)
     {
@@ -650,9 +643,9 @@ class DashboardController extends WebController
         }
     }
 
+ // d4d developer - k
     public function find_job(Request $request)
     {
-        // return "ysssssssssssssssssssssssssssss";
         if (empty($request->search_pick_up_area)) {
             return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
         }
@@ -763,6 +756,7 @@ class DashboardController extends WebController
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $html]);
         }
     }
+ //end d4d developer - k
 
     public function my_job(Request $request)
     {
@@ -817,6 +811,7 @@ class DashboardController extends WebController
         }
     }
 
+    
     public function editQuoteAmount(Request $request)
     {
         $offer = $request->input('amount');

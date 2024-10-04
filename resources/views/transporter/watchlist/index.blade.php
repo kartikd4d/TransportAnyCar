@@ -132,10 +132,10 @@
             height: 17px;
         }
 
-        .get_quote .modal-header .close {
+        /* .get_quote .modal-header .close {
             position: absolute;
             right: 15px;
-        }
+        } */
 
         /* Add your CSS styling here */
         #popup {
@@ -2302,51 +2302,52 @@
 
     {{-- EDIT  --}}
     <div class="modal get_quote fade" id="quoteEdit" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle"> Edit your bid</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
-                                    fill="#000" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-                <form id="editQuoteForm" action="{{ route('transporter.submit_offer') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <span class="icon_includes">£</span>
-                            <input type="number" class="form-control" aria-describedby="emailHelp"
-                                placeholder="Enter your bid" id="editamount" name="amount">
-                            <!-- <p style="font-size:12px; margin-top: 10px;"><b> Note:</b> The amount you bid will be the total amount you get paid directly by the customer.</p> -->
-                            <div class="modal_current">
-                                <p>Current lowest bid: <span class="lowAmount">£0</span></p>
-                                <p>Transporters bidding: <span class="red bidCount">0</span></p>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom:0px">
-                            <textarea placeholder="Send a professional message for a better chance of winning the job..."
-                                class="form-control textarea" id="editmessage" name="message"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer" style="margin-top: 10px;">
-                        <input type="hidden" name="quote_id" id="quote_edit_id" value="">
-                        <p><b> Note:</b> Do not share any contact information or company names, we will provide you with the
-                            customers details after they have accepted your quote.</p>
-                        <button type="submit" class="submit_btn">Place bid</button>
-                    </div>
-                </form>
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Edit bid</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    onClick="adjustbackdrop()">
+                    <span aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                fill="#000" />
+                        </svg>
+                    </span>
+                </button>
             </div>
+            <form id="editQuoteForm" action="{{ route('transporter.submit_offer') }}" method="POST"
+                class="bid_form">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span class="icon_includes">£</span>
+                        <input type="number" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Enter your bid" id="editamount" name="amount">
+                        <!-- <p style="font-size:12px; margin-top: 10px;"><b> Note:</b> The amount you bid will be the total amount you get paid directly by the customer.</p> -->
+                        <div class="modal_current">
+                            <p>Current lowest bid: <span class="lowAmount">£0</span></p>
+                            <p>Transporters bidding: <span class="red bidCount">0</span></p>
+                        </div>
+                    </div>
+                    {{-- <div class="form-group" style="margin-bottom:0px">
+                        <textarea placeholder="Send a professional message for a better chance of winning the job..."
+                            class="form-control textarea" id="editmessage" name="message"></textarea>
+                    </div> --}}
+                </div>
+                <div class="modal-footer" style="margin-top: 10px;">
+                    <input type="hidden" name="quote_id" id="quote_edit_id" value="">
+                    {{-- <p><b> Note:</b> Do not share any contact information or company names, we will provide you with the
+                        customers details after they have accepted your quote.</p> --}}
+                    <button type="submit" class="submit_btn">Submit bid</button>
+                </div>
+            </form>
         </div>
     </div>
-
+</div>
 
     <!-- The Modal -->
     <div class="modal fade" id="carDetailsModal" tabindex="-1" aria-labelledby="carDetailsModalLabel"
@@ -2605,6 +2606,10 @@
             }
         }
 
+        function adjustbackdrop() {
+            $('.modal-backdrop').css('z-index', '1040');
+        }
+        
         function share_edit_quote(id) {
             console.log('aaaaaaaaaaaaaaa');
             $('#quote_edit_id').val(id);

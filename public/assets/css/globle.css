@@ -107,7 +107,7 @@
 }
 
 .boxContentList .boxImg-text .imgCol {
-    background: #eee;
+    /* background: #eee; */
     /* width: 50%; */
     display: flex;
     max-width: 200px;
@@ -293,7 +293,7 @@ span.grey {
 #carDetailsModal .modal-header {
     display: flex;
     align-items: center;
-    padding-bottom: 4px;
+    padding: 16px 23px 4px;
 }
 
 .jobsrch_info_list {
@@ -336,11 +336,11 @@ span.grey {
 /* .modal-header {
     padding: 23px 23px 0 23px !important;
 } */
-#carDetailsModal .modal-header button.btn-close {
+/* #carDetailsModal .modal-header button.btn-close {
     position: absolute;
     top: 15px;
     right: 23px;
-}
+} */
 
 .modalMainBody .btnCustom a.make_offer_btn {
     margin-top: 22px;
@@ -591,7 +591,8 @@ span.grey {
 @media (max-width:991px) {
     #page-content-wrapper .navbar {
         box-shadow: none;
-        background: linear-gradient(180deg, rgba(0, 141, 212, 0.31) 0%, rgba(245, 251, 254, 0) 100%);
+        background-color: #ffffff;
+        /* background: linear-gradient(180deg, rgba(0, 141, 212, 0.31) 0%, rgba(245, 251, 254, 0) 100%); */
     }   
 }
 @media (max-width:767px) {
@@ -689,7 +690,7 @@ span.grey {
     }
 
     .contentBlockBtn .leftList ul li b {
-        font-weight: 100;
+        font-weight: 300;
     }
 
     .boxContentList h2.imgHeading span {
@@ -772,7 +773,7 @@ span.grey {
     }
 
     .wishList-bidInfo .bidTnfo p {
-        margin-bottom: 14px;
+        margin-bottom: 10px;
     }
 
     .jobsrch_info_list li small {
@@ -798,7 +799,7 @@ span.grey {
 
     #carDetailsModal h4.distance_text {
         margin-bottom: 8px;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
     }
 

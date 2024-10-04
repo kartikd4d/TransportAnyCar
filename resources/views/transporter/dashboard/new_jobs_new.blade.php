@@ -132,10 +132,10 @@
             height: 17px;
         }
 
-        .get_quote .modal-header .close {
+        /* .get_quote .modal-header .close {
             position: absolute;
             right: 15px;
-        }
+        } */
 
         /* Add your CSS styling here */
         #popup {
@@ -229,11 +229,11 @@
             font-size: 15px;
         }
 
-        #carDetailsModal .modal-header button.btn-close {
+        /* #carDetailsModal .modal-header button.btn-close {
             position: absolute;
             top: 11px;
             right: 15px;
-        }
+        } */
 
         #carDetailsModal .modal-header span {
             display: flex;
@@ -258,6 +258,7 @@
             color: #9C9C9C;
             padding: 0;
             margin-left: auto;
+            line-height: 18px;
         }
 
         #carDetailsModal .jobsrch_box {
@@ -1397,11 +1398,11 @@
                 height: 203px !important;
             }
 
-            .modal-header button.btn-close {
+            /* .modal-header button.btn-close {
                 position: absolute;
                 top: 11px;
                 right: 15px;
-            }
+            } */
 
             .jobserch_mob .jobsrch_box {
                 padding: 20px 20px 10px;
@@ -1658,7 +1659,7 @@
                         <!------------------------ 27-09-2024 start ------------------>
 
                         <section class="transportSection container">
-                            <div class="admin_job_top">
+                            <div class="admin_job_top" style="margin-bottom:20px!important;">
                                 <h3>Find <br>transport jobs</h3>
                             </div>
                             <div class="">
@@ -2077,7 +2078,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle"> Edit your bid</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle"> Edit bid</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                         onClick="adjustbackdrop()">
                         <span aria-hidden="true">
@@ -2104,16 +2105,16 @@
                                 <p>Transporters bidding: <span class="red bidCount">0</span></p>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-bottom:0px">
+                        {{-- <div class="form-group" style="margin-bottom:0px">
                             <textarea placeholder="Send a professional message for a better chance of winning the job..."
                                 class="form-control textarea" id="editmessage" name="message"></textarea>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer" style="margin-top: 10px;">
                         <input type="hidden" name="quote_id" id="quote_edit_id" value="">
-                        <p><b> Note:</b> Do not share any contact information or company names, we will provide you with the
-                            customers details after they have accepted your quote.</p>
-                        <button type="submit" class="submit_btn">Place bid</button>
+                        {{-- <p><b> Note:</b> Do not share any contact information or company names, we will provide you with the
+                            customers details after they have accepted your quote.</p> --}}
+                        <button type="submit" class="submit_btn">Submit bid</button>
                     </div>
                 </form>
             </div>
@@ -2457,6 +2458,9 @@
                     if (response.success) {
                         // Show a success message or update the UI accordingly
                         toastr.success('Quote successfully added to watchlist!');
+                        setTimeout(function() {
+                            location.reload(); // Reload the page
+                        }, 2000);
                     } else {
                         // Handle the case where the operation wasn't successful
                         toastr.error(response.message); // Display the specific message returned from the server
@@ -2647,7 +2651,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="jobsrch_right_box">
-                                    <h4 class="distance_text">Journey Distance: <b>${carData.distance}miles</b> <strong>(${carData.duration})</strong></h4> 
+                                    <h4 class="distance_text">Journey Distance: <b>${carData.distance} miles</b> <strong>(${carData.duration})</strong></h4> 
                                 </div>
                             </div>
                         </div>
