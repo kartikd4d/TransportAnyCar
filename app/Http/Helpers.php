@@ -774,7 +774,11 @@ if (!function_exists('checkCarFileExist')) {
         $routeName = Illuminate\Support\Facades\Route::currentRouteName();
         if (!empty($path))
             $url = asset($path);
-        elseif (in_array($routeName, ['transporter.new_jobs_new', 'transporter.my_job', 'transporter.message.chat_list', 'front.message.chat_list','transporter.find_job'] ))
+<<<<<<< HEAD
+        elseif (in_array($routeName, ['transporter.new_jobs_new','transporter.watchlist.index', 'transporter.my_job', 'transporter.message.chat_list', 'front.message.chat_list','transporter.find_job'] ))
+=======
+        elseif (in_array($routeName, ['transporter.new_jobs_new', 'transporter.watchlist.index','transporter.my_job', 'transporter.message.chat_list', 'front.message.chat_list','transporter.find_job'] ))
+>>>>>>> 20ed7d49ded351729b6de69b95e57e5d6d687827
             $url = asset('uploads/no_car_image.png');
         elseif (in_array($routeName,['front.dashboard']))
             $url = asset('uploads/svg_image.png');
