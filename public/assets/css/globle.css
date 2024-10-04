@@ -851,7 +851,7 @@ span.grey {
     }
 }
 
-@media (max-width:375px) {
+@media (max-width:374px) {
     /* .boxContentList .boxImg-text .textCol h2,
     .boxContentList .boxImg-text .textCol ul li,
     .boxContentList .contentBlockBtn .leftList ul li {
