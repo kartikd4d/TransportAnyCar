@@ -165,7 +165,7 @@
 
 .boxContentList .contentBlockBtn .leftList ul li {
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     line-height: 15px;
 }
 
@@ -197,6 +197,7 @@
 } */
 .boxContentList .contentBlockBtn .btnCol a {
     border-radius: 8px;
+    font-weight: 500;
 }
 
 .boxContentList h2 span {
@@ -437,10 +438,10 @@ span.grey {
 }
 
 .actionDiv svg {
-    margin-right: -7px;
-    margin-top: -7px;
-    width: 95px;
-    height: 85px;
+    margin-right: -5px;
+    margin-top: -5px;
+    width: 75px;
+    height: 65px;
     /* margin-right: -3px;
     margin-top: -3px; */
 }
@@ -629,10 +630,10 @@ span.grey {
 
     .boxContentList .boxImg-text .imgCol img,
     .boxContentList .boxImg-text .imgCol {
-        width: 100px;
-        max-width: 100px;
-        min-height: 60px;
-        max-height: 60px;
+        width: 92px;
+        max-width: 92px;
+        min-height: 57px;
+        max-height: 57px;
     }
 
     .boxContentList .boxImg-text .textCol {
@@ -713,12 +714,13 @@ span.grey {
         font-size: 15px;
         font-weight: 400;
         line-height: 15px;
-        margin-bottom: 5px;
+        margin-bottom: 0;
     }
 
     .boxContentList .boxImg-text .textCol ul li {
         font-size: 14px;
         line-height: 14px;
+        font-weight: 300;
     }
 
     .boxContentList .boxImg-text .textCol ul li:last-child {
@@ -851,7 +853,7 @@ span.grey {
     }
 }
 
-@media (max-width:375px) {
+@media (max-width:374px) {
     /* .boxContentList .boxImg-text .textCol h2,
     .boxContentList .boxImg-text .textCol ul li,
     .boxContentList .contentBlockBtn .leftList ul li {
