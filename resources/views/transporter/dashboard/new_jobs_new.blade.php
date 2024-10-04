@@ -57,8 +57,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                color: #000000;
-            } */
+                    color: #000000;
+                } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -1925,20 +1925,24 @@
                                                                 </div>
                                                                 <div class="iconDiv px-0 col-3">
                                                                     @if ($quote->watchlist)
-                                                                        <a href="javascript:;" style="margin-left: auto;" class=""
+                                                                        <a href="javascript:;" style="margin-left: auto;"
+                                                                            class=""
                                                                             onclick="removeToWatchlist('{{ $quote->id }}');">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                            fill="#9C9C9C" class="bi bi-eye-slash" viewBox="0 0 16 16">
-                                                                            <path
-                                                                                d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
-                                                                            <path
-                                                                                d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
-                                                                            <path
-                                                                                d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
-                                                                        </svg>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="16" height="16"
+                                                                                fill="#9C9C9C" class="bi bi-eye-slash"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+                                                                                <path
+                                                                                    d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+                                                                                <path
+                                                                                    d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+                                                                            </svg>
                                                                         </a>
                                                                     @else
-                                                                        <a href="javascript:;" style="margin-left: auto;" class=""
+                                                                        <a href="javascript:;" style="margin-left: auto;"
+                                                                            class=""
                                                                             onclick="addToWatchlist('{{ $quote->id }}');"
                                                                             style="margin-left: auto;">
                                                                             <svg width="16" height="11"
@@ -2155,9 +2159,9 @@
                     <!-- Modal content will be dynamically updated here -->
                 </div>
                 <!-- Modal Footer
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-success">Place bid</button>
-                                                    </div> -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-success">Place bid</button>
+                                                        </div> -->
             </div>
         </div>
     </div>
@@ -2563,15 +2567,15 @@
                             <div class="col-lg-6">
                                 <div class="jobsrch_top_box position-relative">
                                     ${carData.vehicle_make_1 == null && carData.vehicle_model_1 == null ? `
-                                            <div>
-                                                <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
-                                            </div>
-                                            ` : `
-                                            <div class="job_se_sec slider">
                                                 <div>
                                                     <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
                                                 </div>
-                                                ${carData.image_1 ? `
+                                                ` : `
+                                                <div class="job_se_sec slider">
+                                                    <div>
+                                                        <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
+                                                    </div>
+                                                    ${carData.image_1 ? `
                                                 <div>
                                                     <img src="/${carData.image_1}" class="vehicle_image" alt="Vehicle Image" />
                                                 </div>
@@ -2580,11 +2584,11 @@
                                                     <img src="/uploads/no_car_image.png" class="vehicle_image" alt="No Image Available" />
                                                 </div>
                                             `}
-                                            </div>
-                                            <div class="custom-navigation">
-                                                <span class="current-slide">1</span> of <span class="total-slides">2</span>
-                                            </div>
-                                        `}                                   
+                                                </div>
+                                                <div class="custom-navigation">
+                                                    <span class="current-slide">1</span> of <span class="total-slides">2</span>
+                                                </div>
+                                            `}                                   
                                 </div>
                                 
                                 <div class="btnCustom">${switch_custom}</div>
