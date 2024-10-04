@@ -33,9 +33,9 @@ if (!function_exists('send_response')) {
                 $data[$key] = $val;
             }
         }
-//        if ($null_remove) {
-//            null_remover($data['data']);
-//        }
+        //        if ($null_remove) {
+        //            null_remover($data['data']);
+        //        }
         $header_status = in_array($data['status'], $valid_status) ? $data['status'] : 412;
         response()->json($data, $header_status)->header('Content-Type', 'application/json')->send();
         die(0);
@@ -83,10 +83,10 @@ if (!function_exists('un_link_file')) {
                 $get_default_images = config('constants.default');
                 $file_name = str_replace($default_url, '', $image_name);
 
-                $default_image_list = is_array($get_default_images) 
-                    ? array_map(function($image) use ($default_url) {
+                $default_image_list = is_array($get_default_images)
+                    ? array_map(function ($image) use ($default_url) {
                         return str_replace($default_url, '', $image);
-                    }, array_values($get_default_images)) 
+                    }, array_values($get_default_images))
                     : [];
 
                 if (!in_array($file_name, $default_image_list)) {
@@ -177,8 +177,8 @@ function getDashboardRouteName($guard = "web")
 
 function admin_modules()
 {
-    $pending_count = User::where('is_status','pending')->where('type','car_transporter')->count();
-    $approved_count = User::where('is_status','approved')->where('type','car_transporter')->count();
+    $pending_count = User::where('is_status', 'pending')->where('type', 'car_transporter')->count();
+    $approved_count = User::where('is_status', 'approved')->where('type', 'car_transporter')->count();
     return [
         [
             'route' => route('admin.dashboard'),
@@ -213,19 +213,17 @@ function admin_modules()
             'child' => [
                 [
                     'route' => route('admin.carTransporter.pendingview'),
-                    'name' =>'Pending Transporters',
+                    'name' => 'Pending Transporters',
                     'icon' => 'badge badge-custom',
                     'counter' => true,
-                    'all_routes' => [
-                    ],
+                    'all_routes' => [],
                 ],
                 [
                     'route' => route('admin.carTransporter.approvedview'),
                     'name' => 'Approved Transporters',
                     'icon' => 'badge badge-custom',
-                    'approved_counter'=>true,
-                    'all_routes' => [
-                    ],
+                    'approved_counter' => true,
+                    'all_routes' => [],
                 ],
             ]
         ],
@@ -375,7 +373,7 @@ function breadcrumb($aBradcrumb = array())
             $i += 1;
             $link = (!empty($link)) ? $link : 'javascript:void(0)';
 
-            $content .=  '<li class="breadcrumb-item"> <a href="'.$link.'">'. ucfirst($key).'</a>';
+            $content .=  '<li class="breadcrumb-item"> <a href="' . $link . '">' . ucfirst($key) . '</a>';
 
 
             // $content .= "<a href='" . $link . "' class='kt-subheader__breadcrumbs-link'>" . ucfirst($key) . "</a>";
@@ -419,17 +417,17 @@ function datatable_filters()
 
 function send_push($user_id = 0, $data = [], $notification_entry = false)
 {
-//    $sample_data = [
-//        'push_type' => 0,
-//        'push_message' => 0,
-//        'from_user_id' => 0,
-//        'push_title' => 0,
-//////        'push_from' => 0,
-//        'object_id' => 0,
-//        'extra' => [
-//            'jack' => 1
-//        ],
-//    ];
+    //    $sample_data = [
+    //        'push_type' => 0,
+    //        'push_message' => 0,
+    //        'from_user_id' => 0,
+    //        'push_title' => 0,
+    //////        'push_from' => 0,
+    //        'object_id' => 0,
+    //        'extra' => [
+    //            'jack' => 1
+    //        ],
+    //    ];
 
 
     $pem_secret = '';
@@ -446,15 +444,15 @@ function send_push($user_id = 0, $data = [], $notification_entry = false)
         'object_id' => $data['object_id'] ?? null,
     ];
     if ($push_data['user_id'] !== $push_data['from_user_id']) {
-//        $to_user_data = User::find($user_id);
-//        if ($to_user_data) {
+        //        $to_user_data = User::find($user_id);
+        //        if ($to_user_data) {
         $get_user_tokens = DeviceToken::get_user_tokens($user_id);
         $fire_base_header = ["Authorization: key=" . config('constants.firebase_server_key'), "Content-Type: application/json"];
         if (count($get_user_tokens)) {
             foreach ($get_user_tokens as $value) {
                 $curl_extra = [];
                 $push_status = "Sent";
-                $value->update(['badge'=>$value->badge+1]);
+                $value->update(['badge' => $value->badge + 1]);
                 try {
                     $device_token = $value['push_token'];
                     $device_type = strtolower($value['type']);
@@ -499,7 +497,7 @@ function send_push($user_id = 0, $data = [], $notification_entry = false)
                             CURLOPT_HTTPHEADER => $headers,
                         ], $curl_extra));
                         $result = curl_exec($ch);
-//                            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                        //                            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                         if (curl_errno($ch)) {
                             $push_status = 'Curl Error:' . curl_error($ch);
                         }
@@ -521,20 +519,20 @@ function send_push($user_id = 0, $data = [], $notification_entry = false)
                 PushLog::add_log($user_id, $push_data['from_user_id'], $push_data['push_type'], "Users Is not A Login With app");
             }
         }
-//            if ($notification_entry) {
-//                Notification::create([
-//                    'push_type' => $push_data['push_type'],
-//                    'user_id' => $push_data['user_id'],
-//                    'from_user_id' => $push_data['from_user_id'],
-//                    'push_title' => $push_data['push_title'],
-//                    'push_message' => $push_data['push_message'],
-//                    'object_id' => $push_data['object_id'],
-//                    'extra' => (isset($data['extra']) && !empty($data['extra'])) ? json_encode($data['extra']) : json_encode([]),
-//                    'country_id' => $push_data['country_id'],
-//                ]);
-//            }
+        //            if ($notification_entry) {
+        //                Notification::create([
+        //                    'push_type' => $push_data['push_type'],
+        //                    'user_id' => $push_data['user_id'],
+        //                    'from_user_id' => $push_data['from_user_id'],
+        //                    'push_title' => $push_data['push_title'],
+        //                    'push_message' => $push_data['push_message'],
+        //                    'object_id' => $push_data['object_id'],
+        //                    'extra' => (isset($data['extra']) && !empty($data['extra'])) ? json_encode($data['extra']) : json_encode([]),
+        //                    'country_id' => $push_data['country_id'],
+        //                ]);
+        //            }
 
-//        }
+        //        }
     } else {
         if (config('constants.push_log')) {
             PushLog::add_log($user_id, $push_data['from_user_id'], $push_data['push_type'], "User Cant Sent Push To Own Profile.");
@@ -552,14 +550,55 @@ function genUniqueStr($prefix = '', $length = 10, $table, $field, $isAlphaNum = 
     $arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
     if ($isAlphaNum) {
         $arr = array_merge($arr, array(
-            'a', 'b', 'c', 'd', 'e', 'f',
-            'g', 'h', 'i', 'j', 'k', 'l',
-            'm', 'n', 'o', 'p', 'r', 's',
-            't', 'u', 'v', 'x', 'y', 'z',
-            'A', 'B', 'C', 'D', 'E', 'F',
-            'G', 'H', 'I', 'J', 'K', 'L',
-            'M', 'N', 'O', 'P', 'R', 'S',
-            'T', 'U', 'V', 'X', 'Y', 'Z'));
+            'a',
+            'b',
+            'c',
+            'd',
+            'e',
+            'f',
+            'g',
+            'h',
+            'i',
+            'j',
+            'k',
+            'l',
+            'm',
+            'n',
+            'o',
+            'p',
+            'r',
+            's',
+            't',
+            'u',
+            'v',
+            'x',
+            'y',
+            'z',
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'R',
+            'S',
+            'T',
+            'U',
+            'V',
+            'X',
+            'Y',
+            'Z'
+        ));
     }
     $token = $prefix;
     $maxLen = max(($length - strlen($prefix)), 0);
@@ -703,20 +742,21 @@ function get_label($label = "")
 {
     switch ($label) {
         case "CAR_TRANSPORTER":
-        $returnLabel="<span class='badge badge-custom'>Car Transporter</span>";
-        break;
+            $returnLabel = "<span class='badge badge-custom'>Car Transporter</span>";
+            break;
         case "USER":
-        $returnLabel="<span class='badge badge-custom'>" .$label . "</span>";
-        break;
+            $returnLabel = "<span class='badge badge-custom'>" . $label . "</span>";
+            break;
         default:
-        $returnLabel="<span class='badge badge-success'>" . $label . "</span>";
+            $returnLabel = "<span class='badge badge-success'>" . $label . "</span>";
     }
 
     return $returnLabel;
 }
 
-function getDistanceDuration($origin, $destination, $apiKey) {
-    $url = "https://maps.googleapis.com/maps/api/directions/json?units=imperial&origin=".$origin."&destination=".$destination."&key=".$apiKey;
+function getDistanceDuration($origin, $destination, $apiKey)
+{
+    $url = "https://maps.googleapis.com/maps/api/directions/json?units=imperial&origin=" . $origin . "&destination=" . $destination . "&key=" . $apiKey;
 
     // Initialize cURL
     $ch = curl_init();
@@ -774,13 +814,9 @@ if (!function_exists('checkCarFileExist')) {
         $routeName = Illuminate\Support\Facades\Route::currentRouteName();
         if (!empty($path))
             $url = asset($path);
-<<<<<<< HEAD
-        elseif (in_array($routeName, ['transporter.new_jobs_new','transporter.watchlist.index', 'transporter.my_job', 'transporter.message.chat_list', 'front.message.chat_list','transporter.find_job'] ))
-=======
-        elseif (in_array($routeName, ['transporter.new_jobs_new', 'transporter.watchlist.index','transporter.my_job', 'transporter.message.chat_list', 'front.message.chat_list','transporter.find_job'] ))
->>>>>>> 20ed7d49ded351729b6de69b95e57e5d6d687827
+        elseif (in_array($routeName, ['transporter.new_jobs_new', 'transporter.watchlist.index', 'transporter.my_job', 'transporter.message.chat_list', 'front.message.chat_list', 'transporter.find_job']))
             $url = asset('uploads/no_car_image.png');
-        elseif (in_array($routeName,['front.dashboard']))
+        elseif (in_array($routeName, ['front.dashboard']))
             $url = asset('uploads/svg_image.png');
         else
             $url = asset('uploads/no_quote.png');
@@ -800,9 +836,10 @@ function formatAddress($address)
     return $limitedAddress;
 }
 
-function readMoreHelper($story_desc, $chars) {
+function readMoreHelper($story_desc, $chars)
+{
     $chars = $chars ?? 50;
-    if (strlen($story_desc) > $chars){
+    if (strlen($story_desc) > $chars) {
         $short_desc = substr($story_desc, 0, $chars);
         $long_desc = substr($story_desc, $chars);
         $story_desc = $short_desc . '<a href="javascript:;" class="read_more_show"> Read More</a>';
@@ -812,7 +849,8 @@ function readMoreHelper($story_desc, $chars) {
     return $story_desc;
 }
 
-function formatCustomDate($date) {
+function formatCustomDate($date)
+{
     $d = new DateTime($date);
     $day = $d->format('d');
     $month = $d->format('m');
@@ -821,7 +859,8 @@ function formatCustomDate($date) {
     return "$day/$month/$year";
 }
 
-function extractPostcode($address) {
+function extractPostcode($address)
+{
     $addressParts = explode(',', $address);
     $firstPart = trim($addressParts[0]);
     $lastTwoParts = array_slice($addressParts, -2);
@@ -833,21 +872,22 @@ function extractPostcode($address) {
             return $matches[0];
         } elseif (preg_match('/[A-Za-z]+\d+/', $afterFirstWord, $matches)) {
             return $matches[0];
-        } elseif (preg_match('/\b\d{1,6}\b/', $afterFirstWord, $matches)) { 
+        } elseif (preg_match('/\b\d{1,6}\b/', $afterFirstWord, $matches)) {
             return $matches[0];
         }
     }
     return $limitedAddress;
 }
-function getTimeAgo($timestamp, $timezone = 'Europe/London') {
-   // Create a Carbon instance with the provided timestamp and timezone
-   $dateTime = Carbon::parse($timestamp, $timezone);
-    
-   // Get the current time in the specified timezone
-   $now = Carbon::now($timezone);
-   
-   // Calculate the time difference in seconds
-   $timeDifference = $now->diffInSeconds($dateTime);
+function getTimeAgo($timestamp, $timezone = 'Europe/London')
+{
+    // Create a Carbon instance with the provided timestamp and timezone
+    $dateTime = Carbon::parse($timestamp, $timezone);
+
+    // Get the current time in the specified timezone
+    $now = Carbon::now($timezone);
+
+    // Calculate the time difference in seconds
+    $timeDifference = $now->diffInSeconds($dateTime);
 
     // Calculate time ago
     if ($timeDifference < 60) {
@@ -934,7 +974,7 @@ function new_roundBasedOnDecimal($number)
 }
 
 if (!function_exists('create_notification')) {
-    function create_notification($user_id, $from_user_id, $quote_id, $title=null, $message=null, $type=null, $reference_id=null)
+    function create_notification($user_id, $from_user_id, $quote_id, $title = null, $message = null, $type = null, $reference_id = null)
     {
         // Validate input
         if (empty($user_id) || empty($type) || empty($message)) {
@@ -957,6 +997,3 @@ if (!function_exists('create_notification')) {
         return $notification;
     }
 }
-
-
-

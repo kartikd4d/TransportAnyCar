@@ -1675,7 +1675,7 @@
                                             id="search_pick_up_area" placeholder="Search collection area " />
                                         <input type="hidden" name="pick_up_latitude" id="pick_up_latitude">
                                         <input type="hidden" name="pick_up_longitude" id="pick_up_longitude">
-                                        <svg class="svgvector_mob d-md-none d-block" width="30" height="30"
+                                        <svg class="svgvector_mob d-md-none d-block" width="22" height="22"
                                             viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M2 13.4131C1.99918 7.96953 5.84383 3.28343 11.1827 2.22069C16.5215 1.15795 21.8676 4.01456 23.9514 9.04352C26.0353 14.0725 24.2764 19.8731 19.7506 22.898C15.2248 25.9228 9.19247 25.3294 5.34286 21.4806C3.20274 19.3412 2.00025 16.4392 2 13.4131Z"
@@ -1703,7 +1703,7 @@
                                             id="search_drop_off_area" placeholder="Anywhere" />
                                         <input type="hidden" name="drop_off_latitude" id="drop_off_latitude">
                                         <input type="hidden" name="drop_off_longitude" id="drop_off_longitude">
-                                        <svg class="svgvector_mob d-md-none d-block" width="30" height="30"
+                                        <svg class="svgvector_mob d-md-none d-block" width="22" height="22"
                                             viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M2 13.4131C1.99918 7.96953 5.84383 3.28343 11.1827 2.22069C16.5215 1.15795 21.8676 4.01456 23.9514 9.04352C26.0353 14.0725 24.2764 19.8731 19.7506 22.898C15.2248 25.9228 9.19247 25.3294 5.34286 21.4806C3.20274 19.3412 2.00025 16.4392 2 13.4131Z"
@@ -1825,7 +1825,7 @@
                                                         <ul class="col-6">
                                                             <li>
                                                                 <b>Expiry date:</b>
-                                                                <span>
+                                                                <span class="font-weight-light">
                                                                     {{ formatCustomDate($quote->created_at->addDays(10)) }}
                                                                 </span>
                                                             </li>

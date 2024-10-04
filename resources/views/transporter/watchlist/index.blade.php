@@ -1746,7 +1746,7 @@
                                                         <ul class="col-6">
                                                             <li>
                                                                 <b>Expiry date:</b>
-                                                                <span>
+                                                                <span class="font-weight-light">
                                                                     {{ formatCustomDate($quote->created_at->addDays(10)) }}
                                                                 </span>
                                                             </li>
