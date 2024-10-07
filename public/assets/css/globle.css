@@ -413,6 +413,15 @@ span.grey {
     font-size: 16px!important;
     line-height: 20px;
 }
+.user-feedback-header-wrap {gap: 16px;}
+.user-feedback-member-from {font-size: 14px;}
+.user-feedback-stars li {line-height: 18px;}
+.user-feedback-rating-count span {
+    padding-top: 5px;
+    font-size: 12px;
+    color: #000000;
+    display: inline-block;
+}
 /* User Feedback Page */
 
 @media (min-width:992px) {
