@@ -96,7 +96,7 @@
                             <div class="row wd-pb">
                                 <div class="col-lg-6">
                                     <div class="wd-transport-dtls">
-                                        <h1>{{$user->name ?? '-'}} 
+                                        <h1 clas="user-feedback-name">{{$user->name ?? '-'}} 
                                             <!-- <span>({{count($feedback)}})</span> -->
                                         </h1> 
                                         <ul class="wd-star-lst">
@@ -131,7 +131,7 @@
                                         <div class="wd-transport-area">
                                             <div class="wd-transport-img">
                                             
-                                                <img src="{{ $user->profile_image }}" style="width:50px" alt="trasporter feedback" class="img-fluid">
+                                                <img src="{{ $user->profile_image }}" width="58" height="58" alt="trasporter feedback" class="img-fluid">
                                             </div>
                                             <div class="wd-transport-rght">
                                                 <ul>
