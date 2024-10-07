@@ -84,8 +84,8 @@
     justify-content: center;
     gap: 9px;
 }
-#watchlisting .boxContent:first-child,
-#orderlisting .boxContent:first-child {padding-top: 0;}
+/* #watchlisting .boxContent:first-child,
+#orderlisting .boxContent:first-child {padding-top: 0;} */
 .boxContentList {
     display: flex;
     justify-content: space-between;
@@ -177,6 +177,10 @@
     gap: 6px;
 }
 
+.boxContentList .contentBlockBtn .btnCol {
+    width: 175px;
+    max-width: 75%;
+}
 /* .boxContentList .contentBlockBtn .btnCol {
     width: 18%;
     display: flex;
@@ -188,7 +192,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 10px 0;
+    padding: 10px 0 0;
 }
 
 /* .mainContentDiv {
@@ -221,6 +225,18 @@
     position: absolute;
     right: 0;
     top: 0;
+}
+.actionDiv .rotated-banner {
+    background-color: #ED1C24;
+    color: #F3F8FF;
+    font-size: 10px;
+    line-height: 13px;
+    font-weight: 500;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    padding: 3px 24px;
 }
 
 .wishList-bidInfo {
@@ -565,10 +581,10 @@ span.grey {
         gap: 5px;
     }
 
-    .boxContentList .contentBlockBtn .btnCol {
+    /* .boxContentList .contentBlockBtn .btnCol {
         width: 100%;
         justify-content: flex-end;
-    }
+    } */
 
     .boxContentList .contentBlockBtn .btnCol a {
         display: inline-block;
@@ -597,10 +613,12 @@ span.grey {
     }   
 }
 @media (max-width:767px) {
+    .boxContentList .boxImg-text .textCol ul li {gap:5px;}
     .boxContentList h2.imgHeading {
         display: block;
         margin-bottom: 0;
     }
+    .boxContentList .boxImg-text {align-items: center;}
     .header-banner {padding-left: 15px; padding-right: 15px;}
     /* .boxContentList .contentBlockBtn .leftList ul:nth-child(2) {padding-bottom: 40px;} */
     .boxContentList .boxImg-text .textCol ul li,
@@ -638,8 +656,8 @@ span.grey {
 
     .boxContentList .boxImg-text .textCol {
         /* width: 100%; */
-        max-width: calc(100% - 100px);
-        width: calc(100% - 100px);
+        max-width: calc(100% - 102px);
+        width: calc(100% - 102px);
     }
 
     .boxImg-text .textCol h2 {
@@ -648,6 +666,7 @@ span.grey {
 
     .boxContentList .boxImg-text .textCol {
         gap: 0;
+        padding-left: 0;
     }
 
     .searchContent svg {
@@ -714,7 +733,7 @@ span.grey {
         font-size: 15px;
         font-weight: 400;
         line-height: 15px;
-        margin-bottom: 0;
+        margin-bottom: 3px;
     }
 
     .boxContentList .boxImg-text .textCol ul li {
