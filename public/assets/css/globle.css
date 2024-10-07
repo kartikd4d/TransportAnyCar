@@ -408,6 +408,13 @@ span.grey {
     margin-top: -3px;
 }
 
+/* User Feedback Page */
+.user-feedback-name {
+    font-size: 16px!important;
+    line-height: 20px;
+}
+/* User Feedback Page */
+
 @media (min-width:992px) {
     .jobsrch_form_blog .form-group.where_custom {
         padding: 15px 30px;
@@ -460,11 +467,6 @@ span.grey {
     height: 65px;
     /* margin-right: -3px;
     margin-top: -3px; */
-}
-
-.user-feedback-name {
-    font-size: 16px;
-    line-height: 20px;
 }
 
 @media (max-width:1440px) {

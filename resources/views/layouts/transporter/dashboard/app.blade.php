@@ -14,6 +14,14 @@
     <!-- Custome CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/web/css/admin.css')}}" />
     <link href="{{asset('assets/admin/vendors/general/toastr/build/toastr.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/web/vendors/owl.carousel/css/owl.carousel.min.css')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/globle.css')}}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/rangeslider.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     @yield('head_css')
 </head>
 <body>

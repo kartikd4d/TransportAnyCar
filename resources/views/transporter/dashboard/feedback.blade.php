@@ -1,8 +1,6 @@
 @extends('layouts.transporter.dashboard.app')
 
 @section('head_css')
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/web/vendors/owl.carousel/css/owl.carousel.min.css')}}" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
         .wd-transport-dtls h1 {
@@ -96,7 +94,7 @@
                             <div class="row wd-pb">
                                 <div class="col-lg-6">
                                     <div class="wd-transport-dtls">
-                                        <h1 clas="user-feedback-name">{{$user->name ?? '-'}} 
+                                        <h1 class="user-feedback-name">{{$user->name ?? '-'}} 
                                             <!-- <span>({{count($feedback)}})</span> -->
                                         </h1> 
                                         <ul class="wd-star-lst">
