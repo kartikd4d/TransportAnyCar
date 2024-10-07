@@ -1816,10 +1816,10 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <h2 class="imgHeading">
+                                                {{-- <h2 class="imgHeading">
                                                     <span>Posted
                                                         {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
-                                                </h2>
+                                                </h2> --}}
                                                 <div class="contentBlockBtn">
                                                     <div class="leftList">
                                                         <ul class="col-6">
