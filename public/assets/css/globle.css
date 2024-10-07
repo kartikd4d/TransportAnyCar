@@ -422,6 +422,61 @@ span.grey {
     color: #000000;
     display: inline-block;
 }
+.feedback-item {
+    color:#000000;
+    font-weight: 500;
+}
+.feedback-user-name {
+    font-size: 16px;
+    font-weight: 500;
+    color:#000000;
+}
+.feedback-user-verified {
+    font-size: 12px;
+    font-weight: 500;
+    color:#52D017;
+    margin-left: 14px;
+}
+.feedback-item,
+.other-reviews.user-feedback-stars {margin-top: 14px; margin-bottom: 14px;}
+.review-wrap {
+    padding: 30px 22px;
+    border-bottom: 1px solid #D9D9D9;
+}
+.review-outer-wrap .review-wrap:last-child {border-bottom:0}
+.review-base-bar {
+    background-color: #D9D9D9;
+    width: 90px;
+    height: 3px;
+    border-radius: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.review-active-bar {
+    background-color: #FFA800;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+}
+.overall-review .total-review {font-size: 20px; font-weight: 500; margin-bottom: 0;}
+.total-review-count,
+.overall-review .total-rating {font-size: 16px; font-weight: 500;}
+.review-count-bar li span {
+    font-size: 16px;
+    font-weight: 400;
+    color:#000000;
+}
+.review-percentage {font-size: 16px; font-weight: 400; color:#595959;}
+.review-count-bar li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 10px;
+    border-left: 1px solid #D9D9D9;
+}
+.review-steps {width: 10px;}
+.review-count-bar span {margin-right: 10px;}
 /* User Feedback Page */
 
 @media (min-width:992px) {

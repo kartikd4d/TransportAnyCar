@@ -8,12 +8,15 @@
 
         .wd-transport-rght ul li {
             align-items: flex-start;
-            margin: 8px 0;
+            margin: 12px 0;
+        }
+        .wd-transport-rght ul li:last-child {
+            margin-bottom: 0;
         }
 
         /* .wd-transport-area {
-            align-items: self-start;
-        } */
+                align-items: self-start;
+            } */
 
         ul.wd-star-lst {
             margin-bottom: 0;
@@ -31,7 +34,15 @@
         .feedback-time-line table {
             border: none;
         }
-        .wd-transport-rght ul li p {font-weight: 300;}
+
+        .wd-transport-rght ul li p {
+            font-weight: 300;
+        }
+
+        .wd-transport-rght ul li span {
+            font-weight: 500;
+            margin-left: 10px;
+        }
 
         @media(max-width: 1199px) {
             .wd-transport-area {
@@ -101,55 +112,57 @@
             <div class="content_container">
                 <div class="inner_content">
                     <div class="wd-white-box">
-                        <div class="wd-feedback-box">
-                            <div class="row wd-pb">
-                                <div class="col-lg-6">
+                        <div class="wd-feedback-box border-0 rounded-0 p-0">
+                            <div class="row wd-pb pb-5 mx-0">
+                                <div class="col-lg-12">
                                     <div class="wd-transport-dtls">
-                                        <div class="row mx-0 align-items-center user-feedback-header-wrap">
+                                        <div class="row mx-0 align-items-center user-feedback-header-wrap mb-3">
                                             <div class="w-auto wd-transport-img pt-0">
                                                 <img src="{{ $user->profile_image }}" width="58" height="58"
                                                     alt="trasporter feedback" class="img-fluid">
                                             </div>
                                             <div class="">
-                                                <h1 class="user-feedback-name mb-0">{{ $user->name ?? '-' }} <img src="{{asset('/assets/images/user-verified.png')}}" alt="" width="20" height="20" class="ml-1" />
+                                                <h1 class="user-feedback-name mb-0">{{ $user->name ?? '-' }} <img
+                                                        src="{{ asset('/assets/images/user-verified.png') }}" alt=""
+                                                        width="20" height="20" class="ml-1" />
                                                     <!-- <span>({{ count($feedback) }})</span> -->
                                                 </h1>
                                                 <ul class="wd-star-lst user-feedback-stars">
                                                     <li>
-                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="12" height="12" viewBox="0 0 12 12"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
                                                                 fill="#FFA800" />
                                                         </svg>
                                                     </li>
                                                     <li>
-                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="12" height="12" viewBox="0 0 12 12"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
                                                                 fill="#FFA800" />
                                                         </svg>
                                                     </li>
                                                     <li>
-                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="12" height="12" viewBox="0 0 12 12"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
                                                                 fill="#FFA800" />
                                                         </svg>
                                                     </li>
                                                     <li>
-                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="12" height="12" viewBox="0 0 12 12"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
                                                                 fill="#FFA800" />
                                                         </svg>
                                                     </li>
                                                     <li>
-                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="12" height="12" viewBox="0 0 12 12"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
                                                                 fill="#FFA800" />
@@ -159,61 +172,60 @@
                                                     {{-- <li>({{ number_format($overall_percentage, 0) }}%)</li> --}}
                                                     <!-- <li>({{ 100 }}%)</li> -->
                                                 </ul>
-                                                <div>Member since: <span class="font-weight-light user-feedback-member-from">12/08/2024</span></div>
+                                                <div>Member since: <span
+                                                        class="font-weight-light user-feedback-member-from">12/08/2024</span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="wd-transport-area">
-                                            
+
                                             <div class="wd-transport-rght">
                                                 <ul>
-                                                    <li>
+                                                    {{-- <li>
                                                         <p>Positive feedback:</p>
-                                                        {{-- <span class="wd-black">{{ number_format($positive_feedback_percentage, 0) }}%</span> --}}
-                                                    </li>
+                                                        <span class="wd-black">{{ number_format($positive_feedback_percentage, 0) }}%</span>
+                                                    </li> --}}
                                                     <!-- <li>
-                                                            <p>Completed jobs:</p>
-                                                            <span>{{ $completed_job }}</span>
-                                                        </li> -->
+                                                                <p>Completed jobs:</p>
+                                                                <span>{{ $completed_job }}</span>
+                                                            </li> -->
                                                     <li>
                                                         <p>Insurance:</p>
 
                                                         <span>
                                                             @if ($user->insurance_cover)
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                    height="16" fill="currentColor" class="bi bi-check"
-                                                                    viewBox="0 0 16 16">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="13"
+                                                                    height="13" viewBox="0 0 13 13" fill="none">
                                                                     <path
-                                                                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
+                                                                        d="M4.41537 11.1567L0.190373 6.93169C-0.0634575 6.67786 -0.0634575 6.2663 0.190373 6.01245L1.10959 5.0932C1.36342 4.83935 1.775 4.83935 2.02883 5.0932L4.87499 7.93934L10.9712 1.8432C11.225 1.58937 11.6366 1.58937 11.8904 1.8432L12.8096 2.76245C13.0634 3.01628 13.0634 3.42783 12.8096 3.68169L5.33462 11.1567C5.08076 11.4105 4.6692 11.4105 4.41537 11.1567Z"
+                                                                        fill="#52D017" />
                                                                 </svg>
                                                             @endif
                                                         </span>
                                                     </li>
                                                     <li>
-                                                        <p>Photo Id:</p>
+                                                        <p>Photo ID:</p>
                                                         <span>
                                                             @if ($user->profile_image)
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                    height="16" fill="currentColor" class="bi bi-check"
-                                                                    viewBox="0 0 16 16">
-                                                                    <path
-                                                                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                                                    <path d="M4.41537 11.1567L0.190373 6.93169C-0.0634575 6.67786 -0.0634575 6.2663 0.190373 6.01245L1.10959 5.0932C1.36342 4.83935 1.775 4.83935 2.02883 5.0932L4.87499 7.93934L10.9712 1.8432C11.225 1.58937 11.6366 1.58937 11.8904 1.8432L12.8096 2.76245C13.0634 3.01628 13.0634 3.42783 12.8096 3.68169L5.33462 11.1567C5.08076 11.4105 4.6692 11.4105 4.41537 11.1567Z" fill="#52D017"/>
                                                                 </svg>
                                                             @endif
                                                     </li>
                                                     <li>
-                                                        <p>Total Reviews:</p>
+                                                        <p>Total reviews:</p>
                                                         <span>{{ count($feedback) }}</span>
                                                     </li>
                                                     <li>
-                                                        <p>Job Conpleted:</p>
+                                                        <p>Job conpleted:</p>
                                                         <span>{{ $completed_job }}</span>
                                                     </li>
                                                     <li>
-                                                        <p>Miles Travelled:</p>
+                                                        <p>Miles travelled:</p>
                                                         <span>{{ $distance }}</span>
                                                     </li>
                                                     <li>
-                                                        <p>Total Earning:</p>
+                                                        <p>Total earning:</p>
                                                         <span>{{ $total_earning }}</span>
                                                     </li>
                                                     <li>
@@ -229,7 +241,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="feedback-tbl" id="feedback_listing">
+                                    <div class="feedback-tbl border-none bg-white border-0 rounded-0" id="feedback_listing">
 
                                     </div>
                                 </div>
