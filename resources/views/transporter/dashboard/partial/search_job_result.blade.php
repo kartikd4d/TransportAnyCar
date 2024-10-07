@@ -314,7 +314,7 @@
             </h2> --}}
             <div class="contentBlockBtn">
                 <div class="leftList">
-                    <ul class="col-6 px-0">
+                    <ul class="col-6 px-0 car-row" data-car-id="{{ $quote->id }}">
                         <li>
                             <b>Expiry date:</b>
                             <span class="font-weight-light">
@@ -347,17 +347,17 @@
                             $transporterQuotesCount = $quote->transporter_quotes_count ?? 0;
                         @endphp
                         @if ($transporterQuotesCount > 0)
-                            <li class="colorDivgreen">
+                            <li class="colorDivgreen car-row" data-car-id="{{ $quote->id }}">
                                 <span><b>Current lowest bid:</b></span>
                                 <span class="sub_color">£{{ $lowestBid }}</span>
                             </li>
                         @else
-                            <li class="colorDivgreen">
+                            <li class="colorDivgreen car-row" data-car-id="{{ $quote->id }}">
                                 <span><b>Current lowest bid:</b></span>
                                 <span class="sub_color">£0</span>
                             </li>
                         @endif
-                        <li class="colorDivBlue  mb-2">
+                        <li class="colorDivBlue  mb-2 car-row" data-car-id="{{ $quote->id }}">
                             <b>Transporters bidding: </b>
                             @if ($transporterQuotesCount > 0)
                                 <span class="sub_color">{{ $transporterQuotesCount }}</span>
@@ -386,7 +386,7 @@
                                 @endif --}}
                             </div>
                             <div class="iconDiv ml-4">
-                                @if ($quote->watchlist)
+                                {{-- @if ($quote->watchlist) --}}
                                 <a href="javascript:;" onclick="removeToWatchlist('{{ $quote->id }}');"
                                     style="margin-left: auto;">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9C9C9C" class="size-6">
@@ -403,7 +403,7 @@
                                                 d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
                                         </svg> --}}
                                 </a>
-                                @else
+                                {{-- @else
                                 <a href="javascript:;" style="margin-left: auto;"
                                     class=""
                                     onclick="addToWatchlist('{{ $quote->id }}');"
@@ -413,7 +413,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                       </svg>  
                                     </a>
-                                  @endif
+                                  @endif --}}
                             </div>
                         </li>
                     </ul>
