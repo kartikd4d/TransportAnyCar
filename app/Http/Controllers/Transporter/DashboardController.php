@@ -741,7 +741,7 @@ class DashboardController extends WebController
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
         // return ["user"=>$quotes,"userIdLogin"=>auth()->user()->id];
-        // return $quotes;
+        return $quotes;
         if ($request->ajax()) {
             // Convert dates to DateTime objects if necessary
             foreach ($quotes as $quote) {

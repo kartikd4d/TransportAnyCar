@@ -178,9 +178,10 @@
 }
 
 .boxContentList .contentBlockBtn .btnCol {
-    width: 175px;
-    max-width: 75%;
+    width: 170px;
+    max-width: 70%;
 }
+
 /* .boxContentList .contentBlockBtn .btnCol {
     width: 18%;
     display: flex;
@@ -689,7 +690,7 @@ span.grey {
         display: block;
         margin-bottom: 0;
     }
-    .boxContentList .boxImg-text {align-items: center;}
+    /* .boxContentList .boxImg-text {align-items: center;} */
     .header-banner {padding-left: 15px; padding-right: 15px;}
     /* .boxContentList .contentBlockBtn .leftList ul:nth-child(2) {padding-bottom: 40px;} */
     .boxContentList .boxImg-text .textCol ul li,
@@ -936,7 +937,9 @@ span.grey {
     } */
 
 }
-
+@media (max-width:575px) {
+    #search-results {margin-left: -16px; margin-right: -16px;}
+}
 @media (max-width:400px) {
     .boxContentList .contentBlockBtn .btnCol a {
         width: 85px;

@@ -11,6 +11,7 @@
         }
     </style>
     {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/web/css/rangeslider.css')}}" /> --}}
+    
 @endsection
 
 @section('content')
