@@ -57,8 +57,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                        color: #000000;
-                    } */
+                            color: #000000;
+                        } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -133,9 +133,9 @@
         }
 
         /* .get_quote .modal-header .close {
-                position: absolute;
-                right: 15px;
-            } */
+                    position: absolute;
+                    right: 15px;
+                } */
 
         /* Add your CSS styling here */
         #popup {
@@ -230,10 +230,10 @@
         }
 
         /* #carDetailsModal .modal-header button.btn-close {
-                position: absolute;
-                top: 11px;
-                right: 15px;
-            } */
+                    position: absolute;
+                    top: 11px;
+                    right: 15px;
+                } */
 
         #carDetailsModal .modal-header span {
             display: flex;
@@ -1399,10 +1399,10 @@
             }
 
             /* .modal-header button.btn-close {
-                    position: absolute;
-                    top: 11px;
-                    right: 15px;
-                } */
+                        position: absolute;
+                        top: 11px;
+                        right: 15px;
+                    } */
 
             .jobserch_mob .jobsrch_box {
                 padding: 20px 20px 10px;
@@ -1629,8 +1629,7 @@
             }
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/globle.css')}}" />
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/globle.css') }}" />
 @endsection
 
 
@@ -1768,11 +1767,10 @@
                                                         {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
                                                 </h2>
                                                 <div class="boxImg-text car-row" data-car-id="{{ $quote->id }}">
-                                                    
-                                                        <div class="imgCol">
-                                                            <img src="{{ $quote->image }}" class=""
-                                                                alt="image" />
-                                                        </div>
+
+                                                    <div class="imgCol">
+                                                        <img src="{{ $quote->image }}" class="" alt="image" />
+                                                    </div>
                                                     <div class="textCol">
                                                         <span class="hideMob">Posted
                                                             {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
@@ -1797,7 +1795,7 @@
                                                                 </i>
                                                                 <span>{{ $quote->pickup_postcode ? $quote->pickup_postcode : '-' }}</span>
                                                             </li>
-                                                            
+
                                                             <li>
                                                                 <i>
                                                                     <svg width="16" height="22"
@@ -1856,17 +1854,20 @@
                                                                     $quote->transporter_quotes_count ?? 0;
                                                             @endphp
                                                             @if ($transporterQuotesCount > 0)
-                                                                <li class="colorDivgreen car-row" data-car-id="{{ $quote->id }}">
+                                                                <li class="colorDivgreen car-row"
+                                                                    data-car-id="{{ $quote->id }}">
                                                                     <span><b>Current lowest bid:</b></span>
                                                                     <span class="sub_color">£{{ $lowestBid }}</span>
                                                                 </li>
                                                             @else
-                                                                <li class="colorDivgreen car-row" data-car-id="{{ $quote->id }}">
+                                                                <li class="colorDivgreen car-row"
+                                                                    data-car-id="{{ $quote->id }}">
                                                                     <span><b>Current lowest bid:</b></span>
                                                                     <span class="sub_color">£0</span>
                                                                 </li>
                                                             @endif
-                                                            <li class="colorDivBlue  mb-2 car-row" data-car-id="{{ $quote->id }}">
+                                                            <li class="colorDivBlue  mb-2 car-row"
+                                                                data-car-id="{{ $quote->id }}">
                                                                 <b>Transporters bidding: </b>
                                                                 @if ($transporterQuotesCount > 0)
                                                                     <span
@@ -1894,9 +1895,15 @@
                                                                         <a href="javascript:;" style="margin-left: auto;"
                                                                             class=""
                                                                             onclick="removeToWatchlist('{{ $quote->id }}');">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9C9C9C" class="size-6">
-                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
-                                                                              </svg>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                fill="none" width="16"
+                                                                                height="16" viewBox="0 0 24 24"
+                                                                                stroke-width="1.5" stroke="#9C9C9C"
+                                                                                class="size-6">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                                                            </svg>
                                                                             {{-- <svg xmlns="http://www.w3.org/2000/svg"
                                                                                 width="16" height="16"
                                                                                 fill="#9C9C9C" class="bi bi-eye-slash"
@@ -1914,10 +1921,18 @@
                                                                             class=""
                                                                             onclick="addToWatchlist('{{ $quote->id }}');"
                                                                             style="margin-left: auto;">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="16" height="16"  viewBox="0 0 24 24" stroke-width="1.5" stroke="#9C9C9C" class="size-6">
-                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                                              </svg>                                                                              
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                fill="none" width="16"
+                                                                                height="16" viewBox="0 0 24 24"
+                                                                                stroke-width="1.5" stroke="#9C9C9C"
+                                                                                class="size-6">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                                            </svg>
                                                                             {{-- <svg width="16" height="11"
                                                                                 viewBox="0 0 16 11" fill="none"
                                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2134,12 +2149,17 @@
                     <!-- Modal content will be dynamically updated here -->
                 </div>
                 <!-- Modal Footer
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-success">Place bid</button>
-                                                            </div> -->
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-success">Place bid</button>
+                                                                </div> -->
             </div>
         </div>
     </div>
+
+    {{-- d4dDeveloper-r  start --}}
+    @include('transporter.Modal.saveSearch');
+    {{-- End --}}
+
 @endsection
 
 @section('script')
@@ -2249,6 +2269,57 @@
                 });
             }
         });
+        // D4dDeveloper-R 04-10-2024
+        $("#saveSrch").click(function() {
+            //alert("clicked");
+            $("#srchName").val('');
+            $('#emailNtf').prop('checked', false);
+            $("#saveSrchModal").modal('show');
+        });
+        $("#saveSrchForm").submit(function(e) {
+            e.preventDefault();
+            var pick_area = $("#search_pick_up_area").val();
+            var drop_area = $("#search_drop_off_area").val();
+            var search_name = $("#srchName").val();
+            var isChecked = $('#emailNtf').prop('checked');
+            $("#srchName").next("span.error").remove();
+            if (srchName === "") {
+                $("#srchName").after('<span class="error" style="color:red;">This field is required</span>');
+            }
+            $.ajax({
+                url: "{{ route('transporter.save.search') }}",
+                type: "POST",
+                data: {
+                    pick_area: pick_area,
+                    drop_area: drop_area,
+                    search_name: search_name,
+                    emailNtf: isChecked,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    console.log('Success:', response);
+                    $("#srchName").val('');
+                    $('#emailNtf').prop('checked', false);
+                    if (response.success) {
+                        $("#srchName").val('');
+                        $('#emailNtf').prop('checked', false);
+                        $("#saveSrchModal").modal('hide');
+                        toastr.success(response.message);
+                    } else {
+                        $("#srchName").val('');
+                        $('#emailNtf').prop('checked', false);
+                        $("#saveSrchModal").modal('hide');
+                        toastr.error(response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('Error:', jqXHR.responseText || errorThrown);
+                    $("#srchName").val('');
+                    $('#emailNtf').prop('checked', false);
+                }
+            });
+        });
+        // end
         $("#editQuoteForm").validate({
             rules: {
                 amount: {
@@ -2545,15 +2616,15 @@
                             <div class="col-lg-6">
                                 <div class="jobsrch_top_box position-relative">
                                     ${carData.vehicle_make_1 == null && carData.vehicle_model_1 == null ? `
-                                                    <div>
-                                                        <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
-                                                    </div>
-                                                    ` : `
-                                                    <div class="job_se_sec slider">
                                                         <div>
                                                             <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
                                                         </div>
-                                                        ${carData.image_1 ? `
+                                                        ` : `
+                                                        <div class="job_se_sec slider">
+                                                            <div>
+                                                                <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
+                                                            </div>
+                                                            ${carData.image_1 ? `
                                                 <div>
                                                     <img src="/${carData.image_1}" class="vehicle_image" alt="Vehicle Image" />
                                                 </div>
@@ -2562,11 +2633,11 @@
                                                     <img src="/uploads/no_car_image.png" class="vehicle_image" alt="No Image Available" />
                                                 </div>
                                             `}
-                                                    </div>
-                                                    <div class="custom-navigation">
-                                                        <span class="current-slide">1</span> of <span class="total-slides">2</span>
-                                                    </div>
-                                                `}                                   
+                                                        </div>
+                                                        <div class="custom-navigation">
+                                                            <span class="current-slide">1</span> of <span class="total-slides">2</span>
+                                                        </div>
+                                                    `}                                   
                                 </div>
                                 
                                 <div class="btnCustom">${switch_custom}</div>

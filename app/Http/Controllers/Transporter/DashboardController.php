@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\App;
+use App\SaveSearch;
 
 class DashboardController extends WebController
 {
@@ -377,15 +378,15 @@ class DashboardController extends WebController
         $user_data = \Auth::guard('transporter')->user();
         $user_data->last_visited_on_find_job_page = Carbon::now('Europe/London');
         $user_data->save();
-        // $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
+        $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
         $quotes = UserQuote::with(['user', 'watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
             $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
         }])
-            // ->whereNotIn('id', $user_quote)
-            // ->where(function($query) {
-            //     $query->where('status', 'pending')
-            //           ->orWhere('status', 'approved');
-            // })
+            ->whereNotIn('id', $user_quote)
+            ->where(function ($query) {
+                $query->where('status', 'pending')
+                    ->orWhere('status', 'approved');
+            })
             ->addSelect([
                 'transporter_quotes_count' => QuoteByTransporter::selectRaw('COUNT(*)')
                     ->whereColumn('user_quote_id', 'user_quotes.id'),
@@ -716,7 +717,7 @@ class DashboardController extends WebController
                 \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid"), // Get the lowest bid
                 DB::raw("(CASE 
                 WHEN (SELECT user_id FROM watchlists WHERE user_quote_id = user_quotes.id AND user_id = $user_data->id LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END) AS watchlist_id")
-                )
+            )
                 ->having('distance_pickup', '<=', $maxDistance)
                 ->having('distance_drop_off', '<=', $maxDistance);
         } else {
@@ -935,5 +936,41 @@ class DashboardController extends WebController
         $name = getDashboardRouteName();
         Auth::guard('transporter')->logout();
         return redirect()->route($name);
+    }
+    //d4dDeveloper-r 07/10/2024
+    public function saveSearch(Request $request)
+    {
+        try {
+            $data = [
+                "user_id" => auth()->user()->id,
+                "search_name" => $request->search_name,
+                "pick_area" => $request->pick_area,
+                "drop_area" => $request->drop_area,
+                "email_notification" => $request->emailNtf, // Convert to integer (1 or 0)
+            ];
+
+            $saveSearch = SaveSearch::updateOrCreate(
+                [
+                    'user_id' => $data['user_id'],
+                    'pick_area' => $data['pick_area'],
+                    'drop_area' => $data['drop_area'],
+                ],
+                $data // The data to be updated or inserted
+            );
+            return response(["success" => true, "message" => "Search save successfully!", "data" => []]);
+        } catch (\Exception $ex) {
+            return response(["success" => false, "message" => $ex->getMessage(), "data" => []]);
+        }
+    }
+    public function saveSearchView()
+    {
+        $data = SaveSearch::where('user_id', auth()->user()->id)->paginate(50);
+        return view('transporter.savedSearch.index', ['savedSearches' => $data]);
+    }
+    public function saveSearchDlt(Request $request)
+    {
+        $data = SaveSearch::find($request->id);
+        $data->delete();
+        return redirect()->back()->with('saveSearchSuccess', 'Item deleted successfully');
     }
 }
