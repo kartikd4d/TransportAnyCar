@@ -713,8 +713,10 @@ class DashboardController extends WebController
                 \DB::raw("( 6371 * acos( cos( radians($pick_up_latitude) ) * cos( radians( pickup_lat ) ) * cos( radians( pickup_lng ) - radians($pick_up_longitude) ) + sin( radians($pick_up_latitude) ) * sin( radians( pickup_lat ) ) ) ) AS distance_pickup"),
                 \DB::raw("( 6371 * acos( cos( radians($drop_off_latitude) ) * cos( radians( drop_lat ) ) * cos( radians( drop_lng ) - radians($drop_off_longitude) ) + sin( radians($drop_off_latitude) ) * sin( radians( drop_lat ) ) ) ) AS distance_drop_off"),
                 \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
-                \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid") // Get the lowest bid
-            )
+                \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid"), // Get the lowest bid
+                DB::raw("(CASE 
+                WHEN (SELECT user_id FROM watchlists WHERE user_quote_id = user_quotes.id AND user_id = $user_data->id LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END) AS watchlist_id")
+                )
                 ->having('distance_pickup', '<=', $maxDistance)
                 ->having('distance_drop_off', '<=', $maxDistance);
         } else {
@@ -728,7 +730,9 @@ class DashboardController extends WebController
                 'users.county',
                 \DB::raw("( 6371 * acos( cos( radians($pick_up_latitude) ) * cos( radians( pickup_lat ) ) * cos( radians( pickup_lng ) - radians($pick_up_longitude) ) + sin( radians($pick_up_latitude) ) * sin( radians( pickup_lat ) ) ) ) AS distance_pickup"),
                 \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
-                \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid") // Get the lowest bid
+                \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid"), // Get the lowest bid
+                DB::raw("(CASE 
+                WHEN (SELECT user_id FROM watchlists WHERE user_quote_id = user_quotes.id AND user_id = $user_data->id LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END) AS watchlist_id")
             )
                 ->having('distance_pickup', '<=', $maxDistance);
         }

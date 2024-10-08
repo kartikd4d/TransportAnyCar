@@ -239,6 +239,9 @@
     right: -20px;
     padding: 3px 24px;
 }
+.actionDiv .rotated-banner.green {
+    background-color: #52D017;
+}
 
 .wishList-bidInfo {
     display: flex;
