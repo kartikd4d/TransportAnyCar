@@ -1,7 +1,7 @@
 @extends('layouts.transporter.dashboard.app')
 
 @section('head_css')
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/web/vendors/owl.carousel/css/owl.carousel.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/vendors/owl.carousel/css/owl.carousel.min.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .deshbord-job-listing {
@@ -10,39 +10,51 @@
             margin: 0px 0px 20px 0px;
             border-radius: 10px;
         }
+
         .tab-content .deshbord-job-listing li {
-                box-shadow: none !important;
-            }
-            .deshbord-job-listing .bidding_new_design {
-                padding: 0 0px 20px;
-            }
-         ul.pagination li {
+            box-shadow: none !important;
+        }
+
+        .deshbord-job-listing .bidding_new_design {
+            padding: 0 0px 20px;
+        }
+
+        ul.pagination li {
             padding: 0 !important;
             border: none !important;
             box-shadow: none !important;
             margin: 0 !important;
         }
+
         .admin_job_bx .tab-content ul li a {
             display: flex;
-            grid-gap: 30px;color: #fff;top: -20px;
+            grid-gap: 30px;
+            color: #fff;
+            top: -20px;
         }
-      #main_form .modal-body .form-group {
+
+        #main_form .modal-body .form-group {
             margin-bottom: 1.5rem;
         }
-        #main_form .modal-body  .icon_includes {
+
+        #main_form .modal-body .icon_includes {
             height: 49px;
         }
-        #main_form .modal-body  .icon_includes ~ .form-control {
+
+        #main_form .modal-body .icon_includes~.form-control {
             height: 49px;
         }
-        #main_form .modal-body  span#quote_amount-error {
+
+        #main_form .modal-body span#quote_amount-error {
             position: absolute;
             left: 0;
             padding-left: 0;
         }
-        .admin_job_bx .view_btn:hover{
+
+        .admin_job_bx .view_btn:hover {
             background: #52D017;
         }
+
         .job_list_desh_mobile .list_img {
             width: 7.8%;
         }
@@ -50,148 +62,168 @@
         .job_list_desh_mobile .list_detail {
             width: 13%;
         }
-/* 17-08-2024 */
+
+        /* 17-08-2024 */
         .modal_current {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: -5px;
         }
+
         .modal_current p {
             margin: 0;
             font-weight: normal;
             font-size: 13px;
             color: #000000d6;
         }
+
         .modal_current p span {
             color: #52D017;
         }
+
         .modal_current p span.red {
             color: #0356D6;
         }
 
         /* 28-08-2024 */
 
-            .edit_budding_sec {
-                display: flex;
-                flex-wrap: wrap;
-                border-radius: .25rem;
-                position: relative;
-            }
-            #main_form .modal-body .edit_budding_sec .icon_includes {
-                position: inherit;
-            }
-            #main_form .modal-body .edit_budding_sec .icon_includes ~ .form-control {
-                width: calc(100% - 45px);
-                padding: 15px 10px 15px 15px !important;
-                font-size: 1rem;
-                border-radius: 0;
-                border-top-right-radius: .25rem;
-                border-bottom-right-radius: .25rem;
-            }
-            .edit_border {
-                border-color: #80bdff;
-                outline: 0;
-                box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
-            }
-            #main_form .modal-body .edit_budding_sec .icon_includes ~ .form-control:focus {
-                outline: none;
-                box-shadow: none;
-                border-color: #ced4da;
-            }
-            #main_form .modal-body .edit_budding_sec span#quote_amount-error{
-                top: 100%;
-            }
+        .edit_budding_sec {
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: .25rem;
+            position: relative;
+        }
 
-    .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
-        width: 100%;
-    }     
+        #main_form .modal-body .edit_budding_sec .icon_includes {
+            position: inherit;
+        }
 
-    .my_job_pagination .pagination a.page-link {
-        top: 0px;
-        color: #484848;
-    }
-    .my_job_space {
-        padding-bottom:0px;
-    }
+        #main_form .modal-body .edit_budding_sec .icon_includes~.form-control {
+            width: calc(100% - 45px);
+            padding: 15px 10px 15px 15px !important;
+            font-size: 1rem;
+            border-radius: 0;
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }
 
-    .job-data span {
-    color: #9C9C9C;
-    font-size: 15px;
-}
-.job-data {
-    margin-left: 0px;
-    margin-bottom: 8px;
-}
+        .edit_border {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+        }
 
-.admin_job_bx .view_btn {
-    padding: 6px 15px;
-    font-size: 12px;
-    border-radius: 7px;
-    white-space: nowrap;
-}
+        #main_form .modal-body .edit_budding_sec .icon_includes~.form-control:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: #ced4da;
+        }
+
+        #main_form .modal-body .edit_budding_sec span#quote_amount-error {
+            top: 100%;
+        }
+
+        .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
+            width: 100%;
+        }
+
+        .my_job_pagination .pagination a.page-link {
+            top: 0px;
+            color: #484848;
+        }
+
+        .my_job_space {
+            padding-bottom: 0px;
+        }
+
+        .job-data span {
+            color: #9C9C9C;
+            font-size: 15px;
+        }
+
+        .job-data {
+            margin-left: 0px;
+            margin-bottom: 8px;
+        }
+
+        .admin_job_bx .view_btn {
+            padding: 6px 15px;
+            font-size: 12px;
+            border-radius: 7px;
+            white-space: nowrap;
+        }
 
 
-.admin_job_bx .tab-content ul .job_list_desh_mobile li {
-    padding: 10px 0px 0 !important;
-}
+        .admin_job_bx .tab-content ul .job_list_desh_mobile li {
+            padding: 10px 0px 0 !important;
+        }
 
 
 
 
-        @media screen and (min-device-width: 1400px) and (max-device-width: 1600px) { 
+        @media screen and (min-device-width: 1400px) and (max-device-width: 1600px) {
             .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
                 width: 100%;
                 height: 66px;
             }
+
             .job_list_desh_mobile .list_img span {
                 font-size: 8px;
             }
-            
+
         }
 
-        @media(max-width: 1400px){
+        @media(max-width: 1400px) {
             .job_list_desh_mobile .list_img {
                 width: 12.5%;
             }
-            .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile  li {
-               margin-bottom: 10px;
+
+            .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile li {
+                margin-bottom: 10px;
             }
+
             .admin_job_bx .tab-content ul li .list_detail p,
-            .admin_job_bx .tab-content ul li .list_detail p b{
+            .admin_job_bx .tab-content ul li .list_detail p b {
                 font-size: 14px;
             }
         }
 
         @media (max-width: 1280px) {
             .admin_job_bx .tab-content ul li {
-    overflow: unset !important;
-    flex-wrap: wrap;
-}
-.job_list_desh_mobile .list_img {
-    width: 15%;
-}
-.job_list_desh_mobile .list_detail {
-    width: 17%;
-}
-.deshbord-job-listing .bidding_new_design {
-    flex-wrap: wrap;
-}
-.deshbord-job-listing .bidding_new_design .bidding_new_design_grid {
-    width: 50%;
-}
-}
+                overflow: unset !important;
+                flex-wrap: wrap;
+            }
+
+            .job_list_desh_mobile .list_img {
+                width: 15%;
+            }
+
+            .job_list_desh_mobile .list_detail {
+                width: 17%;
+            }
+
+            .deshbord-job-listing .bidding_new_design {
+                flex-wrap: wrap;
+            }
+
+            .deshbord-job-listing .bidding_new_design .bidding_new_design_grid {
+                width: 50%;
+            }
+        }
 
 
-        @media(max-width: 580px){
+        @media(max-width: 580px) {
             .new_job_list_mobile {
                 width: 100%;
             }
+
             .deshbord-job-listing.job_list_desh_mobile {
                 border-radius: 10px;
                 padding: 5px 10px 10px;
                 margin-bottom: 20px;
             }
+
             .new_job_list_mobile .deshbord-job-listing.job_list_desh_mobile li {
                 display: flex;
                 overflow: hidden;
@@ -204,32 +236,47 @@
                 position: relative;
                 row-gap: 32px;
             }
+
             .job_list_desh_mobile .list_img {
-                width: 36%;
-                order: 1;
+                /* width: 36%;
+                        order: 1; */
+                width: 92px;
+                max-width: 92px;
+                min-height: 57px;
+                max-height: 57px;
             }
+
             .job_list_desh_mobile .list_detail {
                 width: 46%;
                 order: 3;
             }
+
             .new_job_list_mobile .deshbord-job-listing.job_list_desh_mobile li .list_img img {
-                width: 100%;
-                height: auto;
+                /* width: 100%;
+                    height: auto; */
+                width: 92px;
+                max-width: 92px;
+                min-height: 57px;
+                max-height: 57px;
             }
+
             .new_job_list_mobile .deshbord-job-listing.job_list_desh_mobile li .list_img p {
                 top: 50%;
                 transform: translateY(-50%);
             }
+
             .job_list_desh_mobile .won_details {
                 order: 2;
                 width: 55%;
                 display: flex;
             }
+
             .job_list_desh_mobile .won_details a.view_btn {
                 width: 130px;
                 text-align: center;
                 justify-content: center;
             }
+
             .job_list_desh_mobile .won_message {
                 position: absolute;
                 right: auto;
@@ -237,22 +284,28 @@
                 width: 35% !important;
                 left: 45%;
             }
-            .job_list_desh_mobile .won_message a{
+
+            .job_list_desh_mobile .won_message a {
                 justify-content: center;
                 width: 130px;
             }
+
             a.delete_btn_mobile {
                 position: absolute;
                 right: 0;
             }
+
             a.view_btn.cancel_btn_mobile {
                 order: 2;
                 opacity: 0;
             }
-            .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile  li {
+
+            .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile li {
                 padding: 10px 10px 0;
-                margin-bottom: 0;overflow: unset;
+                margin-bottom: 0;
+                overflow: unset;
             }
+
             .job_list_desh_mobile .list_img span {
                 color: #9C9C9C;
                 font-size: 12px;
@@ -263,12 +316,11 @@
             .admin_job_bx .tab-content ul .deshbord-job-listing.job_list_desh_mobile li p {
                 font-weight: 300;
                 color: #000000ba;
-                margin-bottom: 0; 
-                top: 39px;
+                margin-bottom: 0;
+                top: 29px;
             }
-            
-        }
 
+        }
     </style>
 @endsection
 
@@ -277,25 +329,32 @@
         <!-- SIDEBAR -->
         @include('layouts.transporter.dashboard.sidebar')
         <div id="page-content-wrapper">
-        @include('layouts.transporter.dashboard.top_head')
-        <!-- content part -->
+            @include('layouts.transporter.dashboard.top_head')
+            <!-- content part -->
             <div class="content_container my_job_space">
-            <div class="banner" id="spam-banner" style="display:none">
-                <h2 class="spam-title">Check your spam.</h2>
-                <p>Please check your spam or junk folder and mark email as ‘not spam’ so that you don’t miss out on any important email notifications. You can unsubscribe from job alert emails at any time within your profile.</p>
-                <button onclick="hideBanner()" class="btn btn-success">Ok, got it</button>
-            </div>
+                <div class="banner" id="spam-banner" style="display:none">
+                    <h2 class="spam-title">Check your spam.</h2>
+                    <p>Please check your spam or junk folder and mark email as ‘not spam’ so that you don’t miss out on any
+                        important email notifications. You can unsubscribe from job alert emails at any time within your
+                        profile.</p>
+                    <button onclick="hideBanner()" class="btn btn-success">Ok, got it</button>
+                </div>
                 <div class="job_container">
                     <div class="admin_job_bx my_job_pagination" id="style-1">
                         <div class="admin_job_top">
                             <h3>My jobs</h3>
-                            <form  id="searchForm">
+                            <form id="searchForm">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="search" placeholder="Search jobs">
                                     <button class="search_btn">
-                                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 7.6448C0.999557 4.71363 3.06975 2.19034 5.94452 1.6181C8.81929 1.04585 11.698 2.58403 12.82 5.29194C13.9421 7.99984 12.995 11.1233 10.558 12.752C8.12104 14.3808 4.87287 14.0612 2.8 11.9888C1.64763 10.8368 1.00014 9.27422 1 7.6448Z" stroke="#F9FFF1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M11.4893 11.9897L15.0003 15.5007" stroke="#F9FFF1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M1 7.6448C0.999557 4.71363 3.06975 2.19034 5.94452 1.6181C8.81929 1.04585 11.698 2.58403 12.82 5.29194C13.9421 7.99984 12.995 11.1233 10.558 12.752C8.12104 14.3808 4.87287 14.0612 2.8 11.9888C1.64763 10.8368 1.00014 9.27422 1 7.6448Z"
+                                                stroke="#F9FFF1" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M11.4893 11.9897L15.0003 15.5007" stroke="#F9FFF1" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Search
                                     </button>
@@ -303,128 +362,131 @@
                             </form>
                         </div>
                         <div class="nav nav-pills">
-                            <a class="nav-link active job_type" data-toggle="pill" href="#won" data-type="won" role="tab" aria-controls="pills-won" aria-selected="true">Won</a>
-                            <a class="nav-link job_type" data-toggle="pill" href="#bidding" data-type="bidding" role="tab" aria-controls="pills-bidding" aria-selected="false">Bidding</a>
-                            <a class="nav-link job_type" data-toggle="pill" href="#cancel" data-type="cancel" role="tab" aria-controls="pills-cancel" aria-selected="false">Cancelled</a>
+                            <a class="nav-link active job_type" data-toggle="pill" href="#won" data-type="won"
+                                role="tab" aria-controls="pills-won" aria-selected="true">Won</a>
+                            <a class="nav-link job_type" data-toggle="pill" href="#bidding" data-type="bidding"
+                                role="tab" aria-controls="pills-bidding" aria-selected="false">Bidding</a>
+                            <a class="nav-link job_type" data-toggle="pill" href="#cancel" data-type="cancel" role="tab"
+                                aria-controls="pills-cancel" aria-selected="false">Cancelled</a>
                         </div>
                         <div class="tab-content new_job_list_mobile">
                             <div class="tab-pane fade show active" id="won" role="tabpanel" aria-labelledby="won-tab">
                                 <ul id="idWonLoadData">
-{{--                                    <li>--}}
-{{--                                        <div class="list_img">--}}
-{{--                                            <img src="{{asset('assets/web/images/dashboard/1.png')}}">--}}
-{{--                                            <p>£267</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                      <span>--}}
-{{--                        <img src="{{asset('assets/web/images/dashboard/car-icon.svg')}}" alt="Car Icon">--}}
-{{--                      </span>--}}
-{{--                                            <p>Make & model:</p>--}}
-{{--                                            <p><b>BMW 1 Series</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                      <span>--}}
-{{--                        <img src="{{asset('assets/web/images/dashboard/map-icon.svg')}}" alt="Map Icon">--}}
-{{--                      </span>--}}
-{{--                                            <p>Pick-up postcode:</p>--}}
-{{--                                            <p><b>CM13 4UP</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                      <span>--}}
-{{--                        <img src="{{asset('assets/web/images/dashboard/red-map-icon.svg')}}" alt="Map Icon">--}}
-{{--                      </span>--}}
-{{--                                            <p>Drop-off postcode:</p>--}}
-{{--                                            <p><b>NW1 5TU</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                      <span>--}}
-{{--                        <img src="{{asset('assets/web/images/dashboard/calendar.svg')}}" alt="calendar Icon">--}}
-{{--                      </span>--}}
-{{--                                            <p>Delivery date:</p>--}}
-{{--                                            <p><b>8th Jan 2024</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <a href="javascript:;" class="view_btn"> View details </a>--}}
-{{--                                    </li>--}}
+                                    {{--                                    <li> --}}
+                                    {{--                                        <div class="list_img"> --}}
+                                    {{--                                            <img src="{{asset('assets/web/images/dashboard/1.png')}}"> --}}
+                                    {{--                                            <p>£267</p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                      <span> --}}
+                                    {{--                        <img src="{{asset('assets/web/images/dashboard/car-icon.svg')}}" alt="Car Icon"> --}}
+                                    {{--                      </span> --}}
+                                    {{--                                            <p>Make & model:</p> --}}
+                                    {{--                                            <p><b>BMW 1 Series</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                      <span> --}}
+                                    {{--                        <img src="{{asset('assets/web/images/dashboard/map-icon.svg')}}" alt="Map Icon"> --}}
+                                    {{--                      </span> --}}
+                                    {{--                                            <p>Pick-up postcode:</p> --}}
+                                    {{--                                            <p><b>CM13 4UP</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                      <span> --}}
+                                    {{--                        <img src="{{asset('assets/web/images/dashboard/red-map-icon.svg')}}" alt="Map Icon"> --}}
+                                    {{--                      </span> --}}
+                                    {{--                                            <p>Drop-off postcode:</p> --}}
+                                    {{--                                            <p><b>NW1 5TU</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                      <span> --}}
+                                    {{--                        <img src="{{asset('assets/web/images/dashboard/calendar.svg')}}" alt="calendar Icon"> --}}
+                                    {{--                      </span> --}}
+                                    {{--                                            <p>Delivery date:</p> --}}
+                                    {{--                                            <p><b>8th Jan 2024</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <a href="javascript:;" class="view_btn"> View details </a> --}}
+                                    {{--                                    </li> --}}
                                 </ul>
                             </div>
                             <!-- bidding -->
                             <div class="tab-pane fade" id="bidding" role="tabpanel" aria-labelledby="bidding-tab">
                                 <ul id="idBidingLoadData">
-{{--                                    <li>--}}
-{{--                                        <div class="list_img">--}}
-{{--                                            <img src="{{asset('assets/web/images/dashboard/1.png')}}">--}}
-{{--                                            <p>£267</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                          <span>--}}
-{{--                                            <img src="{{asset('assets/web/images/dashboard/car-icon.svg')}}" alt="Car Icon">--}}
-{{--                                          </span>--}}
-{{--                                            <p>Make & model:</p>--}}
-{{--                                            <p><b>BMW 1 Series</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                              <span>--}}
-{{--                                                <img src="{{asset('assets/web/images/dashboard/map-icon.svg')}}" alt="Map Icon">--}}
-{{--                                              </span>--}}
-{{--                                            <p>Pick-up postcode:</p>--}}
-{{--                                            <p><b>CM13 4UP</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                          <span>--}}
-{{--                                            <img src="{{asset('assets/web/images/dashboard/red-map-icon.svg')}}" alt="Map Icon">--}}
-{{--                                          </span>--}}
-{{--                                            <p>Drop-off postcode:</p>--}}
-{{--                                            <p><b>NW1 5TU</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                          <span>--}}
-{{--                                            <img src="{{asset('assets/web/images/dashboard/calendar.svg')}}" alt="calendar Icon">--}}
-{{--                                          </span>--}}
-{{--                                            <p>Delivery date:</p>--}}
-{{--                                            <p><b>8th Jan 2024</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <a href="javascript:;" class="view_btn"> Edit Quote </a>--}}
-{{--                                    </li>--}}
+                                    {{--                                    <li> --}}
+                                    {{--                                        <div class="list_img"> --}}
+                                    {{--                                            <img src="{{asset('assets/web/images/dashboard/1.png')}}"> --}}
+                                    {{--                                            <p>£267</p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                          <span> --}}
+                                    {{--                                            <img src="{{asset('assets/web/images/dashboard/car-icon.svg')}}" alt="Car Icon"> --}}
+                                    {{--                                          </span> --}}
+                                    {{--                                            <p>Make & model:</p> --}}
+                                    {{--                                            <p><b>BMW 1 Series</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                              <span> --}}
+                                    {{--                                                <img src="{{asset('assets/web/images/dashboard/map-icon.svg')}}" alt="Map Icon"> --}}
+                                    {{--                                              </span> --}}
+                                    {{--                                            <p>Pick-up postcode:</p> --}}
+                                    {{--                                            <p><b>CM13 4UP</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                          <span> --}}
+                                    {{--                                            <img src="{{asset('assets/web/images/dashboard/red-map-icon.svg')}}" alt="Map Icon"> --}}
+                                    {{--                                          </span> --}}
+                                    {{--                                            <p>Drop-off postcode:</p> --}}
+                                    {{--                                            <p><b>NW1 5TU</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                          <span> --}}
+                                    {{--                                            <img src="{{asset('assets/web/images/dashboard/calendar.svg')}}" alt="calendar Icon"> --}}
+                                    {{--                                          </span> --}}
+                                    {{--                                            <p>Delivery date:</p> --}}
+                                    {{--                                            <p><b>8th Jan 2024</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <a href="javascript:;" class="view_btn"> Edit Quote </a> --}}
+                                    {{--                                    </li> --}}
                                 </ul>
                             </div>
                             <!-- cancel -->
                             <div class="tab-pane fade" id="cancel" role="tabpanel" aria-labelledby="cancel-tab">
                                 <ul id="idCancelLoadData">
-{{--                                    <li>--}}
-{{--                                        <div class="list_img">--}}
-{{--                                            <img src="{{asset('assets/web/images/dashboard/1.png')}}">--}}
-{{--                                            <p>£267</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                              <span>--}}
-{{--                                                <img src="{{asset('assets/web/images/dashboard/car-icon.svg')}}" alt="Car Icon">--}}
-{{--                                              </span>--}}
-{{--                                            <p>Make & model:</p>--}}
-{{--                                            <p><b>BMW 1 Series</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                              <span>--}}
-{{--                                                <img src="{{asset('assets/web/images/dashboard/map-icon.svg')}}" alt="Map Icon">--}}
-{{--                                              </span>--}}
-{{--                                            <p>Pick-up postcode:</p>--}}
-{{--                                            <p><b>CM13 4UP</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                              <span>--}}
-{{--                                                <img src="{{asset('assets/web/images/dashboard/red-map-icon.svg')}}" alt="Map Icon">--}}
-{{--                                              </span>--}}
-{{--                                            <p>Drop-off postcode:</p>--}}
-{{--                                            <p><b>NW1 5TU</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="list_detail">--}}
-{{--                                              <span>--}}
-{{--                                                <img src="{{asset('assets/web/images/dashboard/calendar.svg')}}" alt="calendar Icon">--}}
-{{--                                              </span>--}}
-{{--                                            <p>Delivery date:</p>--}}
-{{--                                            <p><b>8th Jan 2024</b></p>--}}
-{{--                                        </div>--}}
-{{--                                        <a href="javascript:;" class="view_btn"> View details </a>--}}
-{{--                                    </li>--}}
+                                    {{--                                    <li> --}}
+                                    {{--                                        <div class="list_img"> --}}
+                                    {{--                                            <img src="{{asset('assets/web/images/dashboard/1.png')}}"> --}}
+                                    {{--                                            <p>£267</p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                              <span> --}}
+                                    {{--                                                <img src="{{asset('assets/web/images/dashboard/car-icon.svg')}}" alt="Car Icon"> --}}
+                                    {{--                                              </span> --}}
+                                    {{--                                            <p>Make & model:</p> --}}
+                                    {{--                                            <p><b>BMW 1 Series</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                              <span> --}}
+                                    {{--                                                <img src="{{asset('assets/web/images/dashboard/map-icon.svg')}}" alt="Map Icon"> --}}
+                                    {{--                                              </span> --}}
+                                    {{--                                            <p>Pick-up postcode:</p> --}}
+                                    {{--                                            <p><b>CM13 4UP</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                              <span> --}}
+                                    {{--                                                <img src="{{asset('assets/web/images/dashboard/red-map-icon.svg')}}" alt="Map Icon"> --}}
+                                    {{--                                              </span> --}}
+                                    {{--                                            <p>Drop-off postcode:</p> --}}
+                                    {{--                                            <p><b>NW1 5TU</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <div class="list_detail"> --}}
+                                    {{--                                              <span> --}}
+                                    {{--                                                <img src="{{asset('assets/web/images/dashboard/calendar.svg')}}" alt="calendar Icon"> --}}
+                                    {{--                                              </span> --}}
+                                    {{--                                            <p>Delivery date:</p> --}}
+                                    {{--                                            <p><b>8th Jan 2024</b></p> --}}
+                                    {{--                                        </div> --}}
+                                    {{--                                        <a href="javascript:;" class="view_btn"> View details </a> --}}
+                                    {{--                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -433,28 +495,34 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="idType" value=""/>
+    <input type="hidden" id="idType" value="" />
 
-    <div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Edit bid</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z" fill="#000"/>
-                        </svg>
-                    </span>
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
                     </button>
                 </div>
-                <form id="main_form" method="post" action="{{route('transporter.edit_quote_amount')}}">
+                <form id="main_form" method="post" action="{{ route('transporter.edit_quote_amount') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="edit_budding_sec">
                                 <span class="icon_includes">£</span>
-                                <input type="number" class="form-control" id="quote_amount" placeholder="Enter your bid" aria-describedby="emailHelp" placeholder="Enter quote amount" name="amount" pattern="\d*">
+                                <input type="number" class="form-control" id="quote_amount"
+                                    placeholder="Enter your bid" aria-describedby="emailHelp"
+                                    placeholder="Enter quote amount" name="amount" pattern="\d*">
                             </div>
                         </div>
                         <div class="modal_current">
@@ -473,22 +541,22 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('assets/web/js/admin.js')}}"></script>
+    <script src="{{ asset('assets/web/js/admin.js') }}"></script>
     <script>
         var globalSiteUrl = '<?php echo $path = url('/'); ?>'
 
         function fetch_data(page) {
             $.ajax({
                 url: globalSiteUrl + "/transporter/my_job?page=" + page + '&' + params(),
-                success: function (res) {
+                success: function(res) {
                     let result = res.data;
-                    if (result.type == 'won'){
+                    if (result.type == 'won') {
                         $('#idWonLoadData').html(result.html);
                     }
-                    if (result.type == 'bidding'){
+                    if (result.type == 'bidding') {
                         $('#idBidingLoadData').html(result.html);
                     }
-                    if (result.type == 'cancel'){
+                    if (result.type == 'cancel') {
                         $('#idCancelLoadData').html(result.html);
                     }
                 }
@@ -501,11 +569,11 @@
             return "search=" + search + "&type=" + type;
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             var type = $('.job_type').data('type');
             $('#idType').val(type);
 
-            $('.job_type').on('click', function () {
+            $('.job_type').on('click', function() {
                 var type = $(this).data('type');
                 $('#idType').val(type);
                 $('#search').val('');
@@ -515,14 +583,14 @@
             fetch_data(1);
         });
 
-        $(document).on('click', '.pagination a', function (event) {
+        $(document).on('click', '.pagination a', function(event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             $('#page').val(page);
             fetch_data(page);
         });
 
-        $(document).on('submit', '#searchForm', function (event) {
+        $(document).on('submit', '#searchForm', function(event) {
             event.preventDefault();
             fetch_data(1);
         });
@@ -543,17 +611,17 @@
         }, "You must enter an amount greater than zero");
         $("#main_form").validate({
             rules: {
-                amount: { 
-                    required: true,  
+                amount: {
+                    required: true,
                     greaterThanZero: true,
                     noPhoneOrEmail: true,
                 },
             },
             messages: {
-                amount: { 
+                amount: {
                     required: 'Please enter amount',
-                    noPhoneOrEmail:  `Do not share contact information or you will be banned.`,
-                 },
+                    noPhoneOrEmail: `Do not share contact information or you will be banned.`,
+                },
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {
@@ -593,7 +661,8 @@
                         } else {
                             Swal.fire({
                                 title: 'Error',
-                                html: '<span class="swal-text">' + response.message + '</span>',
+                                html: '<span class="swal-text">' + response.message +
+                                    '</span>',
                                 confirmButtonColor: '#52D017',
                                 confirmButtonText: 'Dismiss',
                                 customClass: {
@@ -637,7 +706,7 @@
             var amount = $(element).data('amount');
             var lowestBid = $(element).data('lowbid');
             var bidCount = $(element).data('bidcount');
-            $('.lowAmount').text('£'+lowestBid);
+            $('.lowAmount').text('£' + lowestBid);
             $('.bidCount').text(bidCount);
             //$('#quote_amount').val(amount);
             $('#quote_id').val(id);
@@ -663,8 +732,11 @@
                     }
                 }, 1100); // Adjust delay as needed
                 if (history.pushState) {
-                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                    window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location
+                        .pathname;
+                    window.history.pushState({
+                        path: cleanUrl
+                    }, '', cleanUrl);
                 }
             }
             if (localStorage.getItem('activateBiddingTab') === 'true') {
@@ -700,15 +772,12 @@
                     if (res.success == true) {
                         window.location.reload();
                         localStorage.setItem('activateBiddingTab', 'true');
-                    }   
-                    else {
-                        
+                    } else {
+
                     }
                 },
-                error: function(data) {
-                }
+                error: function(data) {}
             });
         }
-
     </script>
 @endsection
