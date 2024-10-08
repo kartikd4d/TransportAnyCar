@@ -10,7 +10,8 @@
             height: 333px !important;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/web/css/rangeslider.css')}}" />
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/web/css/rangeslider.css')}}" /> --}}
+    
 @endsection
 
 @section('content')

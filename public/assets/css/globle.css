@@ -84,8 +84,8 @@
     justify-content: center;
     gap: 9px;
 }
-#watchlisting .boxContent:first-child,
-#orderlisting .boxContent:first-child {padding-top: 0;}
+/* #watchlisting .boxContent:first-child,
+#orderlisting .boxContent:first-child {padding-top: 0;} */
 .boxContentList {
     display: flex;
     justify-content: space-between;
@@ -177,6 +177,11 @@
     gap: 6px;
 }
 
+.boxContentList .contentBlockBtn .btnCol {
+    width: 170px;
+    max-width: 70%;
+}
+
 /* .boxContentList .contentBlockBtn .btnCol {
     width: 18%;
     display: flex;
@@ -188,7 +193,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 10px 0;
+    padding: 10px 0 0;
 }
 
 /* .mainContentDiv {
@@ -221,6 +226,18 @@
     position: absolute;
     right: 0;
     top: 0;
+}
+.actionDiv .rotated-banner {
+    background-color: #ED1C24;
+    color: #F3F8FF;
+    font-size: 10px;
+    line-height: 13px;
+    font-weight: 500;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    padding: 3px 24px;
 }
 
 .wishList-bidInfo {
@@ -391,6 +408,86 @@ span.grey {
     margin-right: -3px;
     margin-top: -3px;
 }
+
+/* User Feedback Page */
+.user-feedback-name {
+    font-size: 16px!important;
+    line-height: 20px;
+}
+.user-feedback-header-wrap {gap: 16px;}
+.user-feedback-member-from {font-size: 14px;}
+.user-feedback-stars li {line-height: 18px;}
+.user-feedback-rating-count span {
+    padding-top: 5px;
+    font-size: 12px;
+    color: #000000;
+    display: inline-block;
+}
+.overall-review {border-top: 1px solid #D9D9D9;}
+.feedback-item {
+    color:#000000;
+    font-weight: 500;
+}
+.feedback-user-name {
+    font-size: 16px;
+    font-weight: 500;
+    color:#000000;
+}
+.feedback-user-verified {
+    font-size: 12px;
+    font-weight: 500;
+    color:#52D017;
+    margin-left: 14px;
+}
+.feedback-item,
+.other-reviews.user-feedback-stars {margin-top: 14px; margin-bottom: 14px;}
+.review-outer-wrap .review-wrap {
+    padding: 30px 0;
+    border-bottom: 1px solid #D9D9D9;
+}
+.review-outer-wrap .review-wrap:first-child {padding-top: 0;}
+.review-outer-wrap .review-wrap:last-child {border-bottom:0}
+.review-base-bar {
+    background-color: #D9D9D9;
+    width: 90px;
+    height: 5px;
+    border-radius: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
+    position: relative;
+    overflow: hidden;
+}
+.review-active-bar {
+    background-color: #FFA800;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    width:0;
+    transition: width 0.25s ease-in-out 0.25s; 
+    border-radius: 0 10px 10px 0;
+}
+.review-active-bar[data-percentage="98"] {width: 98%;}
+.review-active-bar[data-percentage="2"] {width: 2%;}
+.overall-review .total-review {font-size: 20px; font-weight: 500; margin-bottom: 0;}
+.total-review-count,
+.overall-review .total-rating {font-size: 16px; font-weight: 500;}
+.review-count-bar li span {
+    font-size: 16px;
+    font-weight: 400;
+    color:#000000;
+}
+.review-percentage {font-size: 16px; font-weight: 400; color:#595959;}
+.review-count-bar li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 10px;
+    border-left: 1px solid #D9D9D9;
+}
+.review-steps {width: 10px;}
+.review-count-bar span {margin-right: 10px;}
+/* User Feedback Page */
 
 @media (min-width:992px) {
     .jobsrch_form_blog .form-group.where_custom {
@@ -565,10 +662,10 @@ span.grey {
         gap: 5px;
     }
 
-    .boxContentList .contentBlockBtn .btnCol {
+    /* .boxContentList .contentBlockBtn .btnCol {
         width: 100%;
         justify-content: flex-end;
-    }
+    } */
 
     .boxContentList .contentBlockBtn .btnCol a {
         display: inline-block;
@@ -597,10 +694,12 @@ span.grey {
     }   
 }
 @media (max-width:767px) {
+    .boxContentList .boxImg-text .textCol ul li {gap:5px;}
     .boxContentList h2.imgHeading {
         display: block;
         margin-bottom: 0;
     }
+    /* .boxContentList .boxImg-text {align-items: center;} */
     .header-banner {padding-left: 15px; padding-right: 15px;}
     /* .boxContentList .contentBlockBtn .leftList ul:nth-child(2) {padding-bottom: 40px;} */
     .boxContentList .boxImg-text .textCol ul li,
@@ -620,7 +719,7 @@ span.grey {
     .job_container .job-data {
         /* margin-left: 10px !important; */
         margin-left: 0 !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 0 !important;
     }
 
     .job_container .mainContentDiv {
@@ -638,8 +737,8 @@ span.grey {
 
     .boxContentList .boxImg-text .textCol {
         /* width: 100%; */
-        max-width: calc(100% - 100px);
-        width: calc(100% - 100px);
+        max-width: calc(100% - 102px);
+        width: calc(100% - 102px);
     }
 
     .boxImg-text .textCol h2 {
@@ -648,6 +747,7 @@ span.grey {
 
     .boxContentList .boxImg-text .textCol {
         gap: 0;
+        padding-left: 0;
     }
 
     .searchContent svg {
@@ -714,7 +814,7 @@ span.grey {
         font-size: 15px;
         font-weight: 400;
         line-height: 15px;
-        margin-bottom: 0;
+        margin-bottom: 3px;
     }
 
     .boxContentList .boxImg-text .textCol ul li {
@@ -846,7 +946,9 @@ span.grey {
     } */
 
 }
-
+@media (max-width:575px) {
+    #search-results {margin-left: -16px; margin-right: -16px;}
+}
 @media (max-width:400px) {
     .boxContentList .contentBlockBtn .btnCol a {
         width: 85px;

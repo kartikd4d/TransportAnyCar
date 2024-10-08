@@ -5,7 +5,345 @@
         word-wrap: break-word !important;
     }
 </style>
-<div class="table-responsive">
+<div class="overall-review py-5">
+    <h2 class="total-review">Reviews (12)</h2>
+    <span class="total-rating my-2 d-block">5/5</span>
+    <ul class="wd-star-lst user-feedback-stars">
+        <li>
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                    fill="#FFA800" />
+            </svg>
+        </li>
+        <li>
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                    fill="#FFA800" />
+            </svg>
+        </li>
+        <li>
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                    fill="#FFA800" />
+            </svg>
+        </li>
+        <li>
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                    fill="#FFA800" />
+            </svg>
+        </li>
+        <li>
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                    fill="#FFA800" />
+            </svg>
+        </li>
+    </ul>
+    <div class="total-review-count my-3">12 customer reviews</div>
+    <ul class="review-count-bar">
+        <li>
+            <span class="review-steps">5</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 19" fill="none">
+                <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
+            </svg>
+            <div class="review-base-bar">
+                <div class="review-active-bar" data-percentage="98">
+
+                </div> 
+            </div> 
+            <span class="review-percentage">98%</span>
+        </li>
+        <li>
+            <span class="review-steps">4</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 19" fill="none">
+                <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
+            </svg>
+            <div class="review-base-bar">
+                <div class="review-active-bar" data-percentage="2">
+
+                </div> 
+            </div> 
+            <span class="review-percentage">2%</span>
+        </li>
+        <li>
+            <span class="review-steps">3</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 19" fill="none">
+                <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
+            </svg>
+            <div class="review-base-bar">
+                <div class="review-active-bar">
+
+                </div> 
+            </div> 
+            <span class="review-percentage">0</span>
+        </li>
+        <li>
+            <span class="review-steps">2</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 19" fill="none">
+                <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
+            </svg>
+            <div class="review-base-bar">
+                <div class="review-active-bar">
+
+                </div> 
+            </div> 
+            <span class="review-percentage">0</span>
+        </li>
+        <li>
+            <span class="review-steps">1</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 19" fill="none">
+                <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
+            </svg>
+            <div class="review-base-bar">
+                <div class="review-active-bar">
+
+                </div> 
+            </div> 
+            <span class="review-percentage">0</span>
+        </li>
+    </ul>
+</div>
+<div class="review-outer-wrap">
+    <div class="review-wrap">
+        <div class="feedback-user-name">User101</div>
+        <ul class="wd-star-lst user-feedback-stars other-reviews">
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <span class="feedback-user-verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9"
+                        fill="none">
+                        <path
+                            d="M3.73608 8.04173L0.161084 4.46672C-0.0536948 4.25195 -0.0536948 3.90371 0.161084 3.6889L0.938883 2.91108C1.15366 2.69628 1.50192 2.69628 1.7167 2.91108L4.125 5.31935L9.28329 0.161084C9.49807 -0.0536948 9.84633 -0.0536948 10.0611 0.161084L10.8389 0.938905C11.0537 1.15368 11.0537 1.50192 10.8389 1.71672L4.51391 8.04175C4.2991 8.25653 3.95086 8.25653 3.73608 8.04173Z"
+                            fill="#52D017" />
+                    </svg> Verified
+                </span>
+            </li>
+        </ul>
+        <div class="font-weight-light">15 September 2024</div>
+        <div class="feedback-item">Ford Fiesta Delivery</div>
+        <div class="font-weight-light">Excellent service and reliable, will use again and recommend.</div>
+    </div>
+    <div class="review-wrap">
+        <div class="feedback-user-name">User101</div>
+        <ul class="wd-star-lst user-feedback-stars other-reviews">
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <span class="feedback-user-verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9"
+                        fill="none">
+                        <path
+                            d="M3.73608 8.04173L0.161084 4.46672C-0.0536948 4.25195 -0.0536948 3.90371 0.161084 3.6889L0.938883 2.91108C1.15366 2.69628 1.50192 2.69628 1.7167 2.91108L4.125 5.31935L9.28329 0.161084C9.49807 -0.0536948 9.84633 -0.0536948 10.0611 0.161084L10.8389 0.938905C11.0537 1.15368 11.0537 1.50192 10.8389 1.71672L4.51391 8.04175C4.2991 8.25653 3.95086 8.25653 3.73608 8.04173Z"
+                            fill="#52D017" />
+                    </svg> Verified
+                </span>
+            </li>
+        </ul>
+        <div class="font-weight-light">15 September 2024</div>
+        <div class="feedback-item">Ford Fiesta Delivery</div>
+        <div class="font-weight-light">Excellent service and reliable, will use again and recommend.</div>
+    </div>
+    <div class="review-wrap">
+        <div class="feedback-user-name">User101</div>
+        <ul class="wd-star-lst user-feedback-stars other-reviews">
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <span class="feedback-user-verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9"
+                        fill="none">
+                        <path
+                            d="M3.73608 8.04173L0.161084 4.46672C-0.0536948 4.25195 -0.0536948 3.90371 0.161084 3.6889L0.938883 2.91108C1.15366 2.69628 1.50192 2.69628 1.7167 2.91108L4.125 5.31935L9.28329 0.161084C9.49807 -0.0536948 9.84633 -0.0536948 10.0611 0.161084L10.8389 0.938905C11.0537 1.15368 11.0537 1.50192 10.8389 1.71672L4.51391 8.04175C4.2991 8.25653 3.95086 8.25653 3.73608 8.04173Z"
+                            fill="#52D017" />
+                    </svg> Verified
+                </span>
+            </li>
+        </ul>
+        <div class="font-weight-light">15 September 2024</div>
+        <div class="feedback-item">Ford Fiesta Delivery</div>
+        <div class="font-weight-light">Excellent service and reliable, will use again and recommend.</div>
+    </div>
+    <div class="review-wrap">
+        <div class="feedback-user-name">User101</div>
+        <ul class="wd-star-lst user-feedback-stars other-reviews">
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <svg width="20" height="20" viewBox="0 0 12 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 0L7.34708 4.1459H11.7063L8.17963 6.7082L9.52671 10.8541L6 8.2918L2.47329 10.8541L3.82037 6.7082L0.293661 4.1459H4.65292L6 0Z"
+                        fill="#FFA800" />
+                </svg>
+            </li>
+            <li>
+                <span class="feedback-user-verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9"
+                        fill="none">
+                        <path
+                            d="M3.73608 8.04173L0.161084 4.46672C-0.0536948 4.25195 -0.0536948 3.90371 0.161084 3.6889L0.938883 2.91108C1.15366 2.69628 1.50192 2.69628 1.7167 2.91108L4.125 5.31935L9.28329 0.161084C9.49807 -0.0536948 9.84633 -0.0536948 10.0611 0.161084L10.8389 0.938905C11.0537 1.15368 11.0537 1.50192 10.8389 1.71672L4.51391 8.04175C4.2991 8.25653 3.95086 8.25653 3.73608 8.04173Z"
+                            fill="#52D017" />
+                    </svg> Verified
+                </span>
+            </li>
+        </ul>
+        <div class="font-weight-light">15 September 2024</div>
+        <div class="feedback-item">Ford Fiesta Delivery</div>
+        <div class="font-weight-light">Excellent service and reliable, will use again and recommend.</div>
+    </div>
+</div>
+{{-- <div class="table-responsive">
     <table>
         <thead>
         <tr>
@@ -17,10 +355,10 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($feedbacks as $feedback)
+        @foreach ($feedbacks as $feedback)
         <tr>
             <td>
-                @if($feedback->type == 'positive')
+                @if ($feedback->type == 'positive')
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.04688 6.5625H0.703125C0.314795 6.5625 0 6.8773 0 7.26562V14.2969C0 14.6852 0.314795 15 0.703125 15H3.04688C3.43521 15 3.75 14.6852 3.75 14.2969V7.26562C3.75 6.8773 3.43521 6.5625 3.04688 6.5625ZM1.875 13.8281C1.48667 13.8281 1.17188 13.5133 1.17188 13.125C1.17188 12.7367 1.48667 12.4219 1.875 12.4219C2.26333 12.4219 2.57813 12.7367 2.57813 13.125C2.57813 13.5133 2.26333 13.8281 1.875 13.8281ZM11.25 2.38629C11.25 3.62895 10.4892 4.32598 10.2751 5.15625H13.2553C14.2337 5.15625 14.9954 5.96912 15 6.85834C15.0024 7.38387 14.7789 7.94962 14.4305 8.29966L14.4273 8.30288C14.7154 8.98658 14.6686 9.94459 14.1546 10.6311C14.4089 11.3897 14.1525 12.3216 13.6746 12.8212C13.8005 13.3368 13.7404 13.7756 13.4945 14.1288C12.8966 14.9879 11.4145 15 10.1613 15L10.078 15C8.6633 14.9995 7.50551 14.4844 6.57522 14.0705C6.10773 13.8625 5.49648 13.6051 5.03271 13.5966C4.84111 13.593 4.6875 13.4367 4.6875 13.2451V6.98227C4.6875 6.88852 4.72506 6.79854 4.79174 6.73263C5.95231 5.58583 6.45135 4.37168 7.40259 3.41883C7.8363 2.9843 7.99404 2.32793 8.14653 1.69318C8.27681 1.15116 8.54933 0 9.14063 0C9.84376 0 11.25 0.234375 11.25 2.38629Z" fill="#52D017" />
                 </svg>
@@ -51,8 +389,8 @@
 
             <td>{{$feedback->quote_by_transporter->quote->vehicle_make}} {{$feedback->quote_by_transporter->quote->vehicle_model}}</td>
             <td>
-                @if($feedback->quote_by_transporter->quote->user)
-                    @if($feedback->quote_by_transporter->quote->user->name)
+                @if ($feedback->quote_by_transporter->quote->user)
+                    @if ($feedback->quote_by_transporter->quote->user->name)
                         {{$feedback->quote_by_transporter->quote->user->name}}
                     @else
                         {{$feedback->quote_by_transporter->quote->user->username}}
@@ -66,46 +404,48 @@
         @endforeach
         </tbody>
     </table>
-</div>
-{{--{{ $feedbacks->links() }}--}}
-{{--<nav aria-label="...">--}}
-{{--    <ul class="pagination">--}}
-{{--        <li class="page-item page-prenxt disabled">--}}
-{{--            <a class="page-link" href="javascript:;" tabindex="-1">--}}
-{{--                <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-{{--                    <path d="M5.5 1L1 5.5L5.5 10" stroke="black" stroke-linecap="round" />--}}
-{{--                </svg>--}}
-{{--            </a>--}}
-{{--        </li>--}}
-{{--        <li class="page-item">--}}
-{{--            <a class="page-link" href="javascript:;">1</a>--}}
-{{--        </li>--}}
-{{--        <li class="page-item active">--}}
-{{--            <a class="page-link" href="javascript:;">2</a>--}}
-{{--        </li>--}}
-{{--        <li class="page-item">--}}
-{{--            <a class="page-link" href="javascript:;">3</a>--}}
-{{--        </li>--}}
-{{--        <li class="page-item">--}}
-{{--            <a class="page-link" href="javascript:;">4</a>--}}
-{{--        </li>--}}
-{{--        <li class="page-item page-prenxt">--}}
-{{--            <a class="page-link" href="javascript:;">--}}
-{{--                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-{{--                    <path d="M1 1L5.5 5.5L1 10" stroke="black" stroke-linecap="round" />--}}
-{{--                </svg>--}}
-{{--            </a>--}}
-{{--        </li>--}}
-{{--    </ul>--}}
-{{--</nav>--}}
+</div> --}}
+{{-- {{ $feedbacks->links() }} --}}
+{{-- <nav aria-label="..."> --}}
+{{--    <ul class="pagination"> --}}
+{{--        <li class="page-item page-prenxt disabled"> --}}
+{{--            <a class="page-link" href="javascript:;" tabindex="-1"> --}}
+{{--                <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg"> --}}
+{{--                    <path d="M5.5 1L1 5.5L5.5 10" stroke="black" stroke-linecap="round" /> --}}
+{{--                </svg> --}}
+{{--            </a> --}}
+{{--        </li> --}}
+{{--        <li class="page-item"> --}}
+{{--            <a class="page-link" href="javascript:;">1</a> --}}
+{{--        </li> --}}
+{{--        <li class="page-item active"> --}}
+{{--            <a class="page-link" href="javascript:;">2</a> --}}
+{{--        </li> --}}
+{{--        <li class="page-item"> --}}
+{{--            <a class="page-link" href="javascript:;">3</a> --}}
+{{--        </li> --}}
+{{--        <li class="page-item"> --}}
+{{--            <a class="page-link" href="javascript:;">4</a> --}}
+{{--        </li> --}}
+{{--        <li class="page-item page-prenxt"> --}}
+{{--            <a class="page-link" href="javascript:;"> --}}
+{{--                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg"> --}}
+{{--                    <path d="M1 1L5.5 5.5L1 10" stroke="black" stroke-linecap="round" /> --}}
+{{--                </svg> --}}
+{{--            </a> --}}
+{{--        </li> --}}
+{{--    </ul> --}}
+{{-- </nav> --}}
 
 @if ($feedbacks->lastPage() > 1)
     <nav aria-label="...">
         <ul class="pagination">
             {{-- Previous Page Link --}}
-            <li class="page-item{{ ($feedbacks->currentPage() == 1) ? ' disabled' : '' }}">
-                <a class="page-link" href="{{ $feedbacks->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
-                    <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <li class="page-item{{ $feedbacks->currentPage() == 1 ? ' disabled' : '' }}">
+                <a class="page-link" href="{{ $feedbacks->previousPageUrl() }}" rel="prev"
+                    aria-label="@lang('pagination.previous')">
+                    <svg width="6" height="11" viewBox="0 0 6 11" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M5.5 1L1 5.5L5.5 10" stroke="black" stroke-linecap="round" />
                     </svg>
                 </a>
@@ -114,18 +454,24 @@
             {{-- Pagination Elements --}}
             @for ($i = 1; $i <= $feedbacks->lastPage(); $i++)
                 @if ($i == $feedbacks->currentPage())
-                    <li class="page-item active" aria-current="page"><span class="page-link">{{ $i }}</span></li>
+                    <li class="page-item active" aria-current="page"><span
+                            class="page-link">{{ $i }}</span></li>
                 @elseif ($i >= $feedbacks->currentPage() - 2 && $i <= $feedbacks->currentPage() + 2)
-                    <li class="page-item"><a class="page-link" href="{{ $feedbacks->url($i) }}">{{ $i }}</a></li>
-                @elseif (($i == $feedbacks->currentPage() - 3 && $i > 1) || ($i == $feedbacks->currentPage() + 3 && $i < $feedbacks->lastPage()))
+                    <li class="page-item"><a class="page-link"
+                            href="{{ $feedbacks->url($i) }}">{{ $i }}</a></li>
+                @elseif (
+                    ($i == $feedbacks->currentPage() - 3 && $i > 1) ||
+                        ($i == $feedbacks->currentPage() + 3 && $i < $feedbacks->lastPage()))
                     <li class="page-item disabled" aria-disabled="true"><span class="page-link">...</span></li>
                 @endif
             @endfor
 
             {{-- Next Page Link --}}
-            <li class="page-item{{ ($feedbacks->currentPage() == $feedbacks->lastPage()) ? ' disabled' : '' }}">
-                <a class="page-link" href="{{ $feedbacks->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">
-                    <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <li class="page-item{{ $feedbacks->currentPage() == $feedbacks->lastPage() ? ' disabled' : '' }}">
+                <a class="page-link" href="{{ $feedbacks->nextPageUrl() }}" rel="next"
+                    aria-label="@lang('pagination.next')">
+                    <svg width="7" height="11" viewBox="0 0 7 11" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L5.5 5.5L1 10" stroke="black" stroke-linecap="round" />
                     </svg>
                 </a>
@@ -133,5 +479,3 @@
         </ul>
     </nav>
 @endif
-
-
