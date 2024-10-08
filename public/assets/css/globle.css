@@ -423,6 +423,7 @@ span.grey {
     color: #000000;
     display: inline-block;
 }
+.overall-review {border-top: 1px solid #D9D9D9;}
 .feedback-item {
     color:#000000;
     font-weight: 500;
@@ -440,18 +441,21 @@ span.grey {
 }
 .feedback-item,
 .other-reviews.user-feedback-stars {margin-top: 14px; margin-bottom: 14px;}
-.review-wrap {
-    padding: 30px 22px;
+.review-outer-wrap .review-wrap {
+    padding: 30px 0;
     border-bottom: 1px solid #D9D9D9;
 }
+.review-outer-wrap .review-wrap:first-child {padding-top: 0;}
 .review-outer-wrap .review-wrap:last-child {border-bottom:0}
 .review-base-bar {
     background-color: #D9D9D9;
     width: 90px;
-    height: 3px;
+    height: 5px;
     border-radius: 10px;
     margin-left: 12px;
     margin-right: 12px;
+    position: relative;
+    overflow: hidden;
 }
 .review-active-bar {
     background-color: #FFA800;
@@ -459,7 +463,12 @@ span.grey {
     position: absolute;
     left:0;
     top:0;
+    width:0;
+    transition: width 0.25s ease-in-out 0.25s; 
+    border-radius: 0 10px 10px 0;
 }
+.review-active-bar[data-percentage="98"] {width: 98%;}
+.review-active-bar[data-percentage="2"] {width: 2%;}
 .overall-review .total-review {font-size: 20px; font-weight: 500; margin-bottom: 0;}
 .total-review-count,
 .overall-review .total-rating {font-size: 16px; font-weight: 500;}
@@ -710,7 +719,7 @@ span.grey {
     .job_container .job-data {
         /* margin-left: 10px !important; */
         margin-left: 0 !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 0 !important;
     }
 
     .job_container .mainContentDiv {

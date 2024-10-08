@@ -257,8 +257,8 @@ class DashboardController extends WebController
         $user_data = Auth::guard('transporter')->user();
         $my_quotes = QuoteByTransporter::where('user_id', $user_data->id)->pluck('id');
         $quotes = TransactionHistory::whereIn('quote_by_transporter_id', $my_quotes)->get();
-       
-        $totalDistance = $quotes->sum(function($transaction) {
+
+        $totalDistance = $quotes->sum(function ($transaction) {
             if ($transaction->quote) {
                 $distanceString = $transaction->quote->distance;
                 $cleanedDistance = str_replace(['mi', ',', ' '], '', $distanceString);
@@ -266,31 +266,31 @@ class DashboardController extends WebController
             }
             return 0;
         });
-        
-        $totalDistanceFormatted = number_format($totalDistance, 2) . ' mi';                     
-        $completedCount = $quotes->filter(function($transaction) {
+
+        $totalDistanceFormatted = number_format($totalDistance, 2) . ' mi';
+        $completedCount = $quotes->filter(function ($transaction) {
             return $transaction->quote && $transaction->quote->status == 'completed';
         })->count();
-       
-    //     $totalAmount = TransactionHistory::whereIn('quote_by_transporter_id', $my_quotes)
-    // ->sum('amount');
-     $total_earning= $quotes->sum('amount');
+
+        //     $totalAmount = TransactionHistory::whereIn('quote_by_transporter_id', $my_quotes)
+        // ->sum('amount');
+        $total_earning = $quotes->sum('amount');
         // return$quotes;
         $rating_average = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
             ->selectRaw('(AVG(communication) + AVG(punctuality) + AVG(care_of_good) + AVG(professionalism)) / 4 as overall_avg')
             ->first();
 
         $quote_ids = Feedback::whereIn('quote_by_transporter_id', $my_quotes)
-        ->with('quote_by_transporter.quote')
-        ->get()
-        ->pluck('quote_by_transporter.quote.id');
+            ->with('quote_by_transporter.quote')
+            ->get()
+            ->pluck('quote_by_transporter.quote.id');
 
         $params['user'] = $user_data;
         $params['feedback'] = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->with('quote_by_transporter.quote')->get();
         $params['completed_job'] =  $completedCount;
         $params['distance'] = $totalDistanceFormatted;
         $params['total_earning'] = $total_earning;
-        
+
         $customRequest = new Request([
             'type' => 'feedback'
         ]);
@@ -378,7 +378,7 @@ class DashboardController extends WebController
         $user_data->last_visited_on_find_job_page = Carbon::now('Europe/London');
         $user_data->save();
         // $user_quote = QuoteByTransporter::where('user_id', $user_data->id)->pluck('user_quote_id');
-        $quotes = UserQuote::with(['user','watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
+        $quotes = UserQuote::with(['user', 'watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
             $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
         }])
             // ->whereNotIn('id', $user_quote)
@@ -398,9 +398,9 @@ class DashboardController extends WebController
         $document_status = $user_data->is_status;
         return view('transporter.dashboard.new_jobs_new', ['quotes' => $quotes, 'documentStatus' => $document_status]);
     }
- // end d4d developer - k
+    // end d4d developer - k
 
-  // d4d developer - k
+    // d4d developer - k
     public function submitOffer(Request $request)
     {
         $user_data = \Auth::guard('transporter')->user();
@@ -410,7 +410,7 @@ class DashboardController extends WebController
             'amount' => [
                 'required',
             ],
-            
+
             'quote_id' => ['required'],
         ]);
 
@@ -532,7 +532,7 @@ class DashboardController extends WebController
 
         return response()->json(['success' => true]);
     }
- // end d4d developer - k
+    // end d4d developer - k
 
     public function updateProfileImage(Request $request)
     {
@@ -643,7 +643,7 @@ class DashboardController extends WebController
         }
     }
 
- // d4d developer - k
+    // d4d developer - k
     public function find_job(Request $request)
     {
         if (empty($request->search_pick_up_area)) {
@@ -741,22 +741,22 @@ class DashboardController extends WebController
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
         // return ["user"=>$quotes,"userIdLogin"=>auth()->user()->id];
-        return $quotes;
+        return $quotes->watchlist;
         if ($request->ajax()) {
             // Convert dates to DateTime objects if necessary
             foreach ($quotes as $quote) {
                 $quote->created_at = \Carbon\Carbon::parse($quote->created_at);
                 $quote->updated_at = \Carbon\Carbon::parse($quote->updated_at);
             }
-           
-                $pickup = $request->input('search_pick_up_area');
-                $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
-                $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
-            
+
+            $pickup = $request->input('search_pick_up_area');
+            $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
+            $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
+
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $html]);
         }
     }
- //end d4d developer - k
+    //end d4d developer - k
 
     public function my_job(Request $request)
     {
@@ -811,7 +811,7 @@ class DashboardController extends WebController
         }
     }
 
-    
+
     public function editQuoteAmount(Request $request)
     {
         $offer = $request->input('amount');
@@ -932,6 +932,4 @@ class DashboardController extends WebController
         Auth::guard('transporter')->logout();
         return redirect()->route($name);
     }
-
-   
 }

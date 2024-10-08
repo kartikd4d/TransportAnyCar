@@ -100,6 +100,7 @@
 
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/globle.css')}}" />
 @endsection
 
 @section('content')
@@ -217,7 +218,7 @@
                                                         <span>{{ count($feedback) }}</span>
                                                     </li>
                                                     <li>
-                                                        <p>Job conpleted:</p>
+                                                        <p>Jobs conpleted:</p>
                                                         <span>{{ $completed_job }}</span>
                                                     </li>
                                                     <li>
@@ -225,8 +226,8 @@
                                                         <span>{{ $distance }}</span>
                                                     </li>
                                                     <li>
-                                                        <p>Total earning:</p>
-                                                        <span>{{ $total_earning }}</span>
+                                                        <p>Total earnings:</p>
+                                                        <span>£{{ $total_earning }}</span>
                                                     </li>
                                                     <li>
                                                         <p>Payment method:</p>
@@ -239,7 +240,7 @@
                                 </div>
 
                             </div>
-                            <div class="row">
+                            <div class="row mx-0">
                                 <div class="col-lg-12">
                                     <div class="feedback-tbl border-none bg-white border-0 rounded-0" id="feedback_listing">
 

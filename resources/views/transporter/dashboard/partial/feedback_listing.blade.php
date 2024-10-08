@@ -5,9 +5,9 @@
         word-wrap: break-word !important;
     }
 </style>
-<div class="overall-review">
+<div class="overall-review py-5">
     <h2 class="total-review">Reviews (12)</h2>
-    <span class="total-rating">5/5</span>
+    <span class="total-rating my-2 d-block">5/5</span>
     <ul class="wd-star-lst user-feedback-stars">
         <li>
             <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
             </svg>
         </li>
     </ul>
-    <div class="total-review-count">12 customer reviews</div>
+    <div class="total-review-count my-3">12 customer reviews</div>
     <ul class="review-count-bar">
         <li>
             <span class="review-steps">5</span>
@@ -53,7 +53,7 @@
                 <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
             </svg>
             <div class="review-base-bar">
-                <div class="review-active-bar">
+                <div class="review-active-bar" data-percentage="98">
 
                 </div> 
             </div> 
@@ -65,11 +65,11 @@
                 <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#595959"/>
             </svg>
             <div class="review-base-bar">
-                <div class="review-active-bar">
+                <div class="review-active-bar" data-percentage="2">
 
                 </div> 
             </div> 
-            <span class="review-percentage">98%</span>
+            <span class="review-percentage">2%</span>
         </li>
         <li>
             <span class="review-steps">3</span>
@@ -81,7 +81,7 @@
 
                 </div> 
             </div> 
-            <span class="review-percentage">98%</span>
+            <span class="review-percentage">0</span>
         </li>
         <li>
             <span class="review-steps">2</span>
@@ -93,7 +93,7 @@
 
                 </div> 
             </div> 
-            <span class="review-percentage">98%</span>
+            <span class="review-percentage">0</span>
         </li>
         <li>
             <span class="review-steps">1</span>
@@ -105,7 +105,7 @@
 
                 </div> 
             </div> 
-            <span class="review-percentage">98%</span>
+            <span class="review-percentage">0</span>
         </li>
     </ul>
 </div>
