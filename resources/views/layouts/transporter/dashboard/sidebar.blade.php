@@ -45,6 +45,7 @@ $currentRoute = request()->route()->getName();
 {{--                            <li><a href="{{route('transporter.new_jobs')}}">Find jobs</a></li>--}}
                             <li><a href="{{route('transporter.current_jobs')}}">My jobs</a></li>
                             <li><a href="{{ route('transporter.watchlist.index') }}">Watchlist</a></li>
+                            <li><a href="{{ route('transporter.view.save.search') }}">Saved searches</a></li>
                         </ul>
                     </div>
                 </div>
