@@ -221,7 +221,7 @@
 
         .job-data {
             margin-left: 0px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
         }
 
         .job-data span {
@@ -1819,7 +1819,7 @@
                                                 </h2> --}}
                                                 <div class="contentBlockBtn">
                                                     <div class="leftList">
-                                                        <ul class="col-6 px-0">
+                                                        <ul class="col-6 px-0 car-row" data-car-id="{{ $quote->id }}">
                                                             <li>
                                                                 <b>Expiry date:</b>
                                                                 <span class="font-weight-light">
@@ -1856,17 +1856,17 @@
                                                                     $quote->transporter_quotes_count ?? 0;
                                                             @endphp
                                                             @if ($transporterQuotesCount > 0)
-                                                                <li class="colorDivgreen">
+                                                                <li class="colorDivgreen car-row" data-car-id="{{ $quote->id }}">
                                                                     <span><b>Current lowest bid:</b></span>
                                                                     <span class="sub_color">£{{ $lowestBid }}</span>
                                                                 </li>
                                                             @else
-                                                                <li class="colorDivgreen">
+                                                                <li class="colorDivgreen car-row" data-car-id="{{ $quote->id }}">
                                                                     <span><b>Current lowest bid:</b></span>
                                                                     <span class="sub_color">£0</span>
                                                                 </li>
                                                             @endif
-                                                            <li class="colorDivBlue  mb-2">
+                                                            <li class="colorDivBlue  mb-2 car-row" data-car-id="{{ $quote->id }}">
                                                                 <b>Transporters bidding: </b>
                                                                 @if ($transporterQuotesCount > 0)
                                                                     <span
@@ -1970,7 +1970,7 @@
                                                     @else
                                                         @if ($quote->created_at->timezone('Europe/London')->diffInHours(now('Europe/London')) < 1)
                                                             <div class="actionDiv">
-                                                                <div class="rotated-banner">Bidding</div>
+                                                                <div class="rotated-banner green">New</div>
                                                                 {{-- <svg width="49" height="41" viewBox="0 0 49 41"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M0 0H19L49 25V41L24 20L0 0Z" fill="#52D017" />

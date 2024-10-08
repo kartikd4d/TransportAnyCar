@@ -239,6 +239,9 @@
     right: -20px;
     padding: 3px 24px;
 }
+.actionDiv .rotated-banner.green {
+    background-color: #52D017;
+}
 
 .wishList-bidInfo {
     display: flex;
@@ -541,6 +544,9 @@ span.grey {
     height: 65px;
     /* margin-right: -3px;
     margin-top: -3px; */
+}
+body.modal-open {
+    -webkit-overflow-scrolling: none; 
 }
 
 @media (max-width:1440px) {
@@ -938,7 +944,7 @@ span.grey {
     }
 
     .srch-data {
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
     }
     /* .actionDiv svg {
         width: 65px;

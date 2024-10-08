@@ -144,8 +144,8 @@ $currentRoute = request()->route()->getName();
     </div>
   </div>
 </div>
-<!-- Start Maintaince model --->
-<div class="modal fade" id="importantNoticeModal" tabindex="-1" role="dialog" aria-labelledby="importantNoticeLabel" aria-hidden="true">
+<!-- Start Maintaince model comment by kartikd4d --->
+{{-- <div class="modal fade" id="importantNoticeModal" tabindex="-1" role="dialog" aria-labelledby="importantNoticeLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content maintaince_text">
       <div class="modal-header">
@@ -171,7 +171,7 @@ $currentRoute = request()->route()->getName();
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 <!--- End maintaince model --->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>

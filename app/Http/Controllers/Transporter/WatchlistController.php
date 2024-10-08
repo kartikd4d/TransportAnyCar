@@ -79,7 +79,7 @@ class WatchlistController extends Controller
         // Return a success response to the AJAX call
         return response()->json([
             'success' => true,
-            'message' => 'Quote successfully added to your watchlist.'
+            'message' => 'Quote successfully added to your watchlist!'
         ], 200);
     }
 
@@ -93,7 +93,7 @@ class WatchlistController extends Controller
         Watchlist::where('user_id' , $userId)->where('user_quote_id', $quoteId)->delete();
         return response()->json([
             'success' => true,
-            'message' => 'Quote successfully remove to your watchlist.'
+            'message' => 'Quote successfully removed from your watchlist!'
         ], 200);
 
        

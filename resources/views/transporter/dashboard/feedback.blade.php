@@ -100,8 +100,10 @@
 
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/globle.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/globle.css')}}" />
+
 @endsection
+
 
 @section('content')
     <div id="wrapper">
