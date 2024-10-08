@@ -233,9 +233,14 @@
 
 
 </div>
+
 <div class="savebtnS">
-    <a href="#" class="make_offer_btn checkStatus">Save search</a>
+    {{-- <button type="button" id="saveSrch" class="make_offer_btn checkStatus">Save
+        Search</button> --}}
+    
+     <a href="#" id="saveSrch" class="make_offer_btn checkStatus">Save search</a>
 </div>
+
 <div class="srch-data">
     <div class="srch-data-filter">
         @if ($quotes->total() == 0)

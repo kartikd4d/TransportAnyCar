@@ -1722,6 +1722,8 @@
                                         <label>Sheffield</label>
                                         <label>Devon</label>
                                     </div>
+                                    
+                                   
                                     <div class="form-group">
                                         <a href="javascript:;" class="srchjob_byn" id="search_job">
                                             <svg class="d-md-inline-block d-none" xmlns="http://www.w3.org/2000/svg"
@@ -1738,6 +1740,10 @@
                                     </div>
                                 </form>
                             </div>
+                            {{-- <div class="form-group">
+                                <button type="button"  id="saveSrch" class="btn btn-success">Save
+                                    Search</button>
+                            </div> --}}
 
                             <div class="mainContentDiv">
                                 <div class="job-data">
@@ -2270,8 +2276,8 @@
             }
         });
         // D4dDeveloper-R 04-10-2024
-        $("#saveSrch").click(function() {
-            //alert("clicked");
+        $(document).on('click','#saveSrch',function() {
+            // alert("clicked");
             $("#srchName").val('');
             $('#emailNtf').prop('checked', false);
             $("#saveSrchModal").modal('show');
