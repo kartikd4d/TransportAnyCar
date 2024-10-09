@@ -177,15 +177,14 @@
                                                         </svg>
                                                     </li>
                                                     <li class="user-feedback-rating-count"><span>(12)</span></li>
-                                                    {{-- <li>({{ number_format($overall_percentage, 0) }}%)</li> --}}
-                                                    <!-- <li>({{ 100 }}%)</li> -->
+
                                                 </ul>
                                                 <div>Member since: <span
                                                         class="font-weight-light user-feedback-member-from">12/08/2024</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="wd-transport-area">
+                                        <div class="wd-transport-area pb-0">
 
                                             <div class="wd-transport-rght">
                                                 <ul>
@@ -199,7 +198,6 @@
                                                                 </li> -->
                                                     <li>
                                                         <p>Insurance:</p>
-
                                                         <span>
                                                             @if ($user->insurance_cover)
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13"
@@ -233,7 +231,7 @@
                                                     </li>
                                                     <li>
                                                         <p>Miles travelled:</p>
-                                                        <span>{{ $distance }}</span>
+                                                        <span>{{ $distance }} </span>
                                                     </li>
                                                     <li>
                                                         <p>Total earnings:</p>

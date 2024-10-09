@@ -814,7 +814,7 @@
                                     aria-labelledby="negative-tab">
                                     <ul class="lve_rate">
                                         <li>
-                                            <h5>Communication</h5>
+                                            <h5>Rating</h5>
                                             <div class="starrating">
                                                 <input type="radio" id="star5_comm_negative"
                                                     name="rating_comm_negative" value="5" /><label
@@ -870,7 +870,7 @@
                                                 <span class="rating-display">(0/5)</span>
                                             </div>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <h5>Punctuality</h5>
                                             <div class="starrating">
                                                 <input type="radio" id="star5_punct_negative"
@@ -1040,7 +1040,7 @@
                                                 </label>
                                                 <span class="rating-display">(0/5)</span>
                                             </div>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                     <div class="form-group">
