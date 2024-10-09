@@ -1727,7 +1727,7 @@
                                             </span>
                                         </div>
                                         <div class="mt-2">
-                                            Jobs available: <a href="#" class="font-weight-bold text-primary">22</a>
+                                            Jobs available: <a href="#" class="font-weight-bold text-primary">{{$savedSearch->quote_count}}</a>
                                         </div>
                                     </div>
                                 @endforeach

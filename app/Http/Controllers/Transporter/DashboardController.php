@@ -389,6 +389,7 @@ class DashboardController extends WebController
                 $query->where('status', 'pending')
                     ->orWhere('status', 'approved');
             })
+            ->whereDate('created_at', '>=', now()->subDays(10))
             ->addSelect([
                 'transporter_quotes_count' => QuoteByTransporter::selectRaw('COUNT(*)')
                     ->whereColumn('user_quote_id', 'user_quotes.id'),
@@ -701,8 +702,9 @@ class DashboardController extends WebController
             // ->whereNotIn('user_quotes.id', $my_quote_ids)
             ->where(function ($query) {
                 $query->where('user_quotes.status', 'pending')
-                    ->orWhere('user_quotes.status', 'approved');
-            });
+                      ->orWhere('user_quotes.status', 'approved');
+            })
+            ->whereDate('user_quotes.created_at', '>=', now()->subDays(10));
         if ($drop_off_latitude) {
             // return "yessssssssss";
             $subQuery->select(
@@ -743,11 +745,12 @@ class DashboardController extends WebController
         // Group by user_quote_id to get the count and minimum bid for each
         $subQuery->groupBy('user_quotes.id')
             ->latest();
-        // Wrap the subquery with the main query for pagination
+       
+            // Wrap the subquery with the main query for pagination
         $quotes = \DB::table(\DB::raw("({$subQuery->toSql()}) as sub"))
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
-        // return ["user"=>$quotes,"userIdLogin"=>auth()->user()->id];
+        
         // return $quotes->watchlist;
         if ($request->ajax()) {
             // Convert dates to DateTime objects if necessary
@@ -967,6 +970,13 @@ class DashboardController extends WebController
     public function saveSearchView()
     {
         $data = SaveSearch::where('user_id', auth()->user()->id)->paginate(50);
+        $data->getCollection()->transform(function ($search) {
+            $quote = UserQuote::where('pickup_postcode',"Like","%".$search->pick_area."%");
+            if($search->drop_area != "Anywhere" && $search->drop_area != null)
+            {$quote->where('drop_postcode',"like","%".$search->drop_area."%");}
+            $search->quote_count = $quote->count();
+            return $search;
+            });
         return view('transporter.savedSearch.index', ['savedSearches' => $data]);
     }
     public function saveSearchDlt(Request $request)
