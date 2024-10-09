@@ -3,6 +3,16 @@
 @section('head_css')
 @endsection
 <style>
+    .wd_leave_bx {
+        padding:0!important;
+        box-shadow: none!important;
+        background: transparent!important;
+        border: none!important;
+    }
+    .leave_inner h2 {
+        font-size: 16px !important;
+    }
+
     .leave_img img {
         object-fit: cover;
     }
@@ -13,14 +23,79 @@
         margin-top: -22px;
         font-family: auto !important;
     }
+
     .verified_btns {
         font-size: 12px;
         font-weight: 500;
         color: #52D017;
     }
-    .leave_inner_img::after {display: none;}
+
+    .leave_inner_img::after {
+        display: none;
+    }
+
+    .quote-accepted {
+        font-size: 14px !important;
+        color: #000000;
+    }
+
+    ul.lve_rate li {
+        gap: 10px;
+        margin-bottom: 0 !important;
+    }
+
+    ul.lve_rate li h5 {
+        font-weight: 500;
+        font-size: 16px;
+        color: #000000;
+    }
+
+    .leave_inner .form-group label {
+        font-size: 16px !important;
+    }
+
+    .leave_inner .form-group textarea {
+        border: 1px solid #D9D9D9 !important;
+        padding: 5px 10px !important;
+        font-size: 14px;
+        font-weight: 300;
+        color: #C3C3C3;
+    }
+
+    button.lve_feed_btn {
+        font-size: 14px;
+        padding: 7px 60px !important;
+    }
+
+    .leave_txt h4 {
+        color: #000000 !important;
+    }
+
+    .leave_rating {
+        font-size: 12px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .lve_rate li {
+        justify-content: flex-start !important;
+    }
+
+    ul.lve_rate li .starrating svg {
+        width: 23px;
+    }
+
+    .lve_rate li .starrating label {
+        margin-bottom: 2px !important;
+    }
+
+    ul.lve_rate li .starrating {
+        gap: 2px;
+        padding-right: 0 !important;
+    }
+
     @media(max-width: 580px) {
-        .leave_inner h2 {font-size: 16px!important;}
+
+
         .user_feedback .wd_leave_bx {
             border: none;
             background: #fff;
@@ -38,15 +113,12 @@
             justify-content: flex-end;
         }
 
-        .leave_txt h4 {
-            /* font-size: 18px !important; */
-            color:#000000!important;
-        }
+        /* .leave_txt h4 {
+            font-size: 18px !important;
+            color: #000000 !important;
+        } */
 
-        .leave_rating {
-            font-size: 12px !important;
-            margin-bottom: 5px!important;
-        }
+
 
         .leave_body .leave_tabs span {
             font-size: 16px;
@@ -60,9 +132,9 @@
             color: #606060;
         }
 
-        .leave_tabs {
+        /* .leave_tabs {
             padding-top: 15px;
-        }
+        } */
 
         .leave_tabs ul.nav li.nav-item {
             width: 100%;
@@ -72,26 +144,21 @@
             margin-bottom: 0;
         }
 
-        ul.lve_rate li .starrating {
-            gap: 0;
-        }
 
-        ul.lve_rate li .starrating svg {
-            width: 23px;
-        }
 
-        ul.lve_rate li h5 {
+
+        /* ul.lve_rate li h5 {
             font-size: 16px;
-            color: #606060;
-        }
+            color: #000000;
+        } */
 
         ul.lve_rate .starrating span {
             font-size: 16px;
         }
 
-        ul.lve_rate li {
+        /* ul.lve_rate li {
             margin-bottom: 4px;
-        }
+        } */
 
         .leave_tabs ul.nav {
             margin-bottom: 30px;
@@ -104,11 +171,11 @@
             margin-bottom: 10px !important;
         }
 
-        .leave_inner .form-group textarea {
+        /* .leave_inner .form-group textarea {
             border: 2px solid #CFCFCF !important;
             height: auto !important;
             padding: 7px !important;
-        }
+        } */
 
         .leave_inner .form-group {
             margin-top: 12px;
@@ -134,8 +201,8 @@
         .user_feedback {
             padding-top: 20px !important;
         }
+
     }
-    
 </style>
 @section('content')
     @include('layouts.web.dashboard.header')
@@ -168,13 +235,17 @@
                             </div>
                             <div class="leave_rgt">
                                 <div class="leave_inner_img">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#5B5B5B" class="size-6" width="43" height="43">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>                                      
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="#5B5B5B" class="size-6" width="43" height="43">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
                                     <img src="{{ $transporter_detail->profile_image }}">
                                 </div>
                                 <div class="leave_txt">
-                                    <h4>{{ $transporter_detail->username }} <img src="{{asset('/assets/images/user-verified.png')}}" width="15" height="15" alt="" /></h4>
+                                    <h4>{{ $transporter_detail->username }} <img
+                                            src="{{ asset('/assets/images/user-verified.png') }}" width="18"
+                                            height="18" alt="" class="ml-1" /></h4>
                                     <div class="leave_rating">
                                         <span>
                                             <svg width="13" height="13" viewBox="0 0 10 9" fill="none"
@@ -234,8 +305,9 @@
                         </div>
                         <div class="leave_tabs">
                             <!-- <span>Accepted:  08/01/2024 19:20</span> -->
-                            <p><b> Rate this transaction.</b> This feedback helps other user and transport providers.</p>
-                            <ul class="nav nav-pills">
+                            <p class="quote-accepted">Quote accepted: 08/01/2024 19:20</p>
+                            {{-- <p><b> Rate this transaction.</b> This feedback helps other user and transport providers.</p> --}}
+                            {{-- <ul class="nav nav-pills">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="pill" href="#positive" role="tab"
                                         aria-controls="pills-positive" aria-selected="true">
@@ -285,18 +357,19 @@
                                         </svg>
                                         Negative</a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="positive" role="tabpanel"
                                     aria-labelledby="positive-tab">
                                     <ul class="lve_rate">
                                         <li>
-                                            <h5>Communication</h5>
+                                            <h5>Click to rate:</h5>
+                                            {{-- <h5>Communication</h5> --}}
                                             <div class="starrating">
                                                 <input type="radio" id="star5_comm_pos" name="rating_comm_positive"
                                                     value="5" /><label for="star5_comm_pos" title="5 star">
-                                                    <svg width="36" height="33" viewBox="0 0 36 33"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <svg width="36" height="33" viewBox="0 0 36 33" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M18 0L22.7822 11.4178L35.119 12.4377L25.7378 20.5142L28.5801 32.5623L18 26.136L7.41987 32.5623L10.2622 20.5142L0.880983 12.4377L13.2178 11.4178L18 0Z"
                                                             fill="#D9D9D9" />
@@ -339,10 +412,10 @@
                                                             fill="#D9D9D9" />
                                                     </svg>
                                                 </label>
-                                                <span class="rating-display">(0/5)</span>
+                                                {{-- <span class="rating-display">(0/5)</span> --}}
                                             </div>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <h5>Punctuality</h5>
                                             <div class="starrating">
                                                 <input type="radio" id="star5_punct" name="rating_punct_positive"
@@ -502,12 +575,12 @@
                                                 </label>
                                                 <span class="rating-display">(0/5)</span>
                                             </div>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Feedback comments:</label>
-                                        <textarea id="pos_comment" name="pos_comment"></textarea>
+                                        <label for="exampleInputEmail1">Write a review</label>
+                                        <textarea id="pos_comment" name="pos_comment" placeholder="Describe your experience... "></textarea>
                                     </div>
                                     <!-- <button class="lve_feed_btn">Leave feedback</button> -->
                                 </div>
