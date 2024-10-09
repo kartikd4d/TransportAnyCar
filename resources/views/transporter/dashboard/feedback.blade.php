@@ -220,7 +220,7 @@
                                                         <span>{{ count($feedback) }}</span>
                                                     </li>
                                                     <li>
-                                                        <p>Jobs comgit pleted:</p>
+                                                        <p>Jobs completed:</p>
                                                         <span>{{ $completed_job }}</span>
                                                     </li>
                                                     <li>
