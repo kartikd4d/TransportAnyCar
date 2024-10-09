@@ -267,8 +267,10 @@ class DashboardController extends WebController
             }
             return 0;
         });
+       
 
-        $totalDistanceFormatted = number_format($totalDistance, 2) . ' mi';
+        $totalDistanceFormatted = number_format($totalDistance);
+        // return $totalDistanceFormatted;
         $completedCount = $quotes->filter(function ($transaction) {
             return $transaction->quote && $transaction->quote->status == 'completed';
         })->count();

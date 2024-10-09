@@ -225,7 +225,7 @@
                                                     </li>
                                                     <li>
                                                         <p>Miles travelled:</p>
-                                                        <span>{{ $distance }}</span>
+                                                        <span>{{ $distance }} </span>
                                                     </li>
                                                     <li>
                                                         <p>Total earnings:</p>
