@@ -8,7 +8,7 @@
             padding: 0px 20px 0;
             box-shadow: 0px 0px 4px 0px #00000040;
             /* margin: 0px 0px 20px 0px; */
-            margin: 0px -16px 20px -16px;
+            margin: 0px -15px 20px -15px;
             border-radius: 10px;
         }
 
@@ -248,6 +248,7 @@
                 max-width: 92px;
                 min-height: 57px;
                 max-height: 57px;
+                margin: auto;
             }
 
             .job_list_desh_mobile .list_detail {

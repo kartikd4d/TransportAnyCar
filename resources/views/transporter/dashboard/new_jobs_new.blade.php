@@ -2167,7 +2167,7 @@
     </div>
 
     {{-- d4dDeveloper-r  start --}}
-    @include('transporter.Modal.saveSearch');
+    @include('transporter.Modal.saveSearch')
     {{-- End --}}
 
 @endsection
