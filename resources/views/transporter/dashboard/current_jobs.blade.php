@@ -215,7 +215,7 @@
 
 
         @media(max-width: 767px) {
-            .deshbord-job-listing {border-radius: 0; margin-bottom: 10px;}
+            .deshbord-job-listing {border-radius: 0!important; margin-bottom: 10px!important;}
         }
         @media(max-width: 580px) {
             .new_job_list_mobile {
