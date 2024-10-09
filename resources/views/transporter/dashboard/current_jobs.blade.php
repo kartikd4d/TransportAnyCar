@@ -7,7 +7,8 @@
         .deshbord-job-listing {
             padding: 0px 20px 0;
             box-shadow: 0px 0px 4px 0px #00000040;
-            margin: 0px 0px 20px 0px;
+            /* margin: 0px 0px 20px 0px; */
+            margin: 0px -16px 20px -16px;
             border-radius: 10px;
         }
 
@@ -213,6 +214,9 @@
         }
 
 
+        @media(max-width: 767px) {
+            .deshbord-job-listing {border-radius: 0; margin-bottom: 10px;}
+        }
         @media(max-width: 580px) {
             .new_job_list_mobile {
                 width: 100%;

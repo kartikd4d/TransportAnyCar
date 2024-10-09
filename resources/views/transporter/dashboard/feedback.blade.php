@@ -188,6 +188,14 @@
 
                                             <div class="wd-transport-rght">
                                                 <ul>
+                                                    {{-- <li>
+                                                        <p>Positive feedback:</p>
+                                                        <span class="wd-black">{{ number_format($positive_feedback_percentage, 0) }}%</span>
+                                                    </li> --}}
+                                                    <!-- <li>
+                                                                    <p>Completed jobs:</p>
+                                                                    <span>{{ $completed_job }}</span>
+                                                                </li> -->
                                                     <li>
                                                         <p>Insurance:</p>
                                                         <span>
