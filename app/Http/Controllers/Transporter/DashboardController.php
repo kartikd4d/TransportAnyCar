@@ -382,7 +382,7 @@ class DashboardController extends WebController
         $quotes = UserQuote::with(['user', 'watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
             $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
         }])
-            ->whereNotIn('id', $user_quote)
+            // ->whereNotIn('id', $user_quote)
             ->where(function ($query) {
                 $query->where('status', 'pending')
                     ->orWhere('status', 'approved');

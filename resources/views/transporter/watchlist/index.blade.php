@@ -1616,7 +1616,6 @@
 
 
         }
-
         @media(max-width: 400px) {
             .jobsrch_box {
                 padding: 10px;
@@ -1648,7 +1647,7 @@
                     <button onclick="hideBanner()" class="btn btn-success">Ok, got it</button>
                 </div>
                 <div class="job_container job_container_watchList">
-                    <div class="admin_job_bx find_trans_newjob" id="style-1">
+                    <div class="admin_job_bx find_trans_newjob list_of_items" id="style-1">
                         <div class="admin_job_top flex-column header-banner">
                             <h3 style="margin-bottom:20px!important;">Watchlist</h3>
                             <p class="pera_srch">Here are the jobs you are currently watching.</p>
@@ -1814,10 +1813,10 @@
                                                                     <a href="javascript:;"
                                                                         onclick="removeToWatchlist('{{ $quote->id }}');"
                                                                         style="margin-left: auto;">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9C9C9C" class="size-6">
+                                                                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9C9C9C" class="size-6">
                                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
-                                                                          </svg>
-                                                                        {{-- <svg xmlns="http://www.w3.org/2000/svg"
+                                                                          </svg> --}}
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
                                                                             width="16" height="16" fill="#9C9C9C"
                                                                             class="bi bi-eye-slash" viewBox="0 0 16 16">
                                                                             <path
@@ -1826,7 +1825,8 @@
                                                                                 d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
                                                                             <path
                                                                                 d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
-                                                                        </svg> --}}
+                                                                        </svg>
+                                                                       
                                                                     </a>
                                                                 </div>
                                                             </li>
