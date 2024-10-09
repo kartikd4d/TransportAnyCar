@@ -450,33 +450,37 @@ class DashboardController extends WebController
     {
         $user_data = Auth::guard('web')->user();
         // Determine the type of feedback and get the ratings array
-        $feedbackType = null;
-        $ratings = null;
+        // $feedbackType = null;
+        // $ratings = null;
 
-        if ($request->has('positiveRatings')) {
-            $feedbackType = 'positive';
-            $ratings = $request->input('positiveRatings');
-        } elseif ($request->has('neutralRatings')) {
-            $feedbackType = 'neutral';
-            $ratings = $request->input('neutralRatings');
-        } elseif ($request->has('negativeRatings')) {
-            $feedbackType = 'negative';
-            $ratings = $request->input('negativeRatings');
-        }
-
-        if ($feedbackType && $ratings) {
-            $feedbackComment = $request->input('feedback');
+        $feedbackComment = $request->input('feedback');
             $quoteByTransporterId = $request->input('quote_by_transporter_id');
-            $mappedRatings = $this->mapRatings($ratings, $feedbackType);
+            $rating=$request->input('rating');
+        // if ($request->has('positiveRatings')) {
+        //     $feedbackType = 'positive';
+        //     $ratings = $request->input('positiveRatings');
+        // } elseif ($request->has('neutralRatings')) {
+        //     $feedbackType = 'neutral';
+        //     $ratings = $request->input('neutralRatings');
+        // } elseif ($request->has('negativeRatings')) {
+        //     $feedbackType = 'negative';
+        //     $ratings = $request->input('negativeRatings');
+        // }
+
+        // if ($feedbackType && $ratings) {
+        //     $feedbackComment = $request->input('feedback');
+        //     $quoteByTransporterId = $request->input('quote_by_transporter_id');
+        //     $mappedRatings = $this->mapRatings($ratings, $feedbackType);
              // Update or create feedback entry based on quote_by_transporter_id
             Feedback::updateOrCreate(
                 ['quote_by_transporter_id' => $quoteByTransporterId],
                 [
-                    'type' => $feedbackType,
-                    'communication' => $mappedRatings['communication'],
-                    'punctuality' => $mappedRatings['punctuality'],
-                    'care_of_good' => $mappedRatings['care_of_good'],
-                    'professionalism' => $mappedRatings['professionalism'],
+                    // 'type' => $feedbackType,
+                    // 'communication' => $mappedRatings['communication'],
+                    // 'punctuality' => $mappedRatings['punctuality'],
+                    // 'care_of_good' => $mappedRatings['care_of_good'],
+                    // 'professionalism' => $mappedRatings['professionalism'],
+                    'rating'=>$rating,
                     'comment' => $feedbackComment
                 ]
             );
@@ -494,7 +498,7 @@ class DashboardController extends WebController
             );
 
             return response()->json(['status'=>true, 'message' => 'Feedback saved successfully.']);
-        }
+        // }
 
         return response()->json(['status'=>false, 'message' => 'Invalid feedback data.']);
     }

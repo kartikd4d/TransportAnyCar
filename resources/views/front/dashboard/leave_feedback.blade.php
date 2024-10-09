@@ -501,7 +501,7 @@ button.lve_feed_btn {
                                 <div class="tab-pane fade" id="negative" role="tabpanel" aria-labelledby="negative-tab">
                                     <ul class="lve_rate">
                                         <li>
-                                            <h5>Communication</h5>
+                                            <h5>Rating</h5>
                                             <div class="starrating">
                                                 <input type="radio" id="star5_comm_negative" name="rating_comm_negative" value="5" /><label for="star5_comm_negative" title="5 star">
                                                     <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -532,7 +532,7 @@ button.lve_feed_btn {
                                                 <span class="rating-display">(0/5)</span>
                                             </div>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <h5>Punctuality</h5>
                                             <div class="starrating">
                                                 <input type="radio" id="star5_punct_negative" name="rating_punct_negative" value="5" /><label for="star5_punct_negative" title="5 star">
@@ -627,7 +627,7 @@ button.lve_feed_btn {
                                                 </label>
                                                 <span class="rating-display">(0/5)</span>
                                             </div>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                     <div class="form-group">

@@ -267,8 +267,10 @@ class DashboardController extends WebController
             }
             return 0;
         });
+       
 
-        $totalDistanceFormatted = number_format($totalDistance, 2) . ' mi';
+        $totalDistanceFormatted = number_format($totalDistance);
+        // return $totalDistanceFormatted;
         $completedCount = $quotes->filter(function ($transaction) {
             return $transaction->quote && $transaction->quote->status == 'completed';
         })->count();
@@ -382,7 +384,7 @@ class DashboardController extends WebController
         $quotes = UserQuote::with(['user', 'watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
             $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
         }])
-            ->whereNotIn('id', $user_quote)
+            // ->whereNotIn('id', $user_quote)
             ->where(function ($query) {
                 $query->where('status', 'pending')
                     ->orWhere('status', 'approved');
