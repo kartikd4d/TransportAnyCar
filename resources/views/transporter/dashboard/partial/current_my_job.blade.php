@@ -73,7 +73,7 @@
                 <div class="bidding-pic-wrap">
                     <div class="list_img">
                         <img src="{{ $quote->image }}">
-                        <p>£{{ new_roundBasedOnDecimal($quote->transporter_payment) ?? 'N/A' }}</p>
+                        <p>{{ new_roundBasedOnDecimal("£ " . $quote->transporter_payment) ?? 'N/A' }}</p>
                     </div>
                     <span class="posted-on">Posted {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
                 </div>

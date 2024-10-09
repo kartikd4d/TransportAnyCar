@@ -7,8 +7,8 @@
         .deshbord-job-listing {
             padding: 0px 20px 0;
             box-shadow: 0px 0px 4px 0px #00000040;
-            /* margin: 0px 0px 20px 0px; */
-            margin: 0px -15px 20px -15px;
+            margin: 0px 0px 20px 0px;
+            /* margin: 0px -15px 20px -15px; */
             border-radius: 10px;
         }
 
@@ -214,9 +214,9 @@
         }
 
 
-        @media(max-width: 767px) {
+        /* @media(max-width: 767px) {
             .deshbord-job-listing {border-radius: 0!important; margin-bottom: 10px!important;}
-        }
+        } */
         @media(max-width: 580px) {
             .new_job_list_mobile {
                 width: 100%;
@@ -248,7 +248,7 @@
                 max-width: 92px;
                 min-height: 57px;
                 max-height: 57px;
-                margin: auto;
+                /* margin: auto; */
             }
 
             .job_list_desh_mobile .list_detail {

@@ -240,6 +240,7 @@
     padding: 3px 24px;
     width: 80px;
     text-align: center;
+    text-transform: capitalize;
 }
 .actionDiv .rotated-banner.green {
     background-color: #52D017;
