@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
     .posted-on {
         font-size: 12px;
         display: block;
@@ -27,7 +27,7 @@
             width: 40%;
         }
     }
-</style>
+</style> --}}
 @if (count($quotes) == 0)
     <div class="col-12 biddata">
         <div class="card nodata-card border-0 rounded-3 bg-white h-100 overflow-hidden">
@@ -70,13 +70,13 @@
                 </div>
             @endif
             <li>
-                <div class="bidding-pic-wrap">
+                {{-- <div class="bidding-pic-wrap"> --}}
                     <div class="list_img">
                         <img src="{{ $quote->image }}">
                         <p>{{ new_roundBasedOnDecimal("£ " . $quote->transporter_payment) ?? 'N/A' }}</p>
+                        <span>Posted {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
                     </div>
-                    <span class="posted-on">Posted {{ getTimeAgo($quote->created_at->toDateTimeString()) }}</span>
-                </div>
+                {{-- </div> --}}
                 <div class="list_detail">
                     <span>
                         <img src="{{ asset('assets/web/images/dashboard/map-icon.svg') }}" alt="Map Icon">
