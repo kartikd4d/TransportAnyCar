@@ -176,7 +176,7 @@
                                                                 fill="#FFA800" />
                                                         </svg>
                                                     </li>
-                                                    <li class="user-feedback-rating-count"><span>(12)</span></li>
+                                                    <li class="user-feedback-rating-count"><span>(<?php count($feedback) ?>)</span></li>
 
                                                 </ul>
                                                 <div>Member since: <span
