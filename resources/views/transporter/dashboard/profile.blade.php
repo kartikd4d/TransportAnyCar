@@ -97,7 +97,10 @@
   width: 45px;
 }
 
+
 /* new css*/
+
+
 .requied_sec h2 {
     font-size: 24px;
     margin-bottom: 3px; display: flex;
@@ -203,93 +206,42 @@ div#spam-banner {
     width: 85%;
     display:none; 
 }
+
+
+
 /* start 16-09-2024 */
 
-.upload-heading {
-    font-weight: 600;
-}
-.sub_heading {
-    font-size: 12px;
-    font-weight: 300;
-    color:#717171;
-}
-
-.upload-btn-wrapper {
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20), 0 5px 5px rgba(0,0,0,0.20);
-    background-color: #FDFFFA;
-    border-radius: 5px;
-}
-
-.upload-btn-wrapper .btn {
-    color: #000000;
-    padding: 4px 20px;
-    font-size: 12px;
-    font-weight: 300;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5px;
-}
-
-.upload-btn-wrapper input[type=file] {
-  /* font-size: 100px; */
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-.doc-wrap {
-    border-radius: 8px;
-    border: 2px solid #CFCFCF;
-    background: #FFF;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px;
-    margin-bottom: 4px;
-    gap: 5px;
-}
-.send-link {
-    border-radius: 5px;
-    background: #52D017;
-    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20);
-    font-size: 12px;
-    color:#ffffff;
-    border: none;
-    padding: 5px 25px;
-}
-/* .adjust-space-mobile-padding {padding-left: 60px!important; padding-right: 60px!important;} */
-.wd-cstm-check li {max-width: 33.333%; flex: 0 0 33.333%;}
-@media screen and (min-width: 1200px) and (max-width: 1600px) {
-    .doc-wrap {flex-direction: column; align-items: flex-start;}
-}
 @media screen and (min-width: 768px) and (max-width: 1100px) {
-    .admin-profile-box .col-lg-8 {
-        flex: auto;
-        max-width: 100%;
-    }
-    .wd-profile-form form#form_account {padding-left: 33.33%;}
-    .wd-admin-profile {
-        max-width: 33.333333%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        margin-left: 15px;
-    }
-    .admin-profile-box a.logout_txt.mob_view {
-        display: block;
-    }
-    .admin-profile-box a.logout_txt.desk_view {
-        display: none;
-    }
+.admin-profile-box .col-lg-8 {
+    flex: auto;
+    max-width: 100%;
 }
+.wd-profile-form form#form_account {padding-left: 33.33%;}
+.wd-admin-profile {
+    max-width: 33.333333%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 15px;
+}
+.admin-profile-box a.logout_txt.mob_view {
+    display: block;
+}
+.admin-profile-box a.logout_txt.desk_view {
+    display: none;
+}
+
+
+
+}
+
 /* end 16-09-2024 */
+
+
+
+
+
+
 
 @media(max-width: 1199px){
     .document-list {
@@ -322,88 +274,98 @@ div#spam-banner {
     .info_sec_details:before {
         left: 77%;
     }
-}
 
+}
 @media(max-width: 991px){
     .document-list {margin-bottom: 15px !important;  }
 
     .wd-admin-profile .wd-profl-botm {
         flex-wrap: wrap;
     }
-    /* start 16-09-2024 */
-        .wd-profile-form .form-group span {
-        width: 100%;
-        }
-    /* end 16-09-2024 */
-    .wd-profile-form .form-group label.addmore_btn span {
-        width: auto;
+
+
+/* start 16-09-2024 */
+    .wd-profile-form .form-group span {
+      width: 100%;
     }
-    .wd-profile-form .form-control {font-size: 18px;}
+/* end 16-09-2024 */
+
+
+.wd-profile-form .form-group label.addmore_btn span {
+    width: auto;
 }
 
-@media(max-width: 767px){
-    .requied_sec_row {
-        width: 100%;
-    }
-    .info_sec_details {
-        left: auto;
-        right: -30px;
-    }
-    .info_sec_details:before {
-        right: 31px;left: auto;
-    }
-    .requied_sec {
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-    .requied_sec_row .document {
-        justify-content: space-between;
-    }
-    .requied_sec_row .document span {
-        font-size: 15px;
-        margin-right: 0;
-    }
-    .requied_sec h2 {
-        align-items: center;
-    }
-    .requied_sec {
-        margin-top: 15px;
-    }
-    .document-item .col-lg-6 .form-group {
-        text-align: center;
-    }
-    .document-item {
-        width: 100%;
-    }
 
-    #passwordIcon {
-        top: 16px;
-    }
+}
+
+
+
+@media(max-width: 767px){
+.requied_sec_row {
+    width: 100%;
+}
+.info_sec_details {
+    left: auto;
+    right: -30px;
+}
+.info_sec_details:before {
+    right: 31px;left: auto;
+}
+.requied_sec {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.requied_sec_row .document {
+    justify-content: space-between;
+}
+.requied_sec_row .document span {
+    font-size: 15px;
+    margin-right: 0;
+}
+.requied_sec h2 {
+    align-items: center;
+}
+.requied_sec {
+    margin-top: 15px;
+}
+.document-item .col-lg-6 .form-group {
+    text-align: center;
+}
+.document-item {
+    width: 100%;
+}
+
+#passwordIcon {
+    top: 16px;
+}
+
+
+
 }
 
 @media(max-width: 580px){
     .info_sec_details {
-        left: 50%;
-        right: auto;
-        transform: translateX(-66%);
-        width: 389px;
-        padding-top: 23px;
-    }
-    .info_sec_details:before {
-        right: 124px;
-        left: auto;
-        top: 13px;
-    }
-    .info_sec_details p {
-        color: #ababab;
-    }
-    .requied_sec_row .document label.addmore_btn {
-        font-size: 15px;
-    }
+    left: 50%;
+    right: auto;
+    transform: translateX(-66%);
+    width: 389px;
+    padding-top: 23px;
+}
+.info_sec_details:before {
+  right: 124px;
+  left: auto;
+  top: 13px;
+}
+.info_sec_details p {
+    color: #ababab;
+}
+.requied_sec_row .document label.addmore_btn {
+    font-size: 15px;
+}
 
-    .content_container {
-        padding-bottom: 50px !important;
-    }
+.content_container {
+    padding-bottom: 50px !important;
+}
 }
 
 @media (max-width: 420px) {
@@ -415,17 +377,21 @@ div#spam-banner {
     }
 }
 
+
+
+
 @media (max-width: 400px) {
     .info_sec_details {
-        left: 0;
-        right: auto;
-        transform: translateX(-70%);
-        width: 350px;
-        padding-top: 23px;
-    }
+    left: 0;
+    right: auto;
+    transform: translateX(-70%);
+    width: 350px;
+    padding-top: 23px;
+}
     .info_sec_details:before {
         right: 85px;
     }
+
 }
 @media (max-width: 375px) {
     .info_sec_details {
@@ -434,11 +400,9 @@ div#spam-banner {
         padding-top: 23px;
     }
     .info_sec_details:before {
-        right: 65px;
-    }
-    .wd-cstm-check li {max-width: 50%; flex: 0 0 50%;}
+    right: 65px;
 }
-
+}
 
 
 
@@ -622,132 +586,78 @@ div#spam-banner {
                                         </div>
                                     </div>
                                     @endif
-                                    {{-- @if(isMobile()) --}}
-                                        <div class="row py-4 px-3">
-                                            <div class="col-xl-6 px-0 px-xl-3">
-                                                <div class="document-wrapper">
-                                                    <h4 class="upload-heading">Upload Documents:</h4>
-                                                    <p class="sub_heading">You must upload your documents before you can start bidding.</p>
-                                                    <div class="row px-0 doc_wraper">
-                                                        <div class="col-12 px-0 px-sm-3">
-                                                            <div class="doc-wrap">
-                                                                <span class="font-weight-light">Valid driving license</span>
-                                                                <div class="upload-btn-wrapper">
-                                                                    <button class="btn">Upload
-                                                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                        </svg>                                                                    
-                                                                    </button>
-                                                                    <input type="file" name="myfile" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row px-0 doc_wraper">
-                                                        <div class="col-12 px-0 px-sm-3">
-                                                            <div class="doc-wrap">
-                                                                <span class="font-weight-light">Goods in transit insurance</span>
-                                                                <div class="upload-btn-wrapper">
-                                                                    <button class="btn">Upload
-                                                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                        </svg>                                                                    
-                                                                    </button>
-                                                                    <input type="file" name="myfile" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 px-0 px-xl-3">
-                                                <div class="document-wrapper mt-4 mt-xl-0">
-                                                    <h4 class="upload-heading">Verify Email:</h4>
-                                                    <p class="sub_heading">You must verify your email address before you can start bidding.</p>
-                                                    <div class="row px-0 doc_wraper">
-                                                        <div class="col-12 px-0 px-sm-3">
-                                                            <div class="doc-wrap mb-3 mb-md-0">
-                                                                <span class="font-weight-light">Verify your email address</span>
-                                                                <button class="send-link">Send link</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {{-- @endif --}}
                                     @if(isMobile())
-                                        <div class="wd-admin-profile">
-                                            <div class="admin-profile-top">
-                                                <div class="admin-profile-area">
-                                                    <div class="edit-profile-photo">
-                                                        <img src="@if($user->profile_image) {{checkFileExist($user->profile_image)}} @endif" alt="edit profile image" class="img-fluid profile-pic">
-                                                        <div class="p-image">
-                                                            <svg class="upload-button" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z" fill="#52D017"/>
-                                                            </svg>
-                                                            <input class="file-upload" type="file" accept="image/*">
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <h2>{{$user->name}}</h2>
-                                                        <a href="{{route('transporter.logout')}}" class="logout_txt mob_view font-weight-light">
-                                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <g clip-path="url(#clip0_650_1110)">
-                                                            <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
-                                                            <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
-                                                            </g>
-                                                            <defs>
-                                                            <clipPath id="clip0_650_1110">
-                                                            <rect width="18" height="18" fill="white"></rect>
-                                                            </clipPath>
-                                                            </defs>
-                                                            </svg>
-                                                            Logout
-                                                        </a>
-                                                        <!-- <a href="javascript:;" class="wd-edit-prfl">Edit profile</a> -->
+                                    <div class="wd-admin-profile">
+                                        <div class="admin-profile-top">
+                                            <div class="admin-profile-area">
+                                                <div class="edit-profile-photo">
+                                                    <img src="@if($user->profile_image) {{checkFileExist($user->profile_image)}} @endif" alt="edit profile image" class="img-fluid profile-pic">
+                                                    <div class="p-image">
+                                                        <svg class="upload-button" width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z" fill="#52D017"/>
+                                                        </svg>
+                                                        <input class="file-upload" type="file" accept="image/*">
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <h2>{{$user->name}}</h2>
+                                                    <a href="{{route('transporter.logout')}}" class="logout_txt mob_view">
+                                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_650_1110)">
+                                                        <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
+                                                        <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
+                                                        </g>
+                                                        <defs>
+                                                        <clipPath id="clip0_650_1110">
+                                                        <rect width="18" height="18" fill="white"></rect>
+                                                        </clipPath>
+                                                        </defs>
+                                                        </svg>
+                                                        Logout
+                                                    </a>
+                                                    <!-- <a href="javascript:;" class="wd-edit-prfl">Edit profile</a> -->
+                                                </div>
                                             </div>
-                                            <div class="wd-profl-botm mt-5 pt-4">
-                                                <div class="wd-profl-lst">
-                                                    <p>Jobs completed</p>
-                                                    <span>{{$jobs_completed_count}}</span>
-                                                </div>
-                                                <div class="wd-profl-lst">
-                                                    <p>Total earnings</p>
-                                                    <span>£{{$total_earning_count}}</span>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="wd-profl-lst">
-                                                <p>Documents</p>
-                                                <div class="document-status">
-                                                    @if($user->is_status == 'approved')
-                                                        <span class="status-badge approve">Approved</span>
-                                                    @elseif($user->is_status == 'pending')
-                                                        <span class="status-badge pending">Pending</span>
-                                                    @elseif($user->is_status == 'rejected')
-                                                        <span class="status-badge reject">Reject</span>
-                                                    @else 
-                                                        <span>Not Availabe</span>
-                                                    @endif
-                                                </div>
-                                            </div> -->
-                                            <a href="{{route('transporter.logout')}}" class="logout_txt desk_view">
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(#clip0_650_1110)">
-                                                <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
-                                                <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
-                                                </g>
-                                                <defs>
-                                                <clipPath id="clip0_650_1110">
-                                                <rect width="18" height="18" fill="white"></rect>
-                                                </clipPath>
-                                                </defs>
-                                                </svg>
-                                                Logout
-                                            </a>
                                         </div>
+                                        <div class="wd-profl-botm">
+                                            <div class="wd-profl-lst">
+                                                <p>Jobs completed</p>
+                                                <span>{{$jobs_completed_count}}</span>
+                                            </div>
+                                            <div class="wd-profl-lst">
+                                                <p>Total earnings</p>
+                                                <span>£{{$total_earning_count}}</span>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="wd-profl-lst">
+                                            <p>Documents</p>
+                                            <div class="document-status">
+                                                @if($user->is_status == 'approved')
+                                                    <span class="status-badge approve">Approved</span>
+                                                @elseif($user->is_status == 'pending')
+                                                    <span class="status-badge pending">Pending</span>
+                                                @elseif($user->is_status == 'rejected')
+                                                    <span class="status-badge reject">Reject</span>
+                                                @else 
+                                                    <span>Not Availabe</span>
+                                                @endif
+                                            </div>
+                                        </div> -->
+                                        <a href="{{route('transporter.logout')}}" class="logout_txt desk_view">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_650_1110)">
+                                            <path d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z" fill="white"></path>
+                                            <path d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z" fill="white"></path>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_650_1110">
+                                            <rect width="18" height="18" fill="white"></rect>
+                                            </clipPath>
+                                            </defs>
+                                            </svg>
+                                            Logout
+                                        </a>
+                                    </div>
                                     @endif
                                     @if($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
                                     <h3>Uploaded documents</h3>
@@ -778,62 +688,10 @@ div#spam-banner {
                                         </div>
                                     </div>
                                     @endif -->
-                                @endif
-                                    {{-- <div class="row py-4 d-none d-md-flex">
-                                        <div class="col-xl-6 px-0">
-                                            <div class="document-wrapper">
-                                                <h4 class="upload-heading">Upload Documents:</h4>
-                                                <p class="sub_heading">You must upload your documents before you can start bidding.</p>
-                                                <div class="row px-0 doc_wraper">
-                                                    <div class="col-12 px-0 px-sm-3">
-                                                        <div class="doc-wrap">
-                                                            <span class="font-weight-light">Valid driving license</span>
-                                                            <div class="upload-btn-wrapper">
-                                                                <button class="btn">Upload
-                                                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                    </svg>                                                                    
-                                                                </button>
-                                                                <input type="file" name="myfile" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row px-0 doc_wraper">
-                                                    <div class="col-12 px-0 px-sm-3">
-                                                        <div class="doc-wrap">
-                                                            <span class="font-weight-light">Goods in transit insurance</span>
-                                                            <div class="upload-btn-wrapper">
-                                                                <button class="btn">Upload
-                                                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                    </svg>                                                                    
-                                                                </button>
-                                                                <input type="file" name="myfile" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 px-0">
-                                            <div class="document-wrapper mt-4 mt-xl-0">
-                                                <h4 class="upload-heading">Verify Email:</h4>
-                                                <p class="sub_heading">You must verify your email address before you can start bidding.</p>
-                                                <div class="row px-0 doc_wraper">
-                                                    <div class="col-12 px-0 px-sm-3">
-                                                        <div class="doc-wrap">
-                                                            <span class="font-weight-light">Verify your email address</span>
-                                                            <button class="send-link">Send link</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <h3 class="adjust-space-mobile-padding">Account details</h3>
+                                    @endif
+                                    <h3>Account details</h3>
 
-                                    <div class="row align-items-end adjust-space-mobile-padding">
+                                    <div class="row align-items-end">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control sticky-data" placeholder="Full name" name="name" value="{{$user->first_name}}" readonly>
@@ -877,9 +735,9 @@ div#spam-banner {
                                             </div> -->
                                         </div>
                                     </div>
-                                    <div class="row adjust-space-mobile-padding">
+                                    <div class="row">
                                         <div class="col-lg-6 order-lg-1 order-2">
-                                            <h5 style="color:#717171; margin-bottom:10px;">Email notifications preferences:</h5>
+                                            <h5>Email notifications preferences:</h5>
                                             <ul class="wd-cstm-check">
                                                 <!-- <li>
                                                     <div class="form-group">
@@ -905,7 +763,7 @@ div#spam-banner {
                                             </ul>
                                         </div>
                                         <div class="col-lg-6 order-lg-2 order-1" >
-                                            <h5 style="color:#717171; margin-bottom:10px;">Payment methods:</h5>
+                                            <h5>Payment methods:</h5>
                                             @php
                                             $payment_methods = $user->payment_methods ? explode(',', $user->payment_methods) : [];
                                             @endphp
