@@ -22,7 +22,7 @@
     color: white;
     text-transform: uppercase;
 }
-
+.admin-profile-box .requied_sec {box-shadow: none; padding-bottom: 0;}
 .pending {
     background-color: #ffc107; /* Blue color for pending */
 }
@@ -50,14 +50,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    border-radius: 8px;
+    border: 2px solid #CFCFCF;
+    background: #FFF;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 4px;
+    gap: 5px;
 }
 
-.document span {
+/* .document span {
     font-size: 14px;
     margin-bottom: 10px;
-}
+} */
 
-.upload-btn {
+/* .upload-btn {
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -72,7 +81,7 @@
     margin-left: 5px;
     width: 16px;
     height: 16px;
-}
+} */
 
 .form-group {
     position: relative;
@@ -106,7 +115,7 @@
     font-size: 14px;
 }
 .requied_sec .upload-section {flex-wrap: wrap;}
-.requied_sec_row .document {
+/* .requied_sec_row .document {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,22 +123,36 @@
     border-radius: 8px;
     padding: 12px;
     justify-content: space-around;
-}
+} */
 .requied_sec_row .document span {
-    margin-bottom: 0;
     color: #717171;
-    font-size: 16px;
-    margin-right: 0px;
+    color: #000000;
+    padding: 4px 20px;
+    font-size: 12px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20), 0 5px 5px rgba(0,0,0,0.20);
+
+    cursor: pointer;
+    background-color: #FDFFFA;
+    border-radius: 5px;   
 }
+.requied_sec_row .document span:hover {
+    background-color: #52D017;
+    color:#ffffff;
+}
+.requied_sec_row .document span:hover svg path {fill:#ffffff;}
 .requied_sec_row {
     width: 49%;
 }
-.requied_sec_row .upload-btn {
+/* .requied_sec_row .upload-btn {
     box-shadow: 0px 0px 13px 5px #cfcfcf9c;
     font-size: 15px;
     background: #fff;
     padding: 6px 17px;
-}
+} */
 .info_sec {
     margin-left: 10px; position: relative;
 }
@@ -255,7 +278,7 @@ div#spam-banner {
     margin-bottom: 4px;
     gap: 5px;
 }
-.send-link {
+.requied_sec_row .document span.send-link {
     border-radius: 5px;
     background: #52D017;
     box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20);
@@ -291,6 +314,9 @@ div#spam-banner {
 }
 /* end 16-09-2024 */
 
+@media(max-width: 1600px){
+    .requied_sec_row {width: 100%;}
+}
 @media(max-width: 1199px){
     .document-list {
         display: flex;
@@ -303,13 +329,13 @@ div#spam-banner {
         font-size: 14px;
         text-align: right;
     }
-    .wd-profile-form .form-group span {
+    /* .wd-profile-form .form-group span {
         font-size: 14px;
         width: 68%;
-    }
-    .requied_sec_row .document {
+    } */
+    /* .requied_sec_row .document {
         padding: 10px 8px;
-    }
+    } */
     .requied_sec_row .document label.addmore_btn {
         flex-wrap: wrap;
         font-size: 14px;
@@ -331,9 +357,9 @@ div#spam-banner {
         flex-wrap: wrap;
     }
     /* start 16-09-2024 */
-        .wd-profile-form .form-group span {
+        /* .wd-profile-form .form-group span {
         width: 100%;
-        }
+        } */
     /* end 16-09-2024 */
     .wd-profile-form .form-group label.addmore_btn span {
         width: auto;
@@ -342,6 +368,7 @@ div#spam-banner {
 }
 
 @media(max-width: 767px){
+    .upload-section .requied_sec_row:first-child .form-group {margin-bottom: 0;}
     .requied_sec_row {
         width: 100%;
     }
@@ -551,8 +578,8 @@ div#spam-banner {
                                     </div>
                                     @endif
                                     @if(($user->is_status != 'approved' && $user->is_status != 'pending') || ($user->driver_license == null || $user->goods_in_transit_insurance == null))
-                                    <div class="requied_sec" style="{{ $user->is_status == 'approved' ? 'display:none' : '' }}"> 
-                                        <h2>Required Documents 
+                                    <div class="requied_sec" style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}"> 
+                                        <h2 class="upload-heading">Upload Documents: 
                                         <div class="info_sec">
                                             <span class="info-popup">
                                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> 
@@ -567,13 +594,13 @@ div#spam-banner {
                                                 </div>
                                             </div>
                                         </h2>
-                                        <p class="subtitle">You must upload your documents before you can start bidding for jobs.</p>
+                                        <p class="subtitle">You must upload your documents before you can start bidding.</p>
                                         <div class="upload-section">
                                             <div class="requied_sec_row">
                                                 <div class="form-group">
                                                     <div class="document">
                                                         <!-- <span>Valid driving license</span> -->
-                                                        <label for="driver_license" class="addmore_btn" id="add" title="Click to upload the document">
+                                                        <label for="driver_license" class="addmore_btn font-weight-light" id="add" title="Click to upload the document">
                                                             Valid driving license
                                                             <span class="upload-btn">Upload 
                                                                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -589,7 +616,7 @@ div#spam-banner {
                                             <div class="requied_sec_row">
                                                 <div class="form-group">
                                                     <div class="document">
-                                                        <label for="goods_in_transit_insurance" class="addmore_btn" id="add" title="Click to upload the document">
+                                                        <label for="goods_in_transit_insurance" class="addmore_btn font-weight-light" id="add" title="Click to upload the document">
                                                         Goods in transit insurance
                                                         <!-- <span>Goods in transit insurance</span> -->
                                                             <span class="upload-btn">Upload 
@@ -620,62 +647,30 @@ div#spam-banner {
                                                 </div>
                                             </div> -->
                                         </div>
+
+                                            <h2 class="upload-heading">Verify Email:</h2>
+                                            <p class="subtitle">You must verify your email address before you can start bidding.</p>
+                                            <div class="upload-section">
+                                                <div class="requied_sec_row">
+                                                    <div class="form-group">
+                                                        <div class="document">
+                                                            <label for="driver_license" class="font-weight-light" title="Click to upload the document">
+                                                                Verify your email address
+                                                                <span class="send-link">Send Link</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                     </div>
                                     @endif
-                                    {{-- @if(isMobile()) --}}
-                                        <div class="row py-4 px-3">
-                                            <div class="col-xl-6 px-0 px-xl-3">
-                                                <div class="document-wrapper">
-                                                    <h4 class="upload-heading">Upload Documents:</h4>
-                                                    <p class="sub_heading">You must upload your documents before you can start bidding.</p>
-                                                    <div class="row px-0 doc_wraper">
-                                                        <div class="col-12 px-0 px-sm-3">
-                                                            <div class="doc-wrap">
-                                                                <span class="font-weight-light">Valid driving license</span>
-                                                                <div class="upload-btn-wrapper">
-                                                                    <button class="btn">Upload
-                                                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                        </svg>                                                                    
-                                                                    </button>
-                                                                    <input type="file" name="myfile" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row px-0 doc_wraper">
-                                                        <div class="col-12 px-0 px-sm-3">
-                                                            <div class="doc-wrap">
-                                                                <span class="font-weight-light">Goods in transit insurance</span>
-                                                                <div class="upload-btn-wrapper">
-                                                                    <button class="btn">Upload
-                                                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                        </svg>                                                                    
-                                                                    </button>
-                                                                    <input type="file" name="myfile" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 px-0 px-xl-3">
-                                                <div class="document-wrapper mt-4 mt-xl-0">
-                                                    <h4 class="upload-heading">Verify Email:</h4>
-                                                    <p class="sub_heading">You must verify your email address before you can start bidding.</p>
-                                                    <div class="row px-0 doc_wraper">
-                                                        <div class="col-12 px-0 px-sm-3">
-                                                            <div class="doc-wrap mb-3 mb-md-0">
-                                                                <span class="font-weight-light">Verify your email address</span>
-                                                                <button class="send-link">Send link</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {{-- @endif --}}
+
+
+
+
+
                                     @if(isMobile())
                                         <div class="wd-admin-profile">
                                             <div class="admin-profile-top">
@@ -779,58 +774,6 @@ div#spam-banner {
                                     </div>
                                     @endif -->
                                 @endif
-                                    {{-- <div class="row py-4 d-none d-md-flex">
-                                        <div class="col-xl-6 px-0">
-                                            <div class="document-wrapper">
-                                                <h4 class="upload-heading">Upload Documents:</h4>
-                                                <p class="sub_heading">You must upload your documents before you can start bidding.</p>
-                                                <div class="row px-0 doc_wraper">
-                                                    <div class="col-12 px-0 px-sm-3">
-                                                        <div class="doc-wrap">
-                                                            <span class="font-weight-light">Valid driving license</span>
-                                                            <div class="upload-btn-wrapper">
-                                                                <button class="btn">Upload
-                                                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                    </svg>                                                                    
-                                                                </button>
-                                                                <input type="file" name="myfile" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row px-0 doc_wraper">
-                                                    <div class="col-12 px-0 px-sm-3">
-                                                        <div class="doc-wrap">
-                                                            <span class="font-weight-light">Goods in transit insurance</span>
-                                                            <div class="upload-btn-wrapper">
-                                                                <button class="btn">Upload
-                                                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M3.875 9.375C3.875 8.96079 3.53921 8.625 3.125 8.625C2.71079 8.625 2.375 8.96079 2.375 9.375H3.875ZM3.125 10H2.375H3.125ZM12.625 9.375C12.625 8.96079 12.2892 8.625 11.875 8.625C11.4608 8.625 11.125 8.96079 11.125 9.375H12.625ZM8.08565 3.59352C8.34441 3.27007 8.29197 2.79811 7.96852 2.53935C7.64507 2.28059 7.17311 2.33303 6.91435 2.65648L8.08565 3.59352ZM4.41435 5.78148C4.15559 6.10493 4.20803 6.57689 4.53148 6.83565C4.85493 7.09441 5.32689 7.04197 5.58565 6.71852L4.41435 5.78148ZM8.08565 2.65648C7.82689 2.33303 7.35493 2.28059 7.03148 2.53935C6.70803 2.79811 6.65559 3.27007 6.91435 3.59352L8.08565 2.65648ZM9.41435 6.71852C9.67311 7.04197 10.1451 7.09441 10.4685 6.83565C10.792 6.57689 10.8444 6.10493 10.5857 5.78148L9.41435 6.71852ZM8.25 3.125C8.25 2.71079 7.91421 2.375 7.5 2.375C7.08579 2.375 6.75 2.71079 6.75 3.125H8.25ZM6.75 10C6.75 10.4142 7.08579 10.75 7.5 10.75C7.91421 10.75 8.25 10.4142 8.25 10H6.75ZM2.375 9.375V10H3.875V9.375H2.375ZM2.375 10C2.375 11.4497 3.55025 12.625 5 12.625V11.125C4.37868 11.125 3.875 10.6213 3.875 10H2.375ZM5 12.625H10V11.125H5V12.625ZM10 12.625C11.4497 12.625 12.625 11.4497 12.625 10H11.125C11.125 10.6213 10.6213 11.125 10 11.125V12.625ZM12.625 10V9.375H11.125V10H12.625ZM6.91435 2.65648L4.41435 5.78148L5.58565 6.71852L8.08565 3.59352L6.91435 2.65648ZM6.91435 3.59352L9.41435 6.71852L10.5857 5.78148L8.08565 2.65648L6.91435 3.59352ZM6.75 3.125V10H8.25V3.125H6.75Z" fill="#52D017"/>
-                                                                    </svg>                                                                    
-                                                                </button>
-                                                                <input type="file" name="myfile" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 px-0">
-                                            <div class="document-wrapper mt-4 mt-xl-0">
-                                                <h4 class="upload-heading">Verify Email:</h4>
-                                                <p class="sub_heading">You must verify your email address before you can start bidding.</p>
-                                                <div class="row px-0 doc_wraper">
-                                                    <div class="col-12 px-0 px-sm-3">
-                                                        <div class="doc-wrap">
-                                                            <span class="font-weight-light">Verify your email address</span>
-                                                            <button class="send-link">Send link</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                     <h3 class="adjust-space-mobile-padding">Account details</h3>
 
                                     <div class="row align-items-end adjust-space-mobile-padding">
@@ -900,6 +843,18 @@ div#spam-banner {
                                                     <div class="form-group">
                                                         <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
                                                         <label for="check3"><span>Outbid Alerts</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-group">
+                                                        <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
+                                                        <label for="check3"><span>Summary of leads</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-group">
+                                                        <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
+                                                        <label for="check3"><span>Saved search alerts</span></label>
                                                     </div>
                                                 </li>
                                             </ul>
