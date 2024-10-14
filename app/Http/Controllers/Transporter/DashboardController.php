@@ -949,6 +949,11 @@ class DashboardController extends WebController
         }
         return response()->json(['success' => true,]);
     }
+    public function howItWorks(Request $request)
+    {
+
+        return view('transporter.howItWorks.index');
+    }
 
     public function logout()
     {

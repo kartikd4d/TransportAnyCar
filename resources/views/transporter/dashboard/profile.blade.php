@@ -22,7 +22,7 @@
     color: white;
     text-transform: uppercase;
 }
-
+.admin-profile-box .requied_sec {box-shadow: none; padding-bottom: 0;}
 .pending {
     background-color: #ffc107; /* Blue color for pending */
 }
@@ -50,14 +50,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    border-radius: 8px;
+    border: 2px solid #CFCFCF;
+    background: #FFF;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 4px;
+    gap: 5px;
 }
 
-.document span {
+/* .document span {
     font-size: 14px;
     margin-bottom: 10px;
-}
+} */
 
-.upload-btn {
+/* .upload-btn {
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -72,7 +81,7 @@
     margin-left: 5px;
     width: 16px;
     height: 16px;
-}
+} */
 
 .form-group {
     position: relative;
@@ -109,7 +118,7 @@
     font-size: 14px;
 }
 .requied_sec .upload-section {flex-wrap: wrap;}
-.requied_sec_row .document {
+/* .requied_sec_row .document {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -117,22 +126,36 @@
     border-radius: 8px;
     padding: 12px;
     justify-content: space-around;
-}
+} */
 .requied_sec_row .document span {
-    margin-bottom: 0;
     color: #717171;
-    font-size: 16px;
-    margin-right: 0px;
+    color: #000000;
+    padding: 4px 20px;
+    font-size: 12px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20), 0 5px 5px rgba(0,0,0,0.20);
+
+    cursor: pointer;
+    background-color: #FDFFFA;
+    border-radius: 5px;   
 }
+.requied_sec_row .document span:hover {
+    background-color: #52D017;
+    color:#ffffff;
+}
+.requied_sec_row .document span:hover svg path {fill:#ffffff;}
 .requied_sec_row {
     width: 49%;
 }
-.requied_sec_row .upload-btn {
+/* .requied_sec_row .upload-btn {
     box-shadow: 0px 0px 13px 5px #cfcfcf9c;
     font-size: 15px;
     background: #fff;
     padding: 6px 17px;
-}
+} */
 .info_sec {
     margin-left: 10px; position: relative;
 }
@@ -211,6 +234,70 @@ div#spam-banner {
 
 /* start 16-09-2024 */
 
+.upload-heading {
+    font-weight: 600;
+}
+.sub_heading {
+    font-size: 12px;
+    font-weight: 300;
+    color:#717171;
+}
+
+.upload-btn-wrapper {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20), 0 5px 5px rgba(0,0,0,0.20);
+    background-color: #FDFFFA;
+    border-radius: 5px;
+}
+
+.upload-btn-wrapper .btn {
+    color: #000000;
+    padding: 4px 20px;
+    font-size: 12px;
+    font-weight: 300;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.upload-btn-wrapper input[type=file] {
+  /* font-size: 100px; */
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.doc-wrap {
+    border-radius: 8px;
+    border: 2px solid #CFCFCF;
+    background: #FFF;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 4px;
+    gap: 5px;
+}
+.requied_sec_row .document span.send-link {
+    border-radius: 5px;
+    background: #52D017;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.20);
+    font-size: 12px;
+    color:#ffffff;
+    border: none;
+    padding: 5px 25px;
+}
+/* .adjust-space-mobile-padding {padding-left: 60px!important; padding-right: 60px!important;} */
+.wd-cstm-check li {max-width: 33.333%; flex: 0 0 33.333%;}
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
+    .doc-wrap {flex-direction: column; align-items: flex-start;}
+}
 @media screen and (min-width: 768px) and (max-width: 1100px) {
 .admin-profile-box .col-lg-8 {
     flex: auto;
@@ -243,6 +330,15 @@ div#spam-banner {
 
 
 
+
+
+
+
+
+
+@media(max-width: 1600px){
+    .requied_sec_row {width: 100%;}
+}
 @media(max-width: 1199px){
     .document-list {
         display: flex;
@@ -255,13 +351,13 @@ div#spam-banner {
         font-size: 14px;
         text-align: right;
     }
-    .wd-profile-form .form-group span {
+    /* .wd-profile-form .form-group span {
         font-size: 14px;
         width: 68%;
-    }
-    .requied_sec_row .document {
+    } */
+    /* .requied_sec_row .document {
         padding: 10px 8px;
-    }
+    } */
     .requied_sec_row .document label.addmore_btn {
         flex-wrap: wrap;
         font-size: 14px;
@@ -282,58 +378,54 @@ div#spam-banner {
     .wd-admin-profile .wd-profl-botm {
         flex-wrap: wrap;
     }
-
-
-/* start 16-09-2024 */
-    .wd-profile-form .form-group span {
-      width: 100%;
+    /* start 16-09-2024 */
+        /* .wd-profile-form .form-group span {
+        width: 100%;
+        } */
+    /* end 16-09-2024 */
+    .wd-profile-form .form-group label.addmore_btn span {
+        width: auto;
     }
-/* end 16-09-2024 */
-
-
-.wd-profile-form .form-group label.addmore_btn span {
-    width: auto;
-}
-
-
+    .wd-profile-form .form-control {font-size: 18px;}
 }
 
 
 
 @media(max-width: 767px){
-.requied_sec_row {
-    width: 100%;
-}
-.info_sec_details {
-    left: auto;
-    right: -30px;
-}
-.info_sec_details:before {
-    right: 31px;left: auto;
-}
-.requied_sec {
-    margin-right: -15px;
-    margin-left: -15px;
-}
-.requied_sec_row .document {
-    justify-content: space-between;
-}
-.requied_sec_row .document span {
-    font-size: 15px;
-    margin-right: 0;
-}
-.requied_sec h2 {
-    align-items: center;
-}
-.requied_sec {
-    margin-top: 15px;
-}
-.document-item .col-lg-6 .form-group {
-    text-align: center;
-}
-.document-item {
-    width: 100%;
-}
+    .upload-section .requied_sec_row:first-child .form-group {margin-bottom: 0;}
+    .requied_sec_row {
+        width: 100%;
+    }
+    .info_sec_details {
+        left: auto;
+        right: -30px;
+    }
+    .info_sec_details:before {
+        right: 31px;left: auto;
+    }
+    .requied_sec {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .requied_sec_row .document {
+        justify-content: space-between;
+    }
+    .requied_sec_row .document span {
+        font-size: 15px;
+        margin-right: 0;
+    }
+    .requied_sec h2 {
+        align-items: center;
+    }
+    .requied_sec {
+        margin-top: 15px;
+    }
+    .document-item .col-lg-6 .form-group {
+        text-align: center;
+    }
+    .document-item {
+        width: 100%;
+    }
 
 #passwordIcon {
     top: 16px;
@@ -515,8 +607,8 @@ div#spam-banner {
                                     </div>
                                     @endif
                                     @if(($user->is_status != 'approved' && $user->is_status != 'pending') || ($user->driver_license == null || $user->goods_in_transit_insurance == null))
-                                    <div class="requied_sec" style="{{ $user->is_status == 'approved' ? 'display:none' : '' }}"> 
-                                        <h2>Required Documents 
+                                    <div class="requied_sec" style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}"> 
+                                        <h2 class="upload-heading">Upload Documents: 
                                         <div class="info_sec">
                                             <span class="info-popup">
                                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> 
@@ -531,13 +623,13 @@ div#spam-banner {
                                                 </div>
                                             </div>
                                         </h2>
-                                        <p class="subtitle">You must upload your documents before you can start bidding for jobs.</p>
+                                        <p class="subtitle">You must upload your documents before you can start bidding.</p>
                                         <div class="upload-section">
                                             <div class="requied_sec_row">
                                                 <div class="form-group">
                                                     <div class="document">
                                                         <!-- <span>Valid driving license</span> -->
-                                                        <label for="driver_license" class="addmore_btn" id="add" title="Click to upload the document">
+                                                        <label for="driver_license" class="addmore_btn font-weight-light" id="add" title="Click to upload the document">
                                                             Valid driving license
                                                             <span class="upload-btn">Upload 
                                                                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -553,7 +645,7 @@ div#spam-banner {
                                             <div class="requied_sec_row">
                                                 <div class="form-group">
                                                     <div class="document">
-                                                        <label for="goods_in_transit_insurance" class="addmore_btn" id="add" title="Click to upload the document">
+                                                        <label for="goods_in_transit_insurance" class="addmore_btn font-weight-light" id="add" title="Click to upload the document">
                                                         Goods in transit insurance
                                                         <!-- <span>Goods in transit insurance</span> -->
                                                             <span class="upload-btn">Upload 
@@ -584,8 +676,30 @@ div#spam-banner {
                                                 </div>
                                             </div> -->
                                         </div>
+
+                                            <h2 class="upload-heading">Verify Email:</h2>
+                                            <p class="subtitle">You must verify your email address before you can start bidding.</p>
+                                            <div class="upload-section">
+                                                <div class="requied_sec_row">
+                                                    <div class="form-group">
+                                                        <div class="document">
+                                                            <label for="driver_license" class="font-weight-light" title="Click to upload the document">
+                                                                Verify your email address
+                                                                <span class="send-link">Send Link</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                     </div>
                                     @endif
+
+
+
+
+
                                     @if(isMobile())
                                     <div class="wd-admin-profile">
                                         <div class="admin-profile-top">
@@ -688,8 +802,8 @@ div#spam-banner {
                                         </div>
                                     </div>
                                     @endif -->
-                                    @endif
-                                    <h3>Account details</h3>
+                                @endif
+                                    <h3 class="adjust-space-mobile-padding">Account details</h3>
 
                                     <div class="row align-items-end">
                                         <div class="col-lg-6">
@@ -758,6 +872,18 @@ div#spam-banner {
                                                     <div class="form-group">
                                                         <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
                                                         <label for="check3"><span>Outbid Alerts</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-group">
+                                                        <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
+                                                        <label for="check3"><span>Summary of leads</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-group">
+                                                        <input type="checkbox" id="check3" data-email-type="outbid_alert" {{ $user->outbid_email_unsubscribe == 1 ? 'checked' : '' }}>
+                                                        <label for="check3"><span>Saved search alerts</span></label>
                                                     </div>
                                                 </li>
                                             </ul>

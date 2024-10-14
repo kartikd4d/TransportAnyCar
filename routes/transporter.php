@@ -66,11 +66,13 @@ Route::group(['as' => 'transporter.'], function () {
         Route::post('/watchlist/store', 'WatchlistController@watchlistStore')->name('watchlist.store');
         Route::post('/watchlist/remove', 'WatchlistController@watchlistRemove')->name('watchlist.remove');
         // end d4d developer - k
-         // D4dDeveoper-r 
-         Route::post('save/search','DashboardController@savesearch')->name('save.search');
-         Route::get('save/search','DashboardController@savesearchview')->name('view.save.search');
-         Route::post('save/search/delete','DashboardController@savesearchdlt')->name('delete.save.search');
-         // end
+        // D4dDeveoper-r 
+        Route::post('save/search', 'DashboardController@savesearch')->name('save.search');
+        Route::get('save/search', 'DashboardController@savesearchview')->name('view.save.search');
+        Route::post('save/search/delete', 'DashboardController@savesearchdlt')->name('delete.save.search');
+        // end
+
+        Route::get('howItWorks', 'DashboardController@howItWorks')->name('howItWork');
     });
 
     Route::group(['middleware' => ['auth:transporter']], function () {
