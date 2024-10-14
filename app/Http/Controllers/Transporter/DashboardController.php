@@ -308,10 +308,21 @@ class DashboardController extends WebController
     {
         $user_data = Auth::guard('transporter')->user();
         $my_quotes = QuoteByTransporter::where('user_id', $user_data->id)->pluck('id');
-        $feedbacks = Feedback::query();
-        $feedbacks = $feedbacks->whereIn('quote_by_transporter_id', $my_quotes);
-        $feedbacks = $feedbacks->paginate(10);
-        $params['html'] = view('transporter.dashboard.partial.feedback_listing', compact('feedbacks'))->render();
+        $all_feedbacks = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->get();
+        $feedbacks = Feedback::whereIn('quote_by_transporter_id', $my_quotes)->paginate(10);
+        $total_feedbacks = $all_feedbacks->count();
+
+        $total_feedbacks = $feedbacks->count();
+
+
+        $ratings = collect([5, 4, 3, 2, 1])->mapWithKeys(function ($rating) use ($all_feedbacks, $total_feedbacks) {
+            $count = $all_feedbacks->where('rating', $rating)->count();
+            $percentage = $total_feedbacks > 0 ? ($count / $total_feedbacks) * 100 : 0;
+            return ['star_'.$rating  =>  $percentage];
+        });
+        
+        // return $ratings['star_5'];
+        $params['html'] = view('transporter.dashboard.partial.feedback_listing', compact('feedbacks','ratings'))->render();
         if ($request->ajax()) {
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $params]);
         }

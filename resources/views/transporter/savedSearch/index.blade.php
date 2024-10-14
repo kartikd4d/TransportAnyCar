@@ -1813,7 +1813,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <h3 class="d-block text-center">Are you sure you want to <br /> cancel your bid ?</h3>
+                                            <h3 class="d-block text-center">Are you sure you want to delete this search?</h3>
                                         </div>
                                         <div class="modal-footer d-flex flex-wrap align-items-center p-0">
                                             <a href="javascript:;" class="no_btn" data-dismiss="modal">No</a>

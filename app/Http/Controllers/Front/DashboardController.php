@@ -452,7 +452,7 @@ class DashboardController extends WebController
         // Determine the type of feedback and get the ratings array
         // $feedbackType = null;
         // $ratings = null;
-
+// return $request->all();
         $feedbackComment = $request->input('feedback');
             $quoteByTransporterId = $request->input('quote_by_transporter_id');
             $rating=$request->input('rating');

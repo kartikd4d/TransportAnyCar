@@ -188,14 +188,6 @@
 
                                             <div class="wd-transport-rght">
                                                 <ul>
-                                                    {{-- <li>
-                                                        <p>Positive feedback:</p>
-                                                        <span class="wd-black">{{ number_format($positive_feedback_percentage, 0) }}%</span>
-                                                    </li> --}}
-                                                    <!-- <li>
-                                                                    <p>Completed jobs:</p>
-                                                                    <span>{{ $completed_job }}</span>
-                                                                </li> -->
                                                     <li>
                                                         <p>Insurance:</p>
                                                         <span>
@@ -246,7 +238,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row mx-0">
                                 <div class="col-lg-12">
@@ -296,17 +287,6 @@
             fetch_data(page);
         });
 
-        // $(document).on('submit', '#searchForm', function (event) {
-        //     event.preventDefault();
-        //     fetch_data(1);
-        // });
-
-        // $('#search').on('input', function() {
-        //     var search = $(this).val();
-        //     if (search === '') {
-        //         fetch_data(1);
-        //     }
-        // });
         $(document).ready(function() {
             $(document).on('click', '.read_more_show', function() {
                 var parentTr = $(this).closest('tr');
