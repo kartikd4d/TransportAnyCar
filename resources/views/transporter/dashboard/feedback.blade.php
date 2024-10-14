@@ -180,7 +180,7 @@
 
                                                 </ul>
                                                 <div>Member since: <span
-                                                        class="font-weight-light user-feedback-member-from">12/08/2024</span>
+                                                        class="font-weight-light user-feedback-member-from">{{$user->created_at->format('m/d/Y')}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,7 +191,7 @@
                                                     <li>
                                                         <p>Insurance:</p>
                                                         <span>
-                                                            @if ($user->insurance_cover)
+                                                            @if ($user->goods_in_transit_insurance)
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13"
                                                                     height="13" viewBox="0 0 13 13" fill="none">
                                                                     <path
