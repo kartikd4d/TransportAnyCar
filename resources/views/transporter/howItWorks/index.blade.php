@@ -60,7 +60,7 @@
                     <div class="admin_job_bx find_trans_newjob list_of_items" id="style-1">
                         <div class="admin_job_top flex-column header-banner">
                             <h3 class="mb-md-3">How it works</h3>
-                            <p class="pera_srch" style="border-bottom: 1px solid #CFCFCF; width: 100px; margin: 0 auto 50px ;"> </p>
+                            <p class="pera_srch d-md-none" style="border-bottom: 1px solid #CFCFCF; width: 100px; margin: 0 auto 50px ;"> </p>
                         </div>
 
                         <div class="container">
