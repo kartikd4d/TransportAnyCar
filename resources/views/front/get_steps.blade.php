@@ -453,11 +453,19 @@
                                 </div>
                                 <small class="exm_text d-block">e.g. abc@gmail.com</small>
                             </div>
+                            <div class="form-group">
+                                <div class="inputgrp position-relative">
+                                      <span class="wd_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path opacity="0.4" d="M20 14.3779C20 17.4778 17.76 19.9889 14.97 20H14.96H5.05C2.27 20 0 17.5001 0 14.4002V14.3891C0 14.3891 0.006 9.47144 0.014 6.99819C0.015 6.53376 0.495 6.27377 0.822 6.56265C3.198 8.65703 7.447 12.4758 7.5 12.5258C8.21 13.158 9.11 13.5146 10.03 13.5146C10.95 13.5146 11.85 13.158 12.56 12.5136C12.613 12.4747 16.767 8.77036 19.179 6.64154C19.507 6.35155 19.989 6.61154 19.99 7.07486C20 9.52922 20 14.3779 20 14.3779Z" fill="#717E92" />
+                                          <path d="M19.4761 2.97101C18.6101 1.15774 16.9061 0 15.0301 0H5.05009C3.17409 0 1.47009 1.15774 0.60409 2.97101C0.41009 3.37655 0.50209 3.88209 0.82509 4.16875L8.25009 10.7674C8.77009 11.2341 9.40009 11.4663 10.0301 11.4663C10.0341 11.4663 10.0371 11.4663 10.0401 11.4663C10.0431 11.4663 10.0471 11.4663 10.0501 11.4663C10.6801 11.4663 11.3101 11.2341 11.8301 10.7674L19.2551 4.16875C19.5781 3.88209 19.6701 3.37655 19.4761 2.97101Z" fill="#717E92" />
+                                        </svg>
+                                      </span>
+                                    <input type="mobile" class="form-control wizard-required mobile" placeholder="Mobile Number" name="mobile" value="{{ $user->mobile ?? '' }}"/>
+                                </div>
+                                <small class="exm_text d-block"></small>
+                            </div>
                             <div class="form-group wizard_btngrp">
-                                {{--<a href="getsteps.html" class="wd_nextbtn form-wizard-submit">Get Instant Quotes <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.4848 1.62598L8.35854 8.49971L1.4848 15.3734" stroke="white" stroke-width="2.06212" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </a>--}}
                                 <button type="submit" class="wd_nextbtn form-wizard-submit" id="SaveAccount">Get Instant Quotes <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1.4848 1.62598L8.35854 8.49971L1.4848 15.3734" stroke="white" stroke-width="2.06212" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
@@ -621,6 +629,10 @@
                     required: "Please enter vehicle model.",
                     noPhoneOrEmail: "Please enter vehicle model."
                 },
+                mobile: {
+                required: "Mobile number is required",
+                noPhoneOrEmail: "Please enter a valid mobile number"
+            }
                 //starts_drives: {required: "Please select starts drives."},
                 vehicle_make_1: {required: "Please enter vehicle make."},
                 vehicle_model_1: {required: "Please enter vehicle model."},
