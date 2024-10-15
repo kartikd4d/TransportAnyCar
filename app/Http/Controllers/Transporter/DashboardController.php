@@ -586,7 +586,6 @@ class DashboardController extends WebController
     public function updateEmailPreference(Request $request)
     {
         $user = Auth::guard('transporter')->user();
-
         if ($user) {
             if ($request->email_type == 'job_alert') {
                 $status = $user->update(['job_email_preference' => $request->value]);
@@ -596,7 +595,24 @@ class DashboardController extends WebController
                 } else {
                     return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
                 }
-            } else {
+            } elseif ($request->email_type == 'summary_of_leads'){
+                $status = $user->update(['summary_of_leads' => $request->value]);
+                if ($status) {
+                    return response()->json(['status' => true,  'message' => 'Preference updated successfully.']);
+                } else {
+                    return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
+                }
+            }
+            elseif($request->email_type == 'saved_search_alerts'){
+                $status = $user->update(['saved_search_alerts' => $request->value]);
+                if ($status) {
+                    return response()->json(['status' => true,  'message' => 'Preference updated successfully.']);
+                } else {
+                    return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
+                }
+
+            }
+            else {
                 return response()->json(['status' => false, 'message' => 'Invalid email type.']);
             }
         } else {
