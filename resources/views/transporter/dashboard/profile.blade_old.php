@@ -45,7 +45,7 @@
         .subtitle {
             font-size: 14px;
             color: #777;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .upload-section {
@@ -69,26 +69,26 @@
         }
 
         /* .document span {
-                        font-size: 14px;
-                        margin-bottom: 10px;
-                    } */
+                            font-size: 14px;
+                            margin-bottom: 10px;
+                        } */
 
         /* .upload-btn {
-                        background-color: #f0f0f0;
-                        border: 1px solid #ddd;
-                        border-radius: 5px;
-                        padding: 5px 10px;
-                        font-size: 14px;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                    }
+                            background-color: #f0f0f0;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                            padding: 5px 10px;
+                            font-size: 14px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                        }
 
-                    .upload-btn img {
-                        margin-left: 5px;
-                        width: 16px;
-                        height: 16px;
-                    } */
+                        .upload-btn img {
+                            margin-left: 5px;
+                            width: 16px;
+                            height: 16px;
+                        } */
 
         .form-group {
             position: relative;
@@ -116,6 +116,9 @@
 
         /* new css*/
 
+        .admin-profile-box>.row {
+            margin: 0;
+        }
 
         .requied_sec h2 {
             font-size: 24px;
@@ -132,14 +135,14 @@
         }
 
         /* .requied_sec_row .document {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        border: 1px solid #CFCFCF;
-                        border-radius: 8px;
-                        padding: 12px;
-                        justify-content: space-around;
-                    } */
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            border: 1px solid #CFCFCF;
+                            border-radius: 8px;
+                            padding: 12px;
+                            justify-content: space-around;
+                        } */
         .requied_sec_row .document span {
             color: #717171;
             color: #000000;
@@ -170,11 +173,11 @@
         }
 
         /* .requied_sec_row .upload-btn {
-                        box-shadow: 0px 0px 13px 5px #cfcfcf9c;
-                        font-size: 15px;
-                        background: #fff;
-                        padding: 6px 17px;
-                    } */
+                            box-shadow: 0px 0px 13px 5px #cfcfcf9c;
+                            font-size: 15px;
+                            background: #fff;
+                            padding: 6px 17px;
+                        } */
         .info_sec {
             margin-left: 10px;
             position: relative;
@@ -340,7 +343,18 @@
             flex: 0 0 33.333%;
         }
 
-        @media screen and (min-width: 1200px) and (max-width: 1600px) {
+        @media screen and (min-width: 1200px) {
+            .admin-profile-box>.row {
+                margin-right: -16px;
+                margin-left: -16px;
+            }
+        }
+
+        @media screen and (min-width: 992px) and (max-width: 1600px) {
+            .upload_docs .upload-section .requied_sec_row {
+                width: 100%;
+            }
+
             .doc-wrap {
                 flex-direction: column;
                 align-items: flex-start;
@@ -348,22 +362,26 @@
         }
 
         @media screen and (min-width: 768px) and (max-width: 1100px) {
+
+            /* .upload_docs .upload-section .requied_sec_row {
+                    width:49%;
+                } */
             .admin-profile-box .col-lg-8 {
                 flex: auto;
                 max-width: 100%;
             }
 
-            .wd-profile-form form#form_account {
-                padding-left: 33.33%;
-            }
+            /* .wd-profile-form form#form_account {
+                    padding-left: 33.33%;
+                } */
 
-            .wd-admin-profile {
-                max-width: 33.333333%;
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                margin-left: 15px;
-            }
+            /* .wd-admin-profile {
+                    max-width: 33.333333%;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    margin-left: 15px;
+                } */
 
             .admin-profile-box a.logout_txt.mob_view {
                 display: block;
@@ -378,24 +396,11 @@
         }
 
         /* end 16-09-2024 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-        @media(max-width: 1600px) {
-            .requied_sec_row {
-                width: 100%;
-            }
-        }
+        /* @media(max-width: 1600px) {
+                .requied_sec_row {
+                    width: 100%;
+                }
+            } */
 
         @media(max-width: 1199px) {
             .document-list {
@@ -413,12 +418,12 @@
             }
 
             /* .wd-profile-form .form-group span {
-                            font-size: 14px;
-                            width: 68%;
-                        } */
+                                font-size: 14px;
+                                width: 68%;
+                            } */
             /* .requied_sec_row .document {
-                            padding: 10px 8px;
-                        } */
+                                padding: 10px 8px;
+                            } */
             .requied_sec_row .document label.addmore_btn {
                 flex-wrap: wrap;
                 font-size: 14px;
@@ -436,6 +441,24 @@
         }
 
         @media(max-width: 991px) {
+            .admin-profile-box .requied_sec {
+                padding: 0;
+            }
+
+            .wd-admin-profile {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+
+            .profile_content {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .admin-profile-box .requied_sec.verify_email_sec {
+                margin-bottom: 60px;
+            }
+
             .document-list {
                 margin-bottom: 15px !important;
             }
@@ -446,8 +469,8 @@
 
             /* start 16-09-2024 */
             /* .wd-profile-form .form-group span {
-                            width: 100%;
-                            } */
+                                width: 100%;
+                                } */
             /* end 16-09-2024 */
             .wd-profile-form .form-group label.addmore_btn span {
                 width: auto;
@@ -458,12 +481,11 @@
             }
         }
 
-
-
         @media(max-width: 767px) {
             .upload-section .requied_sec_row:first-child .form-group {
                 margin-bottom: 0;
             }
+
 
             .requied_sec_row {
                 width: 100%;
@@ -479,10 +501,10 @@
                 left: auto;
             }
 
-            .requied_sec {
-                margin-right: -15px;
-                margin-left: -15px;
-            }
+            /* .requied_sec {
+                    margin-right: -15px;
+                    margin-left: -15px;
+                } */
 
             .requied_sec_row .document {
                 justify-content: space-between;
@@ -555,9 +577,6 @@
             }
         }
 
-
-
-
         @media (max-width: 400px) {
             .info_sec_details {
                 left: 0;
@@ -602,66 +621,65 @@
                 <div class="profile_content">
                     <div class="admin-profile-box">
                         <div class="row">
-                            @if (!isMobile())
-                                <div class="col-lg-4 pr-0">
-                                    <div class="wd-admin-profile">
-                                        <div class="admin-profile-top">
-                                            <div class="admin-profile-area">
-                                                <div class="edit-profile-photo">
-                                                    <img src="@if ($user->profile_image) {{ checkFileExist($user->profile_image) }} @endif"
-                                                        alt="edit profile image" class="img-fluid profile-pic">
-                                                    <div class="p-image">
-                                                        <svg class="upload-button" width="15" height="13"
-                                                            viewBox="0 0 15 13" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                            {{-- @if (!isMobile()) --}}
+                            <div class="col-xl-4 pr-0 d-none d-xl-block">
+                                <div class="wd-admin-profile">
+                                    <div class="admin-profile-top">
+                                        <div class="admin-profile-area">
+                                            <div class="edit-profile-photo">
+                                                <img src="@if ($user->profile_image) {{ checkFileExist($user->profile_image) }} @endif"
+                                                    alt="edit profile image" class="img-fluid profile-pic">
+                                                <div class="p-image">
+                                                    <svg class="upload-button" width="15" height="13"
+                                                        viewBox="0 0 15 13" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z"
+                                                            fill="#52D017" />
+                                                    </svg>
+                                                    <input class="file-upload" type="file" accept="image/*">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h2>{{ $user->name }}</h2>
+                                                <a href="{{ route('transporter.logout') }}" class="logout_txt desk_view">
+                                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_650_1110)">
                                                             <path
-                                                                d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z"
-                                                                fill="#52D017" />
-                                                        </svg>
-                                                        <input class="file-upload" type="file" accept="image/*">
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h2>{{ $user->name }}</h2>
-                                                    <a href="{{ route('transporter.logout') }}"
-                                                        class="logout_txt desk_view">
-                                                        <svg width="18" height="18" viewBox="0 0 18 18"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <g clip-path="url(#clip0_650_1110)">
-                                                                <path
-                                                                    d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z"
-                                                                    fill="white"></path>
-                                                                <path
-                                                                    d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z"
-                                                                    fill="white"></path>
-                                                            </g>
-                                                            <defs>
-                                                                <clipPath id="clip0_650_1110">
-                                                                    <rect width="18" height="18" fill="white">
-                                                                    </rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                        </svg>
-                                                        Logout
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="wd-profl-botm">
-                                            <div class="wd-profl-lst">
-                                                <p>Jobs completed</p>
-                                                <span>{{ $jobs_completed_count }}</span>
-                                            </div>
-                                            <div class="wd-profl-lst">
-                                                <p>Total earnings</p>
-                                                <span>£{{ $total_earning_count }}</span>
+                                                                d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z"
+                                                                fill="white"></path>
+                                                            <path
+                                                                d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z"
+                                                                fill="white"></path>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_650_1110">
+                                                                <rect width="18" height="18" fill="white">
+                                                                </rect>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    Logout
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="wd-profl-botm">
+                                        <div class="wd-profl-lst">
+                                            <p>Jobs completed</p>
+                                            <span>{{ $jobs_completed_count }}</span>
+                                        </div>
+                                        <div class="wd-profl-lst">
+                                            <p>Total earnings</p>
+                                            <span>£{{ $total_earning_count }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            @endif
-                            <div class="col-lg-8">
-                                <div class="wd-profile-form">
+                            </div>
+                            {{-- @endif --}}
+                            <div class="col-xl-8">
+                                <div class="wd-profile-form pb-0 px-0">
                                     <form action="{{ route('transporter.profile_post') }}" name="form_account"
                                         id="form_account" method="post" autocomplete="off" enctype="multipart/form-data">
                                         @csrf
@@ -676,7 +694,7 @@
                                         @if (
                                             ($user->is_status != 'approved' && $user->is_status != 'pending') ||
                                                 ($user->driver_license == null || $user->goods_in_transit_insurance == null))
-                                            <div class="requied_sec"
+                                            <div class="requied_sec mb-0 upload_docs"
                                                 style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                                 <h2 class="upload-heading">Upload Documents:
                                                     <div class="info_sec">
@@ -705,8 +723,7 @@
                                                         </div>
                                                     </div>
                                                 </h2>
-                                                <p class="subtitle">You must upload your documents before you can start
-                                                    bidding.</p>
+                                                <p class="subtitle">You must upload your documents before you can start bidding.</p>
                                                 <div class="upload-section">
                                                     <div class="requied_sec_row">
                                                         <div class="form-group">
@@ -767,85 +784,110 @@
                                         @endif
                                     </form>
                                 </div>
+                                <div class="requied_sec mt-2 verify_email_sec"
+                                    style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
+                                    <h2 class="upload-heading">Verify Email:</h2>
+                                    <p class="subtitle">You must verify your email address before you can start
+                                        bidding.</p>
+                                    <div class="upload-section">
+                                        <div class="requied_sec_row w-100">
+                                            <div class="form-group">
+                                                <div class="document flex-row">
+                                                    <label for="email_verify" class="w-auto">
+                                                        <input type="email" name="email" id="email_verify"
+                                                            placeholder="Verify your email address"
+                                                            class="border-0 font-weight-light"
+                                                            title="Click to upload the document" />
+                                                    </label>
 
+                                                    <span class="send-link" id="sendLinkBtn"
+                                                        style="cursor: pointer;">Send Link</span>
 
-                                @if (isMobile())
-                                    <div class="wd-admin-profile">
-                                        <div class="admin-profile-top">
-                                            <div class="admin-profile-area">
-                                                <div class="edit-profile-photo">
-                                                    <img src="@if ($user->profile_image) {{ checkFileExist($user->profile_image) }} @endif"
-                                                        alt="edit profile image" class="img-fluid profile-pic">
-                                                    <div class="p-image">
-                                                        <svg class="upload-button" width="15" height="13"
-                                                            viewBox="0 0 15 13" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z"
-                                                                fill="#52D017" />
-                                                        </svg>
-                                                        <input class="file-upload" type="file" accept="image/*">
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h2>{{ $user->name }}</h2>
-                                                    <a href="{{ route('transporter.logout') }}"
-                                                        class="logout_txt mob_view">
-                                                        <svg width="18" height="18" viewBox="0 0 18 18"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <g clip-path="url(#clip0_650_1110)">
-                                                                <path
-                                                                    d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z"
-                                                                    fill="white"></path>
-                                                                <path
-                                                                    d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z"
-                                                                    fill="white"></path>
-                                                            </g>
-                                                            <defs>
-                                                                <clipPath id="clip0_650_1110">
-                                                                    <rect width="18" height="18" fill="white">
-                                                                    </rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                        </svg>
-                                                        Logout
-                                                    </a>
+                                                    <div id="message" style="display: none;"></div>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="wd-profl-botm">
-                                            <div class="wd-profl-lst">
-                                                <p>Jobs completed</p>
-                                                <span>{{ $jobs_completed_count }}</span>
-                                            </div>
-                                            <div class="wd-profl-lst">
-                                                <p>Total earnings</p>
-                                                <span>£{{ $total_earning_count }}</span>
-                                            </div>
-                                        </div>
-
-                                        <a href="{{ route('transporter.logout') }}" class="logout_txt desk_view">
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(#clip0_650_1110)">
-                                                    <path
-                                                        d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z"
-                                                        fill="white"></path>
-                                                    <path
-                                                        d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z"
-                                                        fill="white"></path>
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_650_1110">
-                                                        <rect width="18" height="18" fill="white">
-                                                        </rect>
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                            Logout
-                                        </a>
                                     </div>
-                                @endif
+                                </div>
+
+                                {{-- @if (isMobile()) --}}
+                                <div class="wd-admin-profile d-xl-none">
+                                    <div class="admin-profile-top">
+                                        <div class="admin-profile-area">
+                                            <div class="edit-profile-photo">
+                                                <img src="@if ($user->profile_image) {{ checkFileExist($user->profile_image) }} @endif"
+                                                    alt="edit profile image" class="img-fluid profile-pic">
+                                                <div class="p-image">
+                                                    <svg class="upload-button" width="15" height="13"
+                                                        viewBox="0 0 15 13" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.334 3.60425V11.4792C14.334 12.2039 13.7461 12.7917 13.0215 12.7917H1.64648C0.921875 12.7917 0.333984 12.2039 0.333984 11.4792V3.60425C0.333984 2.87964 0.921875 2.29175 1.64648 2.29175H4.05273L4.38906 1.39214C4.58047 0.88081 5.06992 0.541748 5.6168 0.541748H9.04844C9.59531 0.541748 10.0848 0.88081 10.2762 1.39214L10.6152 2.29175H13.0215C13.7461 2.29175 14.334 2.87964 14.334 3.60425ZM10.6152 7.54175C10.6152 5.73159 9.14414 4.2605 7.33398 4.2605C5.52383 4.2605 4.05273 5.73159 4.05273 7.54175C4.05273 9.3519 5.52383 10.823 7.33398 10.823C9.14414 10.823 10.6152 9.3519 10.6152 7.54175ZM9.74023 7.54175C9.74023 8.86792 8.66016 9.948 7.33398 9.948C6.00781 9.948 4.92773 8.86792 4.92773 7.54175C4.92773 6.21558 6.00781 5.1355 7.33398 5.1355C8.66016 5.1355 9.74023 6.21558 9.74023 7.54175Z"
+                                                            fill="#52D017" />
+                                                    </svg>
+                                                    <input class="file-upload" type="file" accept="image/*">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h2>{{ $user->name }}</h2>
+                                                <a href="{{ route('transporter.logout') }}" class="logout_txt mob_view">
+                                                    <svg width="18" height="18" viewBox="0 0 18 18"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_650_1110)">
+                                                            <path
+                                                                d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z"
+                                                                fill="white"></path>
+                                                            <path
+                                                                d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z"
+                                                                fill="white"></path>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_650_1110">
+                                                                <rect width="18" height="18" fill="white">
+                                                                </rect>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    Logout
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wd-profl-botm">
+                                        <div class="wd-profl-lst">
+                                            <p>Jobs completed</p>
+                                            <span>{{ $jobs_completed_count }}</span>
+                                        </div>
+                                        <div class="wd-profl-lst">
+                                            <p>Total earnings</p>
+                                            <span>£{{ $total_earning_count }}</span>
+                                        </div>
+                                    </div>
+
+                                    <a href="{{ route('transporter.logout') }}" class="logout_txt desk_view">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_650_1110)">
+                                                <path
+                                                    d="M15.75 0H7.5C6.90381 0.00178057 6.33255 0.239405 5.91098 0.660977C5.48941 1.08255 5.25178 1.65381 5.25 2.25V6.75H12C12.5967 6.75 13.169 6.98705 13.591 7.40901C14.0129 7.83097 14.25 8.40326 14.25 9C14.25 9.59674 14.0129 10.169 13.591 10.591C13.169 11.0129 12.5967 11.25 12 11.25H5.25V15.75C5.25178 16.3462 5.48941 16.9175 5.91098 17.339C6.33255 17.7606 6.90381 17.9982 7.5 18H15.75C16.3462 17.9982 16.9175 17.7606 17.339 17.339C17.7606 16.9175 17.9982 16.3462 18 15.75V2.25C17.9982 1.65381 17.7606 1.08255 17.339 0.660977C16.9175 0.239405 16.3462 0.00178057 15.75 0Z"
+                                                    fill="white"></path>
+                                                <path
+                                                    d="M2.55772 9.75002H12.0002C12.1991 9.75002 12.3899 9.671 12.5305 9.53035C12.6712 9.38969 12.7502 9.19893 12.7502 9.00002C12.7502 8.8011 12.6712 8.61034 12.5305 8.46969C12.3899 8.32903 12.1991 8.25002 12.0002 8.25002H2.55772L3.53272 7.28252C3.67395 7.14129 3.75329 6.94974 3.75329 6.75002C3.75329 6.55029 3.67395 6.35874 3.53272 6.21752C3.39149 6.07629 3.19994 5.99695 3.00022 5.99695C2.80049 5.99695 2.60895 6.07629 2.46772 6.21752L0.217718 8.46752C0.0822483 8.61173 0.00683594 8.80215 0.00683594 9.00002C0.00683594 9.19788 0.0822483 9.3883 0.217718 9.53252L2.46772 11.7825C2.61133 11.9192 2.80198 11.9954 3.00022 11.9954C3.19845 11.9954 3.3891 11.9192 3.53272 11.7825C3.67323 11.6409 3.75208 11.4495 3.75208 11.25C3.75208 11.0505 3.67323 10.8591 3.53272 10.7175L2.55772 9.75002Z"
+                                                    fill="white"></path>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_650_1110">
+                                                    <rect width="18" height="18" fill="white">
+                                                    </rect>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        Logout
+                                    </a>
+                                </div>
+                                {{-- @endif --}}
+
                                 @if ($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
                                     <h3>Uploaded documents</h3>
                                     <div class="row">
@@ -874,32 +916,10 @@
                                     </div>
                                 @endif
 
-                                <div class="requied_sec"
-                                    style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
-                                    <h2 class="upload-heading">Verify Email:</h2>
-                                    <p class="subtitle">You must verify your email address before you can start
-                                        bidding.</p>
-                                    <div class="upload-section">
-                                        <div class="requied_sec_row">
-                                            <div class="form-group">
-                                                <div class="document">
-                                                    <input type="email" name="email" id="email_verify"
-                                                        placeholder="Verify your email address" class="font-weight-light"
-                                                        title="Click to upload the document">
 
-                                                    <span class="send-link" id="sendLinkBtn"
-                                                        style="cursor: pointer; color: blue;">Send Link</span>
-
-                                                    <div id="message" style="display: none;"></div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <h3 class="adjust-space-mobile-padding">Account details</h3>
-                                <div class="row align-items-end">
+                                <div class="row align-items-end mx-4">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control sticky-data"
@@ -938,18 +958,10 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row mx-4">
                                     <div class="col-lg-6 order-lg-1 order-2">
                                         <h5>Email notifications preferences:</h5>
                                         <ul class="wd-cstm-check">
-                                            <!-- <li>
-                                                                        <div class="form-group">
-                                                                            <input type="checkbox" id="check1" checked>
-                                                                            <label for="check1"></label>
-                                                                            <span>Get email alerts</span>
-                                                                        </div>
-                                                                    </li> -->
-
                                             <li style="display:none">
                                                 <div class="form-group">
                                                     <input type="checkbox" id="check2" data-email-type="job_alert"
@@ -1047,7 +1059,7 @@
                                 <div class="form-group">
                                     <button type="submit" class="wd-save-btn">Save Changes</button>
                                 </div>
-                                </form>
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>
@@ -1163,7 +1175,7 @@
                 },
                 error: function(xhr, status, error) {}
             });
-       
+
         });
 
         const driver_license = document.getElementById('driver_license');

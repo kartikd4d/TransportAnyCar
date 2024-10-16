@@ -1348,7 +1348,7 @@ span.select2.select2-container.select2-container--default{max-width: 152px;width
   background: #fff;
   border-radius: 10px;
 }
-.wd-admin-profile{
+.wd-admin-profile {
   background: linear-gradient(276.79deg, #008DD4 7.47%, #0356D6 100%);
   height: 100%;
   border-radius: 10px 0 0 10px;
@@ -4640,6 +4640,7 @@ div#spam-banner button.btn {
   .wd-quote-area{padding: 50px;}
 }
 @media (max-width:1199px){
+  .wd-admin-profile {border-radius: 10px; height: auto;}
 
 /********************sanjay 26-09-2024*********************/
 .jobsrch_blogs ul li span {
