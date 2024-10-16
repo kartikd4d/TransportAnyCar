@@ -27,10 +27,10 @@
     }
 
     .get_quote .modal-footer p {
-        font-size: 14px !important;
+        font-size: 13px !important;
         font-weight: 300;
         color: #000000;
-        margin-bottom: 28px !important;
+        margin: 0 0 28px !important;
     }
 
     .submit_btn {
@@ -80,9 +80,9 @@
 
     /**/
     /* Hide the default checkbox */
-    .custom-checkbox input[type="checkbox"] {
+    /* .custom-checkbox input[type="checkbox"] {
         display: none;
-    }
+    } */
 
     /* Create custom checkbox */
     .custom-checkbox input[type="checkbox"]+label::before {
@@ -151,7 +151,9 @@
                         <p class="save-search-example">e.g. (London to Anywhere)</p>
                     </div>
                     <div class="form-group custom-checkbox">
-                        <input class="form-check-input m-0 position-absolute" type="checkbox" value="true"
+                        <input checked="checked" class="form-check-input m-0
+                         {{-- position-absolute --}}
+                         " type="checkbox" value="true"
                             id="emailNtf" name="emailNtf">
                         <label class="form-check-label save-search-email position-relative" for="emailNtf">
                             Get emails for jobs that match this search.

@@ -4315,7 +4315,7 @@ a.wd-leave-btn{
 .jobsrch_form_blog .form-control {
     font-size: 15px;
     font-weight: 400;
-    color: #9C9C9C;
+    color: #000000;
     height: auto;
     outline: unset;
     line-height: unset;
@@ -4325,6 +4325,20 @@ a.wd-leave-btn{
     background: transparent;
     border-radius: 0;
 }
+
+.jobsrch_form_blog .form-control::-webkit-input-placeholder {
+  color: #9C9C9C;
+}
+.jobsrch_form_blog .form-control::-moz-placeholder {
+  color: #9C9C9C;
+}
+.jobsrch_form_blog .form-control:-ms-input-placeholder {
+  color: #9C9C9C;
+}
+.jobsrch_form_blog .form-control:-moz-placeholder { 
+  color: #9C9C9C;
+}
+
 .jobsrch_form_blog .drop_off_box:after {
     content: "";
     background: #CFCFCF;
@@ -4479,6 +4493,9 @@ a.wd-leave-btn{
 .get_quote .modal-header .close{
   padding: 0;
   margin: 0;
+  position: absolute;
+  right: 20px;
+  top: 15px;
 }
 .get_quote .modal-body form .form-control{
   border-radius: 9px;

@@ -260,14 +260,17 @@
 
 .wishList-bidInfo .bidTnfo p {
     margin: 0;
+    font-weight: 300;
 }
 
 .wishList-bidInfo .bidTnfo p .green {
+    font-weight: 500;
     color: #52D017;
 }
 
 .wishList-bidInfo .bidTnfo p .blue {
     color: #0356D6;
+    font-weight: 500;   
 }
 
 .boxContentList h2.imgHeading {

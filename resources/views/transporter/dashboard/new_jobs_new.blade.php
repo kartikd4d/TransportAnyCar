@@ -262,6 +262,9 @@
             padding: 0;
             margin-left: auto;
             line-height: 18px;
+            /* position: absolute;
+            right: 21px;
+            top: 21px; */
         }
 
         #carDetailsModal .jobsrch_box {
@@ -2666,7 +2669,7 @@
                                         </a>
                                     </div>
                                     <div class="bidTnfo">
-                                        <p class="info">Current lowest bid: <span class="green">£ ${carData.lowest_bid}</span></p>
+                                        <p class="info">Current lowest bid: <span class="green">£${carData.lowest_bid}</span></p>
                                         <p class="info">Transporters bidding: <span class="blue">${carData.transporter_quotes_count}</span></p>
                                     </div>
                                 </div>
