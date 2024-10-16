@@ -3,24 +3,26 @@
 @section('head_css')
     <style>
         .yes-btn {
-            background-color:#1e7e34;
-            border-color:#1e7e34;
-            color:#ffffff;
+            background-color: #1e7e34;
+            border-color: #1e7e34;
+            color: #ffffff;
         }
+
         .yes-btn:hover {
             background-color: transparent;
-            color:#1e7e34;
+            color: #1e7e34;
         }
+
         .jobsrch_info_list h6 {
             width: 10% !important;
         }
 
         .jobserch_mob .close-btn {
-                position: absolute;
-                right: 16px;
-                top: 16px;
-                z-index: 2;
-            }
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            z-index: 2;
+        }
 
         .jobserch_mob form button {
             opacity: 1 !important;
@@ -86,8 +88,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                                                        color: #000000;
-                                                    } */
+                                                            color: #000000;
+                                                        } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -384,7 +386,10 @@
             padding-bottom: 20px;
         }
 
-        .adjust-space-in-mobile {margin-bottom: 48px;}
+        .adjust-space-in-mobile {
+            margin-bottom: 48px;
+        }
+
         @media (min-width: 579px) {
 
             .jobserch_mob .jobsrch_box {
@@ -1252,7 +1257,10 @@
 
 
         @media(max-width: 767px) {
-            .adjust-space-in-mobile {margin-bottom: 36px;}
+            .adjust-space-in-mobile {
+                margin-bottom: 36px;
+            }
+
             .jobserch_mob li p {
                 display: none !important;
             }
@@ -1336,7 +1344,11 @@
                 width: calc(100% + 60px);
                 margin-left: -30px;
             }
-.card{border-width: 0!important;}
+
+            .card {
+                border-width: 0 !important;
+            }
+
             .jobserch_mob .jobsrch_box {
                 padding: 20px;
                 margin-bottom: 7px;
@@ -1742,24 +1754,23 @@
                                 @endif
                             </div>
                             @foreach ($savedSearches as $savedSearch)
-                            <div class="jobsrch_blogs jobserch_mob">
-                               
+                                <div class="jobsrch_blogs jobserch_mob">
                                     <div class="card p-3 mb-2">
-                                       
-                                                <a data-toggle="modal" data-target="#delete_quote_{{ $savedSearch->id }}"
-                                                    class="d-lg-block delete_btn_mobile align-self-end">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                    viewBox="0 0 14 14" fill="none">
-                                                    <path
-                                                        d="M7 0C5.61553 0 4.26215 0.410543 3.11101 1.17971C1.95987 1.94888 1.06266 3.04213 0.532846 4.32121C0.00303299 5.6003 -0.13559 7.00776 0.134506 8.36563C0.404603 9.7235 1.07129 10.9708 2.05026 11.9497C3.02922 12.9287 4.2765 13.5954 5.63437 13.8655C6.99224 14.1356 8.3997 13.997 9.67879 13.4672C10.9579 12.9373 12.0511 12.0401 12.8203 10.889C13.5895 9.73784 14 8.38447 14 7C14 6.08075 13.8189 5.17049 13.4672 4.32121C13.1154 3.47194 12.5998 2.70026 11.9497 2.05025C11.2997 1.40024 10.5281 0.884626 9.67879 0.532843C8.82951 0.18106 7.91925 0 7 0ZM9.247 8.253C9.31261 8.31807 9.36469 8.39549 9.40023 8.48079C9.43576 8.5661 9.45406 8.65759 9.45406 8.75C9.45406 8.84241 9.43576 8.9339 9.40023 9.0192C9.36469 9.1045 9.31261 9.18192 9.247 9.247C9.18193 9.31261 9.10451 9.36468 9.01921 9.40022C8.9339 9.43576 8.84241 9.45406 8.75 9.45406C8.65759 9.45406 8.5661 9.43576 8.4808 9.40022C8.3955 9.36468 8.31808 9.31261 8.253 9.247L7 7.987L5.747 9.247C5.68193 9.31261 5.60451 9.36468 5.51921 9.40022C5.4339 9.43576 5.34241 9.45406 5.25 9.45406C5.15759 9.45406 5.0661 9.43576 4.9808 9.40022C4.8955 9.36468 4.81808 9.31261 4.753 9.247C4.68739 9.18192 4.63532 9.1045 4.59978 9.0192C4.56424 8.9339 4.54594 8.84241 4.54594 8.75C4.54594 8.65759 4.56424 8.5661 4.59978 8.48079C4.63532 8.39549 4.68739 8.31807 4.753 8.253L6.013 7L4.753 5.747C4.62119 5.61519 4.54714 5.43641 4.54714 5.25C4.54714 5.06359 4.62119 4.88481 4.753 4.753C4.88481 4.62119 5.06359 4.54713 5.25 4.54713C5.43641 4.54713 5.61519 4.62119 5.747 4.753L7 6.013L8.253 4.753C8.38481 4.62119 8.56359 4.54713 8.75 4.54713C8.93641 4.54713 9.11519 4.62119 9.247 4.753C9.37881 4.88481 9.45287 5.06359 9.45287 5.25C9.45287 5.43641 9.37881 5.61519 9.247 5.747L7.987 7L9.247 8.253Z"
-                                                        fill="#ED1C24" />
-                                                </svg>
-                                                {{-- <span aria-hidden="true">&times;</span> --}}
-                                            </a>
-                                        
+
+                                        <a data-toggle="modal" data-target="#delete_quote_{{ $savedSearch->id }}"
+                                            class="d-lg-block delete_btn_mobile align-self-end">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 14 14" fill="none">
+                                                <path
+                                                    d="M7 0C5.61553 0 4.26215 0.410543 3.11101 1.17971C1.95987 1.94888 1.06266 3.04213 0.532846 4.32121C0.00303299 5.6003 -0.13559 7.00776 0.134506 8.36563C0.404603 9.7235 1.07129 10.9708 2.05026 11.9497C3.02922 12.9287 4.2765 13.5954 5.63437 13.8655C6.99224 14.1356 8.3997 13.997 9.67879 13.4672C10.9579 12.9373 12.0511 12.0401 12.8203 10.889C13.5895 9.73784 14 8.38447 14 7C14 6.08075 13.8189 5.17049 13.4672 4.32121C13.1154 3.47194 12.5998 2.70026 11.9497 2.05025C11.2997 1.40024 10.5281 0.884626 9.67879 0.532843C8.82951 0.18106 7.91925 0 7 0ZM9.247 8.253C9.31261 8.31807 9.36469 8.39549 9.40023 8.48079C9.43576 8.5661 9.45406 8.65759 9.45406 8.75C9.45406 8.84241 9.43576 8.9339 9.40023 9.0192C9.36469 9.1045 9.31261 9.18192 9.247 9.247C9.18193 9.31261 9.10451 9.36468 9.01921 9.40022C8.9339 9.43576 8.84241 9.45406 8.75 9.45406C8.65759 9.45406 8.5661 9.43576 8.4808 9.40022C8.3955 9.36468 8.31808 9.31261 8.253 9.247L7 7.987L5.747 9.247C5.68193 9.31261 5.60451 9.36468 5.51921 9.40022C5.4339 9.43576 5.34241 9.45406 5.25 9.45406C5.15759 9.45406 5.0661 9.43576 4.9808 9.40022C4.8955 9.36468 4.81808 9.31261 4.753 9.247C4.68739 9.18192 4.63532 9.1045 4.59978 9.0192C4.56424 8.9339 4.54594 8.84241 4.54594 8.75C4.54594 8.65759 4.56424 8.5661 4.59978 8.48079C4.63532 8.39549 4.68739 8.31807 4.753 8.253L6.013 7L4.753 5.747C4.62119 5.61519 4.54714 5.43641 4.54714 5.25C4.54714 5.06359 4.62119 4.88481 4.753 4.753C4.88481 4.62119 5.06359 4.54713 5.25 4.54713C5.43641 4.54713 5.61519 4.62119 5.747 4.753L7 6.013L8.253 4.753C8.38481 4.62119 8.56359 4.54713 8.75 4.54713C8.93641 4.54713 9.11519 4.62119 9.247 4.753C9.37881 4.88481 9.45287 5.06359 9.45287 5.25C9.45287 5.43641 9.37881 5.61519 9.247 5.747L7.987 7L9.247 8.253Z"
+                                                    fill="#ED1C24" />
+                                            </svg>
+                                            {{-- <span aria-hidden="true">&times;</span> --}}
+                                        </a>
+
                                         <form action="">
                                             <input type="hidden" value="{{ $savedSearch->pick_area }}" name="pick_area">
-                                            <input type="hidden" value="{{ $savedSearch->drop_area}}" name="drop_area">
+                                            <input type="hidden" value="{{ $savedSearch->drop_area }}" name="drop_area">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
                                                     <span class="font-weight-bold">Name of search:</span>
@@ -1790,42 +1801,46 @@
                                                 Jobs available: <a href="#"
                                                     class="font-weight-bold text-primary ml-1">{{ $savedSearch->quote_count }}</a>
                                             </div>
-                                            <button type="submit" class="position-absolute w-100 h-100 border-0 bg-transparent rounded-md" style="left:0; top:0; z-index:-10;"></button>
+                                            <button type="submit"
+                                                class="position-absolute w-100 h-100 border-0 bg-transparent rounded-md"
+                                                style="left:0; top:0; z-index:-10;"></button>
                                         </form>
                                     </div>
-                                    
-                                
-                            </div>
-                            <div class="modal fade mark_bx" id="delete_quote_{{ $savedSearch->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">
-                                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M0.93934 15.9393C0.353553 16.5251 0.353553 17.4749 0.93934 18.0607C1.52513 18.6464 2.47487 18.6464 3.06066 18.0607L0.93934 15.9393ZM10.5607 10.5607C11.1464 9.97487 11.1464 9.02513 10.5607 8.43934C9.97487 7.85355 9.02513 7.85355 8.43934 8.43934L10.5607 10.5607ZM8.43934 8.43934C7.85355 9.02513 7.85355 9.97487 8.43934 10.5607C9.02513 11.1464 9.97487 11.1464 10.5607 10.5607L8.43934 8.43934ZM18.0607 3.06066C18.6464 2.47487 18.6464 1.52513 18.0607 0.93934C17.4749 0.353553 16.5251 0.353553 15.9393 0.93934L18.0607 3.06066ZM10.5607 8.43934C9.97487 7.85355 9.02513 7.85355 8.43934 8.43934C7.85355 9.02513 7.85355 9.97487 8.43934 10.5607L10.5607 8.43934ZM15.9393 18.0607C16.5251 18.6464 17.4749 18.6464 18.0607 18.0607C18.6464 17.4749 18.6464 16.5251 18.0607 15.9393L15.9393 18.0607ZM8.43934 10.5607C9.02513 11.1464 9.97487 11.1464 10.5607 10.5607C11.1464 9.97487 11.1464 9.02513 10.5607 8.43934L8.43934 10.5607ZM3.06066 0.93934C2.47487 0.353553 1.52513 0.353553 0.93934 0.93934C0.353553 1.52513 0.353553 2.47487 0.93934 3.06066L3.06066 0.93934ZM3.06066 18.0607L10.5607 10.5607L8.43934 8.43934L0.93934 15.9393L3.06066 18.0607ZM10.5607 10.5607L18.0607 3.06066L15.9393 0.93934L8.43934 8.43934L10.5607 10.5607ZM8.43934 10.5607L15.9393 18.0607L18.0607 15.9393L10.5607 8.43934L8.43934 10.5607ZM10.5607 8.43934L3.06066 0.93934L0.93934 3.06066L8.43934 10.5607L10.5607 8.43934Z"
-                                                            fill="#CFCFCF" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h3 class="d-block text-center">Are you sure you want to delete this search?</h3>
-                                        </div>
-                                        <div class="modal-footer d-flex flex-wrap align-items-center p-0">
-                                            <a href="javascript:;" class="no_btn" data-dismiss="modal">No</a>
-                                            <form action="{{ route('transporter.delete.save.search') }}" method="POST" class="close-btn">
-                                                @csrf
-                                                <button type="submit" class="no_btn yes-btn"
-                                                    value="{{ $savedSearch->id }}" name="id" aria-label="Close">Yes</button>
-                                            </form>
+                                </div>
+                                <div class="modal fade mark_bx" id="delete_quote_{{ $savedSearch->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">
+                                                        <svg width="19" height="19" viewBox="0 0 19 19"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M0.93934 15.9393C0.353553 16.5251 0.353553 17.4749 0.93934 18.0607C1.52513 18.6464 2.47487 18.6464 3.06066 18.0607L0.93934 15.9393ZM10.5607 10.5607C11.1464 9.97487 11.1464 9.02513 10.5607 8.43934C9.97487 7.85355 9.02513 7.85355 8.43934 8.43934L10.5607 10.5607ZM8.43934 8.43934C7.85355 9.02513 7.85355 9.97487 8.43934 10.5607C9.02513 11.1464 9.97487 11.1464 10.5607 10.5607L8.43934 8.43934ZM18.0607 3.06066C18.6464 2.47487 18.6464 1.52513 18.0607 0.93934C17.4749 0.353553 16.5251 0.353553 15.9393 0.93934L18.0607 3.06066ZM10.5607 8.43934C9.97487 7.85355 9.02513 7.85355 8.43934 8.43934C7.85355 9.02513 7.85355 9.97487 8.43934 10.5607L10.5607 8.43934ZM15.9393 18.0607C16.5251 18.6464 17.4749 18.6464 18.0607 18.0607C18.6464 17.4749 18.6464 16.5251 18.0607 15.9393L15.9393 18.0607ZM8.43934 10.5607C9.02513 11.1464 9.97487 11.1464 10.5607 10.5607C11.1464 9.97487 11.1464 9.02513 10.5607 8.43934L8.43934 10.5607ZM3.06066 0.93934C2.47487 0.353553 1.52513 0.353553 0.93934 0.93934C0.353553 1.52513 0.353553 2.47487 0.93934 3.06066L3.06066 0.93934ZM3.06066 18.0607L10.5607 10.5607L8.43934 8.43934L0.93934 15.9393L3.06066 18.0607ZM10.5607 10.5607L18.0607 3.06066L15.9393 0.93934L8.43934 8.43934L10.5607 10.5607ZM8.43934 10.5607L15.9393 18.0607L18.0607 15.9393L10.5607 8.43934L8.43934 10.5607ZM10.5607 8.43934L3.06066 0.93934L0.93934 3.06066L8.43934 10.5607L10.5607 8.43934Z"
+                                                                fill="#CFCFCF" />
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3 class="d-block text-center">Are you sure you want to delete this search?
+                                                </h3>
+                                            </div>
+                                            <div class="modal-footer d-flex flex-wrap align-items-center p-0">
+                                                <a href="javascript:;" class="no_btn" data-dismiss="modal">No</a>
+                                                <form action="{{ route('transporter.delete.save.search') }}"
+                                                    method="POST" class="close-btn">
+                                                    @csrf
+                                                    <button type="submit" class="no_btn yes-btn"
+                                                        value="{{ $savedSearch->id }}" name="id"
+                                                        aria-label="Close">Yes</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -1836,7 +1851,7 @@
     <div class="pagination before_search">
         {{ $savedSearches->links() }}
     </div>
-    
+
 
 @endsection
 

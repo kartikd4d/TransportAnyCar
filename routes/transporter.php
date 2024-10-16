@@ -68,7 +68,8 @@ Route::group(['as' => 'transporter.'], function () {
         // end d4d developer - k
         // D4dDeveoper-r 
         Route::post('save/search', 'DashboardController@savesearch')->name('save.search');
-        Route::get('save/search', 'DashboardController@savesearchview')->name('view.save.search');
+        Route::get('save/search', 'DashboardController@savesearchview')->name('view.save.search');   
+        Route::post('save/find_search', 'DashboardController@saved_find_job')->name('saved_find_job');
         Route::post('save/search/delete', 'DashboardController@savesearchdlt')->name('delete.save.search');
         // end
 

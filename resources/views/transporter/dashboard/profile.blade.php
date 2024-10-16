@@ -1047,7 +1047,6 @@
                                 <div class="form-group">
                                     <button type="submit" class="wd-save-btn">Save Changes</button>
                                 </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -1138,7 +1137,7 @@
         $('#sendLinkBtn').on('click', function() {
             const email = $('#email_verify').val();
             // const email = "{{ config('constants.default.admin_email') }}";
-            const template = 'mail.General.transporter-email-verify';
+            // const template = 'mail.General.transporter-email-verify';
             const user = {
                 first_name: "{{ $user->first_name }}",
                 name: "{{ $user->name }}",
@@ -1151,15 +1150,27 @@
                 contentType: 'application/json',
                 data: JSON.stringify({
                     email: email,
-                    template: template,
-                    subject: 'Verify Transporter Documents',
+                    subject: 'Verify Email',
                     user: user
                 }),
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}' // If you're using Laravel's CSRF protection
                 },
                 success: function(response) {
-                    console.log('Email sent successfully.')
+                    Swal.fire({
+                        title: 'Thank you.',
+                        text: 'Please check your mail and click on verify',
+                        confirmButtonText: 'Dismiss',
+                        showCloseButton: true,
+                        customClass: {
+                            confirmButton: 'swal2-confirm'
+                        },
+                        //allowOutsideClick: false, // Prevent modal from closing when clicking outside
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload();
+                        }
+                    });
                 },
                 error: function(xhr, status, error) {}
             });

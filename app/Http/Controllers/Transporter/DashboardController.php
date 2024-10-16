@@ -677,6 +677,7 @@ class DashboardController extends WebController
     // d4d developer - k
     public function find_job(Request $request)
     {
+        return $request->all();
         if (empty($request->search_pick_up_area)) {
             return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
         }
@@ -980,6 +981,7 @@ class DashboardController extends WebController
     //d4dDeveloper-r 07/10/2024
     public function saveSearch(Request $request)
     {
+        // return $request->all();
         try {
             $data = [
                 "user_id" => auth()->user()->id,
@@ -997,6 +999,24 @@ class DashboardController extends WebController
                 ],
                 $data // The data to be updated or inserted
             );
+
+// if ($request->emailNtf){
+//     $user = User::find(auth()->user()->id);
+//     // return  $user->email;
+//     $emailService = app(EmailService::class); // Get the instance of your EmailService
+
+//     $email = 'kartik.d4d@gmail.com'; // Replace with the email address you want to send to
+//     $subject = 'Test Email from save search';
+    
+//     // Prepare the email content
+//     $htmlContent = '<h1>Test Email</h1><p>This is a test email sent from Laravel!</p>';
+
+//     // Call the sendEmail method
+//     $emailService->sendEmail($email, $htmlContent, $subject);
+
+// }
+
+
             return response(["success" => true, "message" => "Search saved successfully!", "data" => []]);
         } catch (\Exception $ex) {
             return response(["success" => false, "message" => $ex->getMessage(), "data" => []]);
@@ -1026,4 +1046,125 @@ class DashboardController extends WebController
         return view('transporter.savedSearch.result', ["pick_area" => $request->pick_area, "drop_area" => $request->drop_area]);
         return $request->all();
     }
+
+    public function saved_find_job(Request $request)
+    {
+        return $request->all();
+        if (empty($request->search_pick_up_area)) {
+            return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
+        }
+
+        $pickUpResponse = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
+            'address' => $request->input('search_pick_up_area'),
+            'key' => config('constants.google_map_key'),
+        ]);
+        $pickUpData = $pickUpResponse->json();
+        if ($pickUpData['status'] === 'OK') {
+            $pick_up_latitude = $pickUpData['results'][0]['geometry']['location']['lat'];
+            $pick_up_longitude = $pickUpData['results'][0]['geometry']['location']['lng'];
+        } else {
+            return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
+        }
+        $drop_off_latitude = null;
+        $drop_off_longitude = null;
+        if ($request->search_drop_off_area && $request->search_drop_off_area != 'Anywhere') {
+            $dropOffResponse = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
+                'address' => $request->input('search_drop_off_area'),
+                'key' => config('constants.google_map_key'),
+            ]);
+            $dropOffData = $dropOffResponse->json();
+            if ($dropOffData['status'] === 'OK') {
+                $drop_off_latitude = $dropOffData['results'][0]['geometry']['location']['lat'];
+                $drop_off_longitude = $dropOffData['results'][0]['geometry']['location']['lng'];
+            } else {
+                return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
+            }
+        }
+
+        $maxDistance = config('constants.max_range_km');
+        $user_data = Auth::guard('transporter')->user();
+        $my_quotes = QuoteByTransporter::where('user_id', $user_data->id)->get();
+
+        // Get IDs of user quotes that have been quoted by the transporter
+        $my_quote_ids = $my_quotes->pluck('user_quote_id');
+
+        // $subQuery = UserQuote::query()
+        //     ->join('users', 'users.id', '=', 'user_quotes.user_id')
+        //     ->leftJoin('quote_by_transpoters', 'quote_by_transpoters.user_quote_id', '=', 'user_quotes.id')->get();
+        // return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $subQuery]);
+
+        $subQuery = UserQuote::query()
+            ->join('users', 'users.id', '=', 'user_quotes.user_id')
+            ->leftJoin('quote_by_transpoters', function ($join) {
+                $join->on('quote_by_transpoters.user_quote_id', '=', 'user_quotes.id')
+                    ->whereRaw('quote_by_transpoters.user_id = ?', [auth()->id()]); // Use DB::raw with a where condition
+            })
+            // ->whereNotIn('user_quotes.id', $my_quote_ids)
+            ->where(function ($query) {
+                $query->where('user_quotes.status', 'pending')
+                    ->orWhere('user_quotes.status', 'approved');
+            })
+            ->whereDate('user_quotes.created_at', '>=', now()->subDays(10));
+        if ($drop_off_latitude) {
+            // return "yessssssssss";
+            $subQuery->select(
+                'quote_by_transpoters.user_id as tranporterId',
+                'user_quotes.*',
+                'users.profile_image',
+                'users.username as name',
+                'users.address',
+                'users.town',
+                'users.county',
+                \DB::raw("( 6371 * acos( cos( radians($pick_up_latitude) ) * cos( radians( pickup_lat ) ) * cos( radians( pickup_lng ) - radians($pick_up_longitude) ) + sin( radians($pick_up_latitude) ) * sin( radians( pickup_lat ) ) ) ) AS distance_pickup"),
+                \DB::raw("( 6371 * acos( cos( radians($drop_off_latitude) ) * cos( radians( drop_lat ) ) * cos( radians( drop_lng ) - radians($drop_off_longitude) ) + sin( radians($drop_off_latitude) ) * sin( radians( drop_lat ) ) ) ) AS distance_drop_off"),
+                \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
+                \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid"), // Get the lowest bid
+                DB::raw("(CASE 
+                WHEN (SELECT user_id FROM watchlists WHERE user_quote_id = user_quotes.id AND user_id = $user_data->id LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END) AS watchlist_id")
+            )
+                ->having('distance_pickup', '<=', $maxDistance)
+                ->having('distance_drop_off', '<=', $maxDistance);
+        } else {
+            $subQuery->select(
+                'quote_by_transpoters.user_id as tranporterId',
+                'user_quotes.*',
+                'users.profile_image',
+                'users.username as name',
+                'users.address',
+                'users.town',
+                'users.county',
+                \DB::raw("( 6371 * acos( cos( radians($pick_up_latitude) ) * cos( radians( pickup_lat ) ) * cos( radians( pickup_lng ) - radians($pick_up_longitude) ) + sin( radians($pick_up_latitude) ) * sin( radians( pickup_lat ) ) ) ) AS distance_pickup"),
+                \DB::raw("COUNT(quote_by_transpoters.id) as quotes_count"), // Count the number of quotes by transporters
+                \DB::raw("MIN(quote_by_transpoters.transporter_payment) as lowest_bid"), // Get the lowest bid
+                DB::raw("(CASE 
+                WHEN (SELECT user_id FROM watchlists WHERE user_quote_id = user_quotes.id AND user_id = $user_data->id LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END) AS watchlist_id")
+            )
+                ->having('distance_pickup', '<=', $maxDistance);
+        }
+
+        // Group by user_quote_id to get the count and minimum bid for each
+        $subQuery->groupBy('user_quotes.id')
+            ->latest();
+
+        // Wrap the subquery with the main query for pagination
+        $quotes = \DB::table(\DB::raw("({$subQuery->toSql()}) as sub"))
+            ->mergeBindings($subQuery->getQuery())
+            ->paginate(20);
+
+        // return $quotes->watchlist;
+        if ($request->ajax()) {
+            // Convert dates to DateTime objects if necessary
+            foreach ($quotes as $quote) {
+                $quote->created_at = \Carbon\Carbon::parse($quote->created_at);
+                $quote->updated_at = \Carbon\Carbon::parse($quote->updated_at);
+            }
+
+            $pickup = $request->input('search_pick_up_area');
+            $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
+            $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
+
+            return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $html, 'quotes' => $quotes]);
+        }
+    }
+    
 }
