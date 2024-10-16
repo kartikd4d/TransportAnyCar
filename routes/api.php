@@ -29,12 +29,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'V1'], function () {
     Route::post('verify-email', 'MailController@transporterEmailVerify')->name('send-verify-email');
     Route::get('verify-email/{token}', 'MailController@verifyEmail')->name('verify.email');
 
-    Route::get('/send-test-email', function () {
-        $to_email = 'ks.sharma0111@gmail.com';  // Replace with the email where you want to send the test email
-        Mail::to($to_email)->send(new VerifyEmail());
-        
-        return 'Test email sent successfully!';
-    });
+   
  
 
 });

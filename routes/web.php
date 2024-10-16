@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\General\NotificationController;
+use Illuminate\Support\Facades\Mail;
+use App\Services\EmailService;
+
 
 /*
 |--------------------------------------------------------------------------

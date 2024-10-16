@@ -43,6 +43,7 @@ class MailController extends ResponseController
 
     public function transporterEmailVerify(Request $request)
     {
+        $emailService = app(EmailService::class);
         // Validate the incoming request data
         $request->validate([
             'email' => 'required|email',
@@ -58,27 +59,28 @@ class MailController extends ResponseController
         if (!$user) {
             return response()->json(['error' => 'User not found.'], 404);
         }
+    
+        try {
+          
+            $verificationToken = Str::random(60);
+            
+            // Store the verification token in the database
+            $user->email_verification_token = $verificationToken;
+            $user->save();
+ 
+            $verificationLink = url("/api/verify-email/{$verificationToken}");
+            $htmlContent = view('mail.General.transporterEmailVerify', [
+                'verificationLink' => $verificationLink,
+            ])->render();
+          
+            $emailService->sendEmail($request->email, $htmlContent, $request->subject);
 
-        // Generate an email verification token
-        $user->email_verification_token = Str::random(32);
-        $user->save();
+            return response()->json(['message' => 'Verification email sent successfully.']);
 
-        // Prepare the email data
-        $mailData = [
-            'user' => $user,
-            'first_name' => $request->user['first_name'],
-            'name' => $request->user['name'],
-            'username' => $request->user['username'],
-            'verification_link' => route('verify.email', $user->email_verification_token),
-        ];
-
-        // Send the email
-        Mail::send($request->template, $mailData, function ($message) use ($user) {
-            $message->to($user->email);
-            $message->subject('Verify Your Email Address');
-        });
-
-        return response()->json(['message' => 'Verification email sent successfully.']);
+        } catch (\Exception $ex) {
+            Log::error('Error sending email: ' . $ex->getMessage());
+        }
+       
     }
 
     public function verifyEmail($token)
