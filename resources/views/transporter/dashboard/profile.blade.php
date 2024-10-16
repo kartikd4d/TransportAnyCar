@@ -12,7 +12,7 @@
             position: relative;
             display: inline-block;
         }
-
+        .wd-cstm-check .form-group span {line-height: 13px;}
         .status-badge {
             padding: 5px 10px;
             border-radius: 20px;
@@ -338,10 +338,7 @@
         }
 
         /* .adjust-space-mobile-padding {padding-left: 60px!important; padding-right: 60px!important;} */
-        .wd-cstm-check li {
-            max-width: 33.333%;
-            flex: 0 0 33.333%;
-        }
+        
 
         @media screen and (min-width: 1200px) {
             .admin-profile-box>.row {
@@ -383,16 +380,7 @@
                     margin-left: 15px;
                 } */
 
-            .admin-profile-box a.logout_txt.mob_view {
-                display: block;
-            }
-
-            .admin-profile-box a.logout_txt.desk_view {
-                display: none;
-            }
-
-
-
+            
         }
 
         /* end 16-09-2024 */
@@ -403,6 +391,14 @@
             } */
 
         @media(max-width: 1199px) {
+            .admin-profile-box a.logout_txt.mob_view {
+                display: block;
+            }
+            .admin-profile-box a.logout_txt.desk_view {
+                display: none;
+            }
+            .admin-profile-box h3 {margin-top: 60px;}
+            .logout_txt {font-weight: 300;}
             .document-list {
                 display: flex;
                 align-items: center;
@@ -441,6 +437,10 @@
         }
 
         @media(max-width: 991px) {
+            .wd-cstm-check li {
+                max-width: 33.333%;
+                flex: 0 0 33.333%;
+            }
             .admin-profile-box .requied_sec {
                 padding: 0;
             }
@@ -540,6 +540,7 @@
         }
 
         @media(max-width: 580px) {
+            
             .info_sec_details {
                 left: 50%;
                 right: auto;
@@ -558,6 +559,7 @@
                 color: #ababab;
             }
 
+            .verify_email_sec input[type="email"],
             .requied_sec_row .document label.addmore_btn {
                 font-size: 15px;
             }
@@ -601,6 +603,10 @@
 
             .info_sec_details:before {
                 right: 65px;
+            }
+            .wd-cstm-check li {
+                max-width: 50%;
+                flex: 0 0 50%;
             }
         }
     </style>
@@ -678,7 +684,7 @@
                                 </div>
                             </div>
                             {{-- @endif --}}
-                            <div class="col-xl-8">
+                            <div class="col-xl-8 pl-xl-0">
                                 <div class="wd-profile-form pb-0 px-0">
                                     <form action="{{ route('transporter.profile_post') }}" name="form_account"
                                         id="form_account" method="post" autocomplete="off" enctype="multipart/form-data">
@@ -783,7 +789,7 @@
                                             </div>
                                         @endif
                                     </form>
-                                </div>
+                                
                                 <div class="requied_sec mt-2 verify_email_sec"
                                     style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                     <h2 class="upload-heading">Verify Email:</h2>
@@ -1059,7 +1065,7 @@
                                 <div class="form-group">
                                     <button type="submit" class="wd-save-btn">Save Changes</button>
                                 </div>
-                                {{-- </form> --}}
+                                </div>
                             </div>
                         </div>
                     </div>

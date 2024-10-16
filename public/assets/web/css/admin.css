@@ -4642,16 +4642,38 @@ div#spam-banner button.btn {
 @media (max-width:1199px){
   .wd-admin-profile {border-radius: 10px; height: auto;}
 
-/********************sanjay 26-09-2024*********************/
-.jobsrch_blogs ul li span {
-  font-size: 16px !important;
-}
-.deliveryTypeContent{
-  margin-bottom: 5px !important;
-}
-.jobserch_mob li{
-  margin-bottom: 6px !important;
-}
+  /********************sanjay 26-09-2024*********************/
+  .jobsrch_blogs ul li span {
+    font-size: 16px !important;
+  }
+  .deliveryTypeContent{
+    margin-bottom: 5px !important;
+  }
+  .jobserch_mob li{
+    margin-bottom: 6px !important;
+  }
+  .wd-profile-form h3{font-size: 16px; margin: 20px 0;}
+  .wd-cstm-check{margin: 0 0 20px;}
+  .wd-profile-form .form-control{font-size: 16px;}
+  .wd-admin-profile{border-radius: 10px;padding: 40px 26px;}
+  .admin-profile-area{padding: 0; flex-flow: row-reverse; justify-content: space-between;margin-bottom: 30px}
+  .admin-profile-area h2{font-size: 24px;margin: 0 0 10px;}
+  .admin-profile-area .edit-profile-photo{width: 60px; height: 60px;}
+  .wd-profl-lst:first-child{border-top: none;}
+  .wd-profl-lst{border-bottom: none;}
+  .wd-profl-lst{display: block;padding: 0;}
+  .wd-profl-botm{display: flex; align-items: center; justify-content: space-between;}
+  .admin-profile-box .col-lg-8, .admin-profile-box .col-lg-6, .admin-profile-box .col-lg-12, .admin-profile-box .col-lg-4{padding: 0;}
+  .wd-profile-form{    padding: 0 25px 23px 25px;}
+  .wd-profile-form textarea.form-control{height: 114px;}
+  .admin-profile-box{padding: 0;}
+  .profile_content {padding: 30px 30px 0 30px;}
+  .wd-profl-lst span{text-align: center;}
+  .admin-profile-area .edit-profile-photo .p-image{right:0;}
+  .chat_title_bx{display:block;}
+  .chat_title_bx h5{margin: 0 auto;text-align: center;margin-bottom: 46px;}
+  .chat_title_bx form{margin: 0 auto;text-align: center;}
+  .chat_title_bx.active_chat_title {display: none;}
 }
 
 @media (max-width: 1024px){
@@ -4740,7 +4762,7 @@ div#spam-banner button.btn {
   .feedback-time-line table tr td, .feedback-time-line table tr th{font-size: 14px;}
   .wd-feedback-box .col-lg-12{padding: 0;}
   /* transporter profile */
-  .wd-profile-form h3{font-size: 16px; margin: 20px 0;}
+  /* .wd-profile-form h3{font-size: 16px; margin: 20px 0;}
   .wd-cstm-check{margin: 0 0 20px;}
   .wd-profile-form .form-control{font-size: 16px;}
   .wd-admin-profile{border-radius: 10px;padding: 40px 26px;}
@@ -4761,7 +4783,7 @@ div#spam-banner button.btn {
   .chat_title_bx{display:block;}
   .chat_title_bx h5{margin: 0 auto;text-align: center;margin-bottom: 46px;}
   .chat_title_bx form{margin: 0 auto;text-align: center;}
-  .chat_title_bx.active_chat_title {display: none;}
+  .chat_title_bx.active_chat_title {display: none;} */
   /* admin active job */
   .container-job{padding: 20px;}
   .active-job-box{border: none; padding: 0 0 40px;}
