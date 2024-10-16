@@ -88,8 +88,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                                                            color: #000000;
-                                                        } */
+                                                                    color: #000000;
+                                                                } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -1768,9 +1768,13 @@
                                             {{-- <span aria-hidden="true">&times;</span> --}}
                                         </a>
 
-                                        <form action="">
-                                            <input type="hidden" value="{{ $savedSearch->pick_area }}" name="pick_area">
-                                            <input type="hidden" value="{{ $savedSearch->drop_area }}" name="drop_area">
+                                        <a href="#" id="saved_find_job" class="btn btn-primary"
+                                            data-id="{{ $savedSearch->id }}">
+
+                                            <input type="hidden" id="search_pick_up_area"
+                                                value="{{ $savedSearch->pick_area }}" name="pick_area">
+                                            <input type="hidden" id ="search_drop_off_area"
+                                                value="{{ $savedSearch->drop_area }}" name="drop_area">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
                                                     <span class="font-weight-bold">Name of search:</span>
@@ -1801,10 +1805,10 @@
                                                 Jobs available: <a href="#"
                                                     class="font-weight-bold text-primary ml-1">{{ $savedSearch->quote_count }}</a>
                                             </div>
-                                            <button type="submit"
+                                            {{-- <button type="submit"
                                                 class="position-absolute w-100 h-100 border-0 bg-transparent rounded-md"
-                                                style="left:0; top:0; z-index:-10;"></button>
-                                        </form>
+                                                style="left:0; top:0; z-index:-10;"></button> --}}
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="modal fade mark_bx" id="delete_quote_{{ $savedSearch->id }}" tabindex="-1"
@@ -1866,7 +1870,44 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
         $(document).ready(function() {
+            var globalSiteUrl = '<?php echo $path = url('/'); ?>';
 
+            $('#saved_find_job').on('click', function(event) {
+
+                event.preventDefault(); // Prevent default anchor click behavior
+                var search_pick_up_area = $('#search_pick_up_area').val();
+                var search_drop_off_area = $('#search_drop_off_area').val();
+                $.ajax({
+                    url: globalSiteUrl + "/transporter/find_job?page=" + 1,
+                    data: {
+                        search_pick_up_area: search_pick_up_area,
+                        search_drop_off_area: search_drop_off_area,
+                    },
+                    type: "GET",
+                    success: function(res) {
+                        console.log(res);
+                        if (res.success == true) {
+                            $('#popup').removeClass('show');
+                            $('.jobsrch_blogs, .mainContentDiv').addClass('d-none');
+                            $('#idLoadData').html(res.data);
+                            $('.jobsrch_form_blog').addClass('d-none');
+                            $('.admin_job_top h3').text('Your results');
+                            $('.pera_srch').text(
+                                'Here are some jobs we’ve found that match your search.');
+                            $('html, body').scrollTop(0);
+
+                            checkAndHideSections();
+                        } else {
+                            $('#popup').removeClass('show');
+                            toastr.error(res.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Response:', xhr.responseText); // Full
+                    }
+                });
+
+            });
         });
     </script>
 @endsection

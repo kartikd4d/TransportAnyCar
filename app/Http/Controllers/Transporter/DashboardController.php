@@ -677,7 +677,7 @@ class DashboardController extends WebController
     // d4d developer - k
     public function find_job(Request $request)
     {
-        return $request->all();
+        // return $request->all();
         if (empty($request->search_pick_up_area)) {
             return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
         }
@@ -1085,13 +1085,7 @@ class DashboardController extends WebController
         $user_data = Auth::guard('transporter')->user();
         $my_quotes = QuoteByTransporter::where('user_id', $user_data->id)->get();
 
-        // Get IDs of user quotes that have been quoted by the transporter
         $my_quote_ids = $my_quotes->pluck('user_quote_id');
-
-        // $subQuery = UserQuote::query()
-        //     ->join('users', 'users.id', '=', 'user_quotes.user_id')
-        //     ->leftJoin('quote_by_transpoters', 'quote_by_transpoters.user_quote_id', '=', 'user_quotes.id')->get();
-        // return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $subQuery]);
 
         $subQuery = UserQuote::query()
             ->join('users', 'users.id', '=', 'user_quotes.user_id')
@@ -1142,16 +1136,13 @@ class DashboardController extends WebController
                 ->having('distance_pickup', '<=', $maxDistance);
         }
 
-        // Group by user_quote_id to get the count and minimum bid for each
         $subQuery->groupBy('user_quotes.id')
             ->latest();
 
-        // Wrap the subquery with the main query for pagination
         $quotes = \DB::table(\DB::raw("({$subQuery->toSql()}) as sub"))
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
 
-        // return $quotes->watchlist;
         if ($request->ajax()) {
             // Convert dates to DateTime objects if necessary
             foreach ($quotes as $quote) {

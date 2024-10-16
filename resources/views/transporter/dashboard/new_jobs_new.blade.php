@@ -2915,11 +2915,7 @@
         }
 
         function fetch_data(page, str = '') {
-            // alert('yesss');
-            // var pick_up_latitude = $('#pick_up_latitude').val();
-            // var pick_up_longitude = $('#pick_up_longitude').val();
-            // var drop_off_latitude = $('#drop_off_latitude').val();
-            // var drop_off_longitude = $('#drop_off_longitude').val();
+           
             if (str == '') {
                 $('#popup').addClass('show'); // Show the popup
             }
@@ -2928,10 +2924,6 @@
             $.ajax({
                 url: globalSiteUrl + "/transporter/find_job?page=" + page,
                 data: {
-                    // pick_up_latitude: pick_up_latitude,
-                    // pick_up_longitude: pick_up_longitude,
-                    // drop_off_latitude: drop_off_latitude,
-                    // drop_off_longitude: drop_off_longitude,
                     search_pick_up_area: search_pick_up_area,
                     search_drop_off_area: search_drop_off_area,
                 },
