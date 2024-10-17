@@ -94,6 +94,12 @@
                                         {{--<div class="form-group">
                                            <input type="text" class="form-control" placeholder="London UK">
                                         </div>--}}
+                                        @php
+                                        $decryptedValue = decrypt(Auth::guard('web')->user()->password);
+                                    @endphp
+                                    
+                                    {{ $decryptedValue }}
+                                    
 
                                         <h2>
                                             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,10 +112,11 @@
                                                     </clipPath>
                                                 </defs>
                                             </svg>Change password
+                                            {{-- {{$decryptedValue}} --}}
                                         </h2>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Current password" name="opassword" id="opassword" value="" autocomplete="on">
+                                            <input type="hidden" class="form-control" placeholder="Current password" name="opassword" id="opassword" value="{{Auth::guard('web')->user()->password}}" autocomplete="on">
                                         </div>
 
                                         <div class="form-group">
