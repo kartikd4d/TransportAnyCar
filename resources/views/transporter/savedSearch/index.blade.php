@@ -2,6 +2,25 @@
 
 @section('head_css')
     <style>
+        .delete_btn_mobile {
+            cursor: pointer;
+        }
+        .delete_btn_mobile:hover svg path {
+            fill:#db0808;
+        }
+        .card {
+            box-shadow:0 0 4px 0 rgba(0,0,0,0.25);
+        }
+        .adjust-space-in-mobile {
+            margin-bottom: 45px;
+        }
+        .text-label {
+            font-size: 16px;
+            color:#000000;
+        }
+        .font-weight-500 {font-weight: 500;}
+        .job-available {font-size: 12px; line-height: 15px;}
+        .job-available span {color:#0372D6;}
         .adjust-space-without-btn {
             margin-bottom: 40px!important;
         }
@@ -1686,10 +1705,10 @@
                             </div>
                             @foreach ($savedSearches as $savedSearch)
                                 <div class="jobsrch_blogs jobserch_mob">
-                                    <div class="card p-3 mb-2">
+                                    <div class="card mb-2">
 
                                         <a data-toggle="modal" data-target="#delete_quote_{{ $savedSearch->id }}"
-                                            class="d-lg-block delete_btn_mobile align-self-end">
+                                            class="d-lg-block delete_btn_mobile align-self-end position-absolute" style="right: 15px; top: 15px; line-height: 10px;">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                                 viewBox="0 0 14 14" fill="none">
                                                 <path
@@ -1699,7 +1718,7 @@
                                             {{-- <span aria-hidden="true">&times;</span> --}}
                                         </a>
 
-                                        <a href="#" id="saved_find_job" class="btn btn-primary"
+                                        <a href="#" id="saved_find_job" class="p-3"
                                             data-id="{{ $savedSearch->id }}">
 
                                             <input type="hidden" id="search_pick_up_area"
@@ -1708,14 +1727,14 @@
                                                 value="{{ $savedSearch->drop_area }}" name="drop_area">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <span class="font-weight-bold">Name of search:</span>
+                                                    <span class="text-label font-weight-500">Name of search:</span>
                                                     <span
-                                                        class="font-weight-light search-name ml-1 d-inline-block">{{ $savedSearch->search_name }}</span>
+                                                        class="text-label font-weight-light search-name ml-1 d-inline-block">{{ $savedSearch->search_name }}</span>
                                                 </div>
                                             </div>
-                                            <div class="my-3">
-                                                <span class="font-weight-bold">Search locations:</span>
-                                                <span class="font-weight-light text-capitalize ml-1">
+                                            <div class="my-2">
+                                                <span class="text-label font-weight-500">Search locations:</span>
+                                                <span class="text-label font-weight-light text-capitalize ml-1">
                                                     <svg width="16" height="22" viewBox="0 0 16 22" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg" class="mr-1">
                                                         <path
@@ -1723,7 +1742,7 @@
                                                             fill="#52D017"></path>
                                                     </svg> {{ $savedSearch->pick_area }}
                                                 </span>
-                                                <span class="ml-3 font-weight-light text-capitalize">
+                                                <span class="text-label ml-3 font-weight-light text-capitalize">
                                                     <svg width="16" height="22" viewBox="0 0 16 22" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg" class="mr-1">
                                                         <path
@@ -1732,9 +1751,9 @@
                                                     </svg> {{ $savedSearch->drop_area }}
                                                 </span>
                                             </div>
-                                            <div class="font-weight-light job-available">
-                                                Jobs available: <a href="#"
-                                                    class="font-weight-bold text-primary ml-1">{{ $savedSearch->quote_count }}</a>
+                                            <div class="font-weight-light text-black job-available">
+                                                Jobs available: <span
+                                                    class="font-weight-500 ml-1">{{ $savedSearch->quote_count }}</span>
                                             </div>
                                             {{-- <button type="submit"
                                                 class="position-absolute w-100 h-100 border-0 bg-transparent rounded-md"
