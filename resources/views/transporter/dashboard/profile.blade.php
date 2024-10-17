@@ -812,7 +812,7 @@
                                                 <div class="requied_sec_row w-100">
                                                     <div class="form-group">
                                                         <div class="document flex-row">
-                                                            <label for="email_verify" class="w-auto">
+                                                            <label for="email_verify" class="w-auto"> Verify Your Email
                                                                 {{-- <input type="email" name="email" id="email_verify"
                                                                     placeholder="Verify your email address"
                                                                     class="border-0 font-weight-light"
@@ -967,7 +967,7 @@
                                                     <div class="input-group">
                                                         <input type="tel" id="phone" class="form-control"
                                                             placeholder="Mobile Phone" name="mobile"
-                                                            value="{{ old('country_code', $user->country_code ?? '') }} {{ old('mobile', $user->mobile ?? '') }}" />
+                                                            value=" {{ old('mobile', $user->mobile ?? '') }}" />
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -1030,8 +1030,8 @@
                                                     <li>
                                                         <div class="form-group">
                                                             <input type="checkbox" id="payment1"
-                                                                name="payment_methods[]" value="cash"
-                                                                {{ in_array('cash', $payment_methods) ? 'checked' : '' }}>
+                                                                name="payment_methods[]" value="Cash"
+                                                                {{ in_array('Cash', $payment_methods) ? 'checked' : '' }}>
                                                             <label for="payment1"></label>
                                                             <span>Cash</span>
                                                         </div>
@@ -1040,8 +1040,8 @@
                                                     <li>
                                                         <div class="form-group">
                                                             <input type="checkbox" id="payment5"
-                                                                name="payment_methods[]" value="cheque"
-                                                                {{ in_array('cheque', $payment_methods) ? 'checked' : '' }}>
+                                                                name="payment_methods[]" value="Cheque"
+                                                                {{ in_array('Cheque', $payment_methods) ? 'checked' : '' }}>
                                                             <label for="payment5"></label>
                                                             <span>Cheque</span>
                                                         </div>
@@ -1050,8 +1050,8 @@
                                                     <li>
                                                         <div class="form-group">
                                                             <input type="checkbox" id="payment3"
-                                                                name="payment_methods[]" value="visa_card"
-                                                                {{ in_array('visa_card', $payment_methods) ? 'checked' : '' }}>
+                                                                name="payment_methods[]" value="Visa Card"
+                                                                {{ in_array('Visa Card', $payment_methods) ? 'checked' : '' }}>
                                                             <label for="payment3"></label>
                                                             <span>Visa Card</span>
                                                         </div>
@@ -1060,8 +1060,8 @@
                                                     <li>
                                                         <div class="form-group">
                                                             <input type="checkbox" id="payment4"
-                                                                name="payment_methods[]" value="paypal"
-                                                                {{ in_array('paypal', $payment_methods) ? 'checked' : '' }}>
+                                                                name="payment_methods[]" value="Paypal"
+                                                                {{ in_array('Paypal', $payment_methods) ? 'checked' : '' }}>
                                                             <label for="payment4"></label>
                                                             <span>Paypal</span>
                                                         </div>
@@ -1070,8 +1070,8 @@
                                                     <li>
                                                         <div class="form-group">
                                                             <input type="checkbox" id="payment2"
-                                                                name="payment_methods[]" value="bank_tansfer"
-                                                                {{ in_array('bank_tansfer', $payment_methods) ? 'checked' : '' }}>
+                                                                name="payment_methods[]" value="Bank Transfer"
+                                                                {{ in_array('Bank Transfer', $payment_methods) ? 'checked' : '' }}>
                                                             <label for="payment2"></label>
                                                             <span>Bank Transfer</span>
                                                         </div>
@@ -1126,14 +1126,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/js/intlTelInput-jquery.min.js"></script>
     <script>
         // inputel
-        $('#phone').intlTelInput({
-            nationalMode: false,
-            separateDialCode: true,
-            formatOnDisplay: false,
-            preferredCountries: ['GB'],
-        }).on("countrychange", function() {
-            $('#country_code').val('+' + $(this).intlTelInput("getSelectedCountryData").dialCode);
-        });
+        // $('#phone').intlTelInput({
+        //     nationalMode: false,
+        //     separateDialCode: true,
+        //     formatOnDisplay: false,
+        //     preferredCountries: ['GB'],
+        // }).on("countrychange", function() {
+        //     $('#country_code').val('+' + $(this).intlTelInput("getSelectedCountryData").dialCode);
+        // });
     </script>
     <script>
         $('.view-pdf').on('click', function(e) {

@@ -422,20 +422,18 @@
                         </li>
                     </ul>
                 </div>
-                @php
-    $createdAt = \Carbon\Carbon::parse($quote->created_at)->timezone('Europe/London');
-@endphp
 
                 @if ($quote->tranporterId == auth()->user()->id)
                     <div class="actionDiv">
                         <div class="rotated-banner">Bidding</div>
                     </div>
                 @else
-                @if ($createdAt >= now('Europe/London')->subHour())
-                <div class="actionDiv">
-                    <div class="rotated-banner green">new</div>
-                </div>
-            @endif
+                @if (\Carbon\Carbon::parse($quote->created_at)->setTimezone('Europe/London') > now('Europe/London')->subHour())
+                    
+                        <div class="actionDiv">
+                            <div class="rotated-banner green">new</div>
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>

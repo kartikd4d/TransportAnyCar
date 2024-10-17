@@ -231,7 +231,7 @@
                                                     </li>
                                                     <li>
                                                         <p>Payment method:</p>
-                                                        <span>Credit/Debit Card, Cash, <br />Paypal, Visa, Cheque </span>
+                                                        <span>{{ $user->payment_methods }}</span>
                                                     </li>
                                                 </ul>
                                             </div>
