@@ -124,6 +124,7 @@
             margin: 0;
         }
 
+        .uploaded-documents,
         .requied_sec h2 {
             font-size: 24px;
             margin-bottom: 3px;
@@ -422,7 +423,7 @@
             }
 
             .wd-profile-form .form-group a.view-pdf {
-                width: 25%;
+                /* width: 25%; */
                 font-size: 14px;
                 text-align: right;
             }
@@ -709,11 +710,11 @@
                                             value="{{ empty($user->country_code) ? '+44' : $user->country_code }}">
 
                                         @if ($user->is_status == 'pending' && ($user->driver_license != null && $user->goods_in_transit_insurance != null))
-                                            <div class="requied_sec" style="color:red">
+                                            <div class="requied_sec px-md-3 mx-xl-4" style="color:red">
                                                 <h2>Account approval pending</h2>
                                             </div>
                                         @endif
-                                        <div class="row mx-0 mx-xl-3">
+                                        <div class="row mx-0 mx-xl-4">
                                             @if (($user->is_status != 'approved' && $user->is_status != 'pending') || ($user->driver_license == null || $user->goods_in_transit_insurance == null))
                                                 <div class="col-md-6 col-xl-6 requied_sec mb-0 upload_docs px-0 px-md-3 pl-lg-0 px-xl-3" style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                                     <h2 class="upload-heading">Upload Documents:
@@ -802,7 +803,52 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            <div class="col-md-6 col-xl-6 requied_sec verify_email_sec px-0 px-md-3 pr-lg-0 px-xl-3"
+                                            @if ($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
+                                                <div class="col-md-6 col-xl-6 mb-0 px-0 px-md-3 mt-3 pt-2">
+                                                    <h2 class="uploaded-documents p-0 m-0">Uploaded documents</h2>
+                                                    <p class="subtitle">&nbsp;</p>
+                                                    <div class="row flex-column mx-0">
+                                                        @if ($user->driver_license != null)
+                                                            <div class="col-xl-12  my-0 upload_docs px-0">
+                                                                <div class="requied_sec_row">
+                                                                    <div class="form-group">
+                                                                        <div class="document">
+                                                                            <label for="" class="font-weight-light">
+                                                                                Valid driving license
+                                                                                <a class="view-pdf"
+                                                                                href="{{ url($user->driver_license) }}"
+                                                                                data-toggle="modal" data-target="#pdfModal"
+                                                                                data-url="{{ url($user->driver_license) }}"
+                                                                                >View</a>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @if ($user->goods_in_transit_insurance != null)
+                                                            <div class="col-xl-12  my-0 upload_docs px-0">
+                                                                <div class="requied_sec_row">
+                                                                    <div class="form-group">
+                                                                        <div class="document">
+                                                                            <label for="" class="font-weight-light">
+                                                                                Goods in transit insurance
+                                                                                <a 
+                                                                                    class="view-pdf"
+                                                                                    href="{{ url($user->goods_in_transit_insurance) }}" 
+                                                                                    data-toggle="modal" data-target="#pdfModal"
+                                                                                    data-url="{{ url($user->goods_in_transit_insurance) }}"
+                                                                                    style="float:right">View</a>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            <div class="col-md-6 col-xl-6 requied_sec verify_email_sec px-0 px-md-3"
                                                 style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                                 <h2 class="upload-heading">Verify Email:</h2>
                                                 <p class="subtitle">You must verify your email address before you can start
@@ -910,51 +956,10 @@
                                         </div>
                                         {{-- @endif --}}
 
-                                        @if ($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
-                                            <h3>Uploaded documents</h3>
-                                            <div class="row mx-4 mx-xl-3">
-                                                @if ($user->driver_license != null)
-                                                    <div class="col-md-6 col-xl-6 requied_sec my-0 upload_docs px-0 pl-md-0 pr-md-3 pl-lg-0 px-xl-3">
-                                                        <div class="requied_sec_row">
-                                                            <div class="form-group">
-                                                                <div class="document">
-                                                                    <label for="" class="font-weight-light">
-                                                                        Valid driving license
-                                                                        <a class="view-pdf"
-                                                                        href="{{ url($user->driver_license) }}"
-                                                                        data-toggle="modal" data-target="#pdfModal"
-                                                                        data-url="{{ url($user->driver_license) }}"
-                                                                        >View</a>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @if ($user->goods_in_transit_insurance != null)
-                                                    <div class="col-md-6 col-xl-6 requied_sec my-0 verify_email_sec px-0 pr-md-0 pl-md-3 pr-lg-0 px-xl-3">
-                                                        <div class="requied_sec_row">
-                                                            <div class="form-group">
-                                                                <div class="document">
-                                                                    <label for="" class="font-weight-light">
-                                                                        Goods in transit insurance
-                                                                        <a 
-                                                                            class="view-pdf"
-                                                                            href="{{ url($user->goods_in_transit_insurance) }}" 
-                                                                            data-toggle="modal" data-target="#pdfModal"
-                                                                            data-url="{{ url($user->goods_in_transit_insurance) }}"
-                                                                            style="float:right">View</a>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        @endif
+                                        
                                         <h3 class="adjust-space-mobile-padding">Account details</h3>
                                         <div class="row align-items-end mx-4">
-                                            <div class="col-lg-6 pr-lg-3 pl-lg-0">
+                                            <div class="col-lg-6 pr-lg-3">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control sticky-data"
                                                         placeholder="Full name" name="name"
@@ -973,7 +978,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 pl-lg-3 pr-lg-0">
+                                            <div class="col-lg-6 pl-lg-3">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control sticky-data"
                                                         placeholder="Username" name="username"
@@ -997,7 +1002,7 @@
                                         </div>
 
                                         <div class="row mx-4">
-                                            <div class="col-lg-6 order-lg-1 order-2">
+                                            <div class="col-lg-6 pr-lg-3 order-lg-1 order-2">
                                                 <h5>Email notifications preferences:</h5>
                                                 <ul class="wd-cstm-check">
                                                     <li style="display:none">
@@ -1035,7 +1040,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="col-lg-6 order-lg-2 order-1">
+                                            <div class="col-lg-6 pl-lg-3 order-lg-2 order-1">
                                                 <h5>Payment methods:</h5>
                                                 @php
                                                     $payment_methods = $user->payment_methods

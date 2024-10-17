@@ -1970,7 +1970,7 @@ span.chat_count{
   margin: 0;
 }
 .chat_conversation_footer .form-group .form-control{
-  padding: 10px 20px 10px 30px;
+    padding: 10px 20px 10px 30px;
     font-weight: 400;
     height: auto;
     background: transparent;
@@ -1982,6 +1982,7 @@ span.chat_count{
     text-align: left;
     color: #000;
     line-height: normal;
+    resize: none;
 }
 .option_btn{
   position: relative;
@@ -5522,17 +5523,21 @@ button.swal2-confirm.swal2-styled:focus {
   bottom: auto;
   left: auto;
   right: 0;
-  top: 72px;
+  top: 85px;
+  margin-top: 0;
   width: 95%;
   max-width: 400px;
   background: #ffffff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  border-radius: 0 0 10px 10px;
   min-width: auto;
   transform: translateX(-50%);
-  box-shadow: 0px 0px 6px 2px #ccc;
+  /* box-shadow: 0px 0px 6px 2px #ccc; */
+  box-shadow: 0px 5px 6px -2px #ccc;
   margin-right: 0;
   padding-bottom: 0;
   overflow: auto;
+  border-top: none;
 }
 .notifaction_sec  .dropdown-item {
   border-bottom: 1px solid #ccc;

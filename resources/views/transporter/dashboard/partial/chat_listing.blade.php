@@ -44,10 +44,10 @@ $quoteFound = false;
         @endif
     @endforeach
     @if(!$quoteFound)
-        <div class="get-chat-history text-center">-Currently none to show-</div>
+        <div class="get-chat-history text-left px-3 py-2">-Currently none to show-</div>
     @endif
 @else
-    <div class="get-chat-history text-center">-Currently none to show-</div>
+    <div class="get-chat-history text-left px-3 py-2">-Currently none to show-</div>
 @endif
 <script src="{{asset('assets/web/js/admin.js')}}"></script>
 <script>
