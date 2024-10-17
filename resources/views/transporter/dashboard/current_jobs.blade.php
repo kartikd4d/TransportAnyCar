@@ -164,7 +164,6 @@
 
 
 
-
         @media screen and (min-device-width: 1400px) and (max-device-width: 1600px) {
             .admin_job_bx .tab-content .deshbord-job-listing .list_img img {
                 width: 100%;
