@@ -2,43 +2,15 @@
 
 @section('head_css')
     <style>
-        .yes-btn {
-            background-color: #1e7e34;
-            border-color: #1e7e34;
-            color: #ffffff;
+        .adjust-space-without-btn {
+            margin-bottom: 40px!important;
         }
-
-        .yes-btn:hover {
-            background-color: transparent;
-            color: #1e7e34;
-        }
-
         .jobsrch_info_list h6 {
             width: 10% !important;
         }
 
-        .jobserch_mob .close-btn {
-            position: absolute;
-            right: 16px;
-            top: 16px;
-            z-index: 2;
-        }
-
-        .jobserch_mob form button {
-            opacity: 1 !important;
-        }
-
-        .job-available {
-            font-size: 12px;
-        }
-
         .vehicle_image {
             width: 500px !important;
-        }
-
-        .search-name:first-letter {
-            text-transform: capitalize;
-            display: inline-block;
         }
 
         a.make_offer_btn {
@@ -88,8 +60,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                                                                    color: #000000;
-                                                                } */
+                            color: #000000;
+                        } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -163,10 +135,10 @@
             height: 17px;
         }
 
-        .get_quote .modal-header .close {
-            position: absolute;
-            right: 15px;
-        }
+        /* .get_quote .modal-header .close {
+                    position: absolute;
+                    right: 15px;
+                } */
 
         /* Add your CSS styling here */
         #popup {
@@ -252,7 +224,7 @@
 
         .job-data {
             margin-left: 0px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
         }
 
         .job-data span {
@@ -260,11 +232,11 @@
             font-size: 15px;
         }
 
-        #carDetailsModal .modal-header button.btn-close {
-            position: absolute;
-            top: 11px;
-            right: 15px;
-        }
+        /* #carDetailsModal .modal-header button.btn-close {
+                    position: absolute;
+                    top: 11px;
+                    right: 15px;
+                } */
 
         #carDetailsModal .modal-header span {
             display: flex;
@@ -289,6 +261,10 @@
             color: #9C9C9C;
             padding: 0;
             margin-left: auto;
+            line-height: 18px;
+            /* position: absolute;
+            right: 21px;
+            top: 21px; */
         }
 
         #carDetailsModal .jobsrch_box {
@@ -386,9 +362,6 @@
             padding-bottom: 20px;
         }
 
-        .adjust-space-in-mobile {
-            margin-bottom: 48px;
-        }
 
         @media (min-width: 579px) {
 
@@ -1257,10 +1230,6 @@
 
 
         @media(max-width: 767px) {
-            .adjust-space-in-mobile {
-                margin-bottom: 36px;
-            }
-
             .jobserch_mob li p {
                 display: none !important;
             }
@@ -1345,10 +1314,6 @@
                 margin-left: -30px;
             }
 
-            .card {
-                border-width: 0 !important;
-            }
-
             .jobserch_mob .jobsrch_box {
                 padding: 20px;
                 margin-bottom: 7px;
@@ -1415,7 +1380,7 @@
 
             .jobsrch_form_blog .form-control {
                 font-size: 18px;
-                color: #000000;
+                /* color: #000000; */
             }
 
             .jobsrch_form_blog .error-message {
@@ -1439,11 +1404,11 @@
                 height: 203px !important;
             }
 
-            .modal-header button.btn-close {
-                position: absolute;
-                top: 11px;
-                right: 15px;
-            }
+            /* .modal-header button.btn-close {
+                        position: absolute;
+                        top: 11px;
+                        right: 15px;
+                    } */
 
             .jobserch_mob .jobsrch_box {
                 padding: 20px 20px 10px;
@@ -1659,12 +1624,6 @@
 
         }
 
-        @media (max-width: 575px) {
-            .card {
-                border-radius: 0 !important;
-            }
-        }
-
         @media(max-width: 400px) {
             .jobsrch_box {
                 padding: 10px;
@@ -1675,38 +1634,10 @@
                 right: 5%;
             }
         }
-
-        /*d4ddeveloper-r */
-
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background: #FFF;
-            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-            /* width: 420px; */
-        }
-
-        .card span {
-            font-size: 16px;
-        }
-
-        .close {
-            font-size: 1.2rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .text-success i,
-        .text-danger i {
-            margin-right: 5px;
-        }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/rangeslider.css') }}" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/globle.css') }}" />
 @endsection
+
 
 @section('content')
     <div id="wrapper">
@@ -1878,25 +1809,18 @@
                 var search_pick_up_area = $('#search_pick_up_area').val();
                 var search_drop_off_area = $('#search_drop_off_area').val();
                 $.ajax({
-                    url: globalSiteUrl + "/transporter/find_job?page=" + 1,
+                     url: "{{ route('transporter.saved_Find_job') }}",
                     data: {
                         search_pick_up_area: search_pick_up_area,
                         search_drop_off_area: search_drop_off_area,
+                         _token: "{{ csrf_token() }}"
                     },
-                    type: "GET",
+                    type: "post",
                     success: function(res) {
                         console.log(res);
+                        
                         if (res.success == true) {
-                            $('#popup').removeClass('show');
-                            $('.jobsrch_blogs, .mainContentDiv').addClass('d-none');
-                            $('#idLoadData').html(res.data);
-                            $('.jobsrch_form_blog').addClass('d-none');
-                            $('.admin_job_top h3').text('Your results');
-                            $('.pera_srch').text(
-                                'Here are some jobs we’ve found that match your search.');
-                            $('html, body').scrollTop(0);
-
-                            checkAndHideSections();
+                            window.location.href = res.redirect_url;  
                         } else {
                             $('#popup').removeClass('show');
                             toastr.error(res.message);

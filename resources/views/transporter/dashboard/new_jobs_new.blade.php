@@ -262,9 +262,6 @@
             padding: 0;
             margin-left: auto;
             line-height: 18px;
-            /* position: absolute;
-            right: 21px;
-            top: 21px; */
         }
 
         #carDetailsModal .jobsrch_box {
@@ -2669,7 +2666,7 @@
                                         </a>
                                     </div>
                                     <div class="bidTnfo">
-                                        <p class="info">Current lowest bid: <span class="green">£${carData.lowest_bid}</span></p>
+                                        <p class="info">Current lowest bid: <span class="green">£${carData.lowest_bid  ?? 0}</span></p>
                                         <p class="info">Transporters bidding: <span class="blue">${carData.transporter_quotes_count}</span></p>
                                     </div>
                                 </div>
@@ -2927,6 +2924,10 @@
             $.ajax({
                 url: globalSiteUrl + "/transporter/find_job?page=" + page,
                 data: {
+                    // pick_up_latitude: pick_up_latitude,
+                    // pick_up_longitude: pick_up_longitude,
+                    // drop_off_latitude: drop_off_latitude,
+                    // drop_off_longitude: drop_off_longitude,
                     search_pick_up_area: search_pick_up_area,
                     search_drop_off_area: search_drop_off_area,
                 },

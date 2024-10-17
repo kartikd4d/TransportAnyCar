@@ -318,11 +318,11 @@ class DashboardController extends WebController
         $ratings = collect([5, 4, 3, 2, 1])->mapWithKeys(function ($rating) use ($all_feedbacks, $total_feedbacks) {
             $count = $all_feedbacks->where('rating', $rating)->count();
             $percentage = $total_feedbacks > 0 ? ($count / $total_feedbacks) * 100 : 0;
-            return ['star_'.$rating  =>  $percentage];
+            return ['star_' . $rating  =>  $percentage];
         });
-        
+
         // return $ratings['star_5'];
-        $params['html'] = view('transporter.dashboard.partial.feedback_listing', compact('feedbacks','ratings'))->render();
+        $params['html'] = view('transporter.dashboard.partial.feedback_listing', compact('feedbacks', 'ratings'))->render();
         if ($request->ajax()) {
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $params]);
         }
@@ -395,7 +395,6 @@ class DashboardController extends WebController
         $quotes = UserQuote::with(['user', 'watchlist', 'quoteByTransporter' => function ($query) use ($user_data) {
             $query->where('user_id', $user_data->id); // Assuming 'transporter_id' is the field
         }])
-            // ->whereNotIn('id', $user_quote)
             ->where(function ($query) {
                 $query->where('status', 'pending')
                     ->orWhere('status', 'approved');
@@ -409,7 +408,6 @@ class DashboardController extends WebController
             ])
             ->latest()
             ->paginate(50);
-        // return $quotes;
         $document_status = $user_data->is_status;
         return view('transporter.dashboard.new_jobs_new', ['quotes' => $quotes, 'documentStatus' => $document_status]);
     }
@@ -595,24 +593,21 @@ class DashboardController extends WebController
                 } else {
                     return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
                 }
-            } elseif ($request->email_type == 'summary_of_leads'){
+            } elseif ($request->email_type == 'summary_of_leads') {
                 $status = $user->update(['summary_of_leads' => $request->value]);
                 if ($status) {
                     return response()->json(['status' => true,  'message' => 'Preference updated successfully.']);
                 } else {
                     return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
                 }
-            }
-            elseif($request->email_type == 'saved_search_alerts'){
+            } elseif ($request->email_type == 'saved_search_alerts') {
                 $status = $user->update(['saved_search_alerts' => $request->value]);
                 if ($status) {
                     return response()->json(['status' => true,  'message' => 'Preference updated successfully.']);
                 } else {
                     return response()->json(['status' => false, 'message' => 'Failed to update preference.']);
                 }
-
-            }
-            else {
+            } else {
                 return response()->json(['status' => false, 'message' => 'Invalid email type.']);
             }
         } else {
@@ -808,7 +803,6 @@ class DashboardController extends WebController
             $my_quotes = $my_quotes->where('status', 'accept');
         } elseif ($type == 'bidding') {
             $my_quotes = $my_quotes->where('status', 'pending')->whereDate('created_at', '>=', now()->subDays(10));
-
         } elseif ($type == 'cancel') {
             $my_quotes = $my_quotes->where('status', 'rejected');
         }
@@ -850,8 +844,8 @@ class DashboardController extends WebController
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $params]);
         }
     }
-    
-   
+
+
 
     public function editQuoteAmount(Request $request)
     {
@@ -1000,21 +994,21 @@ class DashboardController extends WebController
                 $data // The data to be updated or inserted
             );
 
-// if ($request->emailNtf){
-//     $user = User::find(auth()->user()->id);
-//     // return  $user->email;
-//     $emailService = app(EmailService::class); // Get the instance of your EmailService
+            // if ($request->emailNtf){
+            //     $user = User::find(auth()->user()->id);
+            //     // return  $user->email;
+            //     $emailService = app(EmailService::class); // Get the instance of your EmailService
 
-//     $email = 'kartik.d4d@gmail.com'; // Replace with the email address you want to send to
-//     $subject = 'Test Email from save search';
-    
-//     // Prepare the email content
-//     $htmlContent = '<h1>Test Email</h1><p>This is a test email sent from Laravel!</p>';
+            //     $email = 'kartik.d4d@gmail.com'; // Replace with the email address you want to send to
+            //     $subject = 'Test Email from save search';
 
-//     // Call the sendEmail method
-//     $emailService->sendEmail($email, $htmlContent, $subject);
+            //     // Prepare the email content
+            //     $htmlContent = '<h1>Test Email</h1><p>This is a test email sent from Laravel!</p>';
 
-// }
+            //     // Call the sendEmail method
+            //     $emailService->sendEmail($email, $htmlContent, $subject);
+
+            // }
 
 
             return response(["success" => true, "message" => "Search saved successfully!", "data" => []]);
@@ -1047,9 +1041,9 @@ class DashboardController extends WebController
         return $request->all();
     }
 
-    public function saved_find_job(Request $request)
+    public function savedFindJob(Request $request)
     {
-        return $request->all();
+        // return response(["hello"=>"world"]);
         if (empty($request->search_pick_up_area)) {
             return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
         }
@@ -1143,19 +1137,29 @@ class DashboardController extends WebController
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
 
-        if ($request->ajax()) {
-            // Convert dates to DateTime objects if necessary
-            foreach ($quotes as $quote) {
-                $quote->created_at = \Carbon\Carbon::parse($quote->created_at);
-                $quote->updated_at = \Carbon\Carbon::parse($quote->updated_at);
-            }
 
-            $pickup = $request->input('search_pick_up_area');
-            $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
-            $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
+        $pickup = $request->input('search_pick_up_area');
+        $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
 
-            return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $html, 'quotes' => $quotes]);
-        }
+        return response()->json([
+            'success' => true,
+            'redirect_url' => route('transporter.savedFindJobResults', [
+                'quotes' => $quotes,
+                'pickup' => $pickup,
+                'dropoff' => $dropoff
+            ])
+        ]);
     }
-    
+    public function savedFindJobResults(Request $request)
+    {
+        $quotes = $request->input('quotes');
+        $pickup = $request->input('pickup');
+        $dropoff = $request->input('dropoff');
+
+        return view('transporter.savedSearch.search_result', [
+            'quotes' => $quotes,
+            'pickup' => $pickup,
+            'dropoff' => $dropoff
+        ]);
+    }
 }
