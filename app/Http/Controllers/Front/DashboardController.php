@@ -144,9 +144,11 @@ class DashboardController extends WebController
 
     public function profile(Request $request)
     {
+       
         $user_data = Auth::guard('web')->user();
         $user_data->last_visited_at = now();
         $user_data->save();
+        // return $user_data->getAuthPassword();
         $request->validate([
             'email' => ['required', 'email', Rule::unique('users')->ignore($user_data->id)->whereNull('deleted_at')],
             'opassword' => ['required'],
@@ -156,7 +158,7 @@ class DashboardController extends WebController
             'opassword.exists' => __('admin.change_password_not_match'),
             'cpassword.same' => __('admin.change_password_not_same'),
         ]);
-        if (Hash::check($request->opassword, $user_data->getAuthPassword())) {
+        if ($request->opassword == $user_data->getAuthPassword()) {
             $is_update = $user_data->update(['password' => $request->npassword, 'email' => $request->email]);
             if ($is_update) {
                 success_session(__('admin.chang_profile_updated'));
