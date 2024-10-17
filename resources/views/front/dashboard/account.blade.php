@@ -94,11 +94,11 @@
                                         {{--<div class="form-group">
                                            <input type="text" class="form-control" placeholder="London UK">
                                         </div>--}}
-                                        @php
+                                        {{-- @php
                                         $decryptedValue = decrypt(Auth::guard('web')->user()->password);
                                     @endphp
                                     
-                                    {{ $decryptedValue }}
+                                    {{ $decryptedValue }} --}}
                                     
 
                                         <h2>
