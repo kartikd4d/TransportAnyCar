@@ -784,6 +784,7 @@ class DashboardController extends WebController
 
             $pickup = $request->input('search_pick_up_area');
             $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
+            // return $quotes;
             $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
 
             return response()->json(['success' => true, 'message' => 'Job find successfully', 'data' => $html, 'quotes' => $quotes]);
