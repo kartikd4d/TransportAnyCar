@@ -147,6 +147,7 @@
                                 padding: 12px;
                                 justify-content: space-around;
                             } */
+        .requied_sec_row .document a,
         .requied_sec_row .document span {
             color: #717171;
             color: #000000;
@@ -162,7 +163,8 @@
             background-color: #FDFFFA;
             border-radius: 5px;
         }
-
+        
+        .requied_sec_row .document a:hover,
         .requied_sec_row .document span:hover {
             background-color: #52D017;
             color: #ffffff;
@@ -910,26 +912,41 @@
 
                                         @if ($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
                                             <h3>Uploaded documents</h3>
-                                            <div class="row">
+                                            <div class="row mx-4 mx-xl-3">
                                                 @if ($user->driver_license != null)
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group document-list">
-                                                            <span>Valid driving license</span>
-                                                            <a href="{{ url($user->driver_license) }}"class="view-pdf"
-                                                                data-toggle="modal" data-target="#pdfModal"
-                                                                data-url="{{ url($user->driver_license) }}"
-                                                                style="float:right">View</a>
+                                                    <div class="col-md-6 col-xl-6 requied_sec my-0 upload_docs px-0 pl-md-0 pr-md-3 pl-lg-0 px-xl-3">
+                                                        <div class="requied_sec_row">
+                                                            <div class="form-group">
+                                                                <div class="document">
+                                                                    <label for="" class="font-weight-light">
+                                                                        Valid driving license
+                                                                        <a class="view-pdf"
+                                                                        href="{{ url($user->driver_license) }}"
+                                                                        data-toggle="modal" data-target="#pdfModal"
+                                                                        data-url="{{ url($user->driver_license) }}"
+                                                                        >View</a>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
                                                 @if ($user->goods_in_transit_insurance != null)
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group document-list">
-                                                            <span>Goods in transit insurance</span>
-                                                            <a href="{{ url($user->goods_in_transit_insurance) }}"class="view-pdf"
-                                                                data-toggle="modal" data-target="#pdfModal"
-                                                                data-url="{{ url($user->goods_in_transit_insurance) }}"
-                                                                style="float:right">View</a>
+                                                    <div class="col-md-6 col-xl-6 requied_sec my-0 verify_email_sec px-0 pr-md-0 pl-md-3 pr-lg-0 px-xl-3">
+                                                        <div class="requied_sec_row">
+                                                            <div class="form-group">
+                                                                <div class="document">
+                                                                    <label for="" class="font-weight-light">
+                                                                        Goods in transit insurance
+                                                                        <a 
+                                                                            class="view-pdf"
+                                                                            href="{{ url($user->goods_in_transit_insurance) }}" 
+                                                                            data-toggle="modal" data-target="#pdfModal"
+                                                                            data-url="{{ url($user->goods_in_transit_insurance) }}"
+                                                                            style="float:right">View</a>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -937,7 +954,7 @@
                                         @endif
                                         <h3 class="adjust-space-mobile-padding">Account details</h3>
                                         <div class="row align-items-end mx-4">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 pr-lg-3 pl-lg-0">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control sticky-data"
                                                         placeholder="Full name" name="name"
@@ -956,7 +973,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 pl-lg-3 pr-lg-0">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control sticky-data"
                                                         placeholder="Username" name="username"
