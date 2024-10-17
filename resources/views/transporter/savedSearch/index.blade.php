@@ -1684,6 +1684,8 @@
                                 <img src="/uploads/loading-popup.gif" alt="Loading">
                             </div>
                             <p class="pera_srch adjust-space-in-mobile">Here are your current saved searches. </p>
+
+                            
                             <div class="job-data">
                                 @if ($savedSearches->total() == 0)
                                     <span>Results: 0</span>
@@ -1836,8 +1838,7 @@
                     },
                     type: "post",
                     success: function(res) {
-                        console.log(res);
-                        
+                        console.log('yesssssssssss');
                         if (res.success == true) {
                             window.location.href = res.redirect_url;  
                         } else {

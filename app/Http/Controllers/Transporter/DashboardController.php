@@ -1044,13 +1044,24 @@ class DashboardController extends WebController
 
     public function savedFindJob(Request $request)
     {
-        // return response(["hello"=>"world"]);
-        if (empty($request->search_pick_up_area)) {
+        $pickup = $request->input('search_pick_up_area');
+        $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
+        return response()->json([
+            'success' => true,
+            'redirect_url' => route('transporter.savedFindJobResults', [
+                'pickup' => $pickup,
+                'dropoff' => $dropoff
+            ])
+        ]);
+    }
+    public function savedFindJobResults(Request $request)
+    {
+        if (empty($request->pickup)) {
             return response()->json(['success' => false, 'message' => 'Currently no jobs to show']);
         }
 
         $pickUpResponse = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
-            'address' => $request->input('search_pick_up_area'),
+            'address' => $request->pickup,
             'key' => config('constants.google_map_key'),
         ]);
         $pickUpData = $pickUpResponse->json();
@@ -1064,7 +1075,7 @@ class DashboardController extends WebController
         $drop_off_longitude = null;
         if ($request->search_drop_off_area && $request->search_drop_off_area != 'Anywhere') {
             $dropOffResponse = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
-                'address' => $request->input('search_drop_off_area'),
+                'address' => $request->dropoff,
                 'key' => config('constants.google_map_key'),
             ]);
             $dropOffData = $dropOffResponse->json();
@@ -1138,25 +1149,8 @@ class DashboardController extends WebController
             ->mergeBindings($subQuery->getQuery())
             ->paginate(20);
 
-
-        $pickup = $request->input('search_pick_up_area');
-        $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
-
-        return response()->json([
-            'success' => true,
-            'redirect_url' => route('transporter.savedFindJobResults', [
-                'quotes' => $quotes,
-                'pickup' => $pickup,
-                'dropoff' => $dropoff
-            ])
-        ]);
-    }
-    public function savedFindJobResults(Request $request)
-    {
-        $quotes = $request->input('quotes');
-        $pickup = $request->input('pickup');
-        $dropoff = $request->input('dropoff');
-
+            $pickup = $request->pickup;
+            $dropoff = $request->dropoff;
         return view('transporter.savedSearch.search_result', [
             'quotes' => $quotes,
             'pickup' => $pickup,
