@@ -2,6 +2,29 @@
 
 @section('head_css')
     <style>
+        .banner {
+            font-size: 16px;
+            line-height: 20px;
+            color: #ffffff;
+            background: #52D017;
+            text-transform: capitalize;
+            position: absolute;
+            right: -50px;
+            top: 20px;
+            transform: rotate(38deg);
+            padding: 8px 50px;
+            display: inline-block;
+        }
+        .banner.new_member {
+            background: #52D017;
+        }
+        .banner.pro_member {
+            background: #000000;
+        }
+        .banner.vip_member {
+            background: #fff000;
+            color:#000000;
+        }
         .wd-transport-dtls h1 {
             text-transform: capitalize;
         }
@@ -44,7 +67,12 @@
             font-weight: 500;
             margin-left: 10px;
         }
-
+        @media(min-width: 992px) {
+            .set_banner_position > .wd-white-box {
+                position: relative;
+                overflow: hidden;
+            }
+        }
         @media(max-width: 1199px) {
             .wd-transport-area {
                 flex-wrap: wrap;
@@ -68,6 +96,15 @@
             }
         }
 
+        @media(max-width: 991px) {
+            .adjust_spacing {
+                padding-top: 70px;
+            }
+            .set_banner_position {
+                position: relative;
+                overflow: hidden;
+            }
+        }
         @media(max-width: 767px) {
             .wd-transport-img {
                 padding-top: 5px;
@@ -117,9 +154,16 @@
         <div id="page-content-wrapper">
             @include('layouts.transporter.dashboard.top_head')
             <!-- content part -->
-            <div class="content_container">
-                <div class="inner_content">
+            <div class="content_container adjust_spacing">
+                <div class="inner_content set_banner_position">
                     <div class="wd-white-box">
+                        @if($completed_job >= 0 && $completed_job <= 10)
+                            <div class="banner new_member">New Member</div>
+                        @elseif($completed_job >= 11 && $completed_job <= 50)
+                        <div class="banner pro_member">Pro Member</div>
+                        @elseif($completed_job >= 51)
+                        <div class="banner vip_member">ViP Member</div>
+                        @endif
                         <div class="wd-feedback-box border-0 rounded-0 p-0">
                             <div class="row wd-pb pb-5 mx-0">
                                 <div class="col-lg-12">
