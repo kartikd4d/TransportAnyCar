@@ -1481,8 +1481,8 @@
                 },
                 success: function(response) {
                     Swal.fire({
-                        title: 'Thank you.',
-                        text: 'Email preference updated successfully!',
+                        title: 'Verification email sent.',
+                        text: 'Please check your email inbox or spam folder and then verify your email address !',
                         confirmButtonText: 'Dismiss',
                         showCloseButton: true,
                     })

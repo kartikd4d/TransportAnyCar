@@ -81,6 +81,7 @@ class AppServiceProvider extends ServiceProvider
                 } else {
                     // Get notifications and count in one go
                     $query = Notification::where(['user_id' => $user->id])
+                    ->where('created_at', '>=', Carbon::now()->subDays(10))
                         ->orderBy('created_at', 'desc');
                     $notifications = $query->get();
                     $notificationCount = $notifications->where('seen', 1)->count();

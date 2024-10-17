@@ -275,7 +275,8 @@
                                                     </li>
                                                     <li>
                                                         <p>Payment method:</p>
-                                                        <span>{{ $user->payment_methods }}</span>
+                                                        <span>
+                                                        {{ str_replace(',', ', ', $user->payment_methods ) }}</span>
                                                     </li>
                                                 </ul>
                                             </div>
