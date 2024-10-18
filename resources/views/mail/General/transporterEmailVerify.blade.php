@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Verify Your Email</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        h2,
+        body{
+            margin:0;
+            font-size: 10px;
+            line-height: 13px;
+            font-weight: 300;
+            font-family: "Outfit", sans-serif;
+        }
+        h1,h2, p {margin:0;}
+        .contain {
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            padding: 35px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 400;
+        }
+        button {
+            background: #52D017;
+            color:#ffffff;
+            font-size: 12px;
+            line-height:16px;
+            font-weight: 400;
+            border: none;
+            display: inline-block;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 20px;
+            padding-right: 20px;
+            cursor: pointer;
+        }
+        .adjust-space {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        .adjust-half-space {
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Verify Your Email Address</h1>
-    <p>Thank you for registering. Please click the link below to verify your email address:</p>
-    <a href="{{ $verificationLink }}">Verify Email</a>
-    <p>If you did not create an account, please ignore this email.</p>
+    <div class="contain">
+        <h1>Verify Your Email and Activate Your TransportAnyCar.com Account.</h1>
+        <img class="adjust-space" src="{{asset('/assets/images/transport-logo.jpg')}}" alt="Transport Logo" style="max-width:90px"; />
+        <h2>Hi [Transporter full name],</h2>
+        <p class="adjust-space">Please verify your email address to activate your account.</p>
+        <button>Verify email</button>
+        <p class="adjust-space">Your link is active for 24 hours. After that you will need to resend the verification email.</p>
+        <p>
+            Best Regards,
+        </p>
+        <p class="adjust-half-space">Transport Any Car Team</p>
+        <p class="adjust-half-space">Manage notification preferences.</p>
+        <p>© 2024 Transport Any Car. 128 City Road, London, EC1V 2NX.</p>
+    </div>
+    {{-- <a href="{{ $verificationLink }}">Verify Email</a> --}}
+    {{-- <p>If you did not create an account, please ignore this email.</p> --}}
 </body>
+
 </html>

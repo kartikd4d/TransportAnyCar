@@ -84,25 +84,21 @@
     }
 
     /*******************************/
-    .leave_inner .form-group textarea:focus::-webkit-input-placeholder {
-        /* Chrome/Opera/Safari */
+    /* .leave_inner .form-group textarea:focus::-webkit-input-placeholder {
         color: #000000;
     }
 
     .leave_inner .form-group textarea:focus::-moz-placeholder {
-        /* Firefox 19+ */
         color: #000000;
     }
 
     .leave_inner .form-group textarea:focus:-ms-input-placeholder {
-        /* IE 10+ */
         color: #000000;
     }
 
     .leave_inner .form-group textarea:focus:-moz-placeholder {
-        /* Firefox 18- */
         color: #000000;
-    }
+    } */
 
     button.lve_feed_btn {
         font-size: 14px;
