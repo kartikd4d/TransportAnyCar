@@ -359,6 +359,32 @@
             padding-bottom: 20px;
         }
 
+        .get_quote.avoid-user-to-place-bid .modal-header {margin-bottom: 0;}
+        .get_quote.avoid-user-to-place-bid .modal-content {border-radius: 8px; box-shadow: 0 4px 4px 0rgba(0,0,0,0.25); padding: 35px;}
+        .get_quote.avoid-user-to-place-bid .modal-title {
+            font-size: 20px;
+            line-height: 25px;
+            font-weight: 400;
+        }
+        .get_quote.avoid-user-to-place-bid .modal-body {
+            font-size: 12px;
+            line-height: 15px;
+            font-weight: 300;
+            color:#444444;
+            text-align: center;
+            margin: 25px 0;
+        }
+        .get_quote.avoid-user-to-place-bid .modal-dialog {
+            max-width: 285px;
+        }
+        .get_quote.avoid-user-to-place-bid .modal-footer {margin-top: 0;}
+        .get_quote.avoid-user-to-place-bid .modal-footer button {
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 400!important;
+            margin-bottom: 0;
+            border-radius: 5px;
+        }
 
         @media (min-width: 579px) {
 
@@ -712,9 +738,6 @@
 
         }
 
-
-
-
         @media screen and (min-width: 1000px) and (max-width: 1199px) {
 
             .jobserch_mob .jobsrch_box {
@@ -887,7 +910,6 @@
 
         }
 
-
         @media(min-width: 1366px) {
             .jobserch_mob .jobsrch_box {
                 border-radius: 10px;
@@ -1058,7 +1080,6 @@
 
         }
 
-
         @media(min-width: 1600px) {
             .jobserch_mob .jobsrch_box {
                 border-radius: 10px;
@@ -1225,7 +1246,6 @@
 
         }
 
-
         @media(max-width: 767px) {
             .jobserch_mob li p {
                 display: none !important;
@@ -1233,8 +1253,6 @@
         }
 
         /* end 16-09-2024 */
-
-
         @media(max-width: 580px) {
             .jobsrch_info_list li small {
                 font-size: 14px;
@@ -2027,6 +2045,136 @@
     <div class="pagination before_search">
         {{ $quotes->links() }}
     </div>
+    {{-- Avoid User to place a bid --}} 
+    {{-- Also change the modal id below so you can not open two modals togather --}}
+
+    {{-- Verify your account --}}
+    {{-- <div class="modal get_quote fade avoid-user-to-place-bid" id="quote" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Verify your account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{ route('transporter.submit_offer') }}" class="bid_form">
+                    @csrf
+                    <div class="modal-body">
+                        You must upload a valid drivers license, goods in transit insurance and verify your email address within your profile before you are able to bid for jobs.
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <button type="submit" class="submit_btn">Verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+
+    {{-- Verify your email --}}
+    {{-- <div class="modal get_quote fade avoid-user-to-place-bid" id="quote" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Verify your email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{ route('transporter.submit_offer') }}" class="bid_form">
+                    @csrf
+                    <div class="modal-body">
+                        You must verify your email address within your profile before you are able to bid for jobs.
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <button type="submit" class="submit_btn">Verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+
+    {{-- Documents upload --}}
+    {{-- <div class="modal get_quote fade avoid-user-to-place-bid" id="quote" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Upload documents</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{ route('transporter.submit_offer') }}" class="bid_form">
+                    @csrf
+                    <div class="modal-body">
+                        You must upload a valid driving license, goods in transist insurance within your profile before you are able to bids for jobs.
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <button type="submit" class="submit_btn">Verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+
+    {{-- Waiting for admin approval --}}
+    {{-- <div class="modal get_quote fade avoid-user-to-place-bid" id="quote" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Awaiting Approval</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{ route('transporter.submit_offer') }}" class="bid_form">
+                    @csrf
+                    <div class="modal-body">
+                        Sorry you can not bid on any jobs until your account has been approved.
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <button type="submit" class="submit_btn">Dismiss</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
 
     <div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

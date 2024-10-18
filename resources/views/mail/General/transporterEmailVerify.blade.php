@@ -8,14 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <style>
         h2,
-        body{
-            margin:0;
-            font-size: 10px;
-            line-height: 13px;
+        body {
+            margin: 0;
             font-weight: 300;
             font-family: "Outfit", sans-serif;
+            font-size: 10px;
+            line-height: 13px;
         }
-        h1,h2, p {margin:0;}
+
+        h1,
+        h2,
+        p {
+            margin: 0;
+        }
+      
         .contain {
             max-width: 600px;
             width: 100%;
@@ -24,6 +30,7 @@
             padding: 35px;
             box-sizing: border-box;
         }
+
         h1 {
             font-size: 16px;
             line-height: 20px;
@@ -43,7 +50,7 @@
             padding-right: 20px;
             cursor: pointer;
         }
-        .adjust-space {
+        .adjust-space { 
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -51,6 +58,7 @@
             margin-top: 12px;
             margin-bottom: 12px;
         }
+        
     </style>
 </head>
 
