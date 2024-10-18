@@ -857,7 +857,7 @@
                                                 style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                                 <h2 class="upload-heading">Verify Email:</h2>
                                                 <p class="subtitle">You must verify your email address before you can start bidding.</p>
-                                                @if ($user->email_verify_status =='0')
+                                                @if ($user->email_verify_status == 0)
                                                 <p class="subtitle text-danger message">Please verify your email</p>
                                                 @else
                                                 <p class="subtitle text-success message">Email verified</p>
