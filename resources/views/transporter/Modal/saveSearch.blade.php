@@ -154,7 +154,10 @@
                         <p class="save-search-example">e.g. (London to Anywhere)</p>
                     </div>
                     <div class="form-group custom-checkbox">
-                        <input class="form-check-input m-0 position-absolute" id="emailNtf" name="emailNtf"  type="checkbox" value="" checked />
+                        <input type="checkbox" id="save-search" name="save-search" value="test" class="m-0 position-absolute" checked />
+                        <label for="save-search" class="font-weight-light save-search-email"> Get emails for jobs that match this search.</label>
+                          
+                        {{-- <input class="form-check-input m-0 position-absolute" id="emailNtf" name="emailNtf"  type="checkbox" value="" checked /> --}}
 
                         {{-- <input class="form-check-input m-0 position-absolute" type="checkbox" value="1" checked /> --}}
                         <label class="form-check-label save-search-email position-relative" for="emailNtf">

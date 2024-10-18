@@ -712,7 +712,7 @@
                                         <input type="hidden" name="country_code" id="country_code"
                                             value="{{ empty($user->country_code) ? '+44' : $user->country_code }}">
 
-                                        @if ($user->is_status == 'pending' && ($user->driver_license != null && $user->goods_in_transit_insurance != null))
+                                        @if ($user->is_status == 'pending' && ($user->driver_license != null && $user->goods_in_transit_insurance != null && $user->email_verify_status == '0'))
                                             <div class="requied_sec px-md-3 mx-xl-4" style="color:red">
                                                 <h2>Account approval pending</h2>
                                             </div>
@@ -857,8 +857,11 @@
                                                 style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                                 <h2 class="upload-heading">Verify Email:</h2>
                                                 <p class="subtitle">You must verify your email address before you can start bidding.</p>
+                                                @if ($user->email_verify_status =='0')
                                                 <p class="subtitle text-danger message">Please verify your email</p>
+                                                @else
                                                 <p class="subtitle text-success message">Email verified</p>
+                                                @endif
                                                 <div class="upload-section">
                                                     <div class="requied_sec_row w-100">
                                                         <div class="form-group">
@@ -1208,9 +1211,9 @@
                 name: "{{ $user->name }}",
                 username: "{{ $user->username }}",
             };
-
+            // alert('yesssss');
             $.ajax({
-                url: "{{ route('send-verify-email') }}",
+                url: "{{ route('sendVerifyEmail') }}",
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
@@ -1486,20 +1489,20 @@
                     value: value
                 },
                 success: function(response) {
-                    Swal.fire({
-                        title: 'Verification email sent.',
-                        text: 'Please check your email inbox or spam folder and then verify your email address !',
-                        confirmButtonText: 'Dismiss',
-                        showCloseButton: true,
-                    })
+                    // Swal.fire({
+                    //     title: 'Verification email sent.',
+                    //     text: 'Please check your email inbox or spam folder and then verify your email address !',
+                    //     confirmButtonText: 'Dismiss',
+                    //     showCloseButton: true,
+                    // })
                 },
                 error: function(xhr) {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'An error occurred while updating your preference.',
-                        confirmButtonText: 'Dismiss',
-                        showCloseButton: true,
-                    })
+                    // Swal.fire({
+                    //     title: 'Error',
+                    //     text: 'An error occurred while updating your preference.',
+                    //     confirmButtonText: 'Dismiss',
+                    //     showCloseButton: true,
+                    // })
                 }
             });
         }

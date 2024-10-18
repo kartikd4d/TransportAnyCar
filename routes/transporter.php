@@ -85,7 +85,13 @@ Route::group(['as' => 'transporter.'], function () {
         Route::get('/notifications', 'NotificationController@index')->name('notifications.index');
         Route::get('/notifications/{notification}', 'NotificationController@show')->name('notifications.show');
     });
+
+    
 });
-Route::get('/email-template', function () {
-    return view('mail.General.transporterEmailVerify');
-})->name('mail.General.transporterEmailVerify');
+Route::group(['namespace' => 'Api\V1'], function () {
+    Route::post('verify-email', 'MailController@transporterEmailVerify')->name('sendVerifyEmail');
+    Route::get('verify-email/{token}', 'MailController@verifyEmail')->name('verify.email');
+});
+// Route::get('/email-template', function () {
+//     return view('mail.General.transporterEmailVerify');
+// })->name('mail.General.transporterEmailVerify');

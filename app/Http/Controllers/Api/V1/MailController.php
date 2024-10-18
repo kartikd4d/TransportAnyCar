@@ -68,12 +68,13 @@ class MailController extends ResponseController
             $user->email_verification_token = $verificationToken;
             $user->save();
  
-            $verificationLink = url("/api/verify-email/{$verificationToken}");
+            $verificationLink = url("/transporter/verify-email/{$verificationToken}");
             $htmlContent = view('mail.General.transporterEmailVerify', [
                 'verificationLink' => $verificationLink,
+                'name'=> $user->name,
             ])->render();
           
-            $emailService->sendEmail($request->email, $htmlContent, $request->subject);
+            $emailService->sendEmail('kartik.d4d@gmail.com', $htmlContent, $request->subject);
 
             return response()->json(['message' => 'Verification email sent successfully.']);
 
@@ -85,6 +86,8 @@ class MailController extends ResponseController
 
     public function verifyEmail($token)
     {
+
+       
         // Find the user by the verification token
         $user = User::where('email_verification_token', $token)->first();
 
@@ -93,7 +96,7 @@ class MailController extends ResponseController
         }
 
         // Mark the email as verified
-        $user->email_verified_at = now();
+        $user->email_verify_status = 1;
         $user->email_verification_token = null;
         $user->save();
 

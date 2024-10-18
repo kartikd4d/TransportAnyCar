@@ -2290,7 +2290,7 @@
             var pick_area = $("#search_pick_up_area").val();
             var drop_area = $("#search_drop_off_area").val();
             var search_name = $("#srchName").val();
-            var isChecked = $('#emailNtf').prop('checked');
+            var isChecked = $('#save-search').prop('checked');
             $("#srchName").next("span.error").remove();
             if (srchName === "") {
                 $("#srchName").after('<span class="error" style="color:red;">This field is required</span>');

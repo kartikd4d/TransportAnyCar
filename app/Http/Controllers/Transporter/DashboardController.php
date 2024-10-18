@@ -784,6 +784,7 @@ class DashboardController extends WebController
 
             $pickup = $request->input('search_pick_up_area');
             $dropoff = $request->input('search_drop_off_area') ?? 'Anywhere';
+            
             // return $quotes;
             $html = view('transporter.dashboard.partial.search_job_result', compact('quotes', 'pickup', 'dropoff'))->render();;
 
@@ -1137,6 +1138,9 @@ class DashboardController extends WebController
 
             $pickup = $request->pickup;
             $dropoff = $request->dropoff;
+
+
+            
         return view('transporter.savedSearch.search_result', [
             'quotes' => $quotes,
             'pickup' => $pickup,
