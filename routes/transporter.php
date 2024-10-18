@@ -68,9 +68,9 @@ Route::group(['as' => 'transporter.'], function () {
         // end d4d developer - k
         // D4dDeveoper-r 
         Route::post('save/search', 'DashboardController@savesearch')->name('save.search');
-        Route::get('save/search', 'DashboardController@savesearchview')->name('view.save.search');   
+        Route::get('save/search', 'DashboardController@savesearchview')->name('view.save.search');
         Route::post('save-find-job', 'DashboardController@savedFindJob')->name('saved_Find_job');
-        Route::get('/saved-find-job-results','DashboardController@savedFindJobResults')->name('savedFindJobResults');
+        Route::get('/saved-find-job-results', 'DashboardController@savedFindJobResults')->name('savedFindJobResults');
         Route::post('save/search/delete', 'DashboardController@savesearchdlt')->name('delete.save.search');
         // end
 
@@ -86,3 +86,6 @@ Route::group(['as' => 'transporter.'], function () {
         Route::get('/notifications/{notification}', 'NotificationController@show')->name('notifications.show');
     });
 });
+Route::get('/email-template', function () {
+    return view('mail.General.transporterEmailVerify');
+})->name('mail.General.transporterEmailVerify');

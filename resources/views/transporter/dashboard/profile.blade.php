@@ -51,6 +51,9 @@
             color: #777;
             margin-bottom: 15px;
         }
+        .subtitle.message {
+            font-size: 12px!important;
+        }
 
         .upload-section {
             display: flex;
@@ -745,10 +748,11 @@
                                                         </div>
                                                     </h2>
                                                     <p class="subtitle">You must upload your documents before you can start bidding.</p>
+                                                    <p class="subtitle text-danger message">Upload your documents</p>
                                                     <div class="upload-section">
                                                         <div class="requied_sec_row">
                                                             <div class="form-group">
-                                                                <div class="document">
+                                                                <div class="document border-danger">
                                                                     <!-- <span>Valid driving license</span> -->
                                                                     <label for="driver_license"
                                                                         class="addmore_btn font-weight-light" id="add"
@@ -774,7 +778,7 @@
                                                         </div>
                                                         <div class="requied_sec_row">
                                                             <div class="form-group">
-                                                                <div class="document">
+                                                                <div class="document border-danger">
                                                                     <label for="goods_in_transit_insurance"
                                                                         class="addmore_btn font-weight-light" id="add"
                                                                         title="Click to upload the document">
@@ -806,7 +810,8 @@
                                             @if ($user->driver_license != null || $user->goods_in_transit_insurance != null || $user->motor_trade_insurance != null)
                                                 <div class="col-md-6 col-xl-6 mb-0 px-0 px-md-3 mt-3 pt-2">
                                                     <h2 class="uploaded-documents p-0 m-0">Uploaded documents</h2>
-                                                    <p class="subtitle">&nbsp;</p>
+                                                    <p class="subtitle text-success message">Documents uploaded</p>
+                                                    
                                                     <div class="row flex-column mx-0">
                                                         @if ($user->driver_license != null)
                                                             <div class="col-xl-12  my-0 upload_docs px-0">
@@ -851,14 +856,15 @@
                                             <div class="col-md-6 col-xl-6 requied_sec verify_email_sec px-0 px-md-3"
                                                 style="{{ $user->is_status == 'approved' ? 'display:block' : '' }}">
                                                 <h2 class="upload-heading">Verify Email:</h2>
-                                                <p class="subtitle">You must verify your email address before you can start
-                                                    bidding.</p>
+                                                <p class="subtitle">You must verify your email address before you can start bidding.</p>
+                                                <p class="subtitle text-danger message">Please verify your email</p>
+                                                <p class="subtitle text-success message">Email verified</p>
                                                 <div class="upload-section">
                                                     <div class="requied_sec_row w-100">
                                                         <div class="form-group">
-                                                            <div class="document flex-row">
+                                                            <div class="document flex-row border-danger">
                                                                 <label for="email_verify" class="w-auto font-weight-light">
-                                                                    Verify your email
+                                                                    Verify your email address
                                                                     {{-- <input type="email" name="email" id="email_verify"
                                                                         placeholder="Verify your email address"
                                                                         class="border-0 font-weight-light"
@@ -1218,7 +1224,7 @@
                 success: function(response) {
                     Swal.fire({
                         title: 'Thank you.',
-                        text: 'Please check your mail and click on verify',
+                        text: 'Please check your email inbox or spam folder and then verify your email address.',
                         confirmButtonText: 'Dismiss',
                         showCloseButton: true,
                         customClass: {

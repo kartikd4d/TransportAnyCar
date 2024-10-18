@@ -2684,6 +2684,7 @@ a.chat_cross{
   border: 1px solid #B9B9B9;
   border-radius: 5px;
   background: #fff;
+  height: calc(100vh - 172px);
 }
 .wd-deliver-lft{
   background: linear-gradient(276.79deg, #008DD4 7.47%, #0356D6 100%);
