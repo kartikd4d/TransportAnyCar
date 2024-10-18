@@ -991,26 +991,12 @@ class DashboardController extends WebController
                     'user_id' => $data['user_id'],
                     'pick_area' => $data['pick_area'],
                     'drop_area' => $data['drop_area'],
+                    'email_notification'=>'1'
                 ],
                 $data // The data to be updated or inserted
             );
 
-            // if ($request->emailNtf){
-            //     $user = User::find(auth()->user()->id);
-            //     // return  $user->email;
-            //     $emailService = app(EmailService::class); // Get the instance of your EmailService
-
-            //     $email = 'kartik.d4d@gmail.com'; // Replace with the email address you want to send to
-            //     $subject = 'Test Email from save search';
-
-            //     // Prepare the email content
-            //     $htmlContent = '<h1>Test Email</h1><p>This is a test email sent from Laravel!</p>';
-
-            //     // Call the sendEmail method
-            //     $emailService->sendEmail($email, $htmlContent, $subject);
-
-            // }
-
+           
 
             return response(["success" => true, "message" => "Search saved successfully!", "data" => []]);
         } catch (\Exception $ex) {

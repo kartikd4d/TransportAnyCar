@@ -2161,10 +2161,6 @@
                 <div class="modal-body modalMainBody" id="carDetailsModalBody">
                     <!-- Modal content will be dynamically updated here -->
                 </div>
-                <!-- Modal Footer
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-success">Place bid</button>
-                                                                </div> -->
             </div>
         </div>
     </div>

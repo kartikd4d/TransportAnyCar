@@ -60,8 +60,8 @@
 
 
         /* .jobsrch_form_blog .form-control {
-                                    color: #000000;
-                                } */
+                                        color: #000000;
+                                    } */
         .jobsrch_form_blog .error-message {
             position: absolute;
             bottom: -34px;
@@ -136,9 +136,9 @@
         }
 
         /* .get_quote .modal-header .close {
-                            position: absolute;
-                            right: 15px;
-                        } */
+                                position: absolute;
+                                right: 15px;
+                            } */
 
         /* Add your CSS styling here */
         #popup {
@@ -233,10 +233,10 @@
         }
 
         /* #carDetailsModal .modal-header button.btn-close {
-                            position: absolute;
-                            top: 11px;
-                            right: 15px;
-                        } */
+                                position: absolute;
+                                top: 11px;
+                                right: 15px;
+                            } */
 
         #carDetailsModal .modal-header span {
             display: flex;
@@ -1402,10 +1402,10 @@
             }
 
             /* .modal-header button.btn-close {
-                                position: absolute;
-                                top: 11px;
-                                right: 15px;
-                            } */
+                                    position: absolute;
+                                    top: 11px;
+                                    right: 15px;
+                                } */
 
             .jobserch_mob .jobsrch_box {
                 padding: 20px 20px 10px;
@@ -1658,7 +1658,7 @@
                                 <h3 class="mb-md-3">Your results</h3>
                                 <p class="pera_srch">Here are some jobs we’ve found that match your search.</p>
                             </div>
-                           
+
                             <div class="jobsrch_form_blog search_resu_sec mb-0" style="display:block !important">
                                 <div class="form-group where_custom">
                                     <label id="pickupLabel">Your job search</label>
@@ -1798,6 +1798,7 @@
                                                         $lowestBid = $quote->lowest_bid ?? 0;
                                                         $transporterQuotesCount = $quote->transporter_quotes_count ?? 0;
                                                     @endphp
+                                                   
                                                     @if ($transporterQuotesCount > 0)
                                                         <li class="colorDivgreen car-row"
                                                             data-car-id="{{ $quote->id }}">
@@ -1907,11 +1908,988 @@
                                     </span>
                                 </div>
                             </div>
+                       </section>
                     </div>
-                    </section>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination before_search">
+        {{ $quotes->links() }}
+    </div>
+
+    <div class="modal get_quote fade" id="quote" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"> Place your bid</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <form id="main_form" method="post" action="{{ route('transporter.submit_offer') }}" class="bid_form">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <span class="icon_includes">£</span>
+                            <input type="number" class="form-control" aria-describedby="emailHelp"
+                                placeholder="Enter your bid" id="amount" name="amount">
+                            <!-- <p style="font-size:12px; margin-top: 10px;"><b> Note:</b> The amount you bid will be the total amount you get paid directly by the customer.</p> -->
+                            <div class="modal_current">
+                                <p>Current lowest bid: <span class="lowAmount">£0</span></p>
+                                <p>Transporters bidding: <span class="red bidCount">0</span></p>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0px">
+                            <textarea placeholder="Send a professional message for a better chance of winning the job..."
+                                class="form-control textarea" id="message" name="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 10px;">
+                        <input type="hidden" name="quote_id" id="quote_id" value="">
+                        <p><b> Note:</b> Do not share any contact information or company names, we will provide you with the
+                            customers details after they have accepted your quote.</p>
+                        <button type="submit" class="submit_btn">Place bid</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- EDIT  --}}
+    <div class="modal get_quote fade" id="quoteEdit" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"> Edit bid</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        onClick="adjustbackdrop()">
+                        <span aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6584 0.166626L6.00008 4.82496L1.34175 0.166626L0.166748 1.34163L4.82508 5.99996L0.166748 10.6583L1.34175 11.8333L6.00008 7.17496L10.6584 11.8333L11.8334 10.6583L7.17508 5.99996L11.8334 1.34163L10.6584 0.166626Z"
+                                    fill="#000" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <form id="editQuoteForm" action="{{ route('transporter.submit_offer') }}" method="POST"
+                    class="bid_form">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <span class="icon_includes">£</span>
+                            <input type="number" class="form-control" aria-describedby="emailHelp"
+                                placeholder="Enter your bid" id="editamount" name="amount">
+                            <!-- <p style="font-size:12px; margin-top: 10px;"><b> Note:</b> The amount you bid will be the total amount you get paid directly by the customer.</p> -->
+                            <div class="modal_current">
+                                <p>Current lowest bid: <span class="lowAmount">£0</span></p>
+                                <p>Transporters bidding: <span class="red bidCount">0</span></p>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group" style="margin-bottom:0px">
+                            <textarea placeholder="Send a professional message for a better chance of winning the job..."
+                                class="form-control textarea" id="editmessage" name="message"></textarea>
+                        </div> --}}
+                    </div>
+                    <div class="modal-footer" style="margin-top: 10px;">
+                        <input type="hidden" name="quote_id" id="quote_edit_id" value="">
+                        {{-- <p><b> Note:</b> Do not share any contact information or company names, we will provide you with the
+                            customers details after they have accepted your quote.</p> --}}
+                        <button type="submit" class="submit_btn">Submit bid</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="carDetailsModal" tabindex="-1" aria-labelledby="carDetailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <div>
+                        <span id="backButton">
+                            <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g opacity="0.5">
+                                    <path d="M6 11.5L1 6.5L6 1.5" stroke="black" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                            </svg>
+                            Back
+                        </span>
+                    </div>
+                    <div class="expiryDiv" id="expiry_date">
+
+                    </div>
+                    <div>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.292893 15.2929C-0.0976311 15.6834 -0.0976311 16.3166 0.292893 16.7071C0.683417 17.0976 1.31658 17.0976 1.70711 16.7071L0.292893 15.2929ZM9.20711 9.20711C9.59763 8.81658 9.59763 8.18342 9.20711 7.79289C8.81658 7.40237 8.18342 7.40237 7.79289 7.79289L9.20711 9.20711ZM7.79289 7.79289C7.40237 8.18342 7.40237 8.81658 7.79289 9.20711C8.18342 9.59763 8.81658 9.59763 9.20711 9.20711L7.79289 7.79289ZM16.7071 1.70711C17.0976 1.31658 17.0976 0.683417 16.7071 0.292893C16.3166 -0.0976311 15.6834 -0.0976311 15.2929 0.292893L16.7071 1.70711ZM9.20711 7.79289C8.81658 7.40237 8.18342 7.40237 7.79289 7.79289C7.40237 8.18342 7.40237 8.81658 7.79289 9.20711L9.20711 7.79289ZM15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.2929 16.7071ZM7.79289 9.20711C8.18342 9.59763 8.81658 9.59763 9.20711 9.20711C9.59763 8.81658 9.59763 8.18342 9.20711 7.79289L7.79289 9.20711ZM1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L1.70711 0.292893ZM1.70711 16.7071L9.20711 9.20711L7.79289 7.79289L0.292893 15.2929L1.70711 16.7071ZM9.20711 9.20711L16.7071 1.70711L15.2929 0.292893L7.79289 7.79289L9.20711 9.20711ZM7.79289 9.20711L15.2929 16.7071L16.7071 15.2929L9.20711 7.79289L7.79289 9.20711ZM9.20711 7.79289L1.70711 0.292893L0.292893 1.70711L7.79289 9.20711L9.20711 7.79289Z"
+                                    fill="#9C9C9C" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body modalMainBody" id="carDetailsModalBody">
+                    <!-- Modal content will be dynamically updated here -->
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
+    {{-- d4dDeveloper-r  start --}}
+    @include('transporter.Modal.saveSearch')
+    {{-- End --}}
+
+@endsection
+
+@section('script')
+    <script src="{{ asset('assets/web/js/admin.js') }}"></script>
+    <script src="{{ asset('assets/web/js/main.js') }}"></script>
+    <script src="{{ asset('assets/web/js/rangeslider.js') }}"></script>
+    <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key={{ config('constants.google_map_key') }}&libraries=places"></script>
+    {{--    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('constants.google_map_key') }}&loading=async&libraries=places&callback=initMap" async defer></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        var globalSiteUrl = '<?php echo $path = url('/'); ?>'
+        var carDetails = @json($quotes);
+        var isMobile = '{{ isMobile() }}';
+        $.validator.addMethod("noPhoneOrEmail", function(value, element) {
+            var contains_email = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i.test(value);
+            var contains_six_or_more_digits = value.replace(/\s+/g, '').match(/\d{7,}/);
+            return !(contains_email || contains_six_or_more_digits);
+        });
+        $.validator.addMethod("greaterThanZero", function(value, element) {
+            return this.optional(element) || parseFloat(value) > 0;
+        }, "You must enter an amount greater than zero");
+        $("#main_form").validate({
+            rules: {
+                amount: {
+                    required: true,
+                    noPhoneOrEmail: true,
+                    greaterThanZero: true
+                },
+                message: {
+                    required: true,
+                    noPhoneOrEmail: true,
+                },
+            },
+            messages: {
+                amount: {
+                    required: 'Please enter amount',
+                    noPhoneOrEmail: `Do not share contact information or you will be banned.`,
+                    greaterThanZero: 'You must enter an amount greater than zero'
+                },
+                message: {
+                    required: 'Please enter message',
+                    noPhoneOrEmail: `Do not share contact information or you will be banned.`
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.insertAfter($(element));
+            },
+            submitHandler: function(form) {
+                var submitButton = $(form).find('button[type="submit"]');
+                submitButton.prop('disabled', true).text('Submitting...');
+                $.ajax({
+                    url: $(form).attr('action'),
+                    type: 'POST',
+                    data: $(form).serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: '<span class="swal-title">Bid placed</span>',
+                                html: '<span class="swal-text">Your bid has been placed successfully.</span>',
+                                confirmButtonColor: '#52D017',
+                                confirmButtonText: 'Dismiss',
+                                customClass: {
+                                    title: 'swal-title',
+                                    htmlContainer: 'swal-text-container',
+                                    popup: 'swal-popup', // Add custom class for the popup
+                                    cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                                },
+                                showCloseButton: true, // Add this line to show the close button
+                                showConfirmButton: true, // Add this line to hide the confirm button
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed || result.isDismissed) {
+                                    window.location.reload();
+                                }
+                            });
+                        } else {
+                            submitButton.prop('disabled', false).text('Submit');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        if (jqXHR.responseJSON && jqXHR.responseJSON.errors) {
+                            var errors = jqXHR.responseJSON.errors;
+                            $('#main_form').find('span.error').remove();
+                            $.each(errors, function(key, errorMessages) {
+                                alert(key)
+                                var element = $('#' + key);
+                                if (element.length > 0) {
+                                    var errorElement = element.next('span.error');
+                                    if (errorElement.length === 0) {
+                                        errorElement = $('<span id=' + key +
+                                            '-error class="error"></span>');
+                                        element.after(errorElement);
+                                    }
+
+                                    errorElement.text(errorMessages[0]);
+                                }
+                            });
+                        } else {
+                            console.error('Unexpected error:', textStatus, errorThrown);
+                        }
+                        submitButton.prop('disabled', false).text('Submit');
+                    }
+                });
+            }
+        });
+        // D4dDeveloper-R 04-10-2024
+        $(document).on('click', '#saveSrch', function() {
+            // alert("clicked");
+            $("#srchName").val('');
+            $('#emailNtf').prop('checked', false);
+            $("#saveSrchModal").modal('show');
+        });
+        $("#saveSrchForm").submit(function(e) {
+            e.preventDefault();
+            var pick_area = $("#search_pick_up_area").val();
+            var drop_area = $("#search_drop_off_area").val();
+            var search_name = $("#srchName").val();
+            var isChecked = $('#emailNtf').prop('checked');
+            $("#srchName").next("span.error").remove();
+            if (srchName === "") {
+                $("#srchName").after('<span class="error" style="color:red;">This field is required</span>');
+            }
+            $.ajax({
+                url: "{{ route('transporter.save.search') }}",
+                type: "POST",
+                data: {
+                    pick_area: pick_area,
+                    drop_area: drop_area,
+                    search_name: search_name,
+                    emailNtf: isChecked,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    console.log('Success:', response);
+                    $("#srchName").val('');
+                    $('#emailNtf').prop('checked', false);
+                    if (response.success) {
+                        $("#srchName").val('');
+                        $('#emailNtf').prop('checked', false);
+                        $("#saveSrchModal").modal('hide');
+                        toastr.success(response.message);
+                        $(".search_resu_sec").addClass('adjust-space-without-btn');
+                        $(".search_resu_sec").siblings('.savebtnS').addClass('d-none');
+                    } else {
+                        $("#srchName").val('');
+                        $('#emailNtf').prop('checked', false);
+                        $("#saveSrchModal").modal('hide');
+                        toastr.error(response.message);
+                    }
+
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('Error:', jqXHR.responseText || errorThrown);
+                    $("#srchName").val('');
+                    $('#emailNtf').prop('checked', false);
+                }
+            });
+        });
+        // end
+        $("#editQuoteForm").validate({
+            rules: {
+                amount: {
+                    required: true,
+                    noPhoneOrEmail: true,
+                    greaterThanZero: true
+                },
+                message: {
+                    required: true,
+                    noPhoneOrEmail: true,
+                },
+            },
+            messages: {
+                amount: {
+                    required: 'Please enter amount',
+                    noPhoneOrEmail: `Do not share contact information or you will be banned.`,
+                    greaterThanZero: 'You must enter an amount greater than zero'
+                },
+                message: {
+                    required: 'Please enter message',
+                    noPhoneOrEmail: `Do not share contact information or you will be banned.`
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.insertAfter($(element));
+            },
+            submitHandler: function(form) {
+                var submitButton = $(form).find('button[type="submit"]');
+                submitButton.prop('disabled', true).text('Submitting...');
+                $.ajax({
+                    url: $(form).attr('action'),
+                    type: 'POST',
+                    data: $(form).serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: '<span class="swal-title">Bid placed</span>',
+                                html: '<span class="swal-text">Your bid has been placed successfully.</span>',
+                                confirmButtonColor: '#52D017',
+                                confirmButtonText: 'Dismiss',
+                                customClass: {
+                                    title: 'swal-title',
+                                    htmlContainer: 'swal-text-container',
+                                    popup: 'swal-popup', // Add custom class for the popup
+                                    cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                                },
+                                showCloseButton: true, // Add this line to show the close button
+                                showConfirmButton: true, // Add this line to hide the confirm button
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed || result.isDismissed) {
+                                    window.location.reload();
+                                }
+                            });
+                        } else {
+                            submitButton.prop('disabled', false).text('Submit');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        if (jqXHR.responseJSON && jqXHR.responseJSON.errors) {
+                            var errors = jqXHR.responseJSON.errors;
+                            $('#main_form').find('span.error').remove();
+                            $.each(errors, function(key, errorMessages) {
+                                alert(key)
+                                var element = $('#' + key);
+                                if (element.length > 0) {
+                                    var errorElement = element.next('span.error');
+                                    if (errorElement.length === 0) {
+                                        errorElement = $('<span id=' + key +
+                                            '-error class="error"></span>');
+                                        element.after(errorElement);
+                                    }
+
+                                    errorElement.text(errorMessages[0]);
+                                }
+                            });
+                        } else {
+                            console.error('Unexpected error:', textStatus, errorThrown);
+                        }
+                        submitButton.prop('disabled', false).text('Submit');
+                    }
+                });
+            }
+        });
+
+        function share_give_quote(id) {
+            $('#quote_id').val(id);
+            var quotes = @json($quotes);
+            var selectedQuote = quotes.data.find(quote => quote.id == id);
+            if (selectedQuote) {
+                var lowestBid = selectedQuote.lowest_bid ? selectedQuote.lowest_bid : 0;
+                var bidCount = selectedQuote.transporter_quotes_count ? selectedQuote.transporter_quotes_count : 0;
+
+                $('.lowAmount').text('£' + lowestBid);
+                $('.bidCount').text(bidCount);
+                // Prevent closing quote modal when clicking outside
+                $('#quote').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                // if(isMobile) {
+                $('#quote').css('z-index', parseInt($('#carDetailsModal').css('z-index')) + 10);
+                $('.modal-backdrop').css('z-index', parseInt($('#carDetailsModal').css('z-index')) + 5);
+                // }
+                $('#quote').modal('show');
+            }
+        }
+
+        function adjustbackdrop() {
+            $('.modal-backdrop').css('z-index', '1040');
+        }
+
+        function share_edit_quote(id) {
+            // console.log('aaaaaaaaaaaaaaa');
+            $('#quote_edit_id').val(id);
+            var quotes = @json($quotes);
+            var selectedQuote = quotes.data.find(quote => quote.id == id);
+            if (selectedQuote) {
+                var lowestBid = selectedQuote.lowest_bid ? selectedQuote.lowest_bid : 0;
+                var bidCount = selectedQuote.transporter_quotes_count ? selectedQuote.transporter_quotes_count : 0;
+                // $('#editamount').val(selectedQuote.quote_by_transporter.price);
+                $('#editmessage').val(selectedQuote.quote_by_transporter.message);
+                $('.lowAmount').text('£' + lowestBid);
+                $('.bidCount').text(bidCount);
+                // Prevent closing quote modal when clicking outside
+                $('#quoteEdit').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                // if(isMobile) {
+                $('#quoteEdit').css('z-index', parseInt($('#carDetailsModal').css('z-index')) + 10);
+                $('.modal-backdrop').css('z-index', parseInt($('#carDetailsModal').css('z-index')) + 5);
+                // }
+                $('#quoteEdit').modal('show');
+            }
+        }
+
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                $(document).ready(function() {
+                    $('.where_custom').click(function() {
+                        $('.where_box').slideToggle("slow");
+                        $('#pickupLabel').hide();
+                        $('#search_pick_up_area').attr('placeholder', 'Where from ?');
+                    });
+                    $('.drop_off_box').click(function() {
+                        $('.to_box').slideToggle("slow");
+                        $('#dropoffLabel').hide();
+                        $('#search_drop_off_area').attr('placeholder', 'Where to ?');
+                    });
+                });
+            } else {
+                $(document).ready(function() {
+                    $('.where_custom').click(function() {
+                        $('.where_box').hide();
+                    });
+                });
+
+                $(document).ready(function() {
+                    $('.drop_off_box').click(function() {
+                        $('.to_box').hide();
+                    });
+                });
+            }
+        }
+
+        function addToWatchlist(quoteId) {
+            console.log('Adding quote to watchlist with ID:', quoteId); // Log for debugging
+
+            // Send the AJAX request
+            $.ajax({
+                url: "{{ route('transporter.watchlist.store') }}", // Replace with your route for adding to the watchlist
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // CSRF token for security
+                    quote_id: quoteId // Quote ID to be sent
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Show a success message or update the UI accordingly
+                        toastr.success('Job added to watchlist!');
+                        setTimeout(function() {
+                            location.reload(); // Reload the page
+                        }, 2000);
+                    } else {
+                        // Handle the case where the operation wasn't successful
+                        toastr.error(response.message); // Display the specific message returned from the server
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // General error handling for unexpected issues
+                    console.error('An error occurred:', error);
+                    toastr.error('An error occurred while adding to the watchlist.');
+                }
+            });
+        }
+
+
+        // Listen for the quote modal to be hidden
+        $('#quote').on('hidden.bs.modal', function(e) {
+            // Clear the z-index
+            $('#quote').css('z-index', '');
+            $('.modal-backdrop').remove(); // Ensure the backdrop is removed
+
+            // Remove the modal-open class and re-enable scrolling
+            $('body').removeClass('modal-open');
+            $('body').css('overflow', 'auto'); // Re-enable scrolling if it was disabled
+        });
+        // Create a MediaQueryList object
+        var x = window.matchMedia("(max-width: 767px)")
+
+        // Call listener function at run time
+        myFunction(x);
+
+        // Attach listener function on state changes
+        x.addEventListener("change", function() {
+            myFunction(x);
+        });
+
+
+        $(document).ready(function() {
+            $("#jobsrch_form_blog").validate({
+                rules: {
+                    search_pick_up_area: {
+                        required: true
+                    },
+                    search_drop_off_area: {
+                        required: false
+                    }
+                },
+                messages: {
+                    search_pick_up_area: {
+                        required: "Please enter collection area"
+                    },
+                    search_drop_off_area: {
+                        required: "Please enter delivery area"
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('error-message'); // Add custom class for styling
+                    error.insertAfter(element);
+                    element.closest('.form-group').addClass('error-margin');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('error-margin');
+                }
+            });
+            $(document).on('click', '.car-row', function() {
+                var carId = $(this).data('car-id');
+                var carData = carDetails.data.find(function(car) {
+                    return car.id == carId;
+                });
+                if (carData) {
+                    let makeAndModel = `${carData.vehicle_make} ${carData.vehicle_model}`;
+                    if (carData.vehicle_make_1 && carData.vehicle_model_1) {
+                        makeAndModel += ` / ${carData.vehicle_make_1} ${carData.vehicle_model_1}`;
+                    }
+                    let startsDrives = carData.starts_drives == 0 ? 'No' : 'Yes';
+                    if (carData.starts_drives_1 !== null) {
+                        startsDrives += ` / ${carData.starts_drives_1 == 0 ? 'No' : 'Yes'}`;
+                    }
+                    var createdAt = new Date(carData.created_at);
+
+                    // Add 10 days to the created_at date
+                    createdAt.setDate(createdAt.getDate() + 10);
+
+                    // Extract the day, month, and last two digits of the year
+                    var dd = String(createdAt.getDate()).padStart(2, '0'); // Day with leading zero
+                    var mm = String(createdAt.getMonth() + 1).padStart(2, '0'); // Month with leading zero
+                    var yy = String(createdAt.getFullYear()).slice(-2); // Last two digits of the year
+
+                    // Format the date as dd//mm/yy
+                    var formattedDate = `${dd}//${mm}//${yy}`;
+
+                    var switch_custom = '';
+                    if (carData?.quote_by_transporter) {
+                        // switch_custom =
+                        switch_custom = `<a href="javascript:;"
+                                            onclick="share_edit_quote('${carData.id}');"
+                                            class="make_offer_btn checkStatus">Edit bid</a>`
+                    } else {
+                        switch_custom = ` <a href="javascript:;"
+                                            onclick="share_give_quote(${carData.id});"
+                                            class="make_offer_btn checkStatus">Place bid</a>`
+                    }
+
+                    // Dynamically update modal body content
+                    var modalBodyContent = `
+                    <div class="jobsrch_box">
+                        <div class="row">                           
+                            <div class="col-lg-6">
+                                <div class="jobsrch_top_box position-relative">
+                                    ${carData.vehicle_make_1 == null && carData.vehicle_model_1 == null ? `
+                                                            <div>
+                                                                <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
+                                                            </div>
+                                                            ` : `
+                                                            <div class="job_se_sec slider">
+                                                                <div>
+                                                                    <img src="${carData.image}" class="vehicle_image" alt="Vehicle Image" />
+                                                                </div>
+                                                                ${carData.image_1 ? `
+                                                <div>
+                                                    <img src="/${carData.image_1}" class="vehicle_image" alt="Vehicle Image" />
+                                                </div>
+                                            ` : `
+                                                <div>
+                                                    <img src="/uploads/no_car_image.png" class="vehicle_image" alt="No Image Available" />
+                                                </div>
+                                            `}
+                                                            </div>
+                                                            <div class="custom-navigation">
+                                                                <span class="current-slide">1</span> of <span class="total-slides">2</span>
+                                                            </div>
+                                                        `}                                   
+                                </div>
+                                
+                                <div class="btnCustom">${switch_custom}</div>
+                                <div class="wishList-bidInfo">
+                                    <div class="wishListBtn">
+                                         <a href="javascript:;" class="btn"
+                                            onclick="addToWatchlist('${carData.id}');"
+                                            style="margin-left: auto;">
+                                                Add to watchlist
+                                        </a>
+                                    </div>
+                                    <div class="bidTnfo">
+                                        <p class="info">Current lowest bid: <span class="green">£${carData.lowest_bid  ?? 0}</span></p>
+                                        <p class="info">Transporters bidding: <span class="blue">${carData.transporter_quotes_count}</span></p>
+                                    </div>
+                                </div>
+                           
+                                <ul class="jobsrch_info_list">
+                                    <li>
+                                        <div class="jpbsrch_inner">
+                                            <small>Make & model:</small>
+                                        </div>
+                                        <span>${makeAndModel}</span>
+                                    </li>
+                                    <li>
+                                        <div class="jpbsrch_inner">                                           
+                                            <small>Pick-up area:</small>
+                                        </div>
+                                        <span>${carData.pickup_postcode ? formatAddress(carData.pickup_postcode) : '-'}</span>
+                                    </li>
+                                    <li>
+                                        <div class="jpbsrch_inner">                                            
+                                            <small>Drop-off area:</small>
+                                        </div>
+                                        <span>${carData.drop_postcode ? formatAddress(carData.drop_postcode) : '-'}</span>
+                                    </li>
+                                    <li>
+                                        <div class="jpbsrch_inner">                                           
+                                            <small>Delivery date:</small>
+                                        </div>
+                                        <span>${carData.delivery_timeframe_from ? formatCustomDate(carData.delivery_timeframe_from) : carData.delivery_timeframe}</span>
+                                    </li>
+                                    <li>
+                                        <div class="jpbsrch_inner">                                            
+                                            <small>Starts & drives:</small>
+                                        </div>
+                                        <span>${startsDrives}</span>
+                                    </li>
+                                    <li>
+                                        <div class="jpbsrch_inner">                                            
+                                            <small>Delivery type:</small>
+                                        </div>
+                                        <span>${carData.how_moved}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="jobsrch_right_box">
+                                    <h4 class="distance_text">Journey Distance: <b>${carData.distance} miles</b> <strong>(${carData.duration})</strong></h4> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                    $('#carDetailsModalBody').html(modalBodyContent);
+                }
+                $('#expiry_date').html(`<p>Expiry date: ${formattedDate}</p>`);
+                $('#carDetailsModal').modal('show');
+                var $slider = $('.slider');
+                $slider.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+                    var i = (currentSlide ? currentSlide : 0) + 1;
+                    $('.current-slide').text(i);
+                    $('.total-slides').text(slick.slideCount);
+                });
+
+                $slider.slick({
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 1,
+                    adaptiveHeight: true,
+                    prevArrow: '<div class="slick-prev"><svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.0756 16.5115L1.85822 10.7965C1.31976 10.4441 1 9.87387 1 9.26607C1 8.65827 1.31976 8.08803 1.85822 7.73561L10.0756 1.48823C10.7708 0.976677 11.7151 0.857068 12.5347 1.17696C13.3543 1.49685 13.917 2.20438 14 3.01972V14.984L14 14.984C13.9156 15.7986 13.3523 16.5049 12.533 16.8238C11.7136 17.1427 10.7702 17.0228 10.0756 16.5115Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+                    nextArrow: '<div class="slick-next"><svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.9244 1.48852L13.1418 7.20349C13.6802 7.5559 14 8.12613 14 8.73393C14 9.34173 13.6802 9.91197 13.1418 10.2644L4.9244 16.5118C4.22923 17.0233 3.28491 17.1429 2.46532 16.823C1.64573 16.5032 1.08303 15.7956 1 14.9803L1 3.01597C1.08445 2.20143 1.6477 1.49505 2.46703 1.17615C3.28636 0.857255 4.22984 0.977185 4.9244 1.48852Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
+                });
+            });
+            $('#backButton').on('click', function() {
+                $('#carDetailsModal').modal('hide');
+            });
+
+            $('.local_srch_box').click(function() {
+                $('.local_srch_fillterbx').slideToggle("slow");
+            });
+            $('.where_box label').click(function() {
+                var location = $(this).text();
+                $('#search_pick_up_area').val(location);
+                $('.where_box').hide();
+                var errorElement = $('#search_pick_up_area-error');
+                if (errorElement.length) {
+                    $('#search_pick_up_area').closest('.form-group').removeClass('error-margin');
+                    errorElement.remove();
+                }
+            });
+
+            // Click event for drop off area suggestions
+            $('.to_box label').click(function() {
+                var location = $(this).text();
+                $('#search_drop_off_area').val(location);
+                $('.to_box').hide();
+                var errorElement = $('#search_drop_off_area-error');
+                if (errorElement.length) {
+                    $('#search_drop_off_area').closest('.form-group').removeClass('error-margin');
+                    errorElement.remove();
+                }
+            });
+
+            // Hide label on keyup in input field
+            $('#search_pick_up_area').on('keyup', function() {
+                if ($(this).val().length > 0) {
+                    $('.where_box').hide();
+                } else {
+                    if (isMobile)
+                        $('.where_box').show();
+                }
+            });
+
+            $('#search_drop_off_area').on('keyup', function() {
+                if ($(this).val().length > 0) {
+                    $('.to_box').hide();
+                } else {
+                    if (isMobile)
+                        $('.to_box').show();
+                }
+            })
+
+            // Check for the 'open_modal' parameter in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const openModalId = urlParams.get('share_quotation');
+            if (openModalId) {
+                const carRowDiv = $(`ul.car-row[data-car-id="${openModalId}"]`);
+                if (carRowDiv.length) {
+                    simulateClick(carRowDiv);
+
+                }
+
+                if (history.pushState) {
+                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location
+                        .pathname;
+                    window.history.pushState({
+                        path: cleanUrl
+                    }, '', cleanUrl);
+                }
+            }
+
+            function simulateClick(element) {
+                element.trigger('click');
+            }
+
+            var $slider = $('.slider');
+            $slider.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+                var i = (currentSlide ? currentSlide : 0) + 1;
+                $('.current-slide').text(i);
+                $('.total-slides').text(slick.slideCount);
+            });
+
+            $slider.slick({
+                infinite: false,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                prevArrow: '<div class="slick-prev"><svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.0756 16.5115L1.85822 10.7965C1.31976 10.4441 1 9.87387 1 9.26607C1 8.65827 1.31976 8.08803 1.85822 7.73561L10.0756 1.48823C10.7708 0.976677 11.7151 0.857068 12.5347 1.17696C13.3543 1.49685 13.917 2.20438 14 3.01972V14.984L14 14.984C13.9156 15.7986 13.3523 16.5049 12.533 16.8238C11.7136 17.1427 10.7702 17.0228 10.0756 16.5115Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+                nextArrow: '<div class="slick-next"><svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.9244 1.48852L13.1418 7.20349C13.6802 7.5559 14 8.12613 14 8.73393C14 9.34173 13.6802 9.91197 13.1418 10.2644L4.9244 16.5118C4.22923 17.0233 3.28491 17.1429 2.46532 16.823C1.64573 16.5032 1.08303 15.7956 1 14.9803L1 3.01597C1.08445 2.20143 1.6477 1.49505 2.46703 1.17615C3.28636 0.857255 4.22984 0.977185 4.9244 1.48852Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
+            });
+
+
+            $('#message').on('keydown paste input', function(event) {
+                if (event.type === 'keydown' && event.key >= '0' && event.key <= '9') {
+                    event.preventDefault();
+                }
+                if (event.type === 'paste') {
+                    let pastedData = event.originalEvent.clipboardData.getData('text');
+                    if (/\d/.test(pastedData)) {
+                        event.preventDefault();
+                    }
+                }
+                if (event.type === 'input') {
+                    let newValue = $(this).val().replace(/[0-9]/g, '');
+                    $(this).val(newValue);
+                }
+            });
+
+        });
+
+        function formatAddress(address) {
+            var addressParts = address.split(',');
+            var firstPart = addressParts[0].trim();
+            var lastTwoParts = addressParts.slice(-2);
+            var limitedAddress = lastTwoParts.join(',');
+            return limitedAddress;
+        }
+
+        function formatCustomDate(date) {
+            var d = new Date(date);
+            var day = String(d.getDate()).padStart(2, '0');
+            var month = String(d.getMonth() + 1).padStart(2, '0'); // getMonth() returns month from 0-11
+            var year = String(d.getFullYear()).slice(-2); // Get last two digits of the year
+
+            return `${day}/${month}/${year}`;
+        }
+
+        const setActive = (el, active) => {
+            const formField = el.parentNode
+            if (active) {
+                formField.classList.add('field_active')
+            } else {
+                //formField.classList.remove('field_active')
+                el.value === '' ?
+                    formField.classList.remove('field_filled') :
+                    formField.classList.add('field_filled')
+            }
+        }
+
+        // Select all form-control elements
+        const formControls = document.querySelectorAll('.form-control');
+
+        // Add event listeners for focus and blur to form-control elements
+        formControls.forEach(el => {
+            el.onblur = () => {
+                setActive(el, false);
+            };
+            el.onfocus = () => {
+                setActive(el, true);
+            };
+        });
+
+        // Select all form-group divs
+        const formGroups = document.querySelectorAll('.form-group');
+
+        // Add event listeners for click to form-group divs
+        formGroups.forEach(group => {
+            group.onclick = (e) => {
+                // Find the input element within the div
+                const input = group.querySelector('.form-control');
+                if (input && e.target !== input) {
+                    input.focus();
+                }
+            };
+        });
+
+        // reset field
+        function resetcode() {
+            var element = document.getElementByClass("resetdata");
+            element.reset();
+        }
+
+        function fetch_data(page, str = '') {
+
+            if (str == '') {
+                $('#popup').addClass('show'); // Show the popup
+            }
+            var search_pick_up_area = $('#search_pick_up_area').val();
+            var search_drop_off_area = $('#search_drop_off_area').val();
+            $.ajax({
+                url: globalSiteUrl + "/transporter/find_job?page=" + page,
+                data: {
+                    search_pick_up_area: search_pick_up_area,
+                    search_drop_off_area: search_drop_off_area,
+                },
+                type: "GET",
+                success: function(res) {
+                    console.log(res);
+                    if (res.success == true) {
+                        $('#popup').removeClass('show');
+                        $('.jobsrch_blogs, .mainContentDiv').addClass('d-none');
+                        $('#idLoadData').html(res.data);
+                        $('.jobsrch_form_blog').addClass('d-none');
+                        $('.admin_job_top h3').text('Your results');
+                        $('.pera_srch').text('Here are some jobs we’ve found that match your search.');
+                        $('html, body').scrollTop(0);
+
+                        checkAndHideSections();
+                    } else {
+                        $('#popup').removeClass('show');
+                        toastr.error(res.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Response:', xhr.responseText); // Full
+                }
+            });
+        }
+        $('#search_job').on('click', function() {
+            var form = $('#jobsrch_form_blog');
+            // Trigger form validation
+            if (form.valid()) {
+                fetch_data(1);
+            }
+        });
+
+        $(document).on('click', '.after_search a', function(event) {
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            $('#page').val(page);
+            fetch_data(page, 'pagination');
+        });
+
+        $(document).on('click', '.before_search a', function(event) {
+            event.preventDefault();
+            var baseUrl = window.location.origin; // e.g., http://127.0.0.1:8000
+            var path = '/transporter/new-jobs-new';
+            var page = $(this).attr('href').split('page=')[1];
+            var newUrl = baseUrl + path + '?page=' + page;
+            window.location.href = newUrl;
+        });
+
+        function checkAndHideSections() {
+            if ($('#idLoadData').children().length > 0) {
+                $('.pagination.before_search').hide();
+                $('.job-data').hide();
+
+            } else {
+                $('.pagination.before_search').show();
+                $('.job-data').show();
+            }
+        }
+
+        function removeToWatchlist(quoteId) {
+            $.ajax({
+                url: "{{ route('transporter.watchlist.remove') }}", // Replace with your route for adding to the watchlist
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // CSRF token for security
+                    quote_id: quoteId // Quote ID to be sent
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Show a success message or update the UI accordingly
+                        toastr.success('Job removed from watchlist!');
+                        setTimeout(function() {
+                            location.reload(); // Reload the page
+                        }, 2000);
+                    } else {
+                        // Handle the case where the operation wasn't successful
+                        toastr.error(response.message); // Display the specific message returned from the server
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // General error handling for unexpected issues
+                    console.error('An error occurred:', error);
+                    toastr.error('An error occurred while adding to the watchlist.');
+                }
+            });
+        }
+    </script>
 @endsection

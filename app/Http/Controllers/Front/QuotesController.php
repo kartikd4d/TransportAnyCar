@@ -242,6 +242,7 @@ class QuotesController extends WebController
         // Update quote data with the quotation ID
         $quoteData['quotation_id'] = $userQuote->id;
         Cache::forget('location_info');
+        $this->SaveSearchQuoteEmailSend($quoteData);
 
         // Send mail to transporters
         //$this->sendMailToTransporters($quoteData);
@@ -472,5 +473,67 @@ class QuotesController extends WebController
             ], 500);
         }
     }
+
+    public function SaveSearchQuoteEmailSend($quote)
+    {
+        $pickupWords = array_map('trim', preg_split('/[\s,]+/', strtolower($quote['pickup_postcode'])));
+        $dropWords = array_map('trim', preg_split('/[\s,]+/', strtolower($quote['drop_postcode'])));
+        //    dd($pickupWords);
+        $transporter = DB::table('save_searches')
+            ->join('users', function ($join) {
+                $join->on('users.id', '=', 'save_searches.user_id')
+                    ->where('users.status', 'active')
+                    ->where('users.type', 'car_transporter')
+                    ->where('users.is_status', 'approved');
+                // ->where('users.job_email_preference', 1);
+            })
+            ->where(function ($query) use ($pickupWords) {
+                foreach ($pickupWords as $word) {
+                    $query->orWhere(DB::raw('LOWER(save_searches.pick_area)'), 'LIKE', '%' . $word . '%');
+                }
+            })
+            // Match if any of the words in the drop_postcode input match the drop_area
+            ->where(function ($query) use ($dropWords) {
+                $query->orWhere(function ($innerQuery) use ($dropWords) {
+                    foreach ($dropWords as $word) {
+                        $innerQuery->orWhere(DB::raw('LOWER(save_searches.drop_area)'), 'LIKE', '%' . $word . '%');
+                    }
+                })
+                    ->orWhereNull('save_searches.drop_area') // Match if drop_area is NULL
+                    ->orWhere('save_searches.drop_area', 'anywhere'); // Match if drop_area is 'anywhere'
+            })
+            ->where('save_searches.email_notification', 'true')
+            ->groupBy('users.id')
+            ->get();
+
+            $mailData = [
+                'id' => $quote['quotation_id'],
+                'vehicle_make' => $quote['vehicle_make'],
+                'vehicle_model' => $quote['vehicle_model'],
+                'vehicle_make_1' => $quote['vehicle_make_1'],
+                'vehicle_model_1' => $quote['vehicle_model_1'],
+                'pickup_postcode' => formatAddress($quote['pickup_postcode']),
+                'drop_postcode' => formatAddress($quote['drop_postcode']),
+                'delivery_timeframe_from' => isset($quote['delivery_timeframe_from']) ? $quote['delivery_timeframe_from'] : null,
+                'starts_drives' => $quote['starts_drives'] == 1 ? 'Yes' : 'No',
+                'starts_drives_1' => $quote['starts_drives_1'],
+                'how_moved' => $quote['how_moved'],
+                'distance' => $quote['distance'],
+                'duration' => $quote['duration'],
+                'map_image' => $quote['map_image'],
+                'delivery_timeframe' => $quote['delivery_timeframe']
+            ]; 
+        
+            $htmlContent = view('mail.General.transporter-new-job-received', ['quote' => $mailData])->render();
+            $subject='You have received a transport notification';
+
+
+           foreach($transporter as $transport)
+           {
+              $this->emailService->sendEmail("ravichaudhary.d4d@gmail.com", $htmlContent, $subject);
+           }
+
+    }
+
 
 }
