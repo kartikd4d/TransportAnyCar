@@ -36,9 +36,10 @@
             line-height: 20px;
             font-weight: 400;
         }
-        button {
+        a.verify-btn {
             background: #52D017;
             color:#ffffff;
+            text-decoration: none;
             font-size: 12px;
             line-height:16px;
             font-weight: 400;
@@ -68,13 +69,13 @@
         <img class="adjust-space" src="{{asset('/assets/images/transport-logo.jpg')}}" alt="Transport Logo" style="max-width:90px"; />
         <h2>Hi {{$name}},</h2>
         <p class="adjust-space">Please verify your email address to activate your account.</p>
-        <a href="{{ $verificationLink }}">Verify Email</a>
+        <a class="verify-btn" href="{{ $verificationLink }}" style="color:#ffffff;">Verify Email</a>
         <p class="adjust-space">Your link is active for 24 hours. After that you will need to resend the verification email.</p>
         <p>
             Best Regards,
         </p>
         <p class="adjust-half-space">Transport Any Car Team</p>
-        <p class="adjust-half-space">Manage notification preferences.</p>
+        <p class="adjust-half-space">Manage notification <a href="#" style="color:#0356D6; text-decoration: none;">preferences.</span></a>
         <p>© 2024 Transport Any Car. 128 City Road, London, EC1V 2NX.</p>
     </div>
     {{-- <a href="{{ $verificationLink }}">Verify Email</a> --}}

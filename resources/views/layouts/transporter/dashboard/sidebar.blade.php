@@ -294,11 +294,84 @@ $currentRoute = request()->route()->getName();
 
         $(document).on('click', '.checkStatus', function(e){
           var isStatus = "{{Auth::user()->is_status}}";
-          if(isStatus == 'pending' || isStatus == 'rejected') {
+          var email_status = "{{Auth::user()->email_verify_status}}";
+          var driver_license = "{{Auth::user()->driver_license}}";
+          var goods_in_transit_insurance = "{{Auth::user()->goods_in_transit_insurance}}";
+
+          if(driver_license == null && goods_in_transit_insurance == null && email_status == '0') {
             e.preventDefault();
             Swal.fire({
-                title: '<span class="swal-title" style="color:#ED1C24">Awaiting approval</span>',
-                html: '<span class="swal-text">Sorry you cannot bid on any jobs until your account has been approved.</span>',
+                title: '<span class="swal-title" style="color:#ED1C24">Verify your account</span>',
+                html: '<span class="swal-text">  You must upload a valid drivers license, goods in transit insurance and verify your email address within your profile before you are able to bid for jobs.</span>',
+                confirmButtonColor: '#52D017',
+                confirmButtonText: 'Verify',
+                customClass: {
+                      title: 'swal-title',
+                      htmlContainer: 'swal-text-container',
+                      popup: 'swal-popup', // Add custom class for the popup
+                      cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                },
+                showCloseButton: true, // Add this line to show the close button
+                showConfirmButton: true, // Add this line to hide the confirm button
+                allowOutsideClick: false
+              }).then((result) => {
+                  // Redirect to the dashboard if the confirm button or close button is clicked
+                  if (result.isConfirmed || result.dismiss) {
+                      window.location.href = "{{route('transporter.profile')}}"; // Change this to your actual dashboard URL
+                  }
+              });
+          }
+
+          else if(driver_license == null || goods_in_transit_insurance == null) {
+            e.preventDefault();
+            Swal.fire({
+                title: '<span class="swal-title" style="color:#ED1C24">Upload documents</span>',
+                html: '<span class="swal-text"> You must upload a valid driving license, goods in transist insurance within your profile before you are able to bids for jobs.</span>',
+                confirmButtonColor: '#52D017',
+                confirmButtonText: 'Verify',
+                customClass: {
+                      title: 'swal-title',
+                      htmlContainer: 'swal-text-container',
+                      popup: 'swal-popup', // Add custom class for the popup
+                      cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                },
+                showCloseButton: true, // Add this line to show the close button
+                showConfirmButton: true, // Add this line to hide the confirm button
+                allowOutsideClick: false
+              }).then((result) => {
+                  // Redirect to the dashboard if the confirm button or close button is clicked
+                  if (result.isConfirmed || result.dismiss) {
+                      window.location.href = "{{route('transporter.profile')}}"; // Change this to your actual dashboard URL
+                  }
+              });
+          }else if (email_status == '0') {
+            e.preventDefault();
+            Swal.fire({
+                title: '<span class="swal-title" style="color:#ED1C24">Verify your email</span>',
+                html: '<span class="swal-text"> You must verify your email address within your profile before you are able to bid for jobs.</span>',
+                confirmButtonColor: '#52D017',
+                confirmButtonText: 'Verify',
+                customClass: {
+                      title: 'swal-title',
+                      htmlContainer: 'swal-text-container',
+                      popup: 'swal-popup', // Add custom class for the popup
+                      cancelButton: 'swal-button--cancel' // Add custom class for the cancel button
+                },
+                showCloseButton: true, // Add this line to show the close button
+                showConfirmButton: true, // Add this line to hide the confirm button
+                allowOutsideClick: false
+              }).then((result) => {
+                  // Redirect to the dashboard if the confirm button or close button is clicked
+                  if (result.isConfirmed || result.dismiss) {
+                      window.location.href = "{{route('transporter.profile')}}"; // Change this to your actual dashboard URL
+                  }
+              });
+
+          }else if(isStatus == 'pending' || isStatus == 'rejected') {
+            e.preventDefault();
+            Swal.fire({
+                title: '<span class="swal-title" style="color:#ED1C24">Awaiting Approval</span>',
+                html: '<span class="swal-text">Sorry you can not bid on any jobs until your account has been approved.</span>',
                 confirmButtonColor: '#52D017',
                 confirmButtonText: 'Dismiss',
                 customClass: {
@@ -316,7 +389,7 @@ $currentRoute = request()->route()->getName();
                       window.location.href = "{{route('transporter.dashboard')}}"; // Change this to your actual dashboard URL
                   }
               });
-          } else {
+            }else {
             if(isStatus != 'approved') {
               e.preventDefault();
               Swal.fire({
